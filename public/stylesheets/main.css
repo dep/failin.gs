@@ -1,0 +1,272 @@
+/* ------------------------
+    container and homepage
+   ----------------------*/
+body, html {
+  margin:0; 
+}
+body {
+  background-color:#7479b7;
+  font-size:62.5%;
+  text-align:center;
+  font-family:Helvetica, Arial; 
+}
+#container, #footer {
+  width:80%;
+  min-width:860px;  
+}
+#container {
+  position:relative;
+  margin:20px auto 5px;
+  -moz-border-radius: 10px 10px 10px 10px; 
+  -webkit-border-radius: 10px 10px 10px 10px; 
+  background-color:#fff;
+  text-align:left;
+  padding:5px 20px;
+  overflow:hidden;
+}
+.col {
+  float:left;
+  zoom:1; 
+}
+.col_1 {
+  padding-right:20px;
+  width:70%; 
+}
+.col_2 {
+  float:right;
+  width:27%;
+}
+#footer {
+  margin:0 auto;
+  color:#ddd;
+}
+a, a:visited {
+  color:#7479b7;
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:underline; 
+}
+h1 {
+  text-indent:-9999px;
+  background:url(../images/logo.png) top left no-repeat;
+  width:277px;
+  height:50px;
+}
+p {
+  color:#444;
+  font-size:16px; 
+}
+blockquote {
+  border:1px dashed #666; 
+  background-color:#d8f783;
+  padding:10px;
+  font-size:32px;
+  font-weight:bold;
+  color:#777;
+}
+#signup, .announce {
+  float:right;
+  position:relative;
+  -moz-border-radius: 10px 10px 10px 10px; 
+  -webkit-border-radius: 10px 10px 10px 10px; 
+  border-style:dashed;
+  border-width:1px;
+  border-color:#777;
+  padding:0 10px 10px;  
+  margin:10px 0;
+  background-color:#222;
+}
+#signup h2 {
+  color:#eee;
+  font-size:18px;
+}
+#signup p {
+  color:#aaa; 
+  margin-bottom:0;
+}
+fieldset, a img {
+  border:0;
+}
+label {
+  display:block; 
+  padding-top:5px;
+  color:#eee;
+  font-size:12px;
+}
+label.checkbox {
+  display:inline; 
+}
+input, textarea {
+  border:1px solid #bbb;
+  font-size:17px;
+  margin-bottom:5px;
+  width:95%;
+  color:#666;
+  font-weight:bold;
+  padding:3px;
+}
+input[type="submit"] {
+  background-color:#7479b7;
+  color:#fff;
+  margin-top:10px; 
+  margin-bottom:0;
+  width:auto;
+}
+input[type="checkbox"] {
+  width:auto; 
+}
+#logged_in {
+  position:absolute;
+  right:8px;
+  top:8px; 
+}
+#logged_in ul {
+  list-style:none; 
+  margin:0;
+}
+#logged_in ul li {
+  float:left;
+  padding:0 5px;
+  border-right:1px solid #ccc;
+}
+#logged_in ul li:last-child {
+  border-right:0;
+}
+
+/* ------------------------
+    profile
+   ----------------------*/
+.body {
+  overflow:hidden;
+  width:100%;
+  border-top:1px dashed #aaa;
+  padding-top:20px; 
+  color:#666;
+}
+#user_profile {
+  position:relative;
+  overflow:hidden;
+  zoom:1; 
+  padding-bottom:10px;
+}
+.pic_area img {
+  display:block; 
+  border:1px solid #aaa;
+}
+.pic_area a {
+  display:block;
+  text-align:center; 
+}
+.pic_area, .user_details {
+  float:left;
+}
+.user_details {
+  font-size:16px; 
+  padding-left:20px;
+  max-width:42%;
+}
+.user_details span, .user_details label {
+  display:block;
+  padding-top:10px;
+  color:#333;
+  font-size:17px;
+}
+.announce {
+  width:250px; 
+  background-color:#ccc;
+  border-style:solid;
+  margin-top:0px;
+}
+.announce .share_links {
+  display:block;
+  text-align:center; 
+}
+.announce .share_links a {
+  margin: 0 5px; 
+}
+.announce blockquote {
+  font-size:12px; 
+  margin-left:10px;
+}
+.announce label {
+  color:#666; 
+}
+.announce h2 {
+  margin:0;
+  padding-top:20px; 
+}
+.floating_box {
+  width:300px;
+  -moz-border-radius: 10px 10px 10px 10px; 
+  -webkit-border-radius: 10px 10px 10px 10px; 
+  border-style:solid;
+  border-width:1px;
+  border-color:#777;
+  position:absolute;
+  padding:10px;
+  background-color:#ddd;
+}
+.floating_box p {
+  font-size:12px; 
+}
+.floating_box .close {
+  position:absolute;
+  top:0;
+  right:10px;
+  color:#fff;
+  font-size:30px;
+}
+#box_important {
+  top:20px;
+  left:270px;
+}
+#flaw_area {
+  border-top:1px solid #ccc;
+  padding-top:10px; 
+}
+.flaw_box {
+  width:215px;
+  float:left;
+  margin:0 5px;
+  border-style:solid;
+  border-width:1px;
+  border-color:#777;
+  padding:5px
+}
+.flaw_box.unrated {
+  background-color:#777; 
+}
+.flaw_box.known {
+  background-color:#5cc931;
+}
+.flaw_box.unknown {
+  background-color:#edef43;
+}
+.flaw_box.disagree {
+  background-color:#d71919;
+}
+.flaw_box h3 {
+  margin:0;
+  padding:0; 
+  color:#fff;
+}
+.flaw_box.unknown h3 {
+  color:#333;
+}
+.flaw_box .feedback {
+  display:block;
+  -moz-border-radius: 3px 3px 3px 3px; 
+  -webkit-border-radius: 3px 3px 3px 3px; 
+  background-color:#fff;
+  padding:5px;  
+}
+.flaw_box .feedback .toolbar {
+  display:block;
+  background-color:#ddd;
+  text-align:right;
+  border-bottom:1px solid #aaa;
+}
+.flaw_box .feedback p {
+  font-size:11px; 
+}
