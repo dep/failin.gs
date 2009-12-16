@@ -82,6 +82,7 @@ blockquote {
   padding:0 10px 10px;  
   margin:10px 0;
   background-color:#222;
+  color:#eee;
 }
 #signup h2 {
   color:#eee;
@@ -118,6 +119,7 @@ input[type="submit"] {
   margin-top:10px; 
   margin-bottom:0;
   width:auto;
+  cursor:pointer;
 }
 input[type="checkbox"] {
   width:auto; 
@@ -309,10 +311,34 @@ input[type="checkbox"] {
   border-bottom:0;
   background-color:#f3f3f3;
 }
-.flaw_box .feedback p {
-  font-size:13px; 
+.flaw_box .feedback .toolbar.bottom span {
+  text-decoration:underline;
+  cursor:pointer;
 }
-
+.flaw_box .feedback p {
+  font-size:14px; 
+  padding-left:5px;
+  padding-right:5px;
+}
+.flaw_box .feedback .comment {
+  display:block;
+  border-top:1px solid #ccc;
+  margin:10px 20px;
+}
+.flaw_box .feedback .comment p {
+  font-size:10px;
+}
+.flaw_box .feedback .comment span {
+  text-align:right;
+  color:#aaa;
+  display:block;
+}
+.flaw_box .feedback textarea {
+  font-size:12px;
+}
+.flaw_box .feedback input[type="submit"] {
+  font-size:12px;
+}
 /* Profile edit */
 #user_profile.edit {
   width:100%;
@@ -329,4 +355,9 @@ input[type="checkbox"] {
 }
 #user_profile.edit .announce {
   width:220px;
+}
+.error_text {
+  padding:5px 0;
+  font-size:15px;
+  color:red;
 }

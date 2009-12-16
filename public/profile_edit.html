@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div class="body">
-      <div id="user_profile">
+      <div id="user_profile" class="edit">
         <div class="floating_box" id="box_important" style="display:none">
           <p>
             <strong>failin.gs</strong> is a community where you can have your friends anonymously critique you.
@@ -39,12 +39,12 @@
             Don't worry. Your last name will not be viewable to anyone
           </p>
           <a href="#" class="close" onclick="$('box_important').fade();$('lastname').focus();">x</a>
-          
         </div>
         <div class="pic_area">
           <img src="images/default_pic.png"/>
         </div>
         <div class="user_details">
+          <div class="error_text">Oh noes! errors!</div>
           <label for="username">Username:</label>
           <input name="username" id="username" type="text" />
           <label for="lastname">Your <strong>real</strong> last name (<a href="#" onclick="$('box_important').appear()">Hey, this is important!</a>):</label>
@@ -61,6 +61,7 @@
         </div>
         <div class="announce">
           <h2>Want a new password?</h2>
+          <div class="error_text">Oh noes! errors!</div>
           <label for="passwd">New password:</label>
           <input type="password" id="passwd" name="passwd" maxlength="15" />
           <label for="passwd2">Twice to be sure:</label>
