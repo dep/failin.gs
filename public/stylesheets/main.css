@@ -27,17 +27,24 @@ body {
   padding:5px 20px;
   overflow:hidden;
 }
+#container.thankyou {
+  background:#fff url(../images/excited.jpg) 90% 20px no-repeat;
+  min-height:500px;
+}
+#container.thankyou p {
+  width:300px;
+}
 .col {
   float:left;
   zoom:1; 
 }
 .col_1 {
   padding-right:20px;
-  width:70%; 
+  width:68%; 
 }
 .col_2 {
   float:right;
-  width:27%;
+  width:29%;
 }
 #footer {
   margin:0 auto;
@@ -100,6 +107,9 @@ label {
   padding-top:5px;
   color:#eee;
   font-size:12px;
+}
+strong {
+  color:#fff;
 }
 label.checkbox {
   display:inline; 
