@@ -11,7 +11,8 @@ gem "arel",             git: "git://github.com/rails/arel.git"
 # gem "sqlite3-ruby", :require_as => "sqlite3"
 # gem "aws-s3", :require_as => "aws/s3"
 gem "mysql", "2.8.1"
-# gem "authlogic"
+gem "authlogic", git: "git://github.com/stephencelis/authlogic.git",
+  branch: "rails_3_pre"
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :only => :test

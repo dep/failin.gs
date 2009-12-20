@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # = Vendor
-  acts_as_authentic { |config| config.remember_me = true }
+  acts_as_authentic # { |config| config.remember_me = true }
 
   # = Local
   #

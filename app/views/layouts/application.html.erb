@@ -12,8 +12,8 @@
     <% if logged_in? %>
     <div id="logged_in">
       <ul>
-        <li><%= link_to "my profile", profile_path(session_user) %></li>
-        <li><%= link_to "settings", edit_account_path %></li>
+        <li><%= link_to "my profile", user_path %></li>
+        <li><%= link_to "settings", edit_user_path %></li>
         <li><%= link_to "log out", user_session_path, method: :delete %></li>
       </ul>
     </div>

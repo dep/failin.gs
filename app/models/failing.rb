@@ -5,7 +5,7 @@ class Failing < ActiveRecord::Base
   has_many :comments
 
   attr_accessor :surname
-  validate_on_create :verify_surname
+  validate :verify_surname, on: :create
 
   include ActiveRecord::StateMachine
   state_machine do

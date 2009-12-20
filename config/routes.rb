@@ -59,8 +59,9 @@ ActionController::Routing::Routes.draw do |map|
   # match ':controller(/:action(/:id(.:format)))'
 
   resource :user_session
-  resource :account
-  resources :users
+  resource :user
+  # resource :account, :controller => "users"
+  # resources :users
 
   root :to => "user_sessions#new"
 end
