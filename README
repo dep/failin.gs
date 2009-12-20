@@ -2,3 +2,13 @@
 
 To answer that age old question that perhaps all of us have asked ourselves at
 some point in our lives: "What is wrong with me?"
+
+
+=== Setup
+
+1. Run <tt>git submodule update --init</tt>.
+
+2. Check the <tt>config</tt> directory for example configuration files. Edit if
+   necessary.
+
+3. Run <tt>script/bundle</tt>.
