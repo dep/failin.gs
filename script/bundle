@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+$: << File.join(File.dirname(__FILE__), "..", "vendor", "bundler", "lib")
+require "rubygems"
+require "rubygems/command"
+require "bundler"
+require "bundler/commands/bundle_command"
+
+ENV["ARCHFLAGS"] ||= "-arch x86_64"
+unless ARGV.include?("--build-options") || ARGV.include?("-b")
+  ARGV << "--build-options" << "config/bundler_build_options.yml"
+end
+
+Gem::Commands::BundleCommand.new.invoke(*ARGV)

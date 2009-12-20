@@ -1,4 +1,5 @@
 bin/*
+config/*.yml
 log/*
 tmp/*
 vendor/gems/*
