@@ -56,5 +56,11 @@ ActionController::Routing::Routes.draw do |map|
   # Note: The default route make all actions in every controller accessible
   # via GET requests. You should consider removing or commenting it out if
   # you're using named routes and resources.
-  match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id(.:format)))'
+
+  resource :user_session
+  resource :account
+  resources :users
+
+  root :to => "user_sessions#new"
 end

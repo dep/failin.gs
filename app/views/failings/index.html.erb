@@ -1,0 +1,110 @@
+<div id="user_profile">
+  <div class="pic_area">
+    <%= gravatar_for @user, default: image_path("default_pic.png"), size: 200 %>
+    <%= link_to "change this picture", "http://gravatar.com" %>
+  </div>
+
+  <div class="user_details">
+    <span>Username:</span>
+    <%= @user.login %>
+
+    <% if @user == current_user %>
+      <span>Email address (Invisible):</span>
+      <%= @user.email %>
+    <% end %>
+
+    <span>Location:</span>
+    <%= @user.location %>
+
+    <span>About me:</span>
+    <%= simple_format @user.about %>
+
+    <% if @user == current_user %>
+      <p><%= link_to "edit your profile", edit_account_path %></p>
+    <% end %>
+  </div>
+
+  <% if @user == current_user %>
+    <div class="announce">
+      <h2>Announce your profile!</h2>
+
+      <p>Your profile URL is:</p>
+      <blockquote><%= profile_url(@user) %></blockquote>
+
+      <p>Now that you have a profile, send it to everyone you know so they can
+      provide you with your anonymous constructive criticism!</p>
+
+      <div class="share_links">
+        <a href="http://twitter.com/?status=I%20just%20signed%20up%20at%20@failings.%20It%20lets%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20http://failin.gs/usernamegoeshere%20eep!"><img src="images/tweet_this.jpg" alt="Tweet this!" /></a>
+        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2F[[[[[[[[user url]]]]]]]]&src=sp"><img src="images/facebook_this.jpg" alt="Facebook this!" /></a>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% form_for @failing do |f| %>
+  <fieldset id="flaw_entry">
+    <h2>What is wrong with me?</h2>
+    <%= f.error_messages %>
+
+    <%= f.text_area :about %>
+    <button type="button" onclick="$('box_validate').show(); $('last_name').focus();">Submit</button>
+
+    <div class="floating_box" id="box_validate" style="display:none">
+      <p><strong>failin.gs</strong> is a community where you can anonymously
+      critique your friends' various personality flaws.</p>
+
+      <p>It's important, though, to make sure that the people who leave
+      feedback actually know the person they're critiquing.</p>
+
+      <p>In order to post this feedback, please enter the last name of the
+      person you are critiquing.</p>
+
+      <div class="error_text">Oh noes! errors!</div>
+      <%= f.text_field :surname %>
+      <%= f.submit "Ok - Send!" %>
+
+      <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<div class="flaw_box unrated">
+  <h3>Need review</h3>
+  <div class="feedback">
+    <div class="toolbar">
+      <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+    </div>
+    <div class="feedback_text">
+      <p>blah de blah de blah...</p>
+    </div>
+    <div class="comment">
+      <p>Agreed. The dude's a schmuck.</p>
+      <span>12/12/2009, 1:43pm</span>
+    </div>
+    <div class="comment">
+      <p>Nah, he's not that bad</p>
+      <span>12/12/2009, 1:43pm</span>
+    </div>
+    <div class="comment">
+      <p>Yeah he is.</p>
+      <span>12/12/2009, 1:43pm</span>
+    </div>
+    <div class="comment">
+      <p>Pssh</p>
+      <span>12/12/2009, 1:43pm</span>
+    </div>
+    <div class="toolbar bottom">
+      <span onclick="add_reply(this)">reply</span>
+    </div>
+  </div>
+</div>
+<div class="flaw_box known">
+  <h3>I knew this about me</h3>
+</div>
+<div class="flaw_box unknown">
+  <h3>I had no idea</h3>
+</div>
+<div class="flaw_box disagree">
+  <h3>I totally disagree</h3>
+</div>
