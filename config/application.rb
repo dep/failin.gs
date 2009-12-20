@@ -34,4 +34,16 @@ class G < Rails::Application
   #   g.template_engine :erb
   #   g.test_framework  :test_unit, :fixture => true
   # end
+
+  config.after_initialize do
+    if $0 == "script/console"
+      config.logger = Logger.new STDOUT
+
+      begin
+        require "hirb"
+        Hirb.enable
+      rescue LoadError
+      end
+    end
+  end
 end

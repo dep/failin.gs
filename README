@@ -6,9 +6,17 @@ some point in our lives: "What is wrong with me?"
 
 === Setup
 
-1. Run <tt>git submodule update --init</tt>.
+First, get Ruby 1.9.1 up and running.
 
-2. Check the <tt>config</tt> directory for example configuration files. Edit if
-   necessary.
+  % [sudo] gem install rvm
+  % rvm-install
+  % rvm install 1.9.1
+  % rvm 1.9.1
 
-3. Run <tt>script/bundle</tt>.
+
+Then, prepare the application.
+
+  % git submodule update --init
+  % script/bundle
+  % cp config/database.yml.example config/database.yml
+  % rake db:create:all db:migrate

@@ -7,7 +7,9 @@ require "bundler/commands/bundle_command"
 
 ENV["ARCHFLAGS"] ||= "-arch x86_64"
 unless ARGV.include?("--build-options") || ARGV.include?("-b")
-  ARGV << "--build-options" << "config/bundler_build_options.yml"
+  if File.exist?("config/bundler_build_options.yml")
+    ARGV << "--build-options" << "config/bundler_build_options.yml"
+  end
 end
 
 Gem::Commands::BundleCommand.new.invoke(*ARGV)
