@@ -23,3 +23,10 @@ function add_reply(e) {
   pObj.appendChild(reply_div);
   $('comment').focus();
 }
+
+function ismaxlength(obj){
+  var mlength=obj.getAttribute? parseInt(obj.getAttribute("maxlength")) : ""
+  if (obj.getAttribute && obj.value.length>mlength)
+  obj.value=obj.value.substring(0,mlength)
+  $('char_limit').innerHTML = mlength - obj.value.length;
+}

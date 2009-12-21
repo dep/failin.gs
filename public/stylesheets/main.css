@@ -11,7 +11,7 @@ body {
   font-family:Helvetica, Arial; 
 }
 #container, #footer {
-  width:80%;
+  width:85%;
   min-width:860px;  
 }
 #container {
@@ -273,10 +273,10 @@ input[type="checkbox"] {
 #flaw_area {
   float:left;
   width:605px;
-  border-left:1px solid #ddd;
+  border-left:1px solid #eaeaea;
   padding-left:10px;
   margin-left:5px;
-}                              
+} 
 #flaw_area fieldset#flaw_entry h2 {
   margin:0 0 10px 0;
   font-size:36px;
@@ -289,6 +289,10 @@ input[type="checkbox"] {
   float:left;
   height:50px;
 }
+#flaw_area .char_limit {
+  display:block;
+  clear:both;
+}
 #flaw_area fieldset button {
   font-size:24px;
   float:left;
@@ -298,7 +302,7 @@ input[type="checkbox"] {
 }
 .flaw_box {
   display:block;
-  width:95%;
+  width:97%;
   float:left;
   margin:0 5px 20px;
   border-style:solid;
@@ -306,17 +310,30 @@ input[type="checkbox"] {
   border-color:#777;
   padding:5px
 }
+.flaw_box .feedback .reply_wrapper {
+  background:#f3f3f3;
+  padding:5px;
+}
 .flaw_box.unrated {
   background:#777; 
 }
 .flaw_box.known {
   background:#5cc931;
+  width:27%;
+  float:left;
+}
+.flaw_box.known,
+.flaw_box.unknown,
+.flaw_box.disagree {
+  width:176px;
 }
 .flaw_box.unknown {
   background:#edef43;
+  float:left;
 }
 .flaw_box.disagree {
   background:#d71919;
+  float:left;
 }
 .flaw_box h3 {
   margin:0;
@@ -346,12 +363,27 @@ input[type="checkbox"] {
 }
 .flaw_box .feedback .toolbar.bottom {
   border-top:1px solid #aaa;
+  font-size:13px;
   border-bottom:0;
   background:#f3f3f3;
+  overflow:hidden;
+  zoom:1;
 }
-.flaw_box .feedback .toolbar.bottom span {
-  text-decoration:underline;
+.flaw_box .feedback .toolbar.bottom .left {
+  float:left;
+}
+.flaw_box .feedback .toolbar.bottom .right {
+  float:right;
+}
+.flaw_box .feedback .toolbar.bottom span,
+.flaw_box .feedback .toolbar.bottom a {
+  text-decoration:none;
   cursor:pointer;
+  color:#777;
+}
+.flaw_box .feedback .toolbar.bottom span:hover,
+.flaw_box .feedback .toolbar.bottom a:hover {
+  text-decoration:underline;
 }
 .flaw_box .feedback p {
   font-size:14px; 

@@ -58,10 +58,11 @@
       <div id="flaw_area">
         <fieldset id="flaw_entry">
           <form>
-            <h2>What is wrong with me?</h2>
+            <h2>What do I need to work on?</h2>
             <div class="error_text">Oh noes! errors!</div>
-            <textarea id="flaw_entry" name="flaw_entry"></textarea>
+            <textarea maxlength="145" onkeyup="return ismaxlength(this)" id="flaw_entry" name="flaw_entry"></textarea>
             <button type="button" onclick="$('box_validate').show();$('last_name').focus();">Submit</button>
+            <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
           </form>
           <div class="floating_box" id="box_validate" style="display:none">
             <p>
@@ -105,12 +106,30 @@
               <span>12/12/2009, 1:43pm</span>
             </div>
             <div class="toolbar bottom">
-              <span onclick="add_reply(this)">reply</span>
+              <div class="left">
+                <a href="#">I knew this</a> - 
+                <a href="#">I had no idea!</a> -
+                <a href="#">I disagree completely</a>                
+              </div>
+              <div class="right">
+                <span onclick="add_reply(this)">reply</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="flaw_box known">
           <h3>I knew this about me</h3>
+          <div class="feedback">
+            <div class="toolbar">
+              <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+            </div>
+            <div class="feedback_text">
+              <p>blah de blah de blah...</p>
+            </div>
+            <div class="toolbar bottom">
+              <span onclick="add_reply(this)">reply</span>
+            </div>
+          </div>
         </div>
         <div class="flaw_box unknown">
           <h3>I had no idea</h3>
