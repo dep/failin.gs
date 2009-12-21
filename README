@@ -19,4 +19,4 @@ Then, prepare the application.
   % git submodule update --init
   % script/bundle
   % cp config/database.yml.example config/database.yml
-  % rake db:create:all db:migrate
+  % bin/rake db:create:all db:migrate
