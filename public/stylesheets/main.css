@@ -49,6 +49,10 @@ body {
   padding-right:20px;
   width:68%; 
 }
+.col_1.homepage p {
+  font-size:18px;
+  line-height:28px;
+}
 .col_2 {
   float:right;
   width:29%;
@@ -214,6 +218,8 @@ input[type="checkbox"] {
   padding-top:10px;
   color:#333;
   font-size:17px;
+}
+#signup {
 }
 .announce {
   background:#ccc;
