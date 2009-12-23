@@ -1,14 +1,56 @@
-<% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
-  <div>
-    <%= f.label :login %>
-    <%= f.text_field :login %>
+<div class="col col_1 homepage">
+  <p>
+    <strong>failin.gs</strong> seeks to answer that age old question that perhaps
+    all of us have asked ourselves at some point in our lives.
+  </p>
+  <blockquote>
+    "What is wrong with me?"
+  </blockquote>
+  <p>
+    Of course, nobody is perfect. We all have our own idiosyncrasies and
+    personality flaws. Think of the people you know. We are sure you can theirs.
+    I bet they can identify yours as well.
+  </p>
+  <p>
+    Create a profile and invite people to leave anonymous constructive criticism
+    about your character. We all want to improve, don't we?
+  </p>
+</div>
+<div class="col col_2">
+  <div id="signup" class="announce dark">
+    <h2>Can you handle the truth?</h2>
+    <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
+    <fieldset id="login_form" style="display:none">
+      <% form_for @user_session, :url => user_session_path do |f| %>
+        <%= f.error_messages %>
+        <div>
+          <%= f.label :login %>
+          <%= f.text_field :login %>
+        </div>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <div>
+          <%= f.submit "Login" %>
+        </div>
+      <% end %>
+    </fieldset>
+    <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
+    <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
+    <fieldset id="signup_form">
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" maxlength="35" />
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" maxlength="35" />
+        <label for="passwd">Password:</label>
+        <input type="password" id="passwd" name="passwd" maxlength="15" />
+        <label for="passwd2">Twice to be sure:</label>
+        <input type="password" id="passwd2" name="passwd2" maxlength="15" />
+        <div class="error_text">Oh noes! errors!</div>
+        <input type="submit" value="Sign up!"/>
+      </form>
+    </fieldset>
   </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
+</div>
