@@ -8,7 +8,7 @@
   <script src="javascripts/scriptaculous.js" type="text/javascript"></script>
   <script src="javascripts/effects.js" type="text/javascript"></script>
   <script src="javascripts/dragdrop.js" type="text/javascript"></script>
-  <script src="javascripts/failings.js" type="text/javascript"></script>
+  <script src="javascripts/application.js" type="text/javascript"></script>
 </head>
 <body>
   <div id="container">
@@ -23,18 +23,15 @@
     <div class="body">
       <div id="user_profile">
         <div class="pic_area">
-          <img src="images/default_pic.png"/>
+          <img src="/images/default_pic.jpg"/>
           <a href="profile_edit.html">change this picture</a>
         </div>
         <div class="user_details">
-          <span>Username:</span> user.username
-          <span>Email address (Invisible):</span> user.emailaddr
-          <span>Location:</span> Anywheres, US
+          <span>Username:</span> dep
+          <span>Email address (Invisible):</span> email@email.com
+          <span>Location:</span> Anywheres, USA
           <span>About me:</span>
-          I like to do things and stuff.
-          I like to do things and stuff.
-          I like to do things and stuff.
-          I like to do things and stuff.
+          A pretty regular guy that enjoys pretty regular things.
           <p><a href="profile_edit.html">edit your profile</a></p>
         </div>
         <div class="announce">
@@ -59,7 +56,7 @@
         <fieldset id="flaw_entry">
           <form>
             <h2>What do I need to work on?</h2>
-            <div class="error_text">Oh noes! errors!</div>
+            <div class="error_text" style="display:none">Oh noes! errors!</div>
             <textarea maxlength="145" onkeyup="return ismaxlength(this)" id="flaw_entry" name="flaw_entry"></textarea>
             <button type="button" onclick="$('box_validate').show();$('last_name').focus();">Submit</button>
             <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
@@ -84,26 +81,19 @@
           <h3>Need review</h3>
           <div class="feedback">
             <div class="toolbar">
-              <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+              <strong>15</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
             </div>
             <div class="feedback_text">
-              <p>blah de blah de blah...</p>
+              <p>I hate to tell you this, but you spit when you talk</p>
+              <span>12/15/2009, 2:32pm</span>
             </div>
             <div class="comment">
-              <p>Agreed. The dude's a schmuck.</p>
-              <span>12/12/2009, 1:43pm</span>
+              <p>It's true man, you do.</p>
+              <span>12/13/2009, 5:50pm</span>
             </div>
             <div class="comment">
-              <p>Nah, he's not that bad</p>
-              <span>12/12/2009, 1:43pm</span>
-            </div>
-            <div class="comment">
-              <p>Yeah he is.</p>
-              <span>12/12/2009, 1:43pm</span>
-            </div>
-            <div class="comment">
-              <p>Pssh</p>
-              <span>12/12/2009, 1:43pm</span>
+              <p>Hahaha. Oh man!</p>
+              <span>12/15/2009, 2:43pm</span>
             </div>
             <div class="toolbar bottom">
               <div class="left">
@@ -121,10 +111,15 @@
           <h3>I knew this about me</h3>
           <div class="feedback">
             <div class="toolbar">
-              <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+              <strong>-5</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
             </div>
             <div class="feedback_text">
-              <p>blah de blah de blah...</p>
+              <p>You never make eye contact</p>
+              <span>12/11/2009, 12:32pm</span>
+            </div>
+            <div class="comment">
+              <p>I never thought about this, but it's actually true!</p>
+              <span>12/14/2009, 4:12pm</span>
             </div>
             <div class="toolbar bottom">
               <span onclick="add_reply(this)">reply</span>
@@ -133,9 +128,61 @@
         </div>
         <div class="flaw_box unknown">
           <h3>I had no idea</h3>
+          <div class="feedback">
+            <div class="toolbar">
+              <strong>7</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+            </div>
+            <div class="feedback_text">
+              <p>You're so cheap! Buy a round every now and then!</p>
+              <span>12/15/2009, 2:11pm</span>
+            </div>
+            <div class="comment">
+              <p>Hahhaa! So true!</p>
+              <span>12/15/2009, 2:32pm</span>
+            </div>
+            <div class="toolbar bottom">
+              <span onclick="add_reply(this)">reply</span>
+            </div>
+          </div>
+          <div class="feedback">
+            <div class="toolbar">
+              <strong>3</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+            </div>
+            <div class="feedback_text">
+              <p>Your leg is always idling. Drives me nuts.</p>
+              <span>12/15/2009, 1:32pm</span>
+            </div>
+            <div class="toolbar bottom">
+              <span onclick="add_reply(this)">reply</span>
+            </div>
+          </div>
         </div>
         <div class="flaw_box disagree">
           <h3>I totally disagree</h3>
+          <div class="feedback">
+            <div class="toolbar">
+              <strong>-7</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+            </div>
+            <div class="feedback_text">
+              <p>You don't seem interested in anything people say.</p>
+              <span>12/1/2009, 2:02pm</span>
+            </div>
+            <div class="comment">
+              <p>Hey, he's not so bad at that. He listens to me. I disagree.</p>
+              <span>12/5/2009, 5:15pm</span>
+            </div>
+            <div class="comment">
+              <p>Me too.</p>
+              <span>12/15/2009, 12:02pm</span>
+            </div>
+            <div class="comment">
+              <p>Yeah, not sure where that came from.</p>
+              <span>12/17/2009, 3:44pm</span>
+            </div>
+            <div class="toolbar bottom">
+              <span onclick="add_reply(this)">reply</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -19,38 +19,76 @@
 <div class="col col_2">
   <div id="signup" class="announce dark">
     <h2>Can you handle the truth?</h2>
-    <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
-    <fieldset id="login_form" style="display:none">
-      <% form_for @user_session, :url => user_session_path do |f| %>
-        <%= f.error_messages %>
-        <div>
-          <%= f.label :login %>
-          <%= f.text_field :login %>
-        </div>
-        <div>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </div>
-        <div>
-          <%= f.submit "Login" %>
-        </div>
-      <% end %>
-    </fieldset>
-    <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
-    <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
-    <fieldset id="signup_form">
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" maxlength="35" />
-        <label for="email">Email Address:</label>
-        <input type="text" id="email" name="email" maxlength="35" />
-        <label for="passwd">Password:</label>
-        <input type="password" id="passwd" name="passwd" maxlength="15" />
-        <label for="passwd2">Twice to be sure:</label>
-        <input type="password" id="passwd2" name="passwd2" maxlength="15" />
-        <div class="error_text">Oh noes! errors!</div>
-        <input type="submit" value="Sign up!"/>
-      </form>
-    </fieldset>
+    <p>
+      We're deep in construction here at failin.gs, but we are hoping to
+      launch the site very soon.
+    </p>
+    <p>
+      If you are interested in being part of our <strong>beta launch</strong>, then just
+      drop your email address in the box below. We won't use your email for
+      any other purpose than to let you know when you can use failin.gs! Promise!
+    </p>
+    <form>
+      <fieldset id="email_send">
+        <label for="emailaddr">Email address:</label>
+        <input name="emailaddr" id="emailaddr" type="text" />
+        <div class="error_text" id="email_error" style="display:none">Oh noes! errors!</div>
+        <input type="submit" value="Keep me posted"/>
+      </fieldset>
+    </form>
+    <div style="display:none">
+      <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
+      <fieldset id="login_form" style="display:none">
+        <% form_for @user_session, :url => user_session_path do |f| %>
+          <%= f.error_messages %>
+          <div>
+            <%= f.label :login %>
+            <%= f.text_field :login %>
+          </div>
+          <div>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
+          <div>
+            <%= f.submit "Login" %>
+          </div>
+        <% end %>
+      </fieldset>
+      <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
+      <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
+      <fieldset id="signup_form">
+        <form>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" maxlength="35" />
+          <label for="email">Email Address:</label>
+          <input type="text" id="email" name="email" maxlength="35" />
+          <label for="passwd">Password:</label>
+          <input type="password" id="passwd" name="passwd" maxlength="15" />
+          <label for="passwd2">Twice to be sure:</label>
+          <input type="password" id="passwd2" name="passwd2" maxlength="15" />
+          <div class="error_text">Oh noes! errors!</div>
+          <input type="submit" value="Sign up!"/>
+        </form>
+      </fieldset>
+    </div>
   </div>
+</div>
+<div class="functionality_teasers">
+  <h2>How does it all work?</h2>
+  <h3>It's ridiculously easy. Totally anonymous.</h3>
+  <ol>
+    <li><strong>Sign up</strong> for a free account</li>
+    <li><strong>Fill out</strong> your profile</li>
+    <li>Announce your URL! Tweet it, post it on Facebook. <strong>Get it out there!</strong></li>
+    <li>Sit back and <strong>brace yourself</strong> for honesty you've never gotten before.</li>
+  </ol>
+  <p>
+    Once you start receiving the anonymous feedback, you'll be able to categorize it, and you and your friends
+    will be able to agree or disagree, leave comments, and work together to improve your
+    personal character! Once they create their account, don't forget to return the favor!
+  </p>
+  <p>
+    When you sign up, you'll be asked for a piece of information that only your friends know.
+    This way, you can be sure that only people who know you can write on your profile.
+  </p>
 </div>
