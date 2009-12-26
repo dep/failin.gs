@@ -15,6 +15,10 @@ gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
 gem "authlogic", git: "git://github.com/stephencelis/authlogic.git",
   branch: "rails_3_pre"
 
+only :development do
+  gem "ghi"
+end
+
 ## Bundle gems used only in certain environments:
 # gem "rspec", :only => :test
 # only :test do
