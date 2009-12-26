@@ -6,5 +6,6 @@ ActionController::Routing::Routes.draw do |map|
 
   match "pages/:permalink", :to => "pages#show", :permalink => /[a-z-]+/
 
-  root :to => "user_sessions#new"
+  resource :emails
+  root :to => "emails#new"
 end
