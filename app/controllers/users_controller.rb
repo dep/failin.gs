@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    respond_with(@user = User.create(params[:user]), location: edit_user_path)
+    @user = User.new params[:user]
+    if @user.save
+      respond_with @user, location: edit_user_path
+    else
+      render "pages/root"
+    end
   end
 
   def edit

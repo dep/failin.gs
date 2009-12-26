@@ -1,0 +1,90 @@
+<div class="col col_1 homepage">
+  <p>
+    <strong>failin.gs</strong> seeks to answer that age old question that perhaps
+    all of us have asked ourselves at some point in our lives.
+  </p>
+  <blockquote>
+    "What is wrong with me?"
+  </blockquote>
+  <p>
+    Of course, nobody is perfect. We all have our own idiosyncrasies and
+    personality flaws. Think of the people you know. We are sure you can theirs.
+    I bet they can identify yours as well.
+  </p>
+  <p>
+    Create a profile and invite people to leave anonymous constructive criticism
+    about your character. We all want to improve, don't we?
+  </p>
+</div>
+<div class="col col_2">
+  <div id="signup" class="announce dark">
+    <div>
+      <% if @user_session %>
+        <% if @user %>
+          <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
+        <% end %>
+        <fieldset id="login_form" style="<%= 'display: none;' if @user %>">
+          <% form_for @user_session, :url => user_session_path do |f| %>
+            <%= f.error_messages %>
+            <div>
+              <%= f.label :login %>
+              <%= f.text_field :login %>
+            </div>
+            <div>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </div>
+            <div>
+              <%= f.submit "Login" %>
+            </div>
+          <% end %>
+        </fieldset>
+      <% end %>
+      <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
+
+      <% if @user %>
+        <% if @user_session %>
+          <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
+        <% end %>
+        <fieldset id="signup_form" style="<%= 'display: none;' unless @user %>">
+          <% form_for @user, :url => user_path do |f| %>
+            <%= f.label :login, "Username:" %>
+            <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
+
+            <%= f.label :email, "Email address:" %>
+            <%= f.text_field :email %>
+
+            <%= f.label :password, "Password:" %>
+            <%= f.password_field :password %>
+
+            <%= f.label :password_confirmation, "Twice to be sure:" %>
+            <%= f.password_field :password_confirmation %>
+
+            <%= f.error_messages %>
+
+            <%= f.submit "Sign up!" %>
+          <% end %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="functionality_teasers">
+  <h2>How does it all work?</h2>
+  <h3>It's ridiculously easy. Totally anonymous.</h3>
+  <ol>
+    <li><strong>Sign up</strong> for a free account</li>
+    <li><strong>Fill out</strong> your profile</li>
+    <li>Announce your URL! Tweet it, post it on Facebook. <strong>Get it out there!</strong></li>
+    <li>Sit back and <strong>brace yourself</strong> for honesty you've never gotten before.</li>
+  </ol>
+  <p>
+    Once you start receiving the anonymous feedback, you'll be able to categorize it, and you and your friends
+    will be able to agree or disagree, leave comments, and work together to improve your
+    personal character! Once they create their account, don't forget to return the favor!
+  </p>
+  <p>
+    When you sign up, you'll be asked for a piece of information that only your friends know.
+    This way, you can be sure that only people who know you can write on your profile.
+  </p>
+</div>

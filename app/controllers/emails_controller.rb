@@ -1,5 +1,6 @@
 class EmailsController < ApplicationController
-  respond_to :html, :js
+  respond_to :html
+  respond_to :js, :only => :create
 
   def new
     respond_with(@email = Email.new)

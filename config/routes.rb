@@ -4,8 +4,10 @@ ActionController::Routing::Routes.draw do |map|
   # resource :account, :controller => "users"
   # resources :users
 
-  match "pages/:permalink", :to => "pages#show", :permalink => /[a-z-]+/
+  match "pages/:action", :to => "pages", :action => /[a-z-]+/
 
   resource :emails
   root :to => "emails#new"
+
+  # root :to => "pages#root"
 end

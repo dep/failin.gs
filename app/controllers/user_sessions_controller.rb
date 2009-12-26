@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       redirect_back_or_default edit_user_path, notice: "Login successful!"
     else
-      render "new"
+      render "pages/root"
     end
   end
 
