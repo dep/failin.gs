@@ -1,7 +1,7 @@
 if @email.new_record?
   page.alert("#{@email.errors.full_messages.to_sentence}.")
 else
-  window.location.href = '/thankyou.html';
+  window.location.href = '/pages/thankyou';
 end
 
 page["email_address"].value = nil
