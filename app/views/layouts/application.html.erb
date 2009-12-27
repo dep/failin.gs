@@ -10,13 +10,13 @@
   <div id="container">
     <h1 onclick="window.location.href='/'">failin.gs: don't worry. nobody's perfect</h1>
     <% if logged_in? %>
-    <div id="logged_in">
-      <ul>
-        <li><%= link_to "my profile", user_path %></li>
-        <li><%= link_to "settings", edit_user_path %></li>
-        <li><%= link_to "log out", user_session_path, method: :delete %></li>
-      </ul>
-    </div>
+      <div id="logged_in">
+        <ul>
+          <li><%= link_to "my profile", user_path %></li>
+          <li><%= link_to "settings", edit_user_path %></li>
+          <li><%= link_to "log out", user_session_path, method: :delete %></li>
+        </ul>
+      </div>
     <% end %>
     <div class="body">
       <div id="<%= controller.controller_name %>" class="<%= controller.action_name %>">

@@ -145,13 +145,14 @@ label.checkbox {
   display:inline; 
 }
 input, textarea {
+  font-family:Helvetica, Arial;
   border:1px solid #bbb;
-  font-size:17px;
+  font-size:16px;
   margin-bottom:5px;
   width:95%;
   color:#888;
-  font-weight:bold;
-  padding:3px;
+  font-weight:normal;
+  padding:4px;
 }
 input[type="submit"] {
   background:#7479b7;
@@ -432,7 +433,7 @@ input[type="checkbox"] {
   float:left;
   font-size:14px; 
   padding-left:20px;
-  width:370px;
+  width:430px;
 }
 #user_profile.edit .announce {
   width:220px;
