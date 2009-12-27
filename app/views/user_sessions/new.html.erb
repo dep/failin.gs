@@ -49,6 +49,11 @@
         <input type="password" id="passwd" name="passwd" maxlength="15" />
         <label for="passwd2">Twice to be sure:</label>
         <input type="password" id="passwd2" name="passwd2" maxlength="15" />
+        <label for="surname">
+          Your <strong>real</strong> last name:
+          (<%= link_to_function "Why we ask", "$('box_important').appear();" %>):
+        </label>
+        <input type="text" id="surname" name="surname" maxlength="15" />
         <label for="invite_code">Invite Code:</label>
         <input type="text" id="invite_code" name="invite_code" />
         <div class="error_text">Oh noes! errors!</div>
@@ -75,4 +80,22 @@
     When you sign up, you'll be asked for a piece of information that only your friends know.
     This way, you can be sure that only people who know you can write on your profile.
   </p>
+</div>
+
+<div class="floating_box" id="box_important" style="display: none;">
+  <p><strong>failin.gs</strong> is a community where you can have your friends
+  anonymously critique you.</p>
+
+  <p>It's important, though, to make sure that the people who leave you
+  feedback actually do know who you are.</p>
+
+  <p>When someone leaves feedback on you, they will be asked for your last
+  name. Maybe not perfect, but it will keep a lot of fakes at bay.</p>
+
+  <p>You'll have a chance to respond to everyone's feedback. You can even flag
+  things that you think are fake.</p>
+
+  <p>Don't worry. Your last name will not be viewable to anyone.</p>
+
+  <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
 </div>

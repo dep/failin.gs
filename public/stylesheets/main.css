@@ -73,6 +73,10 @@ a, a:visited {
   color:#7479b7;
   text-decoration:none;
 }
+.dark a,
+.dark a:visited {
+  color:#c1d2ee;
+}
 a:hover {
   text-decoration:underline; 
 }
@@ -272,7 +276,7 @@ input[type="checkbox"] {
   font-size:30px;
 }
 #box_important {
-  top:20px;
+  top:100px;
   left:260px;
 }
 #box_validate {
@@ -433,7 +437,7 @@ input[type="checkbox"] {
   float:left;
   font-size:14px; 
   padding-left:20px;
-  width:430px;
+  width:420px;
 }
 #user_profile.edit .announce {
   width:220px;
