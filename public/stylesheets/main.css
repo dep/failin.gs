@@ -89,11 +89,12 @@ h1 {
   cursor:pointer;
   text-align:left;
   font-size:42px;
-  text-shadow: 2px 2px 4px #eee;
+  text-shadow: 2px 2px 4px #aaa;
+  color:#fff;
 }
 h1 span {
   font-size:12px;
-  color:#888;
+  color:#777;
   text-shadow:none;
 }
 p {
@@ -176,6 +177,11 @@ input[type="submit"] {
   margin-bottom:0;
   width:auto;
   cursor:pointer;
+  -moz-border-radius: 5px 5px 5px 5px; 
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:5px;
 }
 input[type="submit"]:active {
   background:#af79b7;
