@@ -37,6 +37,7 @@ class G < Rails::Application
 
   config.after_initialize do
     require "authlogic"
+    require "rerails"
 
     if $0 == "script/console"
       config.logger = Logger.new STDOUT
