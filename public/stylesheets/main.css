@@ -30,7 +30,7 @@ body {
   overflow:hidden;
 }
 .thankyou {
-  background:#fff url(/images/excited.jpg) 90% 0 no-repeat;
+  background:#fff url(../images/excited.jpg) 90% 0 no-repeat;
   min-height:450px;
 }
 .terms_of_service h3 {
@@ -85,12 +85,15 @@ a:hover {
   text-decoration:underline; 
 }
 h1 {
-  margin:3px 0;
+  background:url(../images/logo_0.png) top left no-repeat;
+  height:70px;
+  width:305px;
   cursor:pointer;
-  text-align:left;
-  font-size:42px;
+  text-transform:uppercase;
+  text-indent:-9999em;
+  /*font-size:42px;
   text-shadow: 2px 2px 4px #aaa;
-  color:#fff;
+  color:#fff;*/
 }
 h1 span {
   font-size:12px;
@@ -132,7 +135,7 @@ blockquote {
   background:#222;
 }
 .announce.dark h2 {
-  color:#d8f783;
+  color:#ec542b;
 }
 .announce.dark p {
   color:#aaa; 
@@ -154,6 +157,7 @@ fieldset, a img {
 label {
   display:block; 
   padding-top:5px;
+  color:#eee;
   font-size:12px;
 }
 label.checkbox {
@@ -169,7 +173,7 @@ input, textarea {
   font-weight:normal;
   padding:4px;
 }
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
   background:#7479b7;
   color:#fff;
   margin-top:10px; 
@@ -182,7 +186,7 @@ input[type="submit"] {
   -webkit-border-top-right-radius:5px;
   -webkit-border-bottom-right-radius:5px;
 }
-input[type="submit"]:active {
+input[type="submit"]:active, input[type="button"]:active {
   background:#af79b7;
 }
 input[type="checkbox"] {
@@ -214,7 +218,7 @@ input[type="checkbox"] {
 .body {
   overflow:hidden;
   width:100%;
-  padding:20px 0; 
+  padding-top:20px; 
   color:#666;
   overflow:hidden;
   zoom:1; 
@@ -244,11 +248,6 @@ input[type="checkbox"] {
   font-size:17px;
 }
 #signup {
-  -webkit-box-shadow:3px 3px 10px #777777;
-  -moz-box-shadow:3px 3px 10px #777777;
-  position:absolute;
-  right:15px;
-  top:-9px;
   width:250px;
 }
 .announce {
@@ -460,7 +459,7 @@ input[type="checkbox"] {
   float:left;
   font-size:14px; 
   padding-left:20px;
-  width:375px;
+  width:420px;
 }
 #user_profile.edit .announce {
   width:220px;
@@ -476,7 +475,7 @@ input[type="checkbox"] {
   clear:both;
   display:block;
   height:600px;
-  background:url(/images/feature_image.jpg) top right no-repeat;
+  background:url(../images/feature_image.jpg) top right no-repeat;
   border-top:1px dashed #eee;
   padding-top:10px;
 }
@@ -505,22 +504,4 @@ input[type="checkbox"] {
   line-height:24px;
   color:#999;
   font-size:14px;
-}
-
-/* Invite a friend */
-fieldset.invite label,
-fieldset.invite input {
-  float:left;
-}
-fieldset.invite label {
-  background:#eee;
-  font-size:18px;
-  padding:10px;
-}
-fieldset.invite input[type="text"] {
-  padding:10px;
-  width:300px;
-}
-fieldset.invite input[type="submit"] {
-  margin:5px 0 0 10px;
 }
