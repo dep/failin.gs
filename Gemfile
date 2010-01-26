@@ -1,26 +1,19 @@
-# Edit this Gemfile to bundle your application's dependencies.
+clear_sources
+source "http://gems.rubyforge.org"
 
-## Bundle edge rails:
-gem "rack", "1.0.1",    git: "git://github.com/rails/rack.git"
-gem "rails", "3.0.pre", git: "git://github.com/rails/rails.git"
-gem "arel",             git: "git://github.com/rails/arel.git"
+disable_system_gems
+# disable_rubygems
 
-## Bundle the gems you use:
-# gem "bj"
-# gem "hpricot", "0.6"
-# gem "sqlite3-ruby", :require_as => "sqlite3"
-# gem "aws-s3", :require_as => "aws/s3"
+# Rails
+gem "rails", git: "git://github.com/rails/rails.git"
+gem "arel",  git: "git://github.com/rails/arel.git"
+
+# Configuration
 gem "mysql", "2.8.1"
 gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
-gem "authlogic", git: "git://github.com/stephencelis/authlogic.git",
-  branch: "rails_3_pre"
+gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 
 only :development do
   gem "ghi"
+  gem "heroku"
 end
-
-## Bundle gems used only in certain environments:
-# gem "rspec", :only => :test
-# only :test do
-#   gem "webrat"
-# end

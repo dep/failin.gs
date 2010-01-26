@@ -3,6 +3,6 @@ config/*.yml
 log/*
 tmp/*
 vendor/gems/*
-!vendor/gems/cache
+!vendor/gems/*/*/cache
 
 .DS_Store
