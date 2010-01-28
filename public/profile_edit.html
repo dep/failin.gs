@@ -44,7 +44,6 @@
           <img src="images/default_pic.png"/>
         </div>
         <div class="user_details">
-          <div class="error_text">Oh noes! errors!</div>
           <label for="username">Username:</label>
           <input name="username" id="username" type="text" maxlength="17" />
           <label for="lastname">Your <strong>real</strong> last name (<a href="#" onclick="$('box_important').appear()">Hey, this is important!</a>):</label>
@@ -61,11 +60,13 @@
         </div>
         <div class="announce">
           <h2>Want a new password?</h2>
-          <div class="error_text">Oh noes! errors!</div>
           <label for="passwd">New password:</label>
           <input type="password" id="passwd" name="passwd" maxlength="15" />
           <label for="passwd2">Twice to be sure:</label>
           <input type="password" id="passwd2" name="passwd2" maxlength="15" />
+          <h2>Private Profile</h2>
+          <input type="checkbox" value="emails_on" id="emails" name="emails" />
+          <label class="checkbox">I'm shy. Only let me see my feedback.</label>
           <h2>Email notifications</h2>
           <input type="checkbox" value="emails_on" id="emails" name="emails" />
           <label class="checkbox">Let me know when someone posts something to my account.</label>

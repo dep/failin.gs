@@ -157,7 +157,6 @@ fieldset, a img {
 label {
   display:block; 
   padding-top:5px;
-  color:#eee;
   font-size:12px;
 }
 label.checkbox {
@@ -218,7 +217,7 @@ input[type="checkbox"] {
 .body {
   overflow:hidden;
   width:100%;
-  padding-top:20px; 
+  padding:20px 0;
   color:#666;
   overflow:hidden;
   zoom:1; 
@@ -249,6 +248,8 @@ input[type="checkbox"] {
 }
 #signup {
   width:250px;
+  -webkit-box-shadow:3px 3px 10px #777777;
+  -moz-box-shadow:3px 3px 10px #777777;
 }
 .announce {
   background:#ccc;
@@ -505,3 +506,20 @@ input[type="checkbox"] {
   color:#999;
   font-size:14px;
 }
+/* Invite a friend */
+fieldset.invite label,
+fieldset.invite input {
+  float:left;
+}
+fieldset.invite label {
+  background:#eee;
+  font-size:18px;
+  padding:10px;
+}
+fieldset.invite input[type="text"] {
+  padding:10px;
+  width:300px;
+}
+fieldset.invite input[type="submit"] {
+  margin:5px 0 0 10px;
+ }

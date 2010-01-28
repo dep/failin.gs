@@ -52,6 +52,12 @@
  
       <%= f.label :password_confirmation, "Twice to be sure:" %>
       <%= f.password_field :password_confirmation %>
+
+      <h2>Private Profile</h2>
+
+      <%= f.check_box :private_profile %>
+      <% f.label :private_profile, class: "checkbox" do %>
+      I'm shy. Only let me see my feedback.</label>
  
       <h2>Email notifications</h2>
  
