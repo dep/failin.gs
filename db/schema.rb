@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129032632) do
+ActiveRecord::Schema.define(:version => 20100129045930) do
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false
@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(:version => 20100129032632) do
     t.string   "voter_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "votes", ["failing_id", "voter_ip"], :name => "index_votes_on_failing_id_and_voter_ip", :unique => true
   add_index "votes", ["failing_id"], :name => "index_votes_on_failing_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

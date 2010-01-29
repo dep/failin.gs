@@ -1,8 +1,12 @@
-<div class="flaw_box <%= css_class_for(failing) %>">
+<% div_for failing, :class => "flaw_box #{css_class_for(failing)}" do %>
   <h3><%= title_for(failing) %></h3>
   <div class="feedback">
     <div class="toolbar">
-      <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+      <strong><%= failing.votes.count %></strong> votes |
+      <% unless voted_on? failing %>
+        <%= link_to_remote "agree", url: failing_vote_path(failing.user, failing, agree: true), method: :post %> -
+        <%= link_to_remote "disagree", url: failing_vote_path(failing.user, failing), method: :post %>
+      <% end %>
     </div>
     <div class="feedback_text">
       <%= simple_format(h(failing.about)).html_safe! %>
@@ -28,7 +32,7 @@
       <% end %>
     </div>
     <div class="reply_wrapper" style="display: none;">
-      <% form_for failing.comments.build, url: failing_comments_path(failing.user, failing) do |f| %>
+      <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
         <div>
           <%= f.text_area :text %>
           <%= f.submit %>
@@ -36,4 +40,4 @@
       <% end %>
     </div>
   </div>
-</div>
+<% end %>

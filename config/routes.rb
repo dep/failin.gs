@@ -11,7 +11,8 @@ FailinGs::Application.routes.draw do |map|
       put :disagree
     end
 
-    resources :comments
+    resource :comment
+    resource :vote
   end
 
   match "pages/:action", to: "pages", action: /[a-z-]+/
