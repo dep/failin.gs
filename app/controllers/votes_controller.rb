@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     @vote = @failing.votes.new agree: !params[:agree].nil?
 
     render :update do |page|
-      page[@failing].select(".toolbar").first.innerHTML = "<strong>#{@failing.votes.positive.count}</strong> votes | thanks!"
+      page[@failing].select(".toolbar").first.innerHTML = "<strong>#{@failing.votes_score}</strong> votes | thanks!"
     end
   end
 end

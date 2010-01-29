@@ -32,6 +32,10 @@ class Failing < ActiveRecord::Base
     end
   end
 
+  def votes_score
+    votes.positive.count - votes.negative.count
+  end
+
   private
 
   def verify_surname
