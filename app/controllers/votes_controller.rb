@@ -5,9 +5,7 @@ class VotesController < ApplicationController
     @vote = @failing.votes.new agree: !params[:agree].nil?
 
     render :update do |page|
-      page << <<JS
-$("#{dom_id @failing}").select(".toolbar")[0].innerHTML = "<strong>#{@failing.votes.positive.count}</strong> votes | thanks!";
-JS
+      page[@failing].select(".toolbar").first.innerHTML = "<strong>#{@failing.votes.positive.count}</strong> votes | thanks!"
     end
   end
 end
