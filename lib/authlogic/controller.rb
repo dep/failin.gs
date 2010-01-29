@@ -22,7 +22,7 @@ module Authlogic::Controller
   def require_user
     unless logged_in?
       store_location
-      redirect_to new_user_session_url,
+      redirect_to root_url,
         notice: "You must be logged in to access this page"
 
       return false
@@ -32,7 +32,7 @@ module Authlogic::Controller
   def require_no_user
     if logged_in?
       store_location
-      redirect_to account_url,
+      redirect_to profile_url(current_user),
         notice: "You must be logged out to access this page"
 
       return false

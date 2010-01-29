@@ -13,11 +13,15 @@
       <%= @user.email %>
     <% end %>
 
-    <span>Location:</span>
-    <%= @user.location %>
+    <% unless @user.location.blank? %>
+      <span>Location:</span>
+      <%= @user.location %>
+    <% end %>
 
-    <span>About me:</span>
-    <%= simple_format @user.about %>
+    <% unless @user.about.blank? %>
+      <span>About me:</span>
+      <%= simple_format(h(@user.about)).html_safe! %>
+    <% end %>
 
     <% if @user == current_user %>
       <p><%= link_to "edit your profile", edit_account_path %></p>
@@ -35,8 +39,8 @@
       provide you with your anonymous constructive criticism!</p>
 
       <div class="share_links">
-        <a href="http://twitter.com/?status=I%20just%20signed%20up%20at%20@failings.%20It%20lets%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20http://failin.gs/usernamegoeshere%20eep!"><img src="images/tweet_this.jpg" alt="Tweet this!" /></a>
-        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2F[[[[[[[[user url]]]]]]]]&src=sp"><img src="images/facebook_this.jpg" alt="Facebook this!" /></a>
+        <a href="http://twitter.com/?status=I%20just%20signed%20up%20at%20@failings.%20It%20lets%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20http://failin.gs/usernamegoeshere%20eep!"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
+        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2F[[[[[[[[user url]]]]]]]]&src=sp"><%= image_tag "facebook_this.jpg", alt: "Facebook this!" %></a>
       </div>
     </div>
   <% end %>
@@ -69,42 +73,7 @@
   </fieldset>
 <% end %>
 
-<div class="flaw_box unrated">
-  <h3>Need review</h3>
-  <div class="feedback">
-    <div class="toolbar">
-      <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
-    </div>
-    <div class="feedback_text">
-      <p>blah de blah de blah...</p>
-    </div>
-    <div class="comment">
-      <p>Agreed. The dude's a schmuck.</p>
-      <span>12/12/2009, 1:43pm</span>
-    </div>
-    <div class="comment">
-      <p>Nah, he's not that bad</p>
-      <span>12/12/2009, 1:43pm</span>
-    </div>
-    <div class="comment">
-      <p>Yeah he is.</p>
-      <span>12/12/2009, 1:43pm</span>
-    </div>
-    <div class="comment">
-      <p>Pssh</p>
-      <span>12/12/2009, 1:43pm</span>
-    </div>
-    <div class="toolbar bottom">
-      <span onclick="add_reply(this)">reply</span>
-    </div>
-  </div>
-</div>
-<div class="flaw_box known">
-  <h3>I knew this about me</h3>
-</div>
-<div class="flaw_box unknown">
-  <h3>I had no idea</h3>
-</div>
-<div class="flaw_box disagree">
-  <h3>I totally disagree</h3>
-</div>
+<%= render partial: "failing", collection: @user.failings.needs_review %>
+<%= render partial: "failing", collection: @user.failings.knew %>
+<%= render partial: "failing", collection: @user.failings.no_idea %>
+<%= render partial: "failing", collection: @user.failings.disagree %>

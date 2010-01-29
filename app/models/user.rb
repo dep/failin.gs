@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   # == Validations
   LOGIN_LENGTH = 1..17
-  validates_length_of :login, in: LOGIN_LENGTH
+  validates :login, length: LOGIN_LENGTH, format: /\w+/
   validates_presence_of :surname
+
+  def to_param
+    login
+  end
 end

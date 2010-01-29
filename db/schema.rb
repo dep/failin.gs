@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129030402) do
+ActiveRecord::Schema.define(:version => 20100129032632) do
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20100129030402) do
     t.string   "submitter_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "about"
   end
 
   add_index "failings", ["state"], :name => "index_failings_on_state"

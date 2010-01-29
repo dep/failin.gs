@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :require_no_user, only: %w(root)
   before_filter :validate_cache
 
   def root

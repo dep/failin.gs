@@ -4,7 +4,9 @@
   <title>failin.gs: don't worry. nobody's perfect.</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
   <%= stylesheet_link_tag "main" %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "prototype.rails" %>
+  <%= javascript_include_tag "application" %>
 </head>
 <body>
   <div id="wrapper">
@@ -19,8 +21,8 @@
       <% if logged_in? %>
         <div id="logged_in">
           <ul>
-            <li><%= link_to "my profile", user_path %></li>
-            <li><%= link_to "settings", edit_user_path %></li>
+            <li><%= link_to "my profile", profile_path(current_user) %></li>
+            <li><%= link_to "settings", edit_account_path %></li>
             <li><a href="/pages/invite">invite friends</a> (x)</li>
             <li><%= link_to "log out", user_session_path, method: :delete %></li>
           </ul>
@@ -33,7 +35,7 @@
       </div>
     </div>
     <div id="footer">
-      a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy 2009 - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
+      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
     </div>
   </div>
 </body>

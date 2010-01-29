@@ -47,7 +47,7 @@
           <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
         <% end %>
         <fieldset id="signup_form" style="<%= 'display: none;' unless @user %>">
-          <% form_for @user, :url => user_path do |f| %>
+          <% form_for @user, :url => account_path do |f| %>
             <%= f.label :login, "Username:" %>
             <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
 

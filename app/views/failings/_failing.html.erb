@@ -1,0 +1,39 @@
+<div class="flaw_box <%= css_class_for(failing) %>">
+  <h3><%= title_for(failing) %></h3>
+  <div class="feedback">
+    <div class="toolbar">
+      <strong>123</strong> votes | <a href="#">agree</a> - <a href="#">disagree</a>
+    </div>
+    <div class="feedback_text">
+      <%= simple_format(h(failing.about)).html_safe! %>
+    </div>
+    <% failing.comments.each do |comment| %>
+      <div class="comment">
+        <p><%= comment.text %></p>
+        <span><%= comment.created_at.to_s :long %></span>
+      </div>
+    <% end %>
+    <div class="toolbar bottom">
+      <% if failing.user == current_user && failing.needs_review? %>
+        <div class="left">
+          <%= link_to_remote "I knew this", url: knew_failing_path(failing.user, failing), method: :put %> -
+          <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing) %> -
+          <%= link_to_remote "I disagree completely", url: disagree_failing_path(failing.user, failing) %>
+        </div>
+        <div class="right">
+          <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
+        </div>
+      <% else %>
+        <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
+      <% end %>
+    </div>
+    <div class="reply_wrapper" style="display: none;">
+      <% form_for failing.comments.build, url: failing_comments_path(failing.user, failing) do |f| %>
+        <div>
+          <%= f.text_area :text %>
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
