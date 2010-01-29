@@ -51,6 +51,9 @@
             <%= f.label :login, "Username:" %>
             <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
 
+            <%= f.label :surname, "Your last name:" %>
+            <%= f.text_field :surname %>
+
             <%= f.label :email, "Email address:" %>
             <%= f.text_field :email %>
 

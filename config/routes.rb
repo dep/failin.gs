@@ -6,8 +6,8 @@ FailinGs::Application.routes.draw do |map|
 
   match "pages/:action", to: "pages", action: /[a-z-]+/
 
-  resource :emails
-  root to: "emails#new"
+  # resource :emails
+  # root to: "emails#new"
 
-  # root to: "pages#root"
+  root to: "pages#root"
 end
