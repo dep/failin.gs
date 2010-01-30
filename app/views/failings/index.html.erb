@@ -73,12 +73,16 @@
     </fieldset>
   <% end %>
 
-  <!-- if profile is private -->
+  <% if @user.private? && @user != current_user %>
     <%= render partial: "private" %>
-  <!-- else -->
-    <%= render partial: "failing", collection: @user.failings.needs_review %>
-    <%= render partial: "failing", collection: @user.failings.knew %>
-    <%= render partial: "failing", collection: @user.failings.no_idea %>
-    <%= render partial: "failing", collection: @user.failings.disagree %>
-  <!-- end -->
+  <% else %>
+    <% %w(needs_review knew no_idea disagree).each do |state| %>
+      <% if @user.failings.send(state).any? %>
+        <div class="flaw_box <%= css_class_for state %>">
+          <h3><%= title_for state %></h3>
+          <%= render partial: "failing", collection: @user.failings.send(state) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
