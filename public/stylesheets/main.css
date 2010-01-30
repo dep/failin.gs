@@ -231,9 +231,11 @@ input[type="checkbox"] {
 .pic_area img {
   display:block;
   margin:0 auto;
-  border:1px solid #aaa;
+  border:1px solid #888;
 }
-.pic_area a {
+.pic_area a.change {
+  padding:3px;
+  font-size:12px;
   display:block;
   text-align:center; 
 }
@@ -362,6 +364,12 @@ input[type="checkbox"] {
   background:#f3f3f3;
   padding:5px;
 }
+.flaw_box.knew,
+.flaw_box.no_idea,
+.flaw_box.disagree {
+  width:176px;
+  padding-top:15px;
+}
 .flaw_box.unrated {
   background:#777; 
 }
@@ -369,26 +377,20 @@ input[type="checkbox"] {
   background:#555;
 }
 .flaw_box.knew {
-  background:#5cc931;
-  width:27%;
+  background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
   float:left;
-}
-.flaw_box.knew,
-.flaw_box.no_idea,
-.flaw_box.disagree {
-  width:176px;
 }
 .flaw_box.no_idea {
-  background:#edef43;
+  background:#edef43 url(/images/icon_no_idea.png) 2px 2px no-repeat;
   float:left;
 }
 .flaw_box.disagree {
-  background:#d71919;
+  background:#d71919 url(/images/icon_disagree.png) 2px 2px no-repeat;
   float:left;
 }
 .flaw_box h3 {
   margin:0;
-  padding:0; 
+  padding:10px 0 0 35px;
   color:#fff;
 }
 .flaw_box.no_idea h3 {
@@ -419,6 +421,9 @@ input[type="checkbox"] {
   background:#f3f3f3;
   overflow:hidden;
   zoom:1;
+}
+.flaw_box .feedback .toolbar.bottom img {
+  margin-left:10px;
 }
 .flaw_box .feedback .toolbar.bottom .left {
   float:left;
