@@ -33,3 +33,7 @@ function ismaxlength(obj){
   obj.value=obj.value.substring(0,mlength)
   $('char_limit').innerHTML = mlength - obj.value.length;
 }
+
+function categorize(category, id) {
+  alert(category +":"+ id);
+}

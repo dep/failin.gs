@@ -19,14 +19,22 @@
 
   <div class="pic_area">
     <%= gravatar_for @user, default: image_url("default_pic.png"), size: 200 %>
+    <p>
+      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup">Gravatar</a>. 
+      We prefer it because your Gravatar image will always be there on participating sites, making things
+      easier for you. You only need to set it up once and then you're good to go.
+    </p>
+    <p>
+      Set up your <a href="http://en.gravatar.com/site/signup">Gravatar</a> image now.
   </div>
 
   <% form_for @user, :url => account_path do |f| %>
     <div class="user_details">
+      <h2>Your user details</h2>
       <%= f.error_messages %>
 
-      <%= f.label :login, "Username:" %>
-      <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
+      <%#= f.label :login, "Username:" #%>
+      <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max #%>
 
       <%= f.label :surname, "Your <strong>real</strong> last name:" %>
       (<%= link_to_function "Why we ask", "$('box_important').appear()" %>):
