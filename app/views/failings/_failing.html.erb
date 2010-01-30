@@ -1,5 +1,5 @@
 <% div_for failing, class: "feedback #{css_class_for failing.state}" do %>
-  <div class="toolbar">
+  <div class="toolbar<%= ' move' if current_user == failing.user %>">
     <strong><%= failing.votes_score %></strong> votes
     <% unless voted_on? failing %>
       |
@@ -50,4 +50,11 @@
   </div>
 <% end %>
 
-<%= draggable_element dom_id(failing), handle: "'.toolbar'", revert: true if current_user == failing.user %>
+<% if failing.user == current_user %>
+  <script>
+    new Draggable("<%= dom_id failing %>", {
+      handle: ".toolbar",
+      revert: true
+    });
+  </script>
+<% end %>
