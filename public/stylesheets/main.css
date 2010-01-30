@@ -196,7 +196,7 @@ input[type="checkbox"] {
 /* Top-right links */
 #logged_in {
   position:absolute;
-  right:8px;
+  right:0px;
   top:8px; 
 }
 #logged_in ul {
@@ -207,6 +207,8 @@ input[type="checkbox"] {
   float:left;
   padding:0 5px;
   border-right:1px solid #ccc;
+  font-size:12px;
+  color:#fff;
 }
 #logged_in ul li:last-child {
   border-right:0;
@@ -269,7 +271,7 @@ input[type="checkbox"] {
 }
 .announce .share_links {
   display:inline-block;
-  margin:5px 2px
+  margin:10px 2px 5px;
 }
 .announce blockquote {
   font-size:12px; 
@@ -559,8 +561,8 @@ fieldset.invite input[type="submit"] {
   margin:0;
   padding:0;
   position:absolute;
-  right:75px;
+  right:0;
   text-shadow:2px 2px 4px #AAAAAA;
-  top:46px;
+  top:26px;
   z-index:10;
 }

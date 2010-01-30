@@ -16,7 +16,6 @@
 </head>
 <body>
   <%= render :partial => "common/feedback" %>
-  <p class="social_links">follow us on twitter <a href="http://twitter.com/failings">@failings</a></p>
   <div id="wrapper">
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
     <script type="text/javascript">
@@ -36,6 +35,7 @@
           </ul>
         </div>
       <% end %>
+      <p class="social_links">follow us on twitter <a href="http://twitter.com/failings">@failings</a></p>
       <div class="body">
         <div id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
           <%= yield %>

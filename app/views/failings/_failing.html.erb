@@ -15,13 +15,6 @@
       <span><%= comment.created_at.to_s :long %></span>
     </div>
   <% end %>
-  <% if failing.user == current_user && failing.needs_review? %>
-    <div class="left">
-      <%= link_to_remote "I knew this", url: knew_failing_path(failing.user, failing), method: :put %> -
-      <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing), method: :put %> -
-      <%= link_to_remote "I disagree completely", url: disagree_failing_path(failing.user, failing), method: :put %>
-    </div>
-  <% end %>
   <div class="toolbar bottom">
     <% if failing.user == current_user && failing.needs_review? %>
       <div class="left">

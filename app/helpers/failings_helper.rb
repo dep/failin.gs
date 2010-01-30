@@ -3,7 +3,7 @@ module FailingsHelper
     case state
       when "needs_review" then "unrated"
       when "knew"         then "knew"
-      when "no_idea"      then "unknown"
+      when "no_idea"      then "no_idea"
       when "disagree"     then "disagree"
     end
   end

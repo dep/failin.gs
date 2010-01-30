@@ -17,32 +17,20 @@ class FailingsController < ApplicationController
   end
 
   def knew
-#    @failing = current_user.failings.needs_review.find(params[:id])
-#    @failing.knew!
-#    redirect_to profile_path(current_user)
-
-    render :update do |page|
-      page << "categorize('knew', '#{current_user.failings.needs_review.find(params[:id])}')"
-    end
+    @failing = current_user.failings.needs_review.find(params[:id])
+    @failing.knew!
+    redirect_to profile_path(current_user)
   end
 
   def no_idea
     @failing = current_user.failings.needs_review.find(params[:id])
     @failing.no_idea!
     redirect_to profile_path(current_user)
-
-    render :update do |page|
-      page << "categorize('no_idea')"
-    end
   end
 
   def disagree
     @failing = current_user.failings.needs_review.find(params[:id])
     @failing.disagree!
     redirect_to profile_path(current_user)
-
-    render :update do |page|
-      page << "categorize('disagree')"
-    end
   end
 end
