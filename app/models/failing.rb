@@ -34,7 +34,15 @@ class Failing < ActiveRecord::Base
   end
 
   def votes_score
-    votes.positive.count - votes.negative.count
+    self.class.count_by_sql <<SQL
+select (
+  select count(*) from votes where votes.failing_id = #{id}
+  and votes.agree = 1
+) - (
+  select count(*) from votes where votes.failing_id = #{id}
+  and votes.agree = 0
+) as score;
+SQL
   end
 
   private
