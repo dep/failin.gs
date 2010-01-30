@@ -20,7 +20,8 @@ class FailingsController < ApplicationController
   end
 
   def knew
-    @failing = current_user.failings.needs_review.find(params[:id])
+    @failing = current_user.failings.find(params[:id])
+    @state_was = @failing.state
     @failing.knew!
 
     render :update do |page|
@@ -32,8 +33,8 @@ class FailingsController < ApplicationController
           page["knew"].visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('#needs_review .feedback').length == 0) {"
-          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "if ($$('##@state_was .feedback').length == 0) {"
+          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
         page << "}"
       end
     end
@@ -41,6 +42,7 @@ class FailingsController < ApplicationController
 
   def no_idea
     @failing = current_user.failings.needs_review.find(params[:id])
+    @state_was = @failing.state
     @failing.no_idea!
 
     render :update do |page|
@@ -52,8 +54,8 @@ class FailingsController < ApplicationController
           page["no_idea"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('#needs_review .feedback').length == 0) {"
-          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "if ($$('##@state_was .feedback').length == 0) {"
+          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
         page << "}"
       end
     end
@@ -61,6 +63,7 @@ class FailingsController < ApplicationController
 
   def disagree
     @failing = current_user.failings.needs_review.find(params[:id])
+    @state_was = @failing.state
     @failing.disagree!
 
     render :update do |page|
@@ -72,8 +75,8 @@ class FailingsController < ApplicationController
           page["disagree"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('#needs_review .feedback').length == 0) {"
-          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "if ($$('##@state_was .feedback').length == 0) {"
+          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
         page << "}"
       end
     end

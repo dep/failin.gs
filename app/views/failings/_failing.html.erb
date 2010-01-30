@@ -2,7 +2,8 @@
   <div class="toolbar">
     <strong><%= failing.votes_score %></strong> votes
     <% unless voted_on? failing %>
-       | <%= link_to_remote "agree", url: failing_vote_path(failing.user, failing, agree: true), method: :post %> -
+      |
+      <%= link_to_remote "agree", url: failing_vote_path(failing.user, failing, agree: true), method: :post %> -
       <%= link_to_remote "disagree", url: failing_vote_path(failing.user, failing), method: :post %>
     <% end %>
   </div>
@@ -48,3 +49,5 @@
     <% end %>
   </div>
 <% end %>
+
+<%= draggable_element dom_id(failing), handle: "'.toolbar'", revert: true if current_user == failing.user %>
