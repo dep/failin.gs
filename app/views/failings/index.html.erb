@@ -83,3 +83,36 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @user == current_user %>
+  <script>
+    Droppables.add("knew", {
+      accept: ["no_idea", "disagree"],
+      onDrop: function (element) {
+        $("knew").insert({ top: element.remove() });
+      }
+    });
+
+    Droppables.add("no_idea", {
+      accept: ["knew", "disagree"],
+      onDrop: function (element) {
+        $("no_idea").insert({ top: element.remove() });
+      }
+    });
+
+    Droppables.add("disagree", {
+      accept: ["knew", "no_idea"],
+      onDrop: function (element) {
+        $("disagree").insert({ top: element.remove() });
+      }
+    });
+
+    $$(".feedback").each(function (div) {
+      new Draggable(div.id, {
+        handle: ".toolbar",
+        revert: true,
+        onEnd: function () { return false; }
+      });
+    });
+</script>
+<% end %>
