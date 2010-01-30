@@ -1,11 +1,12 @@
 class Failing < ActiveRecord::Base
   # = Local
   belongs_to :user
+  belongs_to :submitter, class_name: "User"
   has_many :votes
   has_many :comments
 
   attr_accessor :surname
-  validate :verify_surname, on: :create
+  validate :verified, on: :create
 
   scope :needs_review, where(state: "needs_review")
   scope :knew,         where(state: "knew")
@@ -38,9 +39,20 @@ class Failing < ActiveRecord::Base
 
   private
 
-  def verify_surname
-    if @surname.downcase != user.surname.downcase
-      errors.add :surname, "doesn't match."
+  def verified
+    unless verify_surname || already_verified
+      errors.add :surname, "doesn't match"
     end
+  end
+
+  def verify_surname
+    @surname.downcase == user.surname.downcase
+  end
+
+  def already_verified
+    false
+    # !user.failings.
+    #   where("submitter_ip = ? OR submitter_id = ?", submitter_ip, submitter_id).
+    #   first.nil?
   end
 end

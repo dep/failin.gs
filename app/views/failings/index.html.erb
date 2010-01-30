@@ -74,12 +74,12 @@
     <%= render partial: "private" %>
   <% else %>
     <% %w(needs_review knew no_idea disagree).each do |state| %>
-      <% if @user.failings.send(state).any? %>
-        <div class="flaw_box <%= css_class_for state %>">
-          <h3><%= title_for state %></h3>
+      <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! unless @user.failings.send(state).any? %>>
+        <h3><%= title_for state %></h3>
+        <div id="<%= state %>">
           <%= render partial: "failing", collection: @user.failings.send(state) %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

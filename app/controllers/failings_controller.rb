@@ -9,6 +9,9 @@ class FailingsController < ApplicationController
   def create
     @user = User.find_by_login! params[:login]
     @failing = @user.failings.new params[:failing]
+    @failing.submitter    = current_user
+    @failing.submitter_ip = request.remote_ip
+
     if @failing.save
       redirect_to profile_path(@user)
     else
@@ -19,18 +22,60 @@ class FailingsController < ApplicationController
   def knew
     @failing = current_user.failings.needs_review.find(params[:id])
     @failing.knew!
-    redirect_to profile_path(current_user)
+
+    render :update do |page|
+      page[@failing].visual_effect(:blind_up, duration: 0.1)
+      page.delay(0.1) do
+        page[@failing].remove
+        page.insert_html :top, "knew", partial: @failing
+        page << "if (!$('knew').visible()) {"
+          page["knew"].visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "}"
+        page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "if ($$('#needs_review .feedback').length == 0) {"
+          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "}"
+      end
+    end
   end
 
   def no_idea
     @failing = current_user.failings.needs_review.find(params[:id])
     @failing.no_idea!
-    redirect_to profile_path(current_user)
+
+    render :update do |page|
+      page[@failing].visual_effect(:blind_up, duration: 0.1)
+      page.delay(0.1) do
+        page[@failing].remove
+        page.insert_html :top, "no_idea", partial: @failing
+        page << "if (!$('no_idea').visible()) {"
+          page["no_idea"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "}"
+        page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "if ($$('#needs_review .feedback').length == 0) {"
+          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "}"
+      end
+    end
   end
 
   def disagree
     @failing = current_user.failings.needs_review.find(params[:id])
     @failing.disagree!
-    redirect_to profile_path(current_user)
+
+    render :update do |page|
+      page[@failing].visual_effect(:blind_up, duration: 0.1)
+      page.delay(0.1) do
+        page[@failing].remove
+        page.insert_html :top, "disagree", partial: @failing
+        page << "if (!$('disagree').visible()) {"
+          page["disagree"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "}"
+        page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
+        page << "if ($$('#needs_review .feedback').length == 0) {"
+          page["needs_review"].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+        page << "}"
+      end
+    end
   end
 end
