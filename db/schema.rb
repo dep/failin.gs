@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100130203527) do
+ActiveRecord::Schema.define(:version => 20100130221714) do
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false
@@ -31,18 +31,20 @@ ActiveRecord::Schema.define(:version => 20100130203527) do
   add_index "emails", ["address"], :name => "index_emails_on_address", :unique => true
 
   create_table "failings", :force => true do |t|
-    t.string   "state",        :null => false
-    t.integer  "user_id",      :null => false
+    t.string   "state",                       :null => false
+    t.integer  "user_id",                     :null => false
     t.string   "submitter_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "about"
     t.integer  "submitter_id"
+    t.integer  "score",        :default => 0
   end
 
   add_index "failings", ["state"], :name => "index_failings_on_state"
   add_index "failings", ["submitter_id"], :name => "index_failings_on_submitter_id"
   add_index "failings", ["submitter_ip"], :name => "index_failings_on_submitter_ip"
+  add_index "failings", ["user_id", "state", "score"], :name => "index_failings_on_user_id_and_state_and_score"
   add_index "failings", ["user_id", "state"], :name => "index_failings_on_user_id_and_state"
   add_index "failings", ["user_id"], :name => "index_failings_on_user_id"
 

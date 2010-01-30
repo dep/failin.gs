@@ -8,10 +8,10 @@ class Failing < ActiveRecord::Base
   attr_accessor :surname
   validate :verified, on: :create
 
-  scope :needs_review, where(state: "needs_review")
-  scope :knew,         where(state: "knew")
-  scope :no_idea,      where(state: "no_idea")
-  scope :disagree,     where(state: "disagree")
+  scope :needs_review, where(state: "needs_review").order("score DESC")
+  scope :knew,         where(state: "knew").order("score DESC")
+  scope :no_idea,      where(state: "no_idea").order("score DESC")
+  scope :disagree,     where(state: "disagree").order("score DESC")
 
   include ActiveRecord::StateMachine
   state_machine do
@@ -34,15 +34,7 @@ class Failing < ActiveRecord::Base
   end
 
   def votes_score
-    self.class.count_by_sql <<SQL
-select (
-  select count(*) from votes where votes.failing_id = #{id}
-  and votes.agree = 1
-) - (
-  select count(*) from votes where votes.failing_id = #{id}
-  and votes.agree = 0
-) as score;
-SQL
+    score
   end
 
   private
