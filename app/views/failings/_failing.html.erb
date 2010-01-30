@@ -1,4 +1,4 @@
-<div class="feedback">
+<% div_for failing, class: "feedback" do %>
   <div class="toolbar">
     <strong><%= failing.votes_score %></strong> votes |
     <% unless voted_on? failing %>
@@ -47,4 +47,4 @@
       </div>
     <% end %>
   </div>
-</div>
+<% end %>
