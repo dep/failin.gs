@@ -41,7 +41,7 @@ class FailingsController < ApplicationController
   end
 
   def no_idea
-    @failing = current_user.failings.needs_review.find(params[:id])
+    @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.no_idea!
 
@@ -62,7 +62,7 @@ class FailingsController < ApplicationController
   end
 
   def disagree
-    @failing = current_user.failings.needs_review.find(params[:id])
+    @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.disagree!
 
