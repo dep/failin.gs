@@ -108,11 +108,12 @@ blockquote {
   border:1px dashed #ccc; 
   background:#d8f783;
   padding:10px;
-  font-size:32px;
+  font-size:27px;
   font-weight:bold;
   color:#777;
   -moz-box-shadow:5px 7px 10px #888;
   -webkit-box-shadow:5px 7px 10px #888;
+  margin-left:15px;
 }
 
 /* Rounded module */
@@ -244,7 +245,15 @@ input[type="checkbox"] {
   display:block;
   padding-top:10px;
   color:#333;
-  font-size:17px;
+  font-size:15px;
+}
+.user_details .answer,
+.user_details .answer a,
+.user_details .answer p,
+.user_details .answer span {
+  margin:0;
+  padding:0;
+  color:#888;
 }
 #signup {
   width:250px;
@@ -317,6 +326,9 @@ input[type="checkbox"] {
   margin:0 0 10px 0;
   font-size:36px;
 }
+#flaw_entry .errorExplanation h2 {
+  font-size:20px !important;
+}
 #flaw_area fieldset#flaw_entry textarea {
   width:450px;
   font-weight:normal;
@@ -353,17 +365,20 @@ input[type="checkbox"] {
 .flaw_box.unrated {
   background:#777; 
 }
-.flaw_box.known {
+.flaw_box.private {
+  background:#555;
+}
+.flaw_box.knew {
   background:#5cc931;
   width:27%;
   float:left;
 }
-.flaw_box.known,
-.flaw_box.unknown,
+.flaw_box.knew,
+.flaw_box.no_idea,
 .flaw_box.disagree {
   width:176px;
 }
-.flaw_box.unknown {
+.flaw_box.no_idea {
   background:#edef43;
   float:left;
 }
@@ -376,7 +391,7 @@ input[type="checkbox"] {
   padding:0; 
   color:#fff;
 }
-.flaw_box.unknown h3 {
+.flaw_box.no_idea h3 {
   color:#333;
 }
 .flaw_box .feedback {
@@ -460,7 +475,7 @@ input[type="checkbox"] {
   float:left;
   font-size:14px; 
   padding-left:20px;
-  width:420px;
+  width:380px;
 }
 #user_profile.edit .announce {
   width:220px;
@@ -468,9 +483,19 @@ input[type="checkbox"] {
 .error_text {
   padding:5px 0;
   font-size:15px;
-  color:red;
 }
-
+.errorExplanation h2 {
+  color:red;  
+}
+.errorExplanation ul {
+  margin-left:0;
+  padding-left:0;
+  list-style:none;
+}
+.errorExplanation ul li {
+  font-size:12px;
+  padding:3px 0;
+}
 /* Homepage functionality */
 .functionality_teasers {
   clear:both;
@@ -522,4 +547,15 @@ fieldset.invite input[type="text"] {
 }
 fieldset.invite input[type="submit"] {
   margin:5px 0 0 10px;
- }
+}
+.social_links {
+  color:#FFFFFF;
+  font-size:40px;
+  margin:0;
+  padding:0;
+  position:absolute;
+  right:75px;
+  text-shadow:2px 2px 4px #AAAAAA;
+  top:46px;
+  z-index:10;
+}

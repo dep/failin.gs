@@ -3,12 +3,20 @@
 <head>
   <title>failin.gs: don't worry. nobody's perfect.</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta name="description" content="failin.gs seeks to answer a that perhaps all of us have asked ourselves at some point: 'What is wrong with me?'">
+  <meta name="keywords" content="failings, flaws, anonymous, social web, social networking, self-improvement, fun">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <%= stylesheet_link_tag "main" %>
   <%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "effects" %>
+  <%= javascript_include_tag "dragdrop" %>
+  <%= javascript_include_tag "controls" %>
   <%= javascript_include_tag "prototype.rails" %>
   <%= javascript_include_tag "application" %>
 </head>
 <body>
+  <%= render :partial => "common/feedback" %>
+  <p class="social_links">follow us on twitter <a href="http://twitter.com/failings">@failings</a></p>
   <div id="wrapper">
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
     <script type="text/javascript">
@@ -38,5 +46,14 @@
       <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
     </div>
   </div>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-12415011-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
 </body>
 </html>

@@ -6,21 +6,21 @@
 
   <div class="user_details">
     <span>Username:</span>
-    <%= @user.login %>
+    <span class="answer"><%= @user.login %></span>
 
     <% if @user == current_user %>
       <span>Email address (Invisible):</span>
-      <%= @user.email %>
+      <span class="answer"><%= @user.email %></span>
     <% end %>
 
     <% unless @user.location.blank? %>
       <span>Location:</span>
-      <%= @user.location %>
+      <span class="answer"><%= @user.location %></span>
     <% end %>
 
     <% unless @user.about.blank? %>
       <span>About me:</span>
-      <%= simple_format(h(@user.about)).html_safe! %>
+      <span class="answer"><%= simple_format(h(@user.about)).html_safe! %></span>
     <% end %>
 
     <% if @user == current_user %>
@@ -39,41 +39,46 @@
       provide you with your anonymous constructive criticism!</p>
 
       <div class="share_links">
-        <a href="http://twitter.com/?status=I%20just%20signed%20up%20at%20@failings.%20It%20lets%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20http://failin.gs/usernamegoeshere%20eep!"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
-        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2F[[[[[[[[user url]]]]]]]]&src=sp"><%= image_tag "facebook_this.jpg", alt: "Facebook this!" %></a>
+        <a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
+        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2F<%= profile_url(@user) %>&src=sp"><%= image_tag "facebook_this.jpg", alt: "Facebook this!" %></a>
       </div>
     </div>
   <% end %>
 </div>
 
-<% form_for @failing do |f| %>
-  <fieldset id="flaw_entry">
-    <h2>What is wrong with me?</h2>
-    <%= f.error_messages %>
+<div id="flaw_area">
+  <% form_for @failing do |f| %>
+    <fieldset id="flaw_entry">
+      <h2>What is wrong with me?</h2>
+      <%= f.error_messages %>
 
-    <%= f.text_area :about %>
-    <button type="button" onclick="$('box_validate').show(); $('last_name').focus();">Submit</button>
+      <%= f.text_area :about, :rows => "2", :cols => "50" %>
+      <button type="button" onclick="$('box_validate').show(); $('last_name').focus();">Submit</button>
 
-    <div class="floating_box" id="box_validate" style="display:none">
-      <p><strong>failin.gs</strong> is a community where you can anonymously
-      critique your friends' various personality flaws.</p>
+      <div class="floating_box" id="box_validate" style="display:none">
+        <p><strong>failin.gs</strong> is a community where you can anonymously
+        critique your friends' various personality flaws.</p>
 
-      <p>It's important, though, to make sure that the people who leave
-      feedback actually know the person they're critiquing.</p>
+        <p>It's important, though, to make sure that the people who leave
+        feedback actually know the person they're critiquing.</p>
 
-      <p>In order to post this feedback, please enter the last name of the
-      person you are critiquing.</p>
+        <p>In order to post this feedback, please enter the last name of the
+        person you are critiquing.</p>
 
-      <div class="error_text">Oh noes! errors!</div>
-      <%= f.text_field :surname %>
-      <%= f.submit "Ok - Send!" %>
+        <%= f.text_field :surname %>
+        <%= f.submit "Ok - Send!" %>
 
-      <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
-    </div>
-  </fieldset>
-<% end %>
+        <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
+      </div>
+    </fieldset>
+  <% end %>
 
-<%= render partial: "failing", collection: @user.failings.needs_review %>
-<%= render partial: "failing", collection: @user.failings.knew %>
-<%= render partial: "failing", collection: @user.failings.no_idea %>
-<%= render partial: "failing", collection: @user.failings.disagree %>
+  <!-- if profile is private -->
+    <%= render partial: "private" %>
+  <!-- else -->
+    <%= render partial: "failing", collection: @user.failings.needs_review %>
+    <%= render partial: "failing", collection: @user.failings.knew %>
+    <%= render partial: "failing", collection: @user.failings.no_idea %>
+    <%= render partial: "failing", collection: @user.failings.disagree %>
+  <!-- end -->
+</div>

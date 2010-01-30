@@ -21,7 +21,7 @@
     <%= gravatar_for @user, default: image_url("default_pic.png"), size: 200 %>
   </div>
 
-  <% form_for @user, :url => user_path do |f| %>
+  <% form_for @user, :url => account_path do |f| %>
     <div class="user_details">
       <%= f.error_messages %>
 
@@ -29,7 +29,7 @@
       <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
 
       <%= f.label :surname, "Your <strong>real</strong> last name:" %>
-      (<%= link_to_function "Why we ask", "$('box_important').appear();" %>):
+      (<%= link_to_function "Why we ask", "$('box_important').appear()" %>):
       <%= f.text_field :surname %>
 
       <%= f.label :email, "Email address:" %>
@@ -70,7 +70,7 @@
       <h2>Want to remove your account?</h2>
       <p>We'd be sad to see you go, but we understand that the truth hurts.</p>
       <blockquote>
-        "I'll say. <%= link_to "Let me out", user_path, method: :delete, confirm: "Are you sure?" %>"
+        "I'll say. <%= link_to "Let me out", account_path, method: :delete, confirm: "Are you sure?" %>"
       </blockquote>
     </div>
   <% end %>

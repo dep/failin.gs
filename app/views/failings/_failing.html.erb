@@ -24,17 +24,16 @@
           <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing) %> -
           <%= link_to_remote "I disagree completely", url: disagree_failing_path(failing.user, failing) %>
         </div>
-        <div class="right">
-          <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
-        </div>
-      <% else %>
-        <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
       <% end %>
+      <div class="right">
+        <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">report abuse</span> - 
+        <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
+      </div>
     </div>
     <div class="reply_wrapper" style="display: none;">
       <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
         <div>
-          <%= f.text_area :text %>
+          <%= f.text_area :text, :rows => "2" %>
           <%= f.submit %>
         </div>
       <% end %>
