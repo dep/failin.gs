@@ -1,4 +1,4 @@
-<fieldset id="login_form" style="display:none">
+<fieldset id="login_form"<%= 'style="display:none"'.html_safe! if controller.is_a?(PagesController) %>>
   <% form_for @user_session, :url => user_session_path do |f| %>
     <%= f.error_messages %>
     <div>

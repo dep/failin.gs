@@ -7,10 +7,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
+    @user_session = UserSession.new
     if @user.save
       respond_with @user, location: edit_account_path
     else
-      render "pages/root"
+      render "user_sessions/new"
     end
   end
 

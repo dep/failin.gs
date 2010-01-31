@@ -23,22 +23,7 @@
         <% if @user %>
           <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
         <% end %>
-        <fieldset id="login_form" style="<%= 'display: none;' if @user %>">
-          <% form_for @user_session, :url => user_session_path do |f| %>
-            <%= f.error_messages %>
-            <div>
-              <%= f.label :login %>
-              <%= f.text_field :login %>
-            </div>
-            <div>
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </div>
-            <div>
-              <%= f.submit "Login" %>
-            </div>
-          <% end %>
-        </fieldset>
+        <%= render "user_sessions/form" %>
       <% end %>
       <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
 
@@ -46,28 +31,7 @@
         <% if @user_session %>
           <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
         <% end %>
-        <fieldset id="signup_form" style="<%= 'display: none;' unless @user %>">
-          <% form_for @user, :url => account_path do |f| %>
-            <%= f.label :login, "Username:" %>
-            <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
-
-            <%= f.label :surname, "Your last name:" %>
-            <%= f.text_field :surname %>
-
-            <%= f.label :email, "Email address:" %>
-            <%= f.text_field :email %>
-
-            <%= f.label :password, "Password:" %>
-            <%= f.password_field :password %>
-
-            <%= f.label :password_confirmation, "Twice to be sure:" %>
-            <%= f.password_field :password_confirmation %>
-
-            <%= f.error_messages %>
-
-            <%= f.submit "Sign up!" %>
-          <% end %>
-        </fieldset>
+        <%= render "users/form" %>
       <% end %>
     </div>
   </div>

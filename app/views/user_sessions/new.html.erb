@@ -1,66 +1,33 @@
-<div class="col col_1 homepage">
+<div id="login_register">
+  <h2 class="page_title happy">Welcome to failin.gs <span>Sign up or log in here</span></h2>
   <p>
-    <strong>failin.gs</strong> seeks to answer that age old question that perhaps
-    all of us have asked ourselves at some point in our lives.
+    <strong>Hello</strong> or <strong>welcome back</strong> to you.
+    You've made it to failin.gs, the ultimate, anonymous personal feedback tool.
+    Sign up for a free account and have your friends anonymously critique you!  It's fun, if you're brave enough!
   </p>
-  <blockquote>
-    "What do people think of me, really?" 
-  </blockquote>
-  <p>
-    As you know, nobody is perfect. We all have our own idiosyncrasies and
-    personality flaws. Just think of all the people you know. We are sure you can 
-    identify what they could improve upon. We bet your friends know a thing or two
-    about you that you don't know yourself!
-  </p>
-  <p>
-    Create a profile and invite people to leave anonymous constructive criticism
-    about your character. We all want to improve, don't we?
-  </p>
-</div>
-<div class="col col_2">
-  <div id="signup" class="announce dark">
-    <h2>Can you handle the truth?</h2>
-    <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
-    <%= render :partial => "login_form" %>
-    <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
-    <p>New to this? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
-    <%= render :partial => "signup_form" %>
+  <div class="col col_1">
+    <h3 class="mod_title">Register</h3>
+    <%= render "users/form" %>
   </div>
-</div>
-<div class="functionality_teasers">
-  <h2>How does it all work?</h2>
-  <h3>It's ridiculously easy. Totally anonymous.</h3>
-  <ol>
-    <li><strong>Sign up</strong> for a free account</li>
-    <li><strong>Fill out</strong> your profile</li>
-    <li>Announce your URL! Tweet it, post it on Facebook. <strong>Get it out there!</strong></li>
-    <li>Sit back and <strong>brace yourself</strong> for honesty you've never gotten before.</li>
-  </ol>
-  <p>
-    Once you start receiving the anonymous feedback, you'll be able to categorize it, and you and your friends
-    will be able to agree or disagree, leave comments, and work together to improve your
-    personal character! Once they create their account, don't forget to return the favor!
-  </p>
-  <p>
-    When you sign up, you'll be asked for a piece of information that only your friends know.
-    This way, you can be sure that only people who know you can write on your profile.
-  </p>
-</div>
+  <div class="col col_2">
+    <h3 class="mod_title">Login</h3>
+    <%= render "user_sessions/form" %>
+  </div>
+  <div class="floating_box" id="box_important" style="display: none;">
+    <p><strong>failin.gs</strong> is a community where you can have your friends
+    anonymously critique you.</p>
 
-<div class="floating_box" id="box_important" style="display: none;">
-  <p><strong>failin.gs</strong> is a community where you can have your friends
-  anonymously critique you.</p>
+    <p>It's important, though, to make sure that the people who leave you
+    feedback actually do know who you are.</p>
 
-  <p>It's important, though, to make sure that the people who leave you
-  feedback actually do know who you are.</p>
+    <p>When someone leaves feedback on you, they will be asked for your last
+    name. Maybe not perfect, but it will keep a lot of fakes at bay.</p>
 
-  <p>When someone leaves feedback on you, they will be asked for your last
-  name. Maybe not perfect, but it will keep a lot of fakes at bay.</p>
+    <p>You'll have a chance to respond to everyone's feedback. You can even flag
+    things that you think are fake.</p>
 
-  <p>You'll have a chance to respond to everyone's feedback. You can even flag
-  things that you think are fake.</p>
+    <p>Don't worry. Your last name will not be viewable to anyone.</p>
 
-  <p>Don't worry. Your last name will not be viewable to anyone.</p>
-
-  <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
+    <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
+  </div>
 </div>

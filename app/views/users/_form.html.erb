@@ -1,0 +1,25 @@
+<fieldset id="signup_form" style="<%= 'display: none;' if @user.nil? || controller.is_a?(PagesController) %>">
+  <% form_for @user, :url => account_path do |f| %>
+    <%= f.error_messages %>
+
+    <%= f.label :login, "Username:" %>
+    <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
+
+    <% f.label :surname do %>
+      Your <strong>real</strong> last name:
+      (<%= link_to_function "Why we ask", "$('box_important').appear();" %>):
+    <% end %>
+    <%= f.text_field :surname %>
+
+    <%= f.label :email, "Email address:" %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "Twice to be sure:" %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit "Sign up!" %>
+  <% end %>
+</fieldset>
