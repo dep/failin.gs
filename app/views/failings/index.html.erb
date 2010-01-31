@@ -76,10 +76,10 @@
     <% %w(needs_review knew no_idea disagree).each do |state| %>
       <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
         <h3><%= title_for state %></h3>
-        <%# ruby magic goes here %>
-          <%= render partial: "empty_category" %>
-        <%# ruby magic ends here %>
         <div id="<%= state %>">
+          <%# ruby magic goes here %>
+            <%= render partial: "empty_category" %>
+          <%# ruby magic ends here %>
           <%= render partial: "failing", collection: @user.failings.send(state) %>
         </div>
       </div>
