@@ -33,9 +33,11 @@ class FailingsController < ApplicationController
           page["knew"].visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('##@state_was .feedback').length == 0) {"
-          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
-        page << "}"
+        if @state_was == "needs_review"
+          page << "if ($$('##@state_was .feedback').length == 0) {"
+            page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+          page << "}"
+        end
       end
     end
   end
@@ -54,9 +56,11 @@ class FailingsController < ApplicationController
           page["no_idea"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('##@state_was .feedback').length == 0) {"
-          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
-        page << "}"
+        if @state_was == "needs_review"
+          page << "if ($$('##@state_was .feedback').length == 0) {"
+            page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+          page << "}"
+        end
       end
     end
   end
@@ -75,9 +79,11 @@ class FailingsController < ApplicationController
           page["disagree"].show # visual_effect(:highlight) # blind_down, duration: 0.2)
         page << "}"
         page[@failing].visual_effect(:highlight) # blind_down, duration: 0.2)
-        page << "if ($$('##@state_was .feedback').length == 0) {"
-          page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
-        page << "}"
+        if @state_was == "needs_review"
+          page << "if ($$('##@state_was .feedback').length == 0) {"
+            page[@state_was].up(".flaw_box").hide # visual_effect(:blind_up, duration: 0.2)
+          page << "}"
+        end
       end
     end
   end

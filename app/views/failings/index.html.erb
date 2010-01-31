@@ -74,7 +74,7 @@
     <%= render partial: "private" %>
   <% else %>
     <% %w(needs_review knew no_idea disagree).each do |state| %>
-      <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! unless @user.failings.send(state).any? %>>
+      <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
         <h3><%= title_for state %></h3>
         <div id="<%= state %>">
           <%= render partial: "failing", collection: @user.failings.send(state) %>
@@ -88,6 +88,7 @@
   <script>
     Droppables.add("knew", {
       accept: ["unrated", "no_idea", "disagree"],
+      hoverclass: "hover",
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
@@ -97,6 +98,7 @@
 
     Droppables.add("no_idea", {
       accept: ["unrated", "knew", "disagree"],
+      hoverclass: "hover",
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
@@ -106,6 +108,7 @@
 
     Droppables.add("disagree", {
       accept: ["unrated", "knew", "no_idea"],
+      hoverclass: "hover",
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
