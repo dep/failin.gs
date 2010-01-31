@@ -28,7 +28,9 @@
       </div>
     <% end %>
     <div class="right">
-      <span onclick="">report abuse</span> -
+      <% unless reported? failing %>
+        <%= link_to_remote "report abuse", url: failing_abuse_path(failing.user, failing), method: :post, html: { class: "abuse" } %> -
+      <% end %>
       <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show().select('textarea')[0].focus()">reply</span>
     </div>
   </div>

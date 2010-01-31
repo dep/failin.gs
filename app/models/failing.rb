@@ -4,6 +4,7 @@ class Failing < ActiveRecord::Base
   belongs_to :submitter, class_name: "User"
   has_many :votes
   has_many :comments
+  has_many :abuses, as: :content
 
   attr_accessor :surname
   validates_length_of :about, in: 1..145
@@ -20,6 +21,7 @@ class Failing < ActiveRecord::Base
     state :knew
     state :no_idea
     state :disagree
+    state :abused
 
     event :knew do
       transitions to: :knew, from: %w(needs_review no_idea disagree)
@@ -31,6 +33,10 @@ class Failing < ActiveRecord::Base
 
     event :disagree do
       transitions to: :disagree, from: %w(needs_review knew no_idea)
+    end
+
+    event :abuse do
+      transitions to: :abuse, from: %w(needs_review knew no_idea disagree)
     end
   end
 

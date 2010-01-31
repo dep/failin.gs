@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100131154902) do
+ActiveRecord::Schema.define(:version => 20100131172750) do
+
+  create_table "abuses", :force => true do |t|
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.integer  "user_id"
+    t.string   "reporter_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "abuses", ["content_id", "content_type"], :name => "index_abuses_on_content_id_and_content_type"
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false
