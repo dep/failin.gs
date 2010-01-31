@@ -69,21 +69,6 @@
 
     <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
   </div>
-  <div class="floating_box" id="box_validate" style="display:none">
-    <p><strong>failin.gs</strong> is a community where you can anonymously
-    critique your friends' various personality flaws.</p>
-
-    <p>It's important, though, to make sure that the people who leave
-    feedback actually know the person they're critiquing.</p>
-
-    <p>In order to post this feedback, please enter the last name of the
-    person you are critiquing.</p>
-
-    <%= f.text_field :surname %>
-    <%= f.submit "Ok - Send!" %>
-
-    <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
-  </div>
   <div class="floating_box" id="email_preview" style="display:none;">
     <p>Hello!</p>
     <p>

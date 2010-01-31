@@ -47,12 +47,16 @@ ActiveRecord::Schema.define(:version => 20100131201933) do
   end
 
   create_table "emails", :force => true do |t|
-    t.string   "address"
+    t.integer  "user_id"
+    t.string   "address",     :null => false
+    t.string   "invite_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "emails", ["address"], :name => "index_emails_on_address", :unique => true
+  add_index "emails", ["invite_code"], :name => "index_emails_on_invite_code"
+  add_index "emails", ["user_id"], :name => "index_emails_on_user_id", :unique => true
 
   create_table "failings", :force => true do |t|
     t.string   "state",                       :null => false
