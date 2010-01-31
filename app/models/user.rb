@@ -16,10 +16,10 @@ class User < ActiveRecord::Base
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH, format: /\w+/
   validates_presence_of :surname
-  validate :promotion_should_be_valid
+  validate :promotion_should_be_valid, on: :create
 
   if App.beta?
-    validates_presence_of :invitation, unless: :promo_code?
+    validates_presence_of :invitation, unless: :promo_code?, on: :create
   end
 
   def to_param

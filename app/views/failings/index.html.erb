@@ -1,7 +1,9 @@
 <div id="user_profile">
   <div class="pic_area">
     <%= gravatar_for @user, default: image_path("default_pic.png"), size: 200 %>
-    <%= link_to "change this picture", "http://en.gravatar.com/site/signup", :class => "change" %>
+    <% if @user == current_user %>
+      <%= link_to "change this picture", "http://en.gravatar.com/site/signup", :class => "change" %>
+    <% end %>
   </div>
 
   <div class="user_details">
