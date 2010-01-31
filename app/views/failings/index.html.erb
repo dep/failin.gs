@@ -87,7 +87,7 @@
 <% if @user == current_user %>
   <script>
     Droppables.add("knew", {
-      accept: ["no_idea", "disagree"],
+      accept: ["unrated", "no_idea", "disagree"],
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
@@ -96,7 +96,7 @@
     });
 
     Droppables.add("no_idea", {
-      accept: ["knew", "disagree"],
+      accept: ["unrated", "knew", "disagree"],
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
@@ -105,7 +105,7 @@
     });
 
     Droppables.add("disagree", {
-      accept: ["knew", "no_idea"],
+      accept: ["unrated", "knew", "no_idea"],
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
