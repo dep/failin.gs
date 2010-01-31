@@ -5,4 +5,7 @@ class App < Configurable
   config.name = Rails::Application.instance.class.parent.name
 
   config.beta = true
+
+  # Uncomment this line to avoid expensive SQL queries on public profiles.
+  # config.optimized = true
 end

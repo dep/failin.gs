@@ -5,6 +5,7 @@ class InvitationsController < ApplicationController
   respond_to :js, only: %w(create invite_criticism)
 
   def new
+    return unless stale? etag: current_user.invites_left, public: false
     @share = current_user.shares.new
     respond_with(@invitation = current_user.invitations.new)
   end

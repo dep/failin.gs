@@ -5,6 +5,7 @@ class UserSessionsController < ApplicationController
 
   def new
     @user = User.new
+    return unless stale? etag: @user
     respond_with(@user_session = UserSession.new)
   end
 

@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    respond_with(@user = current_user)
+    @user = current_user
+    return unless stale? etag: @user, public: false
+    respond_with @user
   end
 
   def update
