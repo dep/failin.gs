@@ -13,7 +13,7 @@ class FailingsController < ApplicationController
     @failing.submitter_ip = request.remote_ip
 
     if @failing.save
-      Notifier.new_failing(@failing).send_later :deliver
+      Delayed::Job.enqueue MailJob.new(@failing)
       redirect_to profile_path(@user)
     else
       render "index"
