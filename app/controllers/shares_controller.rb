@@ -1,4 +1,6 @@
 class SharesController < ApplicationController
+  before_filter :require_user
+
   def create
     @invitation = current_user.invitations.new
     @share = current_user.shares.new(params[:share])

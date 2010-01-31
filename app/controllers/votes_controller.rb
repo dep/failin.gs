@@ -16,7 +16,8 @@ class VotesController < ApplicationController
 
   def xhr_message(message = "thanks!")
     render :update do |page|
-      score = @failing.votes_score + (@vote.agree? ? 1 : -1)
+      score  = @failing.votes_score
+      score += (@vote.agree? ? 1 : -1) unless @vote.new_record?
       page[@failing].select(".toolbar").first.innerHTML = "<strong>#{score}</strong> votes | #{message}"
     end
   end

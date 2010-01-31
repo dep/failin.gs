@@ -10,6 +10,8 @@ class Failing < ActiveRecord::Base
   validates_length_of :about, in: 1..145
   validate :verified, on: :create
 
+  after_save :touch_user
+
   scope :needs_review, where(state: "needs_review").order("score DESC")
   scope :knew,         where(state: "knew").order("score DESC")
   scope :no_idea,      where(state: "no_idea").order("score DESC")
@@ -61,5 +63,9 @@ class Failing < ActiveRecord::Base
     # !user.failings.
     #   where("submitter_ip = ? OR submitter_id = ?", submitter_ip, submitter_id).
     #   first.nil?
+  end
+
+  def touch_user
+    user.touch
   end
 end

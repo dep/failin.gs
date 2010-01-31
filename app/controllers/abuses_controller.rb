@@ -20,7 +20,7 @@ class AbusesController < ApplicationController
         format.html { render "failings/index" }
         format.js {
           render :update do |page|
-            page.alert "You've already reported this abuse!"
+            page[@failing].select(".abuse").first.replace "already reported!"
           end
         }
       end

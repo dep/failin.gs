@@ -1,8 +1,15 @@
 class FailingsController < ApplicationController
+  before_filter :require_user, only: %w(knew no_idea disagree)
+
   respond_to :html
 
   def index
     @user = User.find_by_login! params[:login]
+
+    if App.optimized?
+      return unless stale? etag: [@user, @user == current_user], last_modified: @user.updated_at, public: !logged_in?
+    end
+
     @failing = @user.failings.build
   end
 

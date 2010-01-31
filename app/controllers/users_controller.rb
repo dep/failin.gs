@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :require_user, only: %w(edit update destroy)
+  before_filter :require_no_user, only: %w(new create)
+
   respond_to :html
 
   def create
