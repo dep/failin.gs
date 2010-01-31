@@ -339,6 +339,10 @@ input[type="checkbox"] {
   color:#fff;
   font-size:30px;
 }
+.floating_box#email_preview {
+  top:200px;
+  left:200px;
+}
 #box_important {
   top:100px;
   left:260px;
