@@ -7,9 +7,24 @@ class CommentsController < ApplicationController
     @comment.submitter_ip = request.remote_ip
 
     if @comment.save
-      redirect_to profile_url(@user)
+      respond_to do |format|
+        format.html { redirect_to profile_url(@user) }
+        format.js {
+          render :update do |page|
+            page.insert_html :bottom, dom_id(@failing, :comments), partial: @comment
+            page[@failing].select('.reply_wrapper').first.hide.select("form").first.reset
+          end
+        }
+      end
     else
-      render "failings#index"
+      respond_to do |format|
+        format.html { render "failings#index" }
+        format.js {
+          render :update do |page|
+            page.alert @comment.errors.full_messages.join(". ")
+          end
+        }
+      end
     end
   end
 end

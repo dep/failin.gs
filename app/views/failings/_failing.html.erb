@@ -10,12 +10,9 @@
   <div class="feedback_text">
     <%= simple_format(h(failing.about)).html_safe! %>
   </div>
-  <% failing.comments.each do |comment| %>
-    <div class="comment">
-      <p><%= comment.text %></p>
-      <span><%= comment.created_at.to_s :long %></span>
-    </div>
-  <% end %>
+  <div id="<%= dom_id failing, :comments %>">
+    <%= render failing.comments %>
+  </div>
   <div class="toolbar bottom">
     <% if failing.user == current_user && failing.needs_review? %>
       <div class="left">
@@ -29,11 +26,11 @@
     <% end %>
     <div class="right">
       <span onclick="">report abuse</span> -
-      <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show()">reply</span>
+      <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show().select('textarea')[0].focus()">reply</span>
     </div>
   </div>
   <div class="reply_wrapper" style="display: none;">
-    <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
+    <% remote_form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
       <div>
         <%= f.text_area :text, :rows => "2" %>
         <%= f.submit %>
