@@ -313,6 +313,7 @@ input[type="checkbox"] {
   color:#666;
 }
 .floating_box {
+  text-align:left;
   width:300px;
   -moz-border-radius: 10px 10px 10px 10px; 
   -webkit-border-top-left-radius:10px;
@@ -394,7 +395,7 @@ input[type="checkbox"] {
   border-color:#777;
   padding:5px
 }
-.flaw_box .feedback .reply_wrapper {
+.feedback .reply_wrapper {
   background:#f3f3f3;
   padding:5px;
 }
@@ -410,16 +411,22 @@ input[type="checkbox"] {
 .flaw_box.private {
   background:#555;
 }
-.flaw_box .feedback.empty {
+.feedback.empty {
   padding:5px 10px;
 }
-.flaw_box .feedback.empty p {
+.feedback.empty p {
   color:#999;
   margin-top:0;
   padding:0;  
 }
-.flaw_box .feedback.empty h2 {
+.feedback.empty h2 {
   font-size:14px;
+}
+span.create_date {
+  background:url(/images/icon_chain.gif) top left no-repeat;
+  padding-left:20px;
+  text-align:left;
+  margin-left:5px;
 }
 .flaw_box.knew {
   background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
@@ -475,14 +482,14 @@ input[type="checkbox"] {
   display:block !important;
   cursor:pointer;
 }
-.flaw_box .feedback .toolbar {
+.feedback .toolbar {
   display:block;
   background:#eee;
   text-align:right;
   border-bottom:1px solid #aaa;
   padding:7px;
 }
-.flaw_box .feedback .toolbar.bottom {
+.feedback .toolbar.bottom {
   border-top:1px solid #aaa;
   font-size:13px;
   border-bottom:0;
@@ -490,50 +497,50 @@ input[type="checkbox"] {
   overflow:hidden;
   zoom:1;
 }
-.flaw_box .feedback .toolbar.bottom img {
+.feedback .toolbar.bottom img {
   margin-left:10px;
 }
-.flaw_box .feedback .toolbar.bottom .left {
+.feedback .toolbar.bottom .left {
   float:left;
 }
-.flaw_box .feedback .toolbar.bottom .right {
+.feedback .toolbar.bottom .right {
   float:right;
 }
-.flaw_box .feedback .toolbar.bottom span,
-.flaw_box .feedback .toolbar.bottom a {
+.feedback .toolbar.bottom span,
+.feedback .toolbar.bottom a {
   text-decoration:none;
   cursor:pointer;
   color:#777;
 }
-.flaw_box .feedback .toolbar.bottom span:hover,
-.flaw_box .feedback .toolbar.bottom a:hover {
+.feedback .toolbar.bottom span:hover,
+.feedback .toolbar.bottom a:hover {
   text-decoration:underline;
 }
-.flaw_box .feedback p {
+.feedback p {
   font-size:14px; 
   padding-left:5px;
   padding-right:5px;
 }
-.flaw_box .feedback .comment {
+.feedback .comment {
   display:block;
   border-top:1px solid #ccc;
   margin:10px 20px;
 }
-.flaw_box .feedback .comment p {
+.feedback .comment p {
   font-size:10px;
 }
-.flaw_box .feedback .feedback_text span,
-.flaw_box .feedback .comment span {
+.feedback .feedback_text span,
+.feedback .comment span {
   color:#aaa;
   display:block;
 }
-.flaw_box .feedback .comment span {
+.feedback .comment span {
   text-align:right;
 }
-.flaw_box .feedback textarea {
+.feedback textarea {
   font-size:12px;
 }
-.flaw_box .feedback input[type="submit"] {
+.feedback input[type="submit"] {
   font-size:12px;
 }
 /* Profile edit */
@@ -649,4 +656,15 @@ fieldset.invite input[type="submit"] {
   -webkit-border-bottom-right-radius:10px;
   -moz-box-shadow:1px 2px 3px #888;
   -webkit-box-shadow:1px 2px 3px #888;
+}
+
+/* Failing show */
+.body .show .feedback {
+  border:1px solid #ccc;
+}
+.body .show .feedback_text p {
+  font-size:32px !important;
+}
+.body .show .feedback p {
+  font-size:12px;
 }
