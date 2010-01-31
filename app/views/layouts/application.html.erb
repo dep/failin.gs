@@ -33,8 +33,8 @@
             <li><a href="/pages/invite">invite friends</a> (x)</li>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "register" %></li>
-            <li><%= link_to "log in" %></li>
+            <li><%= link_to "register", new_user_session_path %></li>
+            <li><%= link_to "log in", new_user_session_path %></li>
           <% end %>
         </ul>
       </div>
