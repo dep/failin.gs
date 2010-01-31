@@ -454,6 +454,27 @@ input[type="checkbox"] {
   padding:5px;
   margin:10px 0;
 }
+.flaw_box .feedback img.left,
+.flaw_box .feedback img.right {
+  position:absolute;
+  top:40px;
+  opacity:0.2;
+}
+.flaw_box .feedback img.left:hover,
+.flaw_box .feedback img.right:hover {
+  opacity:1;
+}
+.flaw_box .feedback img.left {
+  left:0;
+}
+.flaw_box .feedback img.right {
+  right:0;
+}
+.flaw_box .feedback:hover img.left,
+.flaw_box .feedback:hover img.right {
+  display:block !important;
+  cursor:pointer;
+}
 .flaw_box .feedback .toolbar {
   display:block;
   background:#eee;
