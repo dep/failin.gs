@@ -17,10 +17,10 @@ class AbusesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render "failings#index" }
+        format.html { render "failings/index" }
         format.js {
           render :update do |page|
-            page.alert "You've already reported this abuse!" # @abuse.errors.full_messages.join(". ")
+            page.alert "You've already reported this abuse!"
           end
         }
       end

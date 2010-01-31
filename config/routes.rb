@@ -16,11 +16,12 @@ FailinGs::Application.routes.draw do |map|
     resource :abuse,   only: %w(create)
   end
 
-  match "pages/:action", to: "pages", action: /[a-z-]+/
+  resource :invitation, only: %w(new create)
+  resource :share,      only: %w(create)
+
   match "profile/:login", to: "failings#index", as: :profile
+  match "pages/:action",  to: "pages", action: /[a-z-]+/
 
-  resource :invitations, only: %w(new create)
   # root to: "emails#new"
-
   root to: "pages#root"
 end

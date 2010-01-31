@@ -1,0 +1,8 @@
+<% remote_form_for @share, url: share_path do |f| %>
+  <fieldset>
+    <%= f.error_messages %>
+    <%= f.text_area "emails", rows: 5 %>
+    <span>Please separate emails with a comma</span>
+    <%= f.submit "Send emails now!" %>
+  </fieldset>
+<% end %>

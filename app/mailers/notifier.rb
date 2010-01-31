@@ -21,7 +21,16 @@ class Notifier < ActionMailer::Base
     @invitation = invitation
     @inviter = invitation.inviter
 
-    mail_to: @invitation.email,
+    mail to: @invitation.email,
     subject: "You've been invited!"
+  end
+
+  def new_share(share)
+    @inviter = share.user
+    @share = share
+
+    mail to: "notifier@failin.gs",
+    subject: "You've been invited!",
+        bcc: @share.emails
   end
 end

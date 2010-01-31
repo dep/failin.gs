@@ -7,6 +7,8 @@ class MailJob < Struct.new(:record)
       Notifier.new_comment(record).deliver
     when Invitation
       Notifier.new_invitation(record).deliver
+    when Share
+      Notifier.new_share(record).deliver
     end
   end
 end

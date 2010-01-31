@@ -5,23 +5,17 @@
 <p>
   <a href="#" onclick="$('email_preview').appear();">What will my email look like?</a>
 </p>
-<fieldset>
-  <form>
-    <textarea rows="5"></textarea>
-    <span>Please separate emails with a comma</span>
-    <button type="button">Send emails now!</button>
-  </form>
-</fieldset>
+<%= render "shares/form" %>
 <div class="floating_box" id="email_preview" style="display:none;">
   <p>Hello!</p>
   <p>
-    You've been invited to leave anonymous feedback on your friend, [your name here] using 
-    a website called failin.gs -- a completely anonymous way for people to tell each other 
-    what they could improve upon! 
+    You've been invited to leave anonymous feedback on your friend, [your name here] using
+    a website called failin.gs -- a completely anonymous way for people to tell each other
+    what they could improve upon!
   </p>
   <p>
     This person obviously values your opinion, so do drop by and enter a few words. Your
-    identity will not be revealed and in fact, you won't even be asked to register to 
+    identity will not be revealed and in fact, you won't even be asked to register to
     leave a comment for them.
   </p>
   <p>

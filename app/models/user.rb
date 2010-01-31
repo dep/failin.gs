@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :invitations, foreign_key: :inviter_id
   has_many :invited,     through: :invitations
 
+  has_many :shares
+
   attr_reader :promo_code
 
   LOGIN_LENGTH = 1..17
