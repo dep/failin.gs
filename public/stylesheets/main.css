@@ -422,7 +422,7 @@ input[type="checkbox"] {
 .feedback.empty h2 {
   font-size:14px;
 }
-span.create_date {
+span.create_date a {
   background:url(/images/icon_chain.gif) top left no-repeat;
   padding-left:20px;
   text-align:left;
