@@ -4,7 +4,7 @@ FailinGs::Application.routes.draw do |map|
 
   resource :account, controller: "users", only: %w(create edit update destroy)
 
-  resources :failings, as: "profile/:login/failings", only: %w(create) do
+  resources :failings, as: "profile/:login/failings", only: %w(create show) do
     member do
       put :knew
       put :no_idea

@@ -27,6 +27,11 @@ class FailingsController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by_login! params[:login]
+    @failing = @user.failings.find params[:id]
+  end
+
   def knew
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state

@@ -11,7 +11,7 @@
   </div>
   <div class="feedback_text">
     <%= simple_format(h(failing.about)).html_safe! %>
-    <span><%= failing.created_at.to_s :timestamp %></span>
+    <span><%= link_to failing.created_at.to_s(:timestamp), failing_url(failing.user, failing) %></span>
   </div>
   <div id="<%= dom_id failing, :comments %>">
     <%= render failing.comments %>
