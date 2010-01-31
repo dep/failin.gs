@@ -46,13 +46,13 @@ h2.page_title span {
   padding-left:20px;
   font-size:20px;
 }
-h2.page_title.happy {
+h2.page_title.knew {
   background:url(/images/icon_knew.png) top left no-repeat;
 }
-h2.page_title.sad {
+h2.page_title.no_idea {
   background:url(/images/icon_no_idea.png) top left no-repeat;
 }
-h2.page_title.angry {
+h2.page_title.disagree {
   background:url(/images/icon_disagree.png) top left no-repeat;
 }
 h3.mod_title {
@@ -668,19 +668,16 @@ fieldset.invite input[type="submit"] {
 .body .show .feedback p {
   font-size:12px;
 }
-.body .show .toolbar {
-  min-height:30px;
-}
 .body .show .knew .toolbar {
   color:#fff;
-  background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
+  background:#5cc931;
 }
 .body .show .no_idea .toolbar {
-  background:#edef43 url(/images/icon_no_idea.png) 2px 2px no-repeat;
+  background:#edef43;
 }
 .body .show .disagree .toolbar {
   color:#fff;
-  background:#d71919 url(/images/icon_disagree.png) 2px 2px no-repeat;
+  background:#d71919;
 }
 .body .show .knew .toolbar *,
 .body .show .disagree .toolbar * {

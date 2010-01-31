@@ -1,2 +1,11 @@
-<h2 class="page_title happy"><%= @user.login %> <span><%= profile_url(@user) %></span></h2>
+<h2 class="page_title <%= @failing.state %>">
+  <%= @user.login %>
+  <% if @failing.state == "knew" %>
+    knew this
+  <% elsf @failing.state == "no_idea" %>
+    had no idea
+  <% else %>
+    disagrees completely
+  <% end %>
+  <span><%= profile_url(@user) %></span></h2>
 <%= render @failing %>
