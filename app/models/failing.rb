@@ -6,6 +6,7 @@ class Failing < ActiveRecord::Base
   has_many :comments
 
   attr_accessor :surname
+  validates_length_of :about, in: 1..145
   validate :verified, on: :create
 
   scope :needs_review, where(state: "needs_review").order("score DESC")
