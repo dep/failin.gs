@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
       elsif promotion.users.count >= limit
         errors[:promotion] << "has ended"
       end
-    elsif App.beta? && invitation.nil?
+    elsif App.beta? && email? && invitation.nil?
       errors[:promo_code] << "required for uninvited '#{email}'"
     end
   end
