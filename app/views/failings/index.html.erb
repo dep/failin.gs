@@ -77,9 +77,7 @@
       <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
         <h3><%= title_for state %></h3>
         <div id="<%= state %>">
-          <%# ruby magic goes here %>
-            <%= render partial: "empty_category" %>
-          <%# ruby magic ends here %>
+          <%= render partial: "empty_category", locals: { :any => @user.failings.send(state).any? } %>
           <%= render partial: "failing", collection: @user.failings.send(state) %>
         </div>
       </div>
