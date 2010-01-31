@@ -1,13 +1,13 @@
 <% div_for failing, class: "feedback #{css_class_for failing.state}" do %>
   <div class="toolbar<%= ' move' if current_user == failing.user %>">
-    <img src="/images/move_left.png" class="left" title="Move left one category" style="display:none" />
+    <%= move_left_link failing if current_user == failing.user %>
     <strong><%= failing.votes_score %></strong> votes
     <% unless voted_on? failing %>
       |
       <%= link_to_remote "agree", url: failing_vote_path(failing.user, failing, agree: true), method: :post %> -
       <%= link_to_remote "disagree", url: failing_vote_path(failing.user, failing), method: :post %>
     <% end %>
-    <img src="/images/move_right.png" class="right" title="Move right one category" style="display:none" />
+    <%= move_right_link failing if current_user == failing.user %>
   </div>
   <div class="feedback_text">
     <%= simple_format(h(failing.about)).html_safe! %>
