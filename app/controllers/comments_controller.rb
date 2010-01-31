@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
         format.js {
           render :update do |page|
             page.insert_html :bottom, dom_id(@failing, :comments), partial: @comment
+            page[@comment].visual_effect :highlight
             page[@failing].select('.reply_wrapper').first.hide.select("form").first.reset
           end
         }
