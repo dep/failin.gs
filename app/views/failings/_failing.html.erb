@@ -17,9 +17,9 @@
     <% if failing.user == current_user && failing.needs_review? %>
       <div class="left">
         <img src="/images/icon_knew.png" alt="I knew this" />
-        <%= link_to_remote "I knew this", url: knew_failing_path(failing.user, failing), method: :put %> -
+        <%= link_to_remote "I knew this", url: knew_failing_path(failing.user, failing), method: :put %>
         <img src="/images/icon_no_idea.png" alt="I had no idea!" />
-        <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing), method: :put %> -
+        <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing), method: :put %>
         <img src="/images/icon_disagree.png" alt="I disagree completely" />
         <%= link_to_remote "I disagree completely", url: disagree_failing_path(failing.user, failing), method: :put %>
       </div>

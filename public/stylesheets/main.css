@@ -299,6 +299,7 @@ input[type="checkbox"] {
   padding:20px 10px;
   background:#222;
   opacity:0.9;
+  z-index:999;
 }
 .floating_box p {
   font-size:12px;
@@ -378,6 +379,17 @@ input[type="checkbox"] {
 .flaw_box.private {
   background:#555;
 }
+.flaw_box .feedback.empty {
+  padding:5px 10px;
+}
+.flaw_box .feedback.empty p {
+  color:#999;
+  margin-top:0;
+  padding:0;  
+}
+.flaw_box .feedback.empty h2 {
+  font-size:14px;
+}
 .flaw_box.knew {
   background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
   float:left;
@@ -396,7 +408,7 @@ input[type="checkbox"] {
   color:#fff;
 }
 .flaw_box.no_idea h3 {
-  color:#333;
+  color:#666;
 }
 .flaw_box .feedback {
   display:block;
@@ -405,6 +417,8 @@ input[type="checkbox"] {
   -webkit-border-bottom-left-radius:3px;
   -webkit-border-top-right-radius:3px;
   -webkit-border-bottom-right-radius:3px;
+  -moz-box-shadow:1px 3px 7px #999;
+  -webkit-box-shadow:1px 3px 7px #999;
   background:#fff;
   padding:5px;
   margin:10px 0;
