@@ -26,7 +26,7 @@ module FailingsHelper
       when "disagree" then "no_idea"
     end
 
-    link_to_remote image_tag("move_left.png", class: "left", title: "Move left one category", style: "display: none;"),
+    link_to_remote image_tag("move_left.png", class: "left", title: "Move to '#{title_for state}'", style: "display: none;"),
       url: eval("#{state}_failing_path(failing.user, failing)"), method: :put
   end
 
@@ -39,7 +39,7 @@ module FailingsHelper
       when "disagree" then "knew"
     end
 
-    link_to_remote image_tag("move_right.png", class: "right", title: "Move right one category", style: "display: none;"),
+    link_to_remote image_tag("move_right.png", class: "right", title: "Move to '#{title_for state}'", style: "display: none;"),
       url: eval("#{state}_failing_path(failing.user, failing)"), method: :put
   end
 end
