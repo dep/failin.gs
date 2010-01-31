@@ -1,6 +1,6 @@
 FailinGs::Application.routes.draw do |map|
   resource :user_session
-  match "logout", to: "user_sessions#destroy", method: :delete
+  match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
   resource :account, controller: "users"
 

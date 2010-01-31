@@ -31,7 +31,7 @@
             <li><%= link_to "my profile", profile_path(current_user) %></li>
             <li><%= link_to "settings", edit_account_path %></li>
             <li><a href="/pages/invite">invite friends</a> (x)</li>
-            <li><%= link_to "log out", user_session_path, method: :delete %></li>
+            <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "register" %></li>
             <li><%= link_to "log in" %></li>
