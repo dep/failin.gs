@@ -13,21 +13,4 @@
     <h3 class="mod_title">Login</h3>
     <%= render "user_sessions/form" %>
   </div>
-  <div class="floating_box" id="box_important" style="display: none;">
-    <p><strong>failin.gs</strong> is a community where you can have your friends
-    anonymously critique you.</p>
-
-    <p>It's important, though, to make sure that the people who leave you
-    feedback actually do know who you are.</p>
-
-    <p>When someone leaves feedback on you, they will be asked for your last
-    name. Maybe not perfect, but it will keep a lot of fakes at bay.</p>
-
-    <p>You'll have a chance to respond to everyone's feedback. You can even flag
-    things that you think are fake.</p>
-
-    <p>Don't worry. Your last name will not be viewable to anyone.</p>
-
-    <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
-  </div>
 </div>
