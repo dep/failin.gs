@@ -59,6 +59,8 @@ class FailingsController < ApplicationController
         page << "}"
       end
     end
+  rescue ActiveModel::StateMachine::InvalidTransition
+    head :unprocessable_entity
   end
 
   def no_idea
@@ -84,6 +86,8 @@ class FailingsController < ApplicationController
         page << "}"
       end
     end
+  rescue ActiveModel::StateMachine::InvalidTransition
+    head :unprocessable_entity
   end
 
   def disagree
@@ -109,5 +113,7 @@ class FailingsController < ApplicationController
         page << "}"
       end
     end
+  rescue ActiveModel::StateMachine::InvalidTransition
+    head :unprocessable_entity
   end
 end
