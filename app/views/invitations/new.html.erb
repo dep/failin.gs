@@ -1,0 +1,23 @@
+<div>
+  <h2 class="page_title happy">Invite a Friend <span>Extend the fun!</span></h2>
+  <% if App.beta? && current_user.invites_left > 0 %>
+    <p>Do you know someone who could benefit from having an account at <strong>failin.gs</strong>? Perhaps someone who could use some anonymous feedback, if you know what we mean?
+    <p>Just enter their email address below and we'll let them know about our site.</p>
+    <blockquote>
+      We won't even tell them who sent it.
+    </blockquote>
+    <p>We'll let you know when they sign up so you can fill in their flaws ;)</p>
+
+    <% remote_form_for @invitation, url: invitation_path do |f| %>
+      <fieldset class="invite">
+        <%= f.error_messages %>
+        <%# f.error_message_on :email %>
+        <%= f.label :email, "Who do you want to invite?" %>
+        <%= f.text_field :email %>
+        <%= f.submit "Invite" %>
+      </fieldset>
+    <% end %>
+  <% end %>
+  <h3 class="mod_title">Looking to tell people about your profile?</h3>
+  <%= render "send_emails" %>
+</div>

@@ -1,0 +1,9 @@
+<% remote_form_for @invitation, url: invitation_path do |f| %>
+  <fieldset class="invite">
+    <%= f.error_messages %>
+    <%# f.error_message_on :email %>
+    <%= f.label :email, "Who do you want to invite?" %>
+    <%= f.text_field :email %>
+    <%= f.submit "Invite" %>
+  </fieldset>
+<% end %>

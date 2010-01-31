@@ -5,6 +5,8 @@ class MailJob < Struct.new(:record)
       Notifier.new_failing(record).deliver
     when Comment
       Notifier.new_comment(record).deliver
+    when Invitation
+      Notifier.new_invitation(record).deliver
     end
   end
 end

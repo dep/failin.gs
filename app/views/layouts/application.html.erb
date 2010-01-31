@@ -30,7 +30,10 @@
           <% if logged_in? %>
             <li><%= link_to "my profile", profile_path(current_user) %></li>
             <li><%= link_to "settings", edit_account_path %></li>
-            <li><a href="/pages/invite">invite friends</a> (x)</li>
+            <li><%= link_to "invite friends", new_invitation_path %>
+            <% if App.beta? && current_user.invites_left > 0 %>
+              (<span id="invites_left"><%= current_user.invites_left %></span>)</li>
+            <% end %>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "register", new_user_session_path %></li>

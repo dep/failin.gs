@@ -20,6 +20,9 @@
     <%= f.label :password_confirmation, "Twice to be sure:" %>
     <%= f.password_field :password_confirmation %>
 
+    <%= f.label :promo_code, "Promo code?" %>
+    <%= f.text_field :promo_code %>
+
     <%= f.submit "Sign up!" %>
   <% end %>
 </fieldset>

@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
   respond_to :html
 
-  def new
-    respond_with(@user = User.new)
-  end
-
   def create
     @user = User.new params[:user]
+    @user.promo_code = params[:promo_code] if params[:promo_code]
     @user_session = UserSession.new
     if @user.save
       respond_with @user, location: edit_account_path

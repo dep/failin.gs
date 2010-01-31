@@ -4,25 +4,51 @@ class User < ActiveRecord::Base
   has_many :failings
 
   belongs_to :promotion
-  belongs_to :invitation, foreign_key: :invited_id
+  has_one  :invitation,  foreign_key: :invited_id
+
   has_many :invitations, foreign_key: :inviter_id
-  has_many :invited, through: :invitations
+  has_many :invited,     through: :invitations
+
+  attr_reader :promo_code
 
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH, format: /\w+/
   validates_presence_of :surname
-  validate :promotion_should_be_valid, if: :promotion_id?
-  validate :should_be_invited if App.beta?
+  validate :promotion_should_be_valid
+
+  if App.beta?
+    validates_presence_of :invitation, unless: :promo_code?
+  end
 
   def to_param
     login
   end
 
+  def email=(email)
+    super
+    self.invitation = Invitation.find_by_email(email)
+  end
+
+  def promo_code=(promo_code)
+    @promo_code = promo_code
+    self.promotion = Promotion.find_by_code promo_code
+  end
+
+  def promo_code?
+    !@promo_code.blank?
+  end
+
   private
 
   def promotion_should_be_valid
-    if promotion.users.count >= limit
-      errors[:promotion] << "has ended"
+    if promotion_id?
+      if promo_code.present? && promotion.nil?
+        errors[:promo_code] << "is invalid"
+      elsif promotion.users.count >= limit
+        errors[:promotion] << "has ended"
+      end
+    elsif App.beta? && invitation.nil?
+      errors[:promo_code] << "required for uninvited '#{email}'"
     end
   end
 end

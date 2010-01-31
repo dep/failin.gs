@@ -16,4 +16,12 @@ class Notifier < ActionMailer::Base
     mail to: @user.email,
     subject: "New comment!"
   end
+
+  def new_invitation(invitation)
+    @invitation = invitation
+    @inviter = invitation.inviter
+
+    mail_to: @invitation.email,
+    subject: "You've been invited!"
+  end
 end
