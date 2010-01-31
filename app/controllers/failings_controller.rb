@@ -30,6 +30,10 @@ class FailingsController < ApplicationController
   def show
     @user = User.find_by_login! params[:login]
     @failing = @user.failings.find params[:id]
+
+    return unless stale? etag: [@failing, @user == current_user], last_modified: @failing.updated_at, public: !logged_in?
+
+    redirect_to profile_path(@user) if @user.private? && @user != current_user
   end
 
   def knew
