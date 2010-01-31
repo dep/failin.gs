@@ -24,9 +24,17 @@ class User < ActiveRecord::Base
     login
   end
 
+  def invitation_email
+    @invitation_email
+  end
+
+  def invitation_email=(email)
+    @invitation_email = self.invitation = Invitation.find_by_email!(email) unless email.blank?
+  end
+
   def email=(email)
     super
-    self.invitation = Invitation.find_by_email(email)
+    self.invitation ||= Invitation.find_by_email(email)
   end
 
   def promo_code=(promo_code)

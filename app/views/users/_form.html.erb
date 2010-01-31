@@ -1,5 +1,7 @@
 <fieldset id="signup_form" style="<%= 'display: none;' if @user.nil? || controller.is_a?(PagesController) %>">
   <% form_for @user, :url => account_path do |f| %>
+    <%= f.hidden_field :invitation_email, value: params[:invited] %>
+
     <%= f.error_messages %>
 
     <%= f.label :login, "Username:" %>

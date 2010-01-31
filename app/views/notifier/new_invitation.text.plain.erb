@@ -1,0 +1,13 @@
+Hi!
+
+You've been invited by <%= @inviter.login %> to try out failin.gs.
+
+Check out <%= @inviter.login %>'s failings here:
+
+  <%= profile_user(@inviter) %>
+
+Or register here:
+
+  <%= new_session_user_path(invited: @invitation.email) %>
+
+From your friends at failin.gs!
