@@ -3,13 +3,48 @@
 <head>
   <title>failin.gs: don't worry. nobody's perfect.</title>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" media="screen" />
+  <meta name="description" content="failin.gs seeks to answer a that perhaps all of us have asked ourselves at some point: 'What is wrong with me?'">
+  <meta name="keywords" content="failings, flaws, anonymous, social web, social networking, self-improvement, fun">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="/stylesheets/main.css?1264940244" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/prototype.js?1261418738" type="text/javascript"></script>
+
+  <script src="/javascripts/effects.js?1261418738" type="text/javascript"></script>
+  <script src="/javascripts/dragdrop.js?1261418738" type="text/javascript"></script>
+  <script src="/javascripts/controls.js?1261418738" type="text/javascript"></script>
+  <script src="/javascripts/prototype.rails.js?1264795175" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1264882507" type="text/javascript"></script>
 </head>
 <body>
-  <div id="container">
-    <h1>failin.gs: don't worry. nobody's perfect</h1>
-    <h2>Oops! There was a server error.</h2>
-    <a href="/">Home</a>
+  <div id="wrapper">
+    <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
+    <script type="text/javascript">
+      function randomize_logo() {
+        $('logo').style.backgroundImage = "url('/images/logo_" + Math.floor(Math.random()*3) + ".png')";
+      }
+      randomize_logo();
+    </script>
+    <div id="container">
+      <div class="body">
+        <div id="pages" class="terms">
+          <h2 class="page_title angry">500 <span>Server error.</span></h2>
+          <p>Well, shoot.</p>
+          <a href="/">Return home</a>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy 2010 - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
+    </div>
   </div>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-12415011-1");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
 </body>
 </html>

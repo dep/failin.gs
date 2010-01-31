@@ -33,6 +33,33 @@ body {
   background:#fff url(../images/excited.jpg) 90% 0 no-repeat;
   min-height:450px;
 }
+h2.page_title {
+  font-size:32px;
+  color:#444;
+  padding:5px 0 0 50px;
+  margin:0 0 30px 0;
+  font-weight:normal;
+  border-bottom:1px solid #eee;
+}
+h2.page_title span {
+  color:#aaa;
+  padding-left:20px;
+  font-size:20px;
+}
+h2.page_title.happy {
+  background:url(/images/icon_knew.png) top left no-repeat;
+}
+h2.page_title.sad {
+  background:url(/images/icon_no_idea.png) top left no-repeat;
+}
+h2.page_title.angry {
+  background:url(/images/icon_disagree.png) top left no-repeat;
+}
+h3.mod_title {
+  font-size:30px;
+  color:#bbb;
+  margin:10px 0 5px;
+}
 .terms_of_service h3 {
   font-size:14px;
 }
@@ -194,23 +221,23 @@ input[type="checkbox"] {
 }
 
 /* Top-right links */
-#logged_in {
+#top_links {
   position:absolute;
   right:0px;
   top:8px; 
 }
-#logged_in ul {
+#top_links ul {
   list-style:none; 
   margin:0;
 }
-#logged_in ul li {
+#top_links ul li {
   float:left;
   padding:0 5px;
   border-right:1px solid #ccc;
   font-size:12px;
   color:#fff;
 }
-#logged_in ul li:last-child {
+#top_links ul li:last-child {
   border-right:0;
 }
 
@@ -579,4 +606,22 @@ fieldset.invite input[type="submit"] {
   text-shadow:2px 2px 4px #AAAAAA;
   top:32px;
   z-index:10;
+}
+
+/* Login / Register */
+#login_register .col {
+  width:45%;
+}
+#login_register .col_2 {
+  background:#eee;
+  padding:20px;
+  margin-right:20px;
+  border:1px solid #bbb;
+  -moz-border-radius: 10px 10px 10px 10px; 
+  -webkit-border-top-left-radius:10px;
+  -webkit-border-bottom-left-radius:10px;
+  -webkit-border-top-right-radius:10px;
+  -webkit-border-bottom-right-radius:10px;
+  -moz-box-shadow:1px 2px 3px #888;
+  -webkit-box-shadow:1px 2px 3px #888;
 }

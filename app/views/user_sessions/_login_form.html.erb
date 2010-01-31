@@ -1,0 +1,16 @@
+<fieldset id="login_form" style="display:none">
+  <% form_for @user_session, :url => user_session_path do |f| %>
+    <%= f.error_messages %>
+    <div>
+      <%= f.label :login %>
+      <%= f.text_field :login %>
+    </div>
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+</fieldset>

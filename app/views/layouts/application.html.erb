@@ -25,16 +25,19 @@
       randomize_logo();
     </script>
     <div id="container">
-      <% if logged_in? %>
-        <div id="logged_in">
-          <ul>
+      <div id="top_links">
+        <ul>
+          <% if logged_in? %>
             <li><%= link_to "my profile", profile_path(current_user) %></li>
             <li><%= link_to "settings", edit_account_path %></li>
             <li><a href="/pages/invite">invite friends</a> (x)</li>
             <li><%= link_to "log out", user_session_path, method: :delete %></li>
-          </ul>
-        </div>
-      <% end %>
+          <% else %>
+            <li><%= link_to "register" %></li>
+            <li><%= link_to "log in" %></li>
+          <% end %>
+        </ul>
+      </div>
       <p class="social_links">follow us on twitter <a href="http://twitter.com/failings">@failings</a></p>
       <div class="body">
         <div id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
