@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100131172750) do
+ActiveRecord::Schema.define(:version => 20100131181217) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -72,6 +72,25 @@ ActiveRecord::Schema.define(:version => 20100131172750) do
   add_index "failings", ["user_id", "state"], :name => "index_failings_on_user_id_and_state"
   add_index "failings", ["user_id"], :name => "index_failings_on_user_id"
 
+  create_table "invitations", :force => true do |t|
+    t.integer  "inviter_id"
+    t.integer  "invited_id"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["email"], :name => "index_invitations_on_email", :unique => true
+  add_index "invitations", ["invited_id"], :name => "index_invitations_on_invited_id"
+  add_index "invitations", ["inviter_id"], :name => "index_invitations_on_inviter_id"
+
+  create_table "promotions", :force => true do |t|
+    t.string  "code"
+    t.integer "limit", :default => 100
+  end
+
+  add_index "promotions", ["code"], :name => "index_promotions_on_code", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false
     t.string   "email",                              :null => false
@@ -95,12 +114,15 @@ ActiveRecord::Schema.define(:version => 20100131172750) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "private"
+    t.integer  "promotion_id"
+    t.integer  "invites_left",        :default => 5
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
+  add_index "users", ["promotion_id"], :name => "index_users_on_promotion_id"
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token", :unique => true
 
   create_table "votes", :force => true do |t|

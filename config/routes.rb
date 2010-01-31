@@ -19,7 +19,7 @@ FailinGs::Application.routes.draw do |map|
   match "pages/:action", to: "pages", action: /[a-z-]+/
   match "profile/:login", to: "failings#index", as: :profile
 
-  # resource :emails
+  resource :invitations, only: %w(new create)
   # root to: "emails#new"
 
   root to: "pages#root"
