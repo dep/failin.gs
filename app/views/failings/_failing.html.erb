@@ -1,4 +1,16 @@
-<% div_for failing, class: "feedback #{css_class_for failing.state}" do %>
+<%
+  votes_class = ""
+  if failing.votes_score < -4
+    votes_class = "opacity_low"
+  elsif failing.votes_score < -2
+    votes_class = "opacity_med"
+  elsif failing.votes_score < 0
+    votes_class = "opacity_high"
+  else
+    votes_class = "opacity_full"
+  end
+%>
+<% div_for failing, class: "feedback #{css_class_for failing.state} #{votes_class}" do %>
   <div class="toolbar<%= ' move' if current_user == failing.user %>">
     <% if failing.state != "knew" %>
       <%= move_left_link failing if current_user == failing.user %>

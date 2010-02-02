@@ -355,7 +355,7 @@ input[type="checkbox"] {
 #flaw_area {
   float:left;
   width:605px;
-  border-left:1px solid #eaeaea;
+  border-left:1px dashed #efefef;
   padding-left:10px;
   margin-left:5px;
 } 
@@ -461,6 +461,18 @@ span.create_date a {
   padding:5px;
   margin:10px 0;
 }
+.flaw_box .feedback.opacity_high {
+  opacity:0.8;
+}
+.flaw_box .feedback.opacity_med {
+  opacity:0.5;
+}
+.flaw_box .feedback.opacity_low {
+  opacity:0.2;
+}
+.flaw_box .feedback.opacity_full {
+  opacity:1.0;
+}
 .flaw_box .feedback img.left,
 .flaw_box .feedback img.right {
   position:absolute;
@@ -559,6 +571,10 @@ span.create_date a {
 }
 #user_profile.edit .announce {
   width:220px;
+}
+.success_text {
+  color:green;
+  font-size:18px;
 }
 .error_text {
   padding:5px 0;

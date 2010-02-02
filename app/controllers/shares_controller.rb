@@ -16,7 +16,7 @@ class SharesController < ApplicationController
           render :update do |page|
             @share = Share.new
             page[@share].replace_html partial: "form"
-            page.insert_html :top, dom_id(@share), "Thanks for inviting your friends!"
+            page.insert_html :top, dom_id(@share), "<p class='success_text'>Thanks for inviting your friends!</p>"
           end
         }
       end
