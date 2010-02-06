@@ -1,4 +1,4 @@
-<% remote_form_for @invitation, url: invitation_path do |f| %>
+<% form_for @invitation, url: invitation_path, remote: true do |f| %>
   <fieldset class="invite">
     <%= f.error_messages %>
     <%# f.error_message_on :email %>

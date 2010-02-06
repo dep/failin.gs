@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :promotion
   has_one  :invitation,  foreign_key: :invited_id
+  has_one  :inviter,     through: :invitation
 
   has_many :invitations, foreign_key: :inviter_id
   has_many :invited,     through: :invitations

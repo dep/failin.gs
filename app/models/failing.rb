@@ -7,8 +7,9 @@ class Failing < ActiveRecord::Base
   has_many :abuses, as: :content
 
   attr_accessor :surname
+  validates_presence_of :user
   validates_length_of :about, in: 1..145
-  validate :verified, on: :create
+  validate :verified, on: :create, if: :user
 
   after_save :touch_user
 
@@ -17,29 +18,31 @@ class Failing < ActiveRecord::Base
   scope :no_idea,      where(state: "no_idea").order("score DESC")
   scope :disagree,     where(state: "disagree").order("score DESC")
 
-  include ActiveRecord::StateMachine
-  state_machine do
-    state :needs_review
-    state :knew
-    state :no_idea
-    state :disagree
-    state :abused
+  include AASM
 
-    event :knew do
-      transitions to: :knew, from: %w(needs_review no_idea disagree)
-    end
+  aasm_column :state
+  aasm_initial_state :needs_review
 
-    event :no_idea do
-      transitions to: :no_idea, from: %w(needs_review knew disagree)
-    end
+  aasm_state :needs_review
+  aasm_state :knew
+  aasm_state :no_idea
+  aasm_state :disagree
+  aasm_state :abused
 
-    event :disagree do
-      transitions to: :disagree, from: %w(needs_review knew no_idea)
-    end
+  aasm_event :knew do
+    transitions to: :knew, from: %w(needs_review no_idea disagree)
+  end
 
-    event :abuse do
-      transitions to: :abuse, from: %w(needs_review knew no_idea disagree)
-    end
+  aasm_event :no_idea do
+    transitions to: :no_idea, from: %w(needs_review knew disagree)
+  end
+
+  aasm_event :disagree do
+    transitions to: :disagree, from: %w(needs_review knew no_idea)
+  end
+
+  aasm_event :abuse do
+    transitions to: :abuse, from: %w(needs_review knew no_idea disagree)
   end
 
   def votes_score
@@ -55,7 +58,7 @@ class Failing < ActiveRecord::Base
   end
 
   def verify_surname
-    @surname.downcase == user.surname.downcase
+    surname.to_s.downcase == user.surname.downcase
   end
 
   def already_verified

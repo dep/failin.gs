@@ -1,19 +1,15 @@
-clear_sources
-source "http://gems.rubyforge.org"
-
-disable_system_gems
-# disable_rubygems
+source 'http://gemcutter.org'
 
 # Rails
 gem "rails", git: "git://github.com/rails/rails.git"
-gem "arel",  git: "git://github.com/rails/arel.git"
 
 # Configuration
 gem "mysql", "2.8.1"
-gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
+# gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
 gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
+gem "aasm",      git: "git://github.com/stephencelis/aasm.git"
 
-only :development do
+group :development do
   gem "ghi"
   gem "heroku"
 end

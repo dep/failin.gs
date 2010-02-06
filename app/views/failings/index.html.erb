@@ -21,7 +21,7 @@
   <!-- flash message area for full page turns -->
   <div id="flash_msg_container" class="notify_box flash">
     <h3 class="mod_title">This is a flash message.</h3>
-    <%= link_to_function "x", "$('flash_msg_container').fade();", class: "close" %>
+    <%= link_to "x", "#", onclick: "$('flash_msg_container').fade(); return false;", class: "close" %>
   </div>
   <!-- end flash message area -->
   <% form_for @failing do |f| %>
@@ -38,7 +38,7 @@
       <%= f.text_field :surname %>
       <%= f.submit "Ok - Send!" %>
 
-      <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
+      <%= link_to "x", "#", onclick: "$('box_validate').fade(); return false;", class: "close" %>
     </div>
     <fieldset id="flaw_entry">
       <h2>What is wrong with me?</h2>
@@ -59,7 +59,7 @@
   <!-- else -->
     <% if !@user.private? || @user == current_user %>
       <% %w(needs_review knew no_idea disagree).each do |state| %>
-        <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
+        <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe if state == "needs_review" && @user.failings.send(state).none? %>>
           <h3><%= title_for state %></h3>
           <div id="<%= state %>">
             <%= render partial: "empty_category", locals: { :any => @user.failings.send(state).any? } %>

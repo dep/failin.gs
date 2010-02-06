@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def gravatar_for(user, *args)
-    user.email ||= "" and super.html_safe!
+    user.email ||= "" and super.html_safe
   end
 
   def image_url(*args)

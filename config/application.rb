@@ -1,5 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'rails/all'
+
+# Auto-require default libraries and those for the current Rails environment.
+Bundler.require :default, Rails.env
+
 module FailinGs
   class Application < Rails::Application
     require "config/app"
@@ -37,9 +42,6 @@ module FailinGs
     config.filter_parameters << :password
 
     config.after_initialize do
-      require "authlogic"
-      require "rerails"
-
       if $0 == "script/console"
         ActiveRecord::Base.logger = Logger.new STDOUT
       end

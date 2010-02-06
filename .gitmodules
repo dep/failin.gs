@@ -1,6 +1,3 @@
-[submodule "vendor/bundler"]
-	path = vendor/bundler
-	url = git://github.com/wycats/bundler.git
 [submodule "vendor/plugins/gravatar-plugin"]
-	path = vendor/plugins/gravatar-plugin
-	url = git://github.com/woods/gravatar-plugin.git
+        path = vendor/plugins/gravatar-plugin
+        url = git://github.com/woods/gravatar-plugin.git

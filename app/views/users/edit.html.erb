@@ -2,7 +2,7 @@
   <div class="pic_area">
     <%= gravatar_for @user, default: image_url("default_pic.png"), size: 200 %>
     <p>
-      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup">Gravatar</a>. 
+      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup">Gravatar</a>.
       We prefer it because your Gravatar image will always be there on participating sites, making things
       easier for you. You only need to set it up once and then you're good to go.
     </p>
@@ -18,7 +18,7 @@
       <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max #%>
 
       <%= f.label :surname, "Your <strong>real</strong> last name:" %>
-      (<%= link_to_function "Why we ask", "$('box_important').appear()" %>):
+      (<%= link_to "Why we ask", "#", "$('box_important').appear(); return false;" %>):
       <%= f.text_field :surname %>
 
       <%= f.label :email, "Email address:" %>

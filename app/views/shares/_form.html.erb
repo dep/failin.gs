@@ -1,4 +1,4 @@
-<% remote_form_for @share, url: share_path do |f| %>
+<% form_for @share, url: share_path, remote: true do |f| %>
   <fieldset>
     <%= f.error_messages %>
     <%= f.text_area "emails", rows: 5 %>

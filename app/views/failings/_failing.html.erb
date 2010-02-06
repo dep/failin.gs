@@ -18,15 +18,15 @@
     <strong><%= failing.votes_score %></strong> votes
     <% unless voted_on? failing %>
       |
-      <%= link_to_remote "agree", url: failing_vote_path(failing.user, failing, agree: true), method: :post %> -
-      <%= link_to_remote "disagree", url: failing_vote_path(failing.user, failing), method: :post %>
+      <%= link_to "agree", url: failing_vote_path(failing.user, failing, agree: true), remote: true, method: :post %> -
+      <%= link_to "disagree", url: failing_vote_path(failing.user, failing), remote: true, method: :post %>
     <% end %>
     <% if failing.state != "disagree" %>
       <%= move_right_link failing if current_user == failing.user %>
     <% end %>
   </div>
   <div class="feedback_text">
-    <%= simple_format(h(failing.about)).html_safe! %>
+    <%= simple_format(h(failing.about)).html_safe %>
     <span class="create_date"><%= link_to failing.created_at.to_s(:timestamp), failing_url(failing.user, failing), :title => "Permalink" %></span>
   </div>
   <div id="<%= dom_id failing, :comments %>">
@@ -36,22 +36,22 @@
     <% if failing.user == current_user && failing.needs_review? %>
       <div class="left">
         <img src="/images/icon_knew.png" alt="I knew this" />
-        <%= link_to_remote "I knew this", url: knew_failing_path(failing.user, failing), method: :put %>
+        <%= link_to "I knew this", url: knew_failing_path(failing.user, failing), remote: true, method: :put %>
         <img src="/images/icon_no_idea.png" alt="I had no idea!" />
-        <%= link_to_remote "I had no idea!", url: no_idea_failing_path(failing.user, failing), method: :put %>
+        <%= link_to "I had no idea!", url: no_idea_failing_path(failing.user, failing), remote: true, method: :put %>
         <img src="/images/icon_disagree.png" alt="I disagree completely" />
-        <%= link_to_remote "I disagree completely", url: disagree_failing_path(failing.user, failing), method: :put %>
+        <%= link_to "I disagree completely", url: disagree_failing_path(failing.user, failing), remote: true, method: :put %>
       </div>
     <% end %>
     <div class="right">
       <% unless reported? failing %>
-        <%= link_to_remote "report abuse", url: failing_abuse_path(failing.user, failing), method: :post, html: { class: "abuse" } %> -
+        <%= link_to "report abuse", url: failing_abuse_path(failing.user, failing), remote: true, method: :post, html: { class: "abuse" } %> -
       <% end %>
       <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show().select('textarea')[0].focus()">reply</span>
     </div>
   </div>
   <div class="reply_wrapper" style="display: none;">
-    <% remote_form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
+    <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing), remote: true do |f| %>
       <div>
         <%= f.text_area :text, :rows => "2" %>
         <%= f.submit %>

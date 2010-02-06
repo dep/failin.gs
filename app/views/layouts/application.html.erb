@@ -49,7 +49,7 @@
       </div>
     </div>
     <div id="footer">
-      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
+      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
     </div>
   </div>
   <div class="floating_box" id="box_important" style="display: none;">
@@ -67,18 +67,18 @@
 
     <p>Don't worry. Your last name will not be viewable to anyone.</p>
 
-    <%= link_to_function "x", "$('box_important').fade(); $('lastname').focus();", class: "close" %>
+    <%= link_to "x", "#", onclick: "$('box_important').fade(); $('lastname').focus(); return false;", class: "close" %>
   </div>
   <div class="floating_box" id="email_preview" style="display:none;">
     <p>Hello!</p>
     <p>
-      You've been invited to leave anonymous feedback on your friend, [your name here] using 
-      a website called failin.gs -- a completely anonymous way for people to tell each other 
-      what they could improve upon! 
+      You've been invited to leave anonymous feedback on your friend, [your name here] using
+      a website called failin.gs -- a completely anonymous way for people to tell each other
+      what they could improve upon!
     </p>
     <p>
       This person obviously values your opinion, so do drop by and enter a few words. Your
-      identity will not be revealed and in fact, you won't even be asked to register to 
+      identity will not be revealed and in fact, you won't even be asked to register to
       leave a comment for them.
     </p>
     <p>
@@ -88,13 +88,13 @@
       Thank you and have a great day.<br/>
       The failin.gs gang
     </p>
-    <%= link_to_function "x", "$('email_preview').fade()", class: "close" %>
+    <%= link_to "x", "#", onclick: "$('email_preview').fade(); return false;", class: "close" %>
   </div>
   <a title="Real Time Web Analytics" href="http://getclicky.com/180431"><img alt="Real Time Web Analytics" src="http://static.getclicky.com/media/links/badge.gif" border="0" /></a>
   <script src="http://static.getclicky.com/js" type="text/javascript"></script>
   <script type="text/javascript">clicky.init(180431);</script>
   <noscript><p><img alt="Clicky" width="1" height="1" src="http://static.getclicky.com/180431ns.gif" /></p></noscript>
-  
+
   <script type="text/javascript">
   var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
   document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

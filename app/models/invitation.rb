@@ -9,7 +9,7 @@ class Invitation < ActiveRecord::Base
   validate :should_be_invitable
   after_save :decrement_invites_left
 
-  def save
+  def save(*)
     super
   rescue ActiveRecord::RecordNotUnique => e
     errors.add :email, "has already been invited"
