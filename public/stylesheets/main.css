@@ -464,6 +464,9 @@ span.create_date a {
   padding:5px;
   margin:10px 0;
 }
+.flaw_box .feedback.unread {
+  border:5px solid #333;
+}
 .flaw_box .feedback.opacity_high {
   opacity:0.8;
 }
@@ -677,7 +680,7 @@ fieldset.invite input[type="submit"] {
   -webkit-box-shadow:1px 2px 3px #888;
 }
 
-/* Failing show */
+/* Failing show for individual failing. */
 .body .show .feedback {
   border:1px solid #ccc;
 }
