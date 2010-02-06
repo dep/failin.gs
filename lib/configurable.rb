@@ -33,10 +33,10 @@ class Configurable
     def inherited(subclass)
       return unless defined? Rails
 
-      config = Rails.root.
-        join "config", File.basename(__FILE__, ".rb"), Rails.env
+      config = Rails.root.join "config", subclass.__name__.underscore,
+        Rails.env
 
-      load config if File.exist?(config)
+      require config if File.exist? "#{config}.rb"
     end
   end
 end

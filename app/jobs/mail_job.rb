@@ -9,6 +9,8 @@ class MailJob < Struct.new(:record)
       Notifier.new_invitation(record).deliver
     when Share
       Notifier.new_share(record).deliver
+    when User
+      Notifier.newly_invited(record).deliver
     end
   end
 end

@@ -1,6 +1,21 @@
 class Notifier < ActionMailer::Base
   default :from => "notifier@failin.gs"
 
+  def new_user(user)
+    @user = user
+
+    mail to: @user.email,
+    subject: "Welcome to failin.gs!"
+  end
+
+  def newly_invited(user)
+    @inviter = user.invitation.inviter
+    @invited = user
+
+    mail to: @inviter.email,
+    subject: "#{@invited.email} has joined failin.gs!"
+  end
+
   def new_failing(failing)
     @failing = failing
     @user = failing.user

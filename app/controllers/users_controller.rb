@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @user.promo_code = params[:promo_code] if params[:promo_code]
     @user_session = UserSession.new
     if @user.save
+      if @user.invitation
+        Delayed::Job.enqueue MailJob.new(@user)
+      end
       respond_with @user, location: edit_account_path
     else
       render "user_sessions/new"

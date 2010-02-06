@@ -10,7 +10,7 @@
     votes_class = "opacity_full"
   end
 %>
-<% div_for failing, class: "feedback #{css_class_for failing.state} #{votes_class}" do %>
+<% div_for failing, class: "feedback #{css_class_for failing.state} #{votes_class}#{ ' unread' if failing.comments.any? { |comment| comment.created_at > 1.day.ago } }" do %>
   <div class="toolbar<%= ' move' if current_user == failing.user %>">
     <% if failing.state != "knew" %>
       <%= move_left_link failing if current_user == failing.user %>

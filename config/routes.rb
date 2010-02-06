@@ -3,6 +3,7 @@ FailinGs::Application.routes.draw do |map|
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
   resource :account, controller: "users", only: %w(create edit update destroy)
+  resource :password, only: %w(new edit update destroy)
 
   resources :failings, as: "profile/:login/failings", only: %w(create show) do
     member do
