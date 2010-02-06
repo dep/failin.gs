@@ -9,7 +9,7 @@
 
     <% f.label :surname do %>
       Your <strong>real</strong> last name:
-      (<%= link_to "Why we ask", "#", "$('box_important').appear(); return false;" %>):
+      (<%= link_to "Why we ask", "#", onclick: "$('box_important').appear(); return false;" %>):
     <% end %>
     <%= f.text_field :surname %>
 
