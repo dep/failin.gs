@@ -1,0 +1,25 @@
+<% form_for @failing do |f| %>
+  <div class="floating_box" id="box_validate" style="display:none">
+    <p><strong>failin.gs</strong> is a community where you can anonymously
+    critique your friends' various personality flaws.</p>
+
+    <p>It's important, though, to make sure that the people who leave
+    feedback actually know the person they're critiquing.</p>
+
+    <p>In order to post this feedback, please enter the last name of the
+    person you are critiquing.</p>
+
+    <%= f.text_field :surname %>
+    <%= f.submit "Ok - Send!" %>
+
+    <%= link_to_function "x", "$('box_validate').fade();", class: "close" %>
+  </div>
+  <fieldset id="flaw_entry">
+    <h2>What is wrong with me?</h2>
+    <%= f.error_messages %>
+
+    <%= f.text_area :about, :rows => "2", :cols => "50", :maxlength => "145", :onkeyup => "return ismaxlength(this)" %>
+    <button type="button" onclick="$('box_validate').show(); $('failing_surname').focus();">Submit</button>
+    <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
+  </fieldset>
+<% end %>

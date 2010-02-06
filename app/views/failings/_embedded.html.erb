@@ -1,0 +1,138 @@
+<style type="text/css">
+  #failings_flaw_area {
+    background:#fff!important;
+    font-size:62.5%!important;
+    text-align:left!important;
+    font-family:Helvetica, Arial!important; 
+    border:1px solid #eee;
+    -moz-border-radius: 10px 10px 10px 10px!important; 
+    -webkit-border-top-left-radius:10px!important;
+    -webkit-border-bottom-left-radius:10px!important;
+    -webkit-border-top-right-radius:10px!important;
+    -webkit-border-bottom-right-radius:10px!important;
+  }
+  #failings_flaw_area fieldset#flaw_entry h2 {
+    margin:0 0 10px 0!important;
+    font-size:36px!important;
+    color:#888!important;
+    padding-left:45px!important;
+    background:url(http://failin.gs/images/icon_knew.png) top left no-repeat!important;
+  }
+  #failings_flaw_area #flaw_entry .errorExplanation h2 {
+    font-size:20px!important;
+  }
+  #failings_flaw_area fieldset#flaw_entry textarea {
+    width:78%!important;
+    font-weight:normal!important;
+    font-size:18px!important;
+    font-family:Helvetica, Arial!important;
+    float:left!important;
+    height:56px!important;
+  }
+  #failings_flaw_area .char_limit {
+    display:block!important;
+    clear:both!important;
+  }
+  #failings_flaw_area fieldset button {
+    font-size:24px!important;
+    float:left!important;
+    height:59px!important;
+    margin-left:10px!important;
+    cursor:pointer!important;
+  }
+  #failings_flaw_area .close {
+    position:absolute!important;
+    top:0!important;
+    right:5px!important;
+    color:#fff!important;
+    font-size:30px!important;
+  }
+  #failings_flaw_area .notify_box {
+    position:relative!important;
+    padding:10px!important;
+    margin:10px 25px 20px 10px!important;
+    border:1px solid #ccc!important;
+    background:#fafafa!important;
+  }
+  #failings_flaw_area .notify_box .close {
+    color:#555!important;
+  }
+  #failings_flaw_area .notify_box.flash {
+    background:#ffffe7!important;
+  }
+  #failings_flaw_area .floating_box {
+    text-align:left!important;
+    width:300px!important;
+    -moz-border-radius: 10px 10px 10px 10px!important; 
+    -webkit-border-top-left-radius:10px!important;
+    -webkit-border-bottom-left-radius:10px!important;
+    -webkit-border-top-right-radius:10px!important;
+    -webkit-border-bottom-right-radius:10px!important;
+    border-style:solid!important;
+    border-width:1px!important;
+    border-color:#777!important;
+    position:absolute!important;
+    padding:20px 10px!important;
+    background:#222!important;
+    opacity:0.9!important;
+    z-index:999!important;
+  }
+  #failings_flaw_area .floating_box p {
+    font-size:12px!important;
+    color:#eee!important;
+  }
+  #failings_flaw_area fieldset {
+    border:0!important;
+  }
+  #failings_flaw_area h3.mod_title {
+    font-size:30px!important;
+    color:#bbb!important;
+    margin:10px 0 5px!important;
+  }
+  #failings_flaw_area .powered_by {
+    font-size:11px!important;
+    display:block!important;
+    text-align:right!important;
+  }
+</style>
+<script type="text/javascript">
+  function ismaxlength(obj){
+    var mlength=obj.getAttribute? parseInt(obj.getAttribute("maxlength")) : ""
+    if (obj.getAttribute && obj.value.length>mlength)
+    obj.value=obj.value.substring(0,mlength)
+    document.getElementById('char_limit').innerHTML = mlength - obj.value.length;
+  }
+</script>
+<div id="failings_flaw_area">
+  <!-- flash message area for full page turns -->
+    <div id="flash_msg_container" class="notify_box flash">
+      <h3 class="mod_title">This is a flash message.</h3>
+      <a class="close" href="#" onclick="document.getElementById('flash_msg_container').style.display='none'; return false;">x</a>
+    </div>
+  <!-- end flash message area -->
+  <form action="/profile/dep/failings" class="new_failing" id="new_failing" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="M+51APuVFflHY9qUCBo3y4cbasEBZWi/gRaGN3gE7yQ=" /></div>
+    <div class="floating_box" id="box_validate_lastname" style="display:none">
+      <p><strong>failin.gs</strong> is a community where you can anonymously
+      critique your friends' various personality flaws.</p>
+
+      <p>It's important, though, to make sure that the people who leave
+      feedback actually know the person they're critiquing.</p>
+
+      <p>In order to post this feedback, please enter the last name of the
+      person you are critiquing.</p>
+
+      <input id="failing_surname" name="failing[surname]" size="30" type="text" />
+      <input id="failing_submit" name="commit" type="submit" value="Ok - Send!" />
+
+      <a class="close" href="#" onclick="document.getElementById('box_validate_lastname').style.display='none'; return false;">x</a>
+    </div>
+    <fieldset id="flaw_entry">
+      <h2>What is wrong with me?</h2>
+
+      <textarea cols="50" id="failing_about" maxlength="145" name="failing[about]" onkeyup="return ismaxlength(this)" rows="2"></textarea>
+      <button type="button" onclick="document.getElementById('box_validate_lastname').style.display=''; document.getElementById('failing_surname').focus();">Submit</button>
+      <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
+    </fieldset>
+  </form>
+  <p class="powered_by">Powered by <a href="http://failin.gs">failin.gs</a>. Find out your flaws today.</p>
+</div>
