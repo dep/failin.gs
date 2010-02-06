@@ -109,7 +109,7 @@ a, a:visited {
   color:#c1d2ee;
 }
 strong {
-  text-shadow: 1px 1px 2px #a7a7a7;
+  text-shadow: 1px 1px 2px #e7e7e7;
 }
 a:hover {
   text-decoration:underline; 
@@ -425,11 +425,15 @@ input[type="checkbox"] {
 .feedback.empty h2 {
   font-size:14px;
 }
+span.create_date {
+  padding-top:10px;
+}
 span.create_date a {
   background:url(/images/icon_chain.gif) top left no-repeat;
   padding-left:20px;
   text-align:left;
   margin-left:5px;
+  font-size:11px;
 }
 .flaw_box.knew {
   background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
@@ -546,6 +550,10 @@ span.create_date a {
 }
 .feedback .comment p {
   font-size:10px;
+}
+.feedback .feedback_text,
+.feedback .comment {
+  overflow:hidden;
 }
 .feedback .feedback_text span,
 .feedback .comment span {
