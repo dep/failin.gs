@@ -60,6 +60,9 @@ h3.mod_title {
   color:#bbb;
   margin:10px 0 5px;
 }
+.dark {
+  color:#666 !important;
+}
 .terms_of_service h3 {
   font-size:14px;
 }
@@ -707,7 +710,10 @@ fieldset.invite input[type="submit"] {
   border:1px solid #ccc;
   background:#fafafa;
 }
-#empty_account ol li {
+#empty_account h3 {
+  margin-top:30px;
+}
+#empty_account li {
   font-size:24px;
   padding:5px 0;
   color:#999;
