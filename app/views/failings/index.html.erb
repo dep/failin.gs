@@ -26,9 +26,9 @@
     <%= render "private" %>
   <% end %>
 
-  <!-- if profile is empty -->
+  <%- if @user.failings.count.zero? -%>
     <%= render "empty_profile" %>
-  <!-- else -->
+  <% else %>
     <% if !@user.private? || @user == current_user %>
       <% %w(needs_review knew no_idea disagree).each do |state| %>
         <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe if state == "needs_review" && @user.failings.send(state).none? %>>
@@ -40,7 +40,7 @@
         </div>
       <% end %>
     <% end %>
-  <!-- end -->
+  <% end %>
 </div>
 
 <% if @user == current_user %>
