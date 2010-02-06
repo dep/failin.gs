@@ -27,7 +27,7 @@ module FailingsHelper
     end
 
     link_to image_tag("move_left.png", class: "left", title: "Move to '#{title_for state}'", style: "display: none;"),
-      url: eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put
+      eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put
   end
 
   def move_right_link(failing)
@@ -40,6 +40,6 @@ module FailingsHelper
     end
 
     link_to image_tag("move_right.png", class: "right", title: "Move to '#{title_for state}'", style: "display: none;"),
-      url: eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put
+      eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put
   end
 end

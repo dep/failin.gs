@@ -18,8 +18,8 @@
     <strong><%= failing.votes_score %></strong> votes
     <% unless voted_on? failing %>
       |
-      <%= link_to "agree", url: failing_vote_path(failing.user, failing, agree: true), remote: true, method: :post %> -
-      <%= link_to "disagree", url: failing_vote_path(failing.user, failing), remote: true, method: :post %>
+      <%= link_to "agree", failing_vote_path(failing.user, failing, agree: true), remote: true, method: :post %> -
+      <%= link_to "disagree", failing_vote_path(failing.user, failing), remote: true, method: :post %>
     <% end %>
     <% if failing.state != "disagree" %>
       <%= move_right_link failing if current_user == failing.user %>
@@ -36,16 +36,16 @@
     <% if failing.user == current_user && failing.needs_review? %>
       <div class="left">
         <img src="/images/icon_knew.png" alt="I knew this" />
-        <%= link_to "I knew this", url: knew_failing_path(failing.user, failing), remote: true, method: :put %>
+        <%= link_to "I knew this", knew_failing_path(failing.user, failing), remote: true, method: :put %>
         <img src="/images/icon_no_idea.png" alt="I had no idea!" />
-        <%= link_to "I had no idea!", url: no_idea_failing_path(failing.user, failing), remote: true, method: :put %>
+        <%= link_to "I had no idea!", no_idea_failing_path(failing.user, failing), remote: true, method: :put %>
         <img src="/images/icon_disagree.png" alt="I disagree completely" />
-        <%= link_to "I disagree completely", url: disagree_failing_path(failing.user, failing), remote: true, method: :put %>
+        <%= link_to "I disagree completely", disagree_failing_path(failing.user, failing), remote: true, method: :put %>
       </div>
     <% end %>
     <div class="right">
       <% unless reported? failing %>
-        <%= link_to "report abuse", url: failing_abuse_path(failing.user, failing), remote: true, method: :post, html: { class: "abuse" } %> -
+        <%= link_to "report abuse", failing_abuse_path(failing.user, failing), remote: true, method: :post, class: "abuse" %> -
       <% end %>
       <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show().select('textarea')[0].focus()">reply</span>
     </div>
