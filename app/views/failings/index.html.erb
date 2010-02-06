@@ -7,7 +7,7 @@
       <p>Now that you have a profile, <a href="/share/new">send it to everyone you know</a> so they can
       provide you with your anonymous constructive criticism!</p>
 
-      <p><a href="/pages/email">Use our emailer</a> or:</p>
+      <p><a href="/share/new">Use our emailer</a> or:</p>
 
       <div class="share_links">
         <a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
@@ -48,17 +48,21 @@
     <%= render partial: "private" %>
   <% end %>
 
-  <% if !@user.private? || @user == current_user %>
-    <% %w(needs_review knew no_idea disagree).each do |state| %>
-      <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
-        <h3><%= title_for state %></h3>
-        <div id="<%= state %>">
-          <%= render partial: "empty_category", locals: { :any => @user.failings.send(state).any? } %>
-          <%= render partial: "failing", collection: @user.failings.send(state) %>
+  <!-- if profile is empty -->
+    <%= render partial: "empty_profile" %>
+  <!-- else -->
+    <% if !@user.private? || @user == current_user %>
+      <% %w(needs_review knew no_idea disagree).each do |state| %>
+        <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe! if state == "needs_review" && @user.failings.send(state).none? %>>
+          <h3><%= title_for state %></h3>
+          <div id="<%= state %>">
+            <%= render partial: "empty_category", locals: { :any => @user.failings.send(state).any? } %>
+            <%= render partial: "failing", collection: @user.failings.send(state) %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  <!-- end -->
 </div>
 
 <% if @user == current_user %>

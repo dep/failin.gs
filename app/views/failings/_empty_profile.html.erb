@@ -1,0 +1,16 @@
+<div id="empty_account">
+  <h2 class="page_title knew">Welcome to failin.gs, <%= @user.login %>!</h2>
+  <p>
+    You have a brand new account here. That means you need to 
+    <strong>get your account out there</strong> for your friends to see!
+  </p>
+  <p>
+    There are a few ways to do this!
+  </p>
+  <ol>
+    <li><a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!">Tweet your profile</a> to all of your followers</li>
+    <li><a href="http://www.facebook.com/sharer.php?u=<%= profile_url(@user) %>&src=sp">Share</a> the link with your Facebook friends</li>
+    <li><a href="/share/new">Email your link</a> to everyone you can think of</li>
+    <li><a href="">Embed a mini profile</a> in to your personal webpage, blog, or MySpace profile</li>
+  </ol>
+</div>

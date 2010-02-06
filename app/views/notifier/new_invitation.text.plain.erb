@@ -1,13 +1,17 @@
-Hi!
+Hello!
 
-You've been invited by <%= @inviter.login %> to try out failin.gs.
+One of your friends has requested that you create an account at http://failin.gs!
 
-Check out <%= @inviter.login %>'s failings here:
+Failin.gs is a website that allows you to sign up and let your friends leave anonymous feedback on you, so someone obviously has something to say to you.
 
-  <%= profile_user(@inviter) %>
+Curious?  Sign up for a free account and the person that requested your feedback will be notified to populate your profile with their feedback.
 
-Or register here:
+We all want to improve, don't we?
+
+Register here:
 
   <%= new_session_user_path(invited: @invitation.email) %>
+
+If you do not wish to register, you don't need to do anything.  Just ignore this email.  We did not store your email address and will not contact you again.
 
 From your friends at failin.gs!
