@@ -17,6 +17,7 @@ First, get Ruby 1.9.1 up and running.
 Then, prepare the application.
 
   % git submodule update --init
-  % script/bundle
+  % gem install bundler
+  % bundle install
   % cp config/database.yml.example config/database.yml
-  % bin/rake db:create:all db:migrate
+  % rake db:create:all db:migrate
