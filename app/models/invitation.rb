@@ -6,22 +6,17 @@ class Invitation < ActiveRecord::Base
 
   validates_presence_of :inviter, :email
   validates_format_of :email, with: Authlogic::Regex.email, message: "doesn't look like an email", allow_blank: true
+  validates_uniqueness_of :email, message: "has already been invited"
   validate :should_be_invitable
   after_save :decrement_invites_left
-
-  def save(*)
-    super
-  rescue ActiveRecord::RecordNotUnique => e
-    errors.add :email, "has already been invited"
-  end
 
   private
 
   def should_be_invitable
     if inviter.invites_left <= 0
-      errors.add :inviter, "is out of invites"
+      errors[:inviter] << "is out of invites"
     elsif User.find_by_email(email)
-      errors.add :email, "is already a member"
+      errors[:email] << "is already a member"
     end
   end
 

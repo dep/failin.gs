@@ -1,9 +1,0 @@
-if @invitation.new_record?
-  page[@invitation].replace partial: "form"
-else
-  email = @invitation.email
-  @invitation = Invitation.new
-  page[@invitation].replace partial: "form"
-  page.insert_html :top, dom_id(@invitation), "Thanks for inviting #{email}!"
-  page["invites_left"].replace_html current_user.invites_left - 1
-end
