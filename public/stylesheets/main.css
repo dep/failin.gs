@@ -336,7 +336,7 @@ input[type="checkbox"] {
   font-size:12px;
   color:#eee;
 }
-.floating_box .close {
+.close {
   position:absolute;
   top:0;
   right:5px;
@@ -704,11 +704,18 @@ fieldset.invite input[type="submit"] {
 }
 
 /* Empty account */
-#empty_account {
+.notify_box {
+  position:relative;
   padding:10px;
   margin:10px 25px 20px 10px;
   border:1px solid #ccc;
   background:#fafafa;
+}
+.notify_box .close {
+  color:#555;
+}
+.notify_box.flash {
+  background:#ffffe7;
 }
 #empty_account h3 {
   margin-top:30px;

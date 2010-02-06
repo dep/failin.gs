@@ -18,6 +18,12 @@
 </div>
 
 <div id="flaw_area">
+  <!-- flash message area for full page turns -->
+  <div id="flash_msg_container" class="notify_box flash">
+    <h3 class="mod_title">This is a flash message.</h3>
+    <%= link_to_function "x", "$('flash_msg_container').fade();", class: "close" %>
+  </div>
+  <!-- end flash message area -->
   <% form_for @failing do |f| %>
     <div class="floating_box" id="box_validate" style="display:none">
       <p><strong>failin.gs</strong> is a community where you can anonymously
