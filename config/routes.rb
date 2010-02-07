@@ -20,7 +20,7 @@ FailinGs::Application.routes.draw do |map|
   resource :invitation, only: %w(new create)
   resource :share,      only: %w(new create)
 
-  match "profile/:login", to: "failings#index", as: :profile
+  match "profile/:login(.:format)", to: "failings#index", as: :profile
   match "pages/:action",  to: "pages", action: /[a-z-]+/
 
   # root to: "emails#new"

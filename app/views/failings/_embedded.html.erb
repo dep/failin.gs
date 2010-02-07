@@ -3,9 +3,9 @@
     background:#fff!important;
     font-size:62.5%!important;
     text-align:left!important;
-    font-family:Helvetica, Arial!important; 
+    font-family:Helvetica, Arial!important;
     border:1px solid #eee;
-    -moz-border-radius: 10px 10px 10px 10px!important; 
+    -moz-border-radius: 10px 10px 10px 10px!important;
     -webkit-border-top-left-radius:10px!important;
     -webkit-border-bottom-left-radius:10px!important;
     -webkit-border-top-right-radius:10px!important;
@@ -53,7 +53,7 @@
     margin:30px 0!important;
     border:1px solid #ccc!important;
     background:#fafafa!important;
-    -moz-border-radius: 10px 10px 10px 10px!important; 
+    -moz-border-radius: 10px 10px 10px 10px!important;
     -webkit-border-top-left-radius:10px!important;
     -webkit-border-bottom-left-radius:10px!important;
     -webkit-border-top-right-radius:10px!important;
@@ -70,7 +70,7 @@
   #failings_flaw_area .floating_box {
     text-align:left!important;
     width:300px!important;
-    -moz-border-radius: 10px 10px 10px 10px!important; 
+    -moz-border-radius: 10px 10px 10px 10px!important;
     -webkit-border-top-left-radius:10px!important;
     -webkit-border-bottom-left-radius:10px!important;
     -webkit-border-top-right-radius:10px!important;
@@ -111,13 +111,7 @@
   }
 </script>
 <div id="failings_flaw_area">
-  <!-- flash message area for full page turns -->
-    <div id="flash_msg_container" class="notify_box flash">
-      <h3 class="mod_title">This is a flash message.</h3>
-      <a class="close" href="#" onclick="document.getElementById('flash_msg_container').style.display='none'; return false;">x</a>
-    </div>
-  <!-- end flash message area -->
-  <form action="/profile/dep/failings" class="new_failing" id="new_failing" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="M+51APuVFflHY9qUCBo3y4cbasEBZWi/gRaGN3gE7yQ=" /></div>
+  <% form_for @failing, failings_url(@failing.user) do |f| %>
     <div class="floating_box" id="box_validate_lastname" style="display:none">
       <p><strong>failin.gs</strong> is a community where you can anonymously
       critique your friends' various personality flaws.</p>
@@ -128,18 +122,18 @@
       <p>In order to post this feedback, please enter the last name of the
       person you are critiquing.</p>
 
-      <input id="failing_surname" name="failing[surname]" size="30" type="text" />
-      <input id="failing_submit" name="commit" type="submit" value="Ok - Send!" />
+      <%= f.text_field :surname %>
+      <%= f.submit "Ok - Send!" %>
 
       <a class="close" href="#" onclick="document.getElementById('box_validate_lastname').style.display='none'; return false;">x</a>
     </div>
     <fieldset id="flaw_entry">
       <h2>What is wrong with me?</h2>
 
-      <textarea cols="50" id="failing_about" maxlength="145" name="failing[about]" onkeyup="return ismaxlength(this)" rows="2"></textarea>
+      <%= f.text_area :about, :rows => "2", :cols => "50", :maxlength => "145", :onkeyup => "return ismaxlength(this)" %>
       <button type="button" onclick="document.getElementById('box_validate_lastname').style.display=''; document.getElementById('failing_surname').focus();">Submit</button>
       <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
     </fieldset>
-  </form>
+  <% end %>
   <p class="powered_by">Powered by <a href="http://failin.gs">failin.gs</a>. Find out your flaws today.</p>
 </div>

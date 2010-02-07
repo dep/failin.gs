@@ -2,8 +2,11 @@ class FailingsController < ApplicationController
   before_filter :require_user, only: %w(knew no_idea disagree)
 
   respond_to :html
+  respond_to :js
 
   def index
+    cache_page if request.format.js?
+
     @user = User.find_by_login! params[:login]
 
     if App.optimized?

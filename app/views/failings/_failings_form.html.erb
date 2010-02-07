@@ -1,4 +1,4 @@
-<% form_for @failing do |f| %>
+<% form_for @failing, url: failings_url(@failing.user) do |f| %>
   <div class="floating_box rounded_box drop_shadow" id="box_validate" style="display:none">
     <p><strong>failin.gs</strong> is a community where you can anonymously
     critique your friends' various personality flaws.</p>
