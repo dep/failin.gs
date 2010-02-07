@@ -13,11 +13,14 @@ class User < ActiveRecord::Base
   has_many :shares
 
   attr_reader :promo_code
+  attr_accessor :updating_password
 
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH, format: /\w+/
   validates_presence_of :surname
   validate :promotion_should_be_valid, on: :create
+
+  validates_presence_of :password, if: :updating_password
 
   if App.beta?
     validates_presence_of :invitation, unless: :promo_code?, on: :create

@@ -1,0 +1,10 @@
+<% form_tag password_path(perishable_token: params[:perishable_token]), method: :put, remote: true, id: "edit_password_reset" do %>
+  <fieldset>
+    <%= error_messages_for @user %>
+    <%= label_tag "password", "New password" %>
+    <%= password_field_tag "password", @user.password %>
+    <%= label_tag "password_confirmation", "Re-type password" %>
+    <%= password_field_tag "password_confirmation", @user.password_confirmation %>
+    <%= submit_tag %>
+  </fieldset>
+<% end %>
