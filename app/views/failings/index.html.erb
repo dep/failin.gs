@@ -53,7 +53,7 @@
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
-        new Ajax.Request(location.href + "/failings/" + id + "/knew", { method: "put" });
+        new Ajax.Request("<%= profile_path(@user) %>/failings/" + id + "/knew", { method: "put" });
       }
     });
 
@@ -63,7 +63,7 @@
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
-        new Ajax.Request(location.href + "/failings/" + id + "/no_idea", { method: "put" });
+        new Ajax.Request("<%= profile_path(@user) %>/failings/" + id + "/no_idea", { method: "put" });
       }
     });
 
@@ -73,7 +73,7 @@
       onDrop: function (element) {
         id = element.id.replace(/\D+/g, "");
         element.hide();
-        new Ajax.Request(location.href + "/failings/" + id + "/disagree", { method: "put" });
+        new Ajax.Request("<%= profile_path(@user) %>/failings/" + id + "/disagree", { method: "put" });
       }
     });
   </script>
