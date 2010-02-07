@@ -1,4 +1,4 @@
-<%= render :partial => "header.text.html" %>
+<%= render "header" %>
 <p>Hey <%= @user.login %>,</p>
 
 <p>Someone had something to say about this failing:</p>
@@ -12,4 +12,4 @@
 <p>Link: <a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></p>
 
 <p>From your friends at failin.gs!</p>
-<%= render :partial => "footer.text.html" %>
+<%= render "footer" %>
