@@ -7,7 +7,7 @@
       <p>Now that you have a profile, <a href="/share/new">send it to everyone you know</a> so they can
       provide you with your anonymous constructive criticism!</p>
 
-      <p><a href="/share/new">Use our emailer</a> or:</p>
+      <p><a href="/share/new">Use our emailer</a>, <a href="#" onclick="$('embed_instructions').appear(); return false;">embed</a> it in your website, or</p>
 
       <div class="share_links">
         <a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don't%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
@@ -21,6 +21,8 @@
   <%= render "flash_message" %>
 
   <%= render "failings_form" %>
+
+  <%= render "embed_instructions" %>
 
   <% if @user.private? %>
     <%= render "private" %>

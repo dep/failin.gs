@@ -728,3 +728,6 @@ fieldset.invite input[type="submit"] {
   padding:5px 0;
   color:#999;
 }
+#embed_instructions blockquote {
+  font-size:12px;
+}

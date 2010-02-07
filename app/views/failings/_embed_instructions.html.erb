@@ -1,0 +1,10 @@
+<div class="rounded_box drop_shadow notify_box" id="embed_instructions" style="display:none;">
+  <p>
+    Want to give people the ability to update your profile from your blog, personal homepage, or
+    MySpace profile?  It's easy.  Simply add the following code to your page:
+  </p>
+  <blockquote class="drop_shadow">
+    &lt;script src="<%= profile_url(@user) %>.js"&gt;&lt;/script&gt;
+  </blockquote>
+  <%= link_to "x", "#", onclick: "$('embed_instructions').fade();", class: "close" %>
+</div>
