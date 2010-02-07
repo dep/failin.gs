@@ -5,7 +5,9 @@ class FailingsController < ApplicationController
   respond_to :js
 
   def index
-    cache_page if request.format.js?
+    if request.format.js?
+      return unless stale? last_modified: App.launched_at
+    end
 
     @user = User.find_by_login! params[:login]
 
