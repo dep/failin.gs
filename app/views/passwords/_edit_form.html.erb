@@ -1,3 +1,7 @@
+<h2 class="page_title no_idea">Password Reset <span>You're almost done</span></h2>
+<p>
+  Now that we know you're you, choose a new password.
+</p>
 <% form_tag password_path(perishable_token: params[:perishable_token]), method: :put, remote: true, id: "edit_password_reset" do %>
   <fieldset>
     <%= error_messages_for @user %>
