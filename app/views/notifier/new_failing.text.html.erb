@@ -1,11 +1,11 @@
-<%= render :partial => "header.text.html" %>
+<%= render "header" %>
 <p>Hey <%= @user.login %>,</p>
 
 <p>Someone has added feedback to your profile!  You might have something to work on:</p>
 
-<p><%= @failing.about %></p>
+<%= simple_format @failing.about %>
 
-<p>Link: <a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></p>
+<p>Link: <%= link_to profile_url(@user, anchor: @failing), profile_url(@user, anchor: @failing) %></p>
 
 <p>From your friends at failin.gs!</p>
-<%= render :partial => "footer.text.html" %>
+<%= render "footer" %>
