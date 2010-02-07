@@ -33,7 +33,7 @@
       <%= f.submit "Save all this" %>
     </div>
 
-    <div class="announce">
+    <div class="announce rounded_box">
       <h2>Want a new password?</h2>
 
       <%= f.label :password, "New password:" %>
@@ -58,7 +58,7 @@
 
       <h2>Want to remove your account?</h2>
       <p>We'd be sad to see you go, but we understand that the truth hurts.</p>
-      <blockquote>
+      <blockquote class="drop_shadow">
         "I'll say. <%= link_to "Let me out", account_path, method: :delete, confirm: "Are you sure?" %>"
       </blockquote>
     </div>

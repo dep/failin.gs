@@ -1,7 +1,7 @@
 <div id="user_profile">
   <%= render :partial => "failing_user" %>
   <% if @user == current_user %>
-    <div class="announce">
+    <div class="announce rounded_box">
       <h2>Announce your profile!</h2>
 
       <p>Now that you have a profile, <a href="/share/new">send it to everyone you know</a> so they can
@@ -24,6 +24,8 @@
 
   <% if @user.private? %>
     <%= render "private" %>
+  <% else %>
+    <%= render "public" %>
   <% end %>
 
   <%- if @user.failings.count.zero? -%>

@@ -1,11 +1,14 @@
 <div class="failing flaw_box private">
-  <h3>This profile is private</h3>
-  <div class="feedback">
+  <h3 class="no_idea">This profile is private</h3>
+  <div class="feedback rounded_box drop_shadow">
     <div class="feedback_text">
       <p>
-        <%= @user.login %> has opted to make their profile "private."  This means you can leave feedback for them,
-        but you can't see what other people have said about them.
+        <%= @user.login %> has opted to make their profile "private."  This means you can leave feedback,
+        but you can't see what other people have said about <%= @user.login %>.
       </p>
+      <% if !@user.private? || @user == current_user %>
+        <p>To make your account public again, <a href="/account/edit">visit your profile settings</a>.
+      <% end %>
     </div>
   </div>
 </div>

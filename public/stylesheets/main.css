@@ -15,15 +15,19 @@ body {
   width:900px;
   margin:15px auto; 
 }
-#container {
-  border:1px solid #ccc;
+.rounded_box {
   -moz-border-radius: 10px 10px 10px 10px; 
   -webkit-border-top-left-radius:10px;
   -webkit-border-bottom-left-radius:10px;
   -webkit-border-top-right-radius:10px;
   -webkit-border-bottom-right-radius:10px;
+}
+.drop_shadow {
   -moz-box-shadow:1px 3px 7px #999;
   -webkit-box-shadow:1px 3px 7px #999;
+}
+#container {
+  border:1px solid #ccc;
   background:#fff;
   text-align:left;
   padding:0px 20px;
@@ -141,8 +145,6 @@ blockquote {
   font-size:27px;
   font-weight:bold;
   color:#777;
-  -moz-box-shadow:5px 7px 10px #888;
-  -webkit-box-shadow:5px 7px 10px #888;
   margin-left:15px;
 }
 
@@ -150,11 +152,6 @@ blockquote {
 .announce {
   float:right;
   position:relative;
-  -moz-border-radius: 10px 10px 10px 10px; 
-  -webkit-border-top-left-radius:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-top-right-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
   border-style:dashed;
   border-width:1px;
   border-color:#777;
@@ -318,11 +315,6 @@ input[type="checkbox"] {
 .floating_box {
   text-align:left;
   width:300px;
-  -moz-border-radius: 10px 10px 10px 10px; 
-  -webkit-border-top-left-radius:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-top-right-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
   border-style:solid;
   border-width:1px;
   border-color:#777;
@@ -398,6 +390,9 @@ input[type="checkbox"] {
   border-color:#777;
   padding:5px
 }
+.flaw_box.disagree {
+  margin-right:0;
+}
 .feedback .reply_wrapper {
   background:#f3f3f3;
   padding:5px;
@@ -405,7 +400,7 @@ input[type="checkbox"] {
 .flaw_box.knew,
 .flaw_box.no_idea,
 .flaw_box.disagree {
-  width:176px;
+  width:181px;
   padding-top:15px;
 }
 .flaw_box.unrated {
@@ -413,6 +408,17 @@ input[type="checkbox"] {
 }
 .flaw_box.private {
   background:#555;
+}
+.flaw_box.public {
+  background:#eee;
+  border-color:#ccc;
+}
+.flaw_box.private h3,
+.flaw_box.public h3 {
+  padding-left:0;
+}
+.flaw_box.public h3 {
+  color:#777;
 }
 .feedback.empty {
   padding:5px 10px;
@@ -457,13 +463,6 @@ span.create_date a {
 }
 .flaw_box .feedback {
   display:block;
-  -moz-border-radius: 3px 3px 3px 3px; 
-  -webkit-border-top-left-radius:3px;
-  -webkit-border-bottom-left-radius:3px;
-  -webkit-border-top-right-radius:3px;
-  -webkit-border-bottom-right-radius:3px;
-  -moz-box-shadow:1px 3px 7px #999;
-  -webkit-box-shadow:1px 3px 7px #999;
   background:#fff;
   padding:5px;
   margin:10px 0;
@@ -679,13 +678,6 @@ fieldset.invite input[type="submit"] {
   padding:20px;
   margin-right:20px;
   border:1px solid #bbb;
-  -moz-border-radius: 10px 10px 10px 10px; 
-  -webkit-border-top-left-radius:10px;
-  -webkit-border-bottom-left-radius:10px;
-  -webkit-border-top-right-radius:10px;
-  -webkit-border-bottom-right-radius:10px;
-  -moz-box-shadow:1px 2px 3px #888;
-  -webkit-box-shadow:1px 2px 3px #888;
 }
 
 /* Failing show for individual failing. */
@@ -718,7 +710,7 @@ fieldset.invite input[type="submit"] {
 .notify_box {
   position:relative;
   padding:10px;
-  margin:10px 25px 20px 10px;
+  margin:30px 0;
   border:1px solid #ccc;
   background:#fafafa;
 }

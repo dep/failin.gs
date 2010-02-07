@@ -25,7 +25,7 @@
       }
       randomize_logo();
     </script>
-    <div id="container">
+    <div id="container" class="rounded_box drop_shadow">
       <div id="top_links">
         <ul>
           <% if logged_in? %>
@@ -53,7 +53,7 @@
       <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
     </div>
   </div>
-  <div class="floating_box" id="box_important" style="display: none;">
+  <div class="floating_box rounded_box drop_shadow" id="box_important" style="display: none;">
     <p><strong>failin.gs</strong> is a community where you can have your friends
     anonymously critique you.</p>
 
@@ -70,7 +70,7 @@
 
     <%= link_to "x", "#", onclick: "$('box_important').fade(); $('lastname').focus(); return false;", class: "close" %>
   </div>
-  <div class="floating_box" id="email_preview" style="display:none;">
+  <div class="floating_box rounded_box drop_shadow" id="email_preview" style="display:none;">
     <p>Hello!</p>
     <p>
       You've been invited to leave anonymous feedback on your friend, [your name here] using
