@@ -1,0 +1,19 @@
+<%= render :partial => "header.text.html" %>
+<p>Hello!</p>
+
+<p>One of your friends has requested that you create an account at <a href="http://failin.gs">http://failin.gs!</a></p>
+
+<p>Failin.gs is a website that allows you to sign up and let your friends leave anonymous feedback on you, so someone obviously has something to say to you.</p>
+
+<p>Curious?  Sign up for a free account and the person that requested your feedback will be notified to populate your profile with their feedback.</p>
+
+<p>We all want to improve, don't we?</p>
+
+<p>Register here:</p>
+
+<p><a href="<%= new_session_user_path(invited: @invitation.email) %>"><%= new_session_user_path(invited: @invitation.email) %></a></p>
+
+<p>If you do not wish to register, you don't need to do anything.  Just ignore this email.  We did not store your email address and will not contact you again.</p>
+
+<p>From your friends at failin.gs!</p>
+<%= render :partial => "footer.text.html" %>

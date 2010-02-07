@@ -1,9 +1,11 @@
+<%= render :partial => "header.text.plain" %>
 Hey <%= @user.login %>,
 
-You might have something to work on:
+Someone has added feedback to your profile!  You might have something to work on:
 
 <%= @failing.about %>
 
 Link: <%= profile_url(@user) %>
 
 From your friends at failin.gs!
+<%= render :partial => "footer.text.plain" %>
