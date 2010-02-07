@@ -1,1 +1,1 @@
-page << %{document.writeln("#{escape_javascript render("embed")}")}
+page << %{document.writeln("#{escape_javascript render("embedded")}")}
