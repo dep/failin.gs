@@ -8,12 +8,12 @@
 <p>Your profile URL is <a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></p>
 
 <ul>
-  <li>Tweet it</li>
-  <li>Post it to Facebook</li>
-  <li>Email it to your friends</li>
+  <li><a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don%27t%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!">Tweet it</a></li>
+  <li><a href="http://www.facebook.com/sharer.php?u=<%= profile_url(@user) %>&src=sp">Post it to Facebook</a></li>
+  <li><a href="http://failin.gs/share/new">Email it to your friends</a></li>
 </ul>
 
-<p>The more exposure it gets, the more valauble your feedback! </p>
+<p>The more exposure it gets, the more valuable your feedback! </p>
 
 <p>We hope you enjoy using the site.</p>
 

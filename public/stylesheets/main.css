@@ -466,6 +466,7 @@ span.create_date a {
   background:#fff;
   padding:5px;
   margin:10px 0;
+  z-index:10;
 }
 .flaw_box .feedback.unread {
   border:5px solid #333;
@@ -727,4 +728,7 @@ fieldset.invite input[type="submit"] {
   font-size:24px;
   padding:5px 0;
   color:#999;
+}
+#embed_instructions blockquote {
+  font-size:12px;
 }
