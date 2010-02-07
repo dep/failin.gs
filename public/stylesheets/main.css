@@ -466,6 +466,7 @@ span.create_date a {
   background:#fff;
   padding:5px;
   margin:10px 0;
+  z-index:10;
 }
 .flaw_box .feedback.unread {
   border:5px solid #333;
