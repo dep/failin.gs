@@ -1,3 +1,4 @@
+<%= render :partial => "header.text.plain" %>
 Hey <%= @user.login %>,
 
 Someone had something to say about this failing:
@@ -11,3 +12,4 @@ They said:
 Link: <%= profile_url(@user) %>
 
 From your friends at failin.gs!
+<%= render :partial => "footer.text.plain" %>

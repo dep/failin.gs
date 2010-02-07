@@ -1,9 +1,11 @@
+<%= render :partial => "header.text.plain" %>
 Hey <%= @inviter.login %>,
 
-Your friend, <%= @invited.email %>, has joined failin.gs!
+As you wished, your friend, <%= @invited.email %>, has joined failin.gs!
 
 Why not let them know what they could work on?
 
   <%= profile_url(@invited) %>
 
 From your friends at failin.gs!
+<%= render :partial => "footer.text.plain" %>

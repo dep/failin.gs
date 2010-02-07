@@ -1,0 +1,21 @@
+<%= render :partial => "header.text.html" %>
+<p>Hey <%= @user.login %>,</p>
+
+<p>Welcome to failin.gs!</p>
+
+<p>What next?  It's important to get your profile out there!</p>
+
+<p>Your profile URL is <a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></p>
+
+<ul>
+  <li>Tweet it</li>
+  <li>Post it to Facebook</li>
+  <li>Email it to your friends</li>
+</ul>
+
+<p>The more exposure it gets, the more valauble your feedback! </p>
+
+<p>We hope you enjoy using the site.</p>
+
+<p>From your friends at failin.gs!</p>
+<%= render :partial => "footer.text.html" %>
