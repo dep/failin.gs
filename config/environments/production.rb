@@ -25,6 +25,18 @@ FailinGs::Application.configure do
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.server_settings = {
+  #   address:        "smtp.gmail.com",
+  #   port:           587,
+  #   authentication: :plain
+  #   user_name:      "app@failin.gs",
+  #   password:       "dp@VP#09"
+  # }
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.default_url_options = { host: "failin.gs" }
+
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
