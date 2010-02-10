@@ -1,4 +1,4 @@
-<%= render :partial => "header.text.html" %>
+<%= render "header" %>
 <p>Hey <%= @inviter.login %>,</p>
 
 <p>As you wished, your friend, <%= @invited.email %>, has joined failin.gs!</p>
@@ -8,4 +8,4 @@
 <p><a href="<%= profile_url(@invited) %>"><%= profile_url(@invited) %></a></p>
 
 <p>From your friends at failin.gs!</p>
-<%= render :partial => "footer.text.html" %>
+<%= render "footer" %>
