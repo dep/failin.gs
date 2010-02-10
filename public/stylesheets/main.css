@@ -116,6 +116,9 @@ a, a:visited {
 strong {
   text-shadow: 1px 1px 2px #e7e7e7;
 }
+.dark strong {
+  text-shadow: 1px 1px 2px #222;
+}
 a:hover {
   text-decoration:underline; 
 }
