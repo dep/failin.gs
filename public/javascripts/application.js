@@ -4,12 +4,19 @@
 function show_login() {
   $('login_form').show();
   $('signup_form').hide();
+  $('request_form').hide();
   $('login_username').focus();
 }
 function show_signup() {
   $('login_form').hide();
+  $('request_form').hide();
   $('signup_form').show();
   $('username').focus();
+}
+function show_request() {
+  $('login_form').hide();
+  $('signup_form').hide();
+  $('request_form').show();
 }
 
 function add_reply(e) {

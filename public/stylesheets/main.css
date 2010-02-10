@@ -65,7 +65,8 @@ h3.mod_title {
   margin:10px 0 5px;
 }
 .dark {
-  color:#666 !important;
+  color:#888 !important;
+  font-size:12px;
 }
 .terms_of_service h3 {
   font-size:14px;
