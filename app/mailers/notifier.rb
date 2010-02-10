@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "notifier@failin.gs"
+  default from: "notifier@failin.gs"
 
   def new_user(user)
     @user = user
