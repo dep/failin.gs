@@ -721,6 +721,7 @@ fieldset.invite input[type="submit"] {
   margin:30px 0;
   border:1px solid #ccc;
   background:#fafafa;
+  clear:both;
 }
 .notify_box .close {
   color:#555;

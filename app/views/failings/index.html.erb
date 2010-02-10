@@ -30,7 +30,7 @@
     <%= render "public" %>
   <% end %>
 
-  <%- if @user.failings.count.zero? -%>
+  <%- if @user.failings.count.zero? && @user == current_user -%>
     <%= render "empty_profile" %>
   <% else %>
     <% if !@user.private? || @user == current_user %>
