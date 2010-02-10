@@ -208,6 +208,10 @@ input:focus, textarea:focus {
   -moz-box-shadow:1px 3px 7px #bbb;
   -webkit-box-shadow:1px 3px 7px #bbb;
 }
+.dark input:focus, .dark textarea:focus {
+  -moz-box-shadow:1px 3px 7px #222;
+  -webkit-box-shadow:1px 3px 7px #222;
+}
 input[type="submit"], input[type="button"] {
   background:#7479b7;
   color:#fff;
@@ -296,8 +300,6 @@ input[type="checkbox"] {
 }
 #signup {
   width:250px;
-  -webkit-box-shadow:3px 3px 10px #777777;
-  -moz-box-shadow:3px 3px 10px #777777;
 }
 .announce {
   background:#ccc;

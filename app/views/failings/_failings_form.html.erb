@@ -1,13 +1,20 @@
 <% form_for @failing, url: failings_url(@failing.user) do |f| %>
   <div class="floating_box rounded_box drop_shadow" id="box_validate" style="display:none">
-    <p><strong>failin.gs</strong> is a community where you can anonymously
-    critique your friends' various personality flaws.</p>
-
-    <p>It's important, though, to make sure that the people who leave
-    feedback actually know the person they're critiquing.</p>
-
-    <p>In order to post this feedback, please enter the last name of the
-    person you are critiquing.</p>
+    <p>
+      <strong>failin.gs</strong> is a community where you can anonymously
+      critique your friends' various personality flaws.</p>
+    <p>
+      This is a place for <strong>constructive criticism</strong>! We're here to
+      help one another, not hurt one another. So, please, be nice.
+      </p>  
+    <p>
+      It's important for us to make sure that the people who leave
+      feedback actually know the person they're critiquing.
+    </p>
+    <p>
+      In order to post this feedback, please enter the <strong>last name</strong>
+      of the person you are critiquing.
+    </p>
 
     <%= f.text_field :surname %>
     <%= f.submit "Ok - Send!" %>
