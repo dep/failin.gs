@@ -112,7 +112,7 @@
   }
 </script>
 <div id="failings_flaw_area">
-  <% form_for @failing, failings_url(@failing.user) do |f| %>
+  <% form_for @failing, url: failings_url(@failing.user) do |f| %>
     <div class="floating_box" id="box_validate_lastname" style="display:none">
       <p><strong>failin.gs</strong> is a community where you can anonymously
       critique your friends' various personality flaws.</p>
