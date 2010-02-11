@@ -114,14 +114,7 @@
 <div id="failings_flaw_area">
   <% form_for @failing, url: failings_url(@failing.user) do |f| %>
     <div class="floating_box" id="box_validate_lastname" style="display:none">
-      <p><strong>failin.gs</strong> is a community where you can anonymously
-      critique your friends' various personality flaws.</p>
-
-      <p>It's important, though, to make sure that the people who leave
-      feedback actually know the person they're critiquing.</p>
-
-      <p>In order to post this feedback, please enter the last name of the
-      person you are critiquing.</p>
+      <%= render "validation_message" %>
 
       <%= f.text_field :surname %>
       <%= f.submit "Ok - Send!" %>

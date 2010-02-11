@@ -34,7 +34,7 @@ body {
   overflow:hidden;
 }
 .thankyou {
-  background:#fff url(../images/excited.jpg) 90% 0 no-repeat;
+  background:#fff url(<%= image_url "excited.jpg" %>) 90% 0 no-repeat;
   min-height:450px;
 }
 h2.page_title {
@@ -51,13 +51,13 @@ h2.page_title span {
   font-size:20px;
 }
 h2.page_title.knew {
-  background:url(/images/icon_knew.png) top left no-repeat;
+  background:url(<%= image_url "icon_knew.png" %>) top left no-repeat;
 }
 h2.page_title.no_idea {
-  background:url(/images/icon_no_idea.png) top left no-repeat;
+  background:url(<%= image_url "icon_no_idea.png" %>) top left no-repeat;
 }
 h2.page_title.disagree {
-  background:url(/images/icon_disagree.png) top left no-repeat;
+  background:url(<%= image_url "icon_disagree.png" %>) top left no-repeat;
 }
 h3.mod_title {
   font-size:30px;
@@ -124,7 +124,7 @@ a:hover {
   text-decoration:underline; 
 }
 h1 {
-  background:url(../images/logo_0.png) top left no-repeat;
+  background:url(<%= image_url "logo_0.png" %>) top left no-repeat;
   height:70px;
   width:305px;
   cursor:pointer;
@@ -451,22 +451,22 @@ span.create_date {
   padding-top:10px;
 }
 span.create_date a {
-  background:url(/images/icon_chain.gif) top left no-repeat;
+  background:url(<%= image_url "icon_chain.gif" %>) top left no-repeat;
   padding-left:20px;
   text-align:left;
   margin-left:5px;
   font-size:11px;
 }
 .flaw_box.knew {
-  background:#5cc931 url(/images/icon_knew.png) 2px 2px no-repeat;
+  background:#5cc931 url(<%= image_url "icon_knew.png" %>) 2px 2px no-repeat;
   float:left;
 }
 .flaw_box.no_idea {
-  background:#edef43 url(/images/icon_no_idea.png) 2px 2px no-repeat;
+  background:#edef43 url(<%= image_url "icon_no_idea.png" %>) 2px 2px no-repeat;
   float:left;
 }
 .flaw_box.disagree {
-  background:#d71919 url(/images/icon_disagree.png) 2px 2px no-repeat;
+  background:#d71919 url(<%= image_url "icon_disagree.png" %>) 2px 2px no-repeat;
   float:left;
 }
 .flaw_box h3 {
@@ -627,7 +627,7 @@ span.create_date a {
   clear:both;
   display:block;
   height:600px;
-  background:url(../images/feature_image.jpg) top right no-repeat;
+  background:url(<%= image_url "feature_image.jpg" %>) top right no-repeat;
   border-top:1px dashed #eee;
   padding-top:10px;
 }
@@ -780,7 +780,7 @@ fieldset.invite input[type="submit"] {
 
 /* Feedback tab */
 a#feedback_tab {
-  background-image:url("/images/feedback_tab.jpg");
+  background-image:url(<%= image_url "feedback_tab.jpg" %>);
   color:#FFFFFF;
   cursor:pointer;
   height:102px;
