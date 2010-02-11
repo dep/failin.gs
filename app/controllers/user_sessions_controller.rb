@@ -23,8 +23,9 @@ class UserSessionsController < ApplicationController
   def destroy
     if current_user_session
       # current_user_session.destroy
-      session.delete "user_credentials"
-      session.delete "user_credentials_id"
+      request.session_options.delete(:id)
+      session.clear
+
       cookies.delete :user_credentials
     end
 
