@@ -42,4 +42,9 @@ FailinGs::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+
+  config.middleware.use ::Rack::Cache,
+    verbose:     false,
+    metastore:   "file:#{config.root}/tmp/cache/rack/meta",
+    entitystore: "file:#{config.root}/tmp/cache/rack/body"
 end
