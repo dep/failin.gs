@@ -11,6 +11,7 @@ gem "aasm",      git: "git://github.com/stephencelis/aasm.git"
 
 group :development do
   gem "ghi"
+  gem "capistrano"
   gem "heroku"
 end
 
