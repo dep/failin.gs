@@ -18,7 +18,7 @@
 </div>
 
 <div id="flaw_area">
-  <%# render "flash_message" %>
+  <%= render "flash_message" if flash[:notice] %>
 
   <%= render "failings_form" %>
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100131201933) do
+ActiveRecord::Schema.define(:version => 20100211043851) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -47,16 +47,12 @@ ActiveRecord::Schema.define(:version => 20100131201933) do
   end
 
   create_table "emails", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "address",     :null => false
-    t.string   "invite_code"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "emails", ["address"], :name => "index_emails_on_address", :unique => true
-  add_index "emails", ["invite_code"], :name => "index_emails_on_invite_code"
-  add_index "emails", ["user_id"], :name => "index_emails_on_user_id", :unique => true
 
   create_table "failings", :force => true do |t|
     t.string   "state",                       :null => false
@@ -103,15 +99,15 @@ ActiveRecord::Schema.define(:version => 20100131201933) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
-    t.string   "email",                              :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
-    t.string   "persistence_token",                  :null => false
-    t.string   "single_access_token",                :null => false
-    t.string   "perishable_token",                   :null => false
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.string   "login",                                 :null => false
+    t.string   "email",                                 :null => false
+    t.string   "crypted_password",                      :null => false
+    t.string   "password_salt",                         :null => false
+    t.string   "persistence_token",                     :null => false
+    t.string   "single_access_token",                   :null => false
+    t.string   "perishable_token",                      :null => false
+    t.integer  "login_count",         :default => 0,    :null => false
+    t.integer  "failed_login_count",  :default => 0,    :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -121,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20100131201933) do
     t.string   "surname"
     t.string   "location"
     t.text     "about"
-    t.boolean  "subscribe"
+    t.boolean  "subscribe",           :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "private"
