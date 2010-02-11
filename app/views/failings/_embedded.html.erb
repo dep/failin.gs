@@ -17,7 +17,7 @@
     font-size:20px!important;
     color:#888!important;
     padding:15px 0 0px 45px!important;
-    background:url(http://localhost:3000/images/icon_knew.png) top left no-repeat!important;
+    background:url(<%= image_url "icon_knew.png" %>) top left no-repeat!important;
   }
   #failings_flaw_area #flaw_entry .errorExplanation h2 {
     font-size:20px!important;
@@ -112,7 +112,7 @@
   }
 </script>
 <div id="failings_flaw_area">
-  <% form_for @failing, failings_url(@failing.user) do |f| %>
+  <% form_for @failing, url: failings_url(@failing.user) do |f| %>
     <div class="floating_box" id="box_validate_lastname" style="display:none">
       <p><strong>failin.gs</strong> is a community where you can anonymously
       critique your friends' various personality flaws.</p>

@@ -21,7 +21,11 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    current_user_session.destroy if current_user_session
+    if current_user_session
+      current_user.reset_persistence_token!
+      current_user_session.destroy
+    end
+
     redirect_back_or_default root_path
   end
 end

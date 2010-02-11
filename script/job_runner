@@ -1,4 +1,21 @@
 #!/usr/bin/env ruby
+ENV["RAILS_ENV"] ||= "production"
 require File.dirname(__FILE__) + '/../config/environment'
+require "daemons"
 
-Delayed::Worker.new.start
+daemon_options = {
+  multiple:  false,
+  dir_mode:  :normal,
+  dir:       Rails.root.join("tmp", "pids"),
+  backtrace: true
+}
+
+Daemons.run_proc "job_runner", daemon_options do
+  if ARGV.include?("--")
+    ARGV.slice! 0..ARGV.index("--")
+  else
+    ARGV.clear
+  end
+
+  Delayed::Worker.new.start
+end
