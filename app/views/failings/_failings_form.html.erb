@@ -17,7 +17,7 @@
     </p>
 
     <%= f.text_field :surname %>
-    <%= f.submit "Ok - Send!" %>
+    <%= f.submit "Ok - Send!", :onclick => "nice_clear()" %>
 
     <%= link_to "x", "#", onclick: "$('box_validate').fade();", class: "close" %>
   </div>

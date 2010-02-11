@@ -39,6 +39,17 @@ function ismaxlength(obj){
   if (obj.getAttribute && obj.value.length>mlength)
   obj.value=obj.value.substring(0,mlength)
   $('char_limit').innerHTML = mlength - obj.value.length;
+  if (obj.value.length > 3)
+    $('nice_01').appear();
+  if (obj.value.length > 20)
+    $('nice_02').appear();
+  if (obj.value.length > 40)
+    $('nice_03').appear();
+}
+function nice_clear() {
+  $('nice_01').fade();
+  $('nice_02').fade();
+  $('nice_03').fade();
 }
 
 function categorize(category, id) {
