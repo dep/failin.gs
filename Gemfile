@@ -15,6 +15,6 @@ group :development do
 end
 
 group :production do
-  gem "daemons", require: false
-  gem "rack-cache"
+  gem "daemons",    require: false
+  gem "rack-cache", require: "rack/cache"
 end
