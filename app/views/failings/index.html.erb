@@ -26,7 +26,7 @@
 
   <% if @user.private? %>
     <%= render "private" %>
-  <% else %>
+  <% elsif @user == current_user %>
     <%= render "public" %>
   <% end %>
 
