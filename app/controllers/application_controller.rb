@@ -22,9 +22,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless logged_in?
       store_location
-      redirect_to root_url,
-        notice: "You must be logged in to access this page"
-
+      redirect_to root_url
       return false
     end
   end
@@ -32,9 +30,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if logged_in?
       store_location
-      redirect_to profile_url(current_user),
-        notice: "You must be logged out to access this page"
-
+      redirect_to profile_url(current_user)
       return false
     end
   end
