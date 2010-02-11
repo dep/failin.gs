@@ -22,11 +22,8 @@ class UserSessionsController < ApplicationController
 
   def destroy
     if current_user_session
-      # current_user_session.destroy
-      request.session_options.delete(:id)
-      session.clear
-
-      cookies.delete :user_credentials
+      current_user.reset_persistence_token!
+      current_user_session.destroy
     end
 
     redirect_back_or_default root_path
