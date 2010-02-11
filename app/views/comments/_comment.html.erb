@@ -1,4 +1,7 @@
 <% div_for comment do %>
   <p><%= comment.text %></p>
+  <% if comment.user == comment.failing.user %>
+    <span class="reply_by_owner">- <%= comment.failing.user.login %> replied</span>
+  <% end %>
   <span><%= comment.created_at.to_s :timestamp %></span>
 <% end %>
