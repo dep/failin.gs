@@ -21,7 +21,12 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    current_user_session.destroy if current_user_session
+    headers["Cache-Control"] = "private"
+
+    if current_user_session
+      current_user_session.destroy
+    end
+
     redirect_back_or_default root_path
   end
 end
