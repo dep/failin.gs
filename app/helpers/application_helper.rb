@@ -7,6 +7,12 @@ module ApplicationHelper
   def image_url(*args)
     return super if ActionController::Base.asset_host
     request.protocol + request.host_with_port + image_path(*args)
+  rescue NoMethodError
+    if host = ActionMailer::Base.default_url_options[:host]
+      return "http://#{host}/#{image_path(*args)}"
+    end
+
+    raise
   end
 
   def simple_format(text, html_options={})
