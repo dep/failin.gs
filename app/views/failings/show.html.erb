@@ -7,5 +7,5 @@
   <% else %>
     disagrees completely
   <% end %>
-  <span><%= profile_url(@user) %></span></h2>
+  <span><a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></span></h2>
 <%= render @failing %>
