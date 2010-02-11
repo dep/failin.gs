@@ -2,13 +2,13 @@
   <h2 class="page_title knew">Welcome to failin.gs!</h2>
   <p>
     <%= @user.login %> has a brand new account here and no feedback yet!
-    That means <strong>you can be the first</strong>. 
-    Surely you can think of something for <%= @user.login %> to work on. 
+    That means <strong>you can be the first</strong>.
+    Surely you can think of something for <%= @user.login %> to work on.
   </p>
   <p>
-    Remember, lets <strong>be nice</strong>! We're not here to hurt one another. We're here to help one another.  
+    Remember, lets <strong>be nice</strong>! We're not here to hurt one another. We're here to help one another.
   </p>
   <p>
-    Do you want a profile? <a href="/user_session/new">sign up here</a>!
+    Do you want a profile? <%= link_to "sign up here", new_user_session_path %>!
   </p>
 </div>
