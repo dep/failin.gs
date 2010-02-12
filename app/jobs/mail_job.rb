@@ -2,11 +2,12 @@ class MailJob < Struct.new(:record)
   def perform
     case record
     when Failing
-      Notifier.new_failing(record).deliver if record.user.subscribe?
+      return if record.user_id == record.submitter_id || !record.user.subscribe?
+      Notifier.new_failing(record).deliver
     when Comment
       recipient = record.failing.user
-      return if !recipient.subscribe? || recipient == record.user
-      Notifier.new_comment(record).deliver if record.failing.user.subscribe?
+      return if !recipient.subscribe? || recipient.id == record.user_id
+      Notifier.new_comment(record).delive
     when Invitation
       Notifier.new_invitation(record).deliver
     when Share
