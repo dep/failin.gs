@@ -26,7 +26,7 @@ class FailingsController < ApplicationController
 
     if @failing.save
       Delayed::Job.enqueue MailJob.new(@failing)
-      redirect_to profile_path(@user, notice: "Thanks for your feedback!")
+      redirect_to profile_path(@user), notice: "Thanks for your feedback!"
     else
       render "index"
     end
