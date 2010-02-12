@@ -21,7 +21,7 @@ FailinGs::Application.routes.draw do |map|
   resource :share,      only: %w(new create)
 
   get "profile/:login(.:format)", to: "failings#index", as: :profile
-  get "profile/:login/failings" => redirect("profile/%{login}")
+  get "profile/:login/failings" => redirect("/profile/%{login}")
 
   get "pages/:action",  to: "pages", action: /[a-z-]+/, as: :page
 

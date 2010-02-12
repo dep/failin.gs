@@ -21,7 +21,7 @@ namespace :deploy do
   task :default do
     fetch
     update_code
-    bundle
+    bundle if ENV["BUNDLE"]
     cleanup
     restart
   end
