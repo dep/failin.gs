@@ -13,7 +13,7 @@
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
     <script type="text/javascript">
       function randomize_logo() {
-        $('logo').style.backgroundImage = "url('/images/logo_" + Math.floor(Math.random()*3) + ".png')";
+        document.getElementById('logo').style.backgroundImage = "url('/images/logo_" + Math.floor(Math.random()*3) + ".png')";
       }
       randomize_logo();
     </script>

@@ -45,13 +45,16 @@ class User < ActiveRecord::Base
     self.invitation ||= Invitation.find_by_email(email)
   end
 
+  def promo_code
+    promotion.code if promotion
+  end
+
   def promo_code=(promo_code)
-    @promo_code = promo_code
     self.promotion = Promotion.find_by_code promo_code
   end
 
   def promo_code?
-    !@promo_code.blank?
+    !promo_code.blank?
   end
 
   private
@@ -60,7 +63,7 @@ class User < ActiveRecord::Base
     if promotion_id?
       if promo_code.present? && promotion.nil?
         errors[:promo_code] << "is invalid"
-      elsif promotion.users.count >= limit
+      elsif promotion.users.count >= promotion.limit
         errors[:promotion] << "has ended"
       end
     elsif App.beta? && email? && invitation.nil?

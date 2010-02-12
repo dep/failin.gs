@@ -15,6 +15,10 @@ group :development do
   gem "heroku"
 end
 
+group :test do
+  gem "miniskirt"
+end
+
 group :production do
   gem "daemons", require: false
   gem "rack-cache"

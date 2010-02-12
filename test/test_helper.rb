@@ -10,4 +10,15 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  require "miniskirt"
+  require "factories"
+
+  # require "authlogic/test_case"
+  # setup :activate_authlogic
+
+  private
+
+  def login_as(user = Factory(:user))
+    # UserSession.create user
+  end
 end
