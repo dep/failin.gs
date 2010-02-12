@@ -25,16 +25,16 @@
       <div id="top_links">
         <ul>
           <% if logged_in? %>
-            <li><%= link_to "my profile", profile_path(current_user) %></li>
-            <li><%= link_to "settings", edit_account_path %></li>
-            <li><%= link_to "invite friends", new_invitation_path %>
+            <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
+            <li><%= link_to_unless_current "settings", edit_account_path %></li>
+            <li><%= link_to_unless_current "invite friends", new_invitation_path %>
             <% if App.beta? && current_user.invites_left > 0 %>
               (<span id="invites_left"><%= current_user.invites_left %></span>)</li>
             <% end %>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "register", new_user_session_path %></li>
-            <li><%= link_to "log in", new_user_session_path %></li>
+            <li><%= link_to_unless_current "register", new_user_session_path %></li>
+            <li><%= link_to_unless_current "log in", new_user_session_path %></li>
           <% end %>
         </ul>
       </div>
