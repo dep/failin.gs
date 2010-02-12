@@ -20,6 +20,6 @@ group :test do
 end
 
 group :production do
-  gem "daemons", require: false
+  gem "daemons"
   gem "rack-cache"
 end
