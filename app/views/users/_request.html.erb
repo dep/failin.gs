@@ -2,15 +2,12 @@
   We are still in private beta, so we haven't opened the doors to everyone yet,
   but if you want an invite, give us your email and we'll send you an invite
   as soon as we can.
-  <form>
-    <%#= f.error_messages %>
+  <% form_for @email, url: email_path, remote: true do |f| %>
+    <%= f.error_messages %>
 
-    <%#= f.label :email, "Email address:" %>
-    <%#= f.text_field :email %>
-    <label>Email address:</label>
-    <input type="text"/>
+    <%= f.label :address, "Email address:" %>
+    <%= f.text_field :address %>
 
-    <%#= f.submit "Send" %>
-    <input type="submit" value="Send"/>
-  </form>
+    <%= f.submit "Send" %>
+  <% end %>
 </fieldset>

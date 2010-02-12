@@ -21,8 +21,13 @@ FailinGs::Application.routes.draw do |map|
   resource :share,      only: %w(new create)
 
   match "profile/:login(.:format)", to: "failings#index", as: :profile
-  match "pages/:action",  to: "pages", action: /[a-z-]+/
+  match "pages/:action",  to: "pages", action: /[a-z-]+/, as: :page
 
   # root to: "emails#new"
+  resource :email, only: %w(create)
+
+  # get "javascripts/:action.:format" => "javascripts"
+  get "stylesheets/:action.:format" => "stylesheets"
+
   root to: "pages#root"
 end

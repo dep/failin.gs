@@ -3,7 +3,9 @@ class PagesController < ApplicationController
   before_filter :validate_cache
 
   def root
-    @user, @user_session = User.new, UserSession.new
+    @email        = Email.new
+    @user         = User.new
+    @user_session = UserSession.new
   end
 
   private
