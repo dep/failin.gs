@@ -10,4 +10,8 @@ class App < Configurable
   # config.optimized = true
 
   config.launched_at = Time.now.utc
+
+  config.javascript_expansions = {
+    prototype: %w(prototype effects dragdrop controls)
+  }
 end

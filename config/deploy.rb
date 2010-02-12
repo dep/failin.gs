@@ -4,6 +4,7 @@ set :branch,      'origin/master'
 set :user,        application
 set :deploy_type, 'deploy'
 set :deploy_to,   "/home/#{user}"
+set :rails_env,   "production"
 
 set :main_ip, "69.164.196.172"
 role :app, main_ip
@@ -20,7 +21,7 @@ namespace :deploy do
   task :default do
     fetch
     update_code
-    bundle
+    bundle if ENV["BUNDLE"]
     cleanup
     restart
   end
@@ -56,7 +57,7 @@ namespace :deploy do
   task :migrate, roles: :db, only: { primary: true } do
     run [
       "cd #{current_path}",
-      "rake db:migrate"
+      "bundle exec rake RAILS_ENV=#{rails_env} db:migrate"
     ].join(" && ")
   end
 

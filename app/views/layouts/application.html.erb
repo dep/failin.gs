@@ -7,13 +7,9 @@
   <meta name="description" content="failin.gs seeks to answer a that perhaps all of us have asked ourselves at some point: 'What is wrong with me?'">
   <meta name="keywords" content="failings, flaws, anonymous, social web, social networking, self-improvement, fun">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <%= stylesheet_link_tag "main" %>
-  <%= javascript_include_tag "prototype" %>
-  <%= javascript_include_tag "effects" %>
-  <%= javascript_include_tag "dragdrop" %>
-  <%= javascript_include_tag "controls" %>
-  <%= javascript_include_tag "rails" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag :prototype %>
+  <%= javascript_include_tag "rails", "application", cache: true %>
 </head>
 <body>
   <%= render :partial => "common/feedback" %>
@@ -29,16 +25,16 @@
       <div id="top_links">
         <ul>
           <% if logged_in? %>
-            <li><%= link_to "my profile", profile_path(current_user) %></li>
-            <li><%= link_to "settings", edit_account_path %></li>
-            <li><%= link_to "invite friends", new_invitation_path %>
+            <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
+            <li><%= link_to_unless_current "settings", edit_account_path %></li>
+            <li><%= link_to_unless_current "invite friends", new_invitation_path %>
             <% if App.beta? && current_user.invites_left > 0 %>
               (<span id="invites_left"><%= current_user.invites_left %></span>)</li>
             <% end %>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "register", new_user_session_path %></li>
-            <li><%= link_to "log in", new_user_session_path %></li>
+            <li><%= link_to_unless_current "register", new_user_session_path %></li>
+            <li><%= link_to_unless_current "log in", new_user_session_path %></li>
           <% end %>
         </ul>
       </div>

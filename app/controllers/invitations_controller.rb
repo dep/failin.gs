@@ -30,7 +30,12 @@ class InvitationsController < ApplicationController
         format.html { render "new" }
         format.js {
           render :update do |page|
-            page[@invitation].replace partial: "form"
+            if Array(@invitation.errors[:email]).include?(Invitation::ALREADY_MEMBER_MESSAGE)
+              flash[:notice] = Invitation::ALREADY_MEMBER_MESSAGE
+              page.redirect_to profile_path(User.find_by_email(@invitation.email))
+            else
+              page[@invitation].replace partial: "form"
+            end
           end
         }
       end

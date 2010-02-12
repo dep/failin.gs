@@ -1,5 +1,5 @@
 class PasswordMailer < ActionMailer::Base
-  default from: "passwords@failin.gs"
+  default from: "Failin.gs Gang <passwords@failin.gs>"
 
   def new_password(user)
     @user = user

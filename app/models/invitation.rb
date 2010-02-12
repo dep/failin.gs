@@ -10,13 +10,16 @@ class Invitation < ActiveRecord::Base
   validate :should_be_invitable
   after_save :decrement_invites_left
 
+  # TODO: Move this message (and others) into I18t.
+  ALREADY_MEMBER_MESSAGE = "is already a member"
+
   private
 
   def should_be_invitable
     if inviter.invites_left <= 0
       errors[:inviter] << "is out of invites"
     elsif User.find_by_email(email)
-      errors[:email] << "is already a member"
+      errors[:email] << ALREADY_MEMBER_MESSAGE
     end
   end
 
