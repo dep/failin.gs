@@ -41,7 +41,12 @@
     <% if !@user.private? || @user == current_user %>
       <% %w(needs_review knew no_idea disagree).each do |state| %>
         <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe if state == "needs_review" && @user.failings.send(state).none? %>>
-          <h3><%= title_for state %></h3>
+          <h3>
+            <%= title_for state %>
+            <% if state == "needs_review" %>
+              <span>These are private until you categorize them</span>
+            <% end %>
+          </h3>
           <div id="<%= state %>">
             <%= render "empty_category", any: @user.failings.send(state).any? %>
             <%= render @user.failings.send(state) %>
