@@ -6,21 +6,14 @@
   <meta name="description" content="failin.gs seeks to answer a that perhaps all of us have asked ourselves at some point: 'What is wrong with me?'">
   <meta name="keywords" content="failings, flaws, anonymous, social web, social networking, self-improvement, fun">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link href="/stylesheets/main.css?1264940244" media="screen" rel="stylesheet" type="text/css" />
-  <script src="/javascripts/prototype.js?1261418738" type="text/javascript"></script>
-
-  <script src="/javascripts/effects.js?1261418738" type="text/javascript"></script>
-  <script src="/javascripts/dragdrop.js?1261418738" type="text/javascript"></script>
-  <script src="/javascripts/controls.js?1261418738" type="text/javascript"></script>
-  <script src="/javascripts/prototype.rails.js?1264795175" type="text/javascript"></script>
-  <script src="/javascripts/application.js?1264882507" type="text/javascript"></script>
+  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div id="wrapper">
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
     <script type="text/javascript">
       function randomize_logo() {
-        $('logo').style.backgroundImage = "url('/images/logo_" + Math.floor(Math.random()*3) + ".png')";
+        document.getElementById('logo').style.backgroundImage = "url('/images/logo_" + Math.floor(Math.random()*3) + ".png')";
       }
       randomize_logo();
     </script>
