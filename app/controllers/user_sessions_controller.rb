@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
     @user = User.new
     @user_session = UserSession.new params[:user_session]
     if @user_session.save
-      redirect_to profile_path(@user_session.user),
+      redirect_back_or_default profile_path(@user_session.user),
         notice: "Login successful!"
     else
       render "new"

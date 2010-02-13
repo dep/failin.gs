@@ -43,7 +43,14 @@ class FailingsController < ApplicationController
     return unless stale? etag: [@failing, @user == current_user],
       last_modified: @failing.updated_at, public: !logged_in?
 
-    redirect_to profile_path(@user) if @user.private? && @user != current_user
+    if @user.private?
+      if logged_in?
+        redirect_to profile_path(@user) if @user != current_user
+      else
+        store_location
+        require_user
+      end
+    end
   end
 
   def knew

@@ -32,4 +32,13 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def store_location
+    session[:return_to] = request.request_uri
+  end
+
+  def redirect_back_or_default(default, *args)
+    redirect_to(session[:return_to] || default, *args)
+    session[:return_to] = nil
+  end
 end

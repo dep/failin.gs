@@ -17,7 +17,7 @@ class Failing < ActiveRecord::Base
   after_save :touch_user
 
   scope :needs_review, where(state: "needs_review").order("created_at DESC") # .order("score DESC")
-  scope :reviewed,     where("state != ?", "needs_review")
+  scope :reviewed,     where("state NOT IN (?)", %w(needs_review abused))
   scope :knew,         where(state: "knew").order("score DESC")
   scope :no_idea,      where(state: "no_idea").order("score DESC")
   scope :disagree,     where(state: "disagree").order("score DESC")

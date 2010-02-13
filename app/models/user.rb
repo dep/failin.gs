@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, if: :updating_password
 
+  after_create :set_invitation
+
   if App.beta?
     validates_presence_of :invitation, unless: :promo_code?, on: :create
   end
@@ -41,13 +43,13 @@ class User < ActiveRecord::Base
 
   def invitation_email=(email)
     unless email.blank?
-      self.invitation = Invitation.find_by_email!(@invitation_email = email)
+      @invitation = Invitation.find_by_email!(@invitation_email = email)
     end
   end
 
   def email=(email)
     super
-    self.invitation ||= Invitation.find_by_email(email)
+    @invitation ||= Invitation.find_by_email(email)
   end
 
   def promo_code
@@ -63,6 +65,13 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def set_invitation
+    if @invitation
+      @invitation.invited = self
+      @invitation.save
+    end
+  end
 
   def promotion_should_be_valid
     if promotion_id?
