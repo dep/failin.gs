@@ -21,26 +21,15 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless logged_in?
-      store_location
-      redirect_to root_url
+      redirect_to new_user_session_path
       return false
     end
   end
 
   def require_no_user
     if logged_in?
-      store_location
       redirect_to profile_url(current_user)
       return false
     end
-  end
-
-  def store_location
-    session[:return_to] = request.request_uri
-  end
-
-  def redirect_back_or_default(default, *args)
-    redirect_to(session[:return_to] || default, *args)
-    session[:return_to] = nil
   end
 end
