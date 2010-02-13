@@ -31,7 +31,7 @@
     <%= render "public" %>
   <% end %>
 
-  <% if @user == current_user && @user.failings.count.zero? %>
+  <% if @user == current_user && @user.failings.where("state != ?", "abused").count.zero? %>
     <%= render "empty_profile" %>
   <% elsif @user != current_user && !@user.private? && @user.failings.reviewed.count.zero? %>
     <%= render "empty_profile_public" %>

@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :abuses, as: :content
 
+  attr_accessible :text
+
   validates_length_of :text, in: 1..200
 
   after_save :touch_user

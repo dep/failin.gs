@@ -1,9 +1,12 @@
+require "uuid"
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  helper_method :current_user_session, :current_user, :logged_in?
+  before_filter :load_identity
 
   private
+
+  # == Loaders
 
   def load_profile_user
     @user = User.active.find_by_login! params[:login]
@@ -14,10 +17,18 @@ class ApplicationController < ActionController::Base
     @failing = @user.failings.find(params[:failing_id] || params[:id])
   end
 
+  def load_identity
+    @identity = cookies.signed[:identity] ||
+      cookies.permanent.signed[:identity] = UUID.new.generate
+  end
+
+  # == Authentication
+
   def current_user_session
     return @current_user_session if defined? @current_user_session
     @current_user_session = UserSession.find
   end
+  helper_method :current_user_session
 
   def current_user
     return @current_user if defined? @current_user
@@ -27,10 +38,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  helper_method :current_user
 
   def logged_in?
     !current_user.nil?
   end
+  helper_method :logged_in?
 
   def require_user
     unless logged_in?

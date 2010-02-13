@@ -9,12 +9,14 @@ class Failing < ActiveRecord::Base
   has_many :abuses, as: :content
 
   attr_accessor :surname
+  attr_accessible :about, :surname
+
   validates_presence_of :user
   validates_length_of :about, in: 1..145
   validate :verified, on: :create, if: :user
   validate :overkill, on: :create, unless: :autodidact?
 
-  scope :needs_review, where(state: "needs_review").order("created_at DESC") # .order("score DESC")
+  scope :needs_review, where(state: "needs_review").order("created_at DESC")
   scope :reviewed,     where("state NOT IN (?)", %w(needs_review abused))
   scope :knew,         where(state: "knew").order("score DESC")
   scope :no_idea,      where(state: "no_idea").order("score DESC")
@@ -64,8 +66,8 @@ class Failing < ActiveRecord::Base
   end
 
   def overkill
-    count = user.failings.where("submitter_ip = ? OR submitter_id = ?",
-      submitter_ip, submitter_id).count
+    count = user.failings.where("token_id = ? OR submitter_id = ?",
+      token_id, submitter_id).count
 
     if count >= OVERKILL_LIMIT
       errors[:submitter] << "has submitted enough failings for this user"

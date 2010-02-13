@@ -1,6 +1,10 @@
+require "uuid"
+uuid = UUID.new.generate
+
 Factory.define :abuse do |f|
   f.content { Factory :failing }
   f.reporter_ip "127.0.0.%d"
+  f.token_id "#{uuid[0..-2]}%d"
 end
 
 Factory.define :comment do |f|
@@ -9,6 +13,7 @@ Factory.define :comment do |f|
 This is so untrue!
 TEXT
   f.submitter_ip "127.0.0.%d"
+  f.token_id "#{uuid[0..-2]}%d"
 end
 
 Factory.define :email do |f|
@@ -22,6 +27,7 @@ Factory.define :failing do |f|
 You breath blows.
 TEXT
   f.surname { |failing| failing.user.surname }
+  f.token_id "#{uuid[0..-2]}%d"
 end
 
 Factory.define :invitation do |f|
@@ -56,4 +62,5 @@ Factory.define :vote do |f|
   f.failing { Factory :failing }
   f.agree true
   f.voter_ip "127.0.0.%d"
+  f.token_id "#{uuid[0..-2]}%d"
 end

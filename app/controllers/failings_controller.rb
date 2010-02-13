@@ -25,6 +25,7 @@ class FailingsController < ApplicationController
     @failing = @user.failings.new params[:failing]
     @failing.submitter = current_user
     @failing.submitter_ip = request.remote_ip
+    @failing.token_id = @identity
 
     if @failing.save
       if @user.subscribe? && @user != current_user

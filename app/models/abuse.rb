@@ -5,10 +5,10 @@ class Abuse < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :content
-  validates_uniqueness_of :user_id, scope: [:content_type, :content_id, :reporter_ip]
-  validates_uniqueness_of :reporter_ip, scope: [:content_type, :content_id, :user_id]
+  validates_uniqueness_of :user_id, scope: %w(content_type content_id)
+  validates_uniqueness_of :token_id, scope: %w(content_type content_id user_id)
 
-  attr_protected :user_id, :content_type, :content_id, :reporter_ip
+  attr_protected :user_id, :content_type, :content_id, :reporter_ip, :token_id
   after_save :abuse_content
 
   private

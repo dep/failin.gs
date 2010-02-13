@@ -88,6 +88,11 @@ class User < ActiveRecord::Base
       invitation.invited_id = id
       invitation.save!
     end
+
+    if address = Email.find_by_address(email)
+      address.user_id = id
+      address.save!
+    end
   end
 
   def promotion_should_be_valid
