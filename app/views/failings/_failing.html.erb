@@ -30,7 +30,7 @@
     <span class="create_date"><%= link_to failing.created_at.to_s(:timestamp), failing_url(failing.user, failing), title: "Permalink" %></span>
   </div>
   <div id="<%= dom_id failing, :comments %>">
-    <%= render failing.comments %>
+    <%= render failing.comments.not_abusive %>
   </div>
   <div class="toolbar bottom">
     <% if failing.user == current_user && failing.needs_review? %>
@@ -51,17 +51,9 @@
     </div>
   </div>
   <div class="reply_wrapper" style="display: none;">
-    <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing), remote: true do |f| %>
+    <% form_for failing.comments.build, url: failing_comments_path(failing.user, failing), remote: true do |f| %>
       <div>
-        <%= f.text_area :text, :rows => "2" %>
-        <%= f.submit %>
-      </div>
-    <% end %>
-  </div>
-  <div class="reply_wrapper" style="display: none;">
-    <% form_for failing.comments.build, url: failing_comment_path(failing.user, failing) do |f| %>
-      <div>
-        <%= f.text_area :text, :rows => "2" %>
+        <%= f.text_area :text, rows: 2 %>
         <%= f.submit %>
       </div>
     <% end %>

@@ -1,7 +1,10 @@
 <% div_for comment do %>
   <p><%= comment.text %></p>
-  <% if comment.user == comment.failing.user %>
-    <span class="reply_by_owner">- <%= comment.failing.user.login %> replied</span>
+  <% if comment.user_id == comment.failing.user_id %>
+    <span class="reply_by_owner">- <%= comment.user.login %> replied</span>
   <% end %>
-  <span><%= comment.created_at.to_s :timestamp %></span>
+  <span>
+    <%= comment.created_at.to_s :timestamp %>
+    <%= link_to "!", failing_comment_abuse_path(comment.failing.user, comment.failing, comment), remote: true, method: :post, class: "abuse", title: "Report abuse", confirm: ("Really report abuse?" if current_user == comment.failing.user) %>
+  </span>
 <% end %>

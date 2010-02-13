@@ -12,13 +12,15 @@ FailinGs::Application.routes.draw do |map|
       put :disagree
     end
 
-    resource :comment, only: %w(create)
-    resource :vote,    only: %w(create)
-    resource :abuse,   only: %w(create)
+    resources :comments, only: %w(create) do
+      resource :abuse, only: %w(create)
+    end
+    resource :vote, only: %w(create)
+    resource :abuse, only: %w(create)
   end
 
   resource :invitation, only: %w(new create)
-  resource :share,      only: %w(new create)
+  resource :share, only: %w(new create)
 
   get "profile/:login(.:format)", to: "failings#index", as: :profile
   get "profile/:login/failings" => redirect("/profile/%{login}")

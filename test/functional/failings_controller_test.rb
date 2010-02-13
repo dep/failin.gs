@@ -16,7 +16,9 @@ class FailingsControllerTest < ActionController::TestCase
   end
 
   test "get public profile" do
-    get :index, login: Factory(:failing).user.login
+    failing = Factory :failing
+    failing.no_idea!
+    get :index, login: failing.user.login
     assert_response :success
     assert !@response.body.include?("brand new")
     assert @response.body.include?("This category is empty")
@@ -24,12 +26,13 @@ class FailingsControllerTest < ActionController::TestCase
   end
 
   test "submit failing" do
+    user = Factory :user
     assert_difference "Failing.count" do
-      post :create, login: Factory(:user).login,
-        failing: { about: "You smell." }
+      post :create, login: user.login,
+        failing: { about: "You smell.", surname: user.surname }
     end
     assert_response :redirect
-    assert_redirected_to profile_path(@user)
+    assert_redirected_to profile_path(user)
     assert_not_nil flash[:notice]
   end
 
@@ -44,7 +47,8 @@ class FailingsControllerTest < ActionController::TestCase
     failing = Factory :failing, user: Factory(:user, private: true)
     get :show, login: failing.user.login, id: failing.id
     assert_response :redirect
-    assert_redirected_to profile_path(failing.user)
+    assert_redirected_to new_user_session_path
+    # If logged_in? and failing.user != current_user profile_path(failing.user)
   end
 
   # test "show private failing to user" do

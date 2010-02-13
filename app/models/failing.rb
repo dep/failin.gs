@@ -2,7 +2,7 @@ class Failing < ActiveRecord::Base
   # The number of failings a submitter can submit before deemed overkill.
   OVERKILL_LIMIT = 3
 
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :submitter, class_name: "User"
   has_many :votes
   has_many :comments
@@ -13,8 +13,6 @@ class Failing < ActiveRecord::Base
   validates_length_of :about, in: 1..145
   validate :verified, on: :create, if: :user
   validate :overkill, on: :create, unless: :autodidact?
-
-  after_save :touch_user
 
   scope :needs_review, where(state: "needs_review").order("created_at DESC") # .order("score DESC")
   scope :reviewed,     where("state NOT IN (?)", %w(needs_review abused))
@@ -83,9 +81,5 @@ class Failing < ActiveRecord::Base
     # !user.failings.
     #   where("submitter_ip = ? OR submitter_id = ?", submitter_ip, submitter_id).
     #   first.nil?
-  end
-
-  def touch_user
-    user.touch
   end
 end

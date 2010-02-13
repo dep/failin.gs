@@ -1,0 +1,16 @@
+page[@failing].visual_effect(:blind_up, duration: 0.1)
+page.delay(0.1) do
+  page[@failing].remove
+  page << "$$('##{@failing.state} .empty')[0].hide();"
+  page.insert_html :top, @failing.state, partial: @failing
+  page << "if (!$('#{@failing.state}').visible()) {"
+    page[@failing.state].show
+  page << "}"
+  page[@failing].visual_effect(:highlight)
+  page << "if ($$('##@state_was .failing').length == 0) {"
+    page << "$$('##@state_was .empty')[0].show();"
+    if @state_was == "needs_review"
+      page[@state_was].up(".flaw_box").hide
+    end
+  page << "}"
+end

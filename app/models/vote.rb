@@ -12,7 +12,7 @@ class Vote < ActiveRecord::Base
   scope :positive, conditions: { agree: true }
   scope :negative, conditions: { agree: false }
 
-  after_save :update_failing
+  after_create :update_failing
 
   private
 

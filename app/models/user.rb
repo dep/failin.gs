@@ -29,6 +29,23 @@ class User < ActiveRecord::Base
 
   after_create :set_invitation
 
+  include AASM
+
+  aasm_column :state
+  aasm_initial_state :active
+
+  aasm_state :active
+  aasm_state :deleted
+  aasm_state :abused
+
+  aasm_event :delete do
+    transitions to: :deleted, from: %w(active)
+  end
+
+  aasm_event :abuse do
+    transitions to: :abused, from: %w(active)
+  end
+
   if App.beta?
     validates_presence_of :invitation, unless: :promo_code?, on: :create
   end

@@ -11,5 +11,6 @@ user = User.new login: "failings",
               surname: "Gs"
 
 user.invites_left = 5000
+user.state = "active"
 user.send :reset_single_access_token # Because null: false.
 user.save validate: false

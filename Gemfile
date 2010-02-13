@@ -5,9 +5,10 @@ gem "rails", git: "git://github.com/rails/rails.git"
 
 # Configuration
 gem "mysql"
-gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
+gem "aasm",      git: "git://github.com/rubyist/aasm.git"
 gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
-gem "aasm",      git: "git://github.com/stephencelis/aasm.git"
+gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
+gem "uuid"
 
 group :development do
   gem "ghi"

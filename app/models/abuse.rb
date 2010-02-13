@@ -14,6 +14,15 @@ class Abuse < ActiveRecord::Base
   private
 
   def abuse_content
-    content.abuse! if user == content.user || content.abuses.count >= THRESHOLD
+    if content.abuses.count >= THRESHOLD
+      content.abuse!
+    else
+      case content
+      when Failing
+        content.abuse! if user == content.user
+      when Comment
+        content.abuse! if user == content.failing.user
+      end
+    end
   end
 end
