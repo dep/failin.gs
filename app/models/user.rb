@@ -19,8 +19,13 @@ class User < ActiveRecord::Base
   validates :login, length: LOGIN_LENGTH, format: /\w+/
   validates_presence_of :surname
   validate :promotion_should_be_valid, on: :create
+  validate :login_should_not_contain_surname, on: :create
 
-  validates_presence_of :password, if: :updating_password
+  INVALID_PASSWORDS = %w(password)
+  validates_exclusion_of :password, in: INVALID_PASSWORDS, allow_blank: true,
+    message: "should be a little less common than that"
+
+  validates :password, presence: true, if: :updating_password
 
   if App.beta?
     validates_presence_of :invitation, unless: :promo_code?, on: :create
@@ -68,6 +73,12 @@ class User < ActiveRecord::Base
       end
     elsif App.beta? && email? && invitation.nil?
       errors[:promo_code] << "required for uninvited '#{email}'"
+    end
+  end
+
+  def login_should_not_contain_surname
+    if login.downcase.include?(surname.downcase)
+      errors[:login] << "should not contain your last name"
     end
   end
 end

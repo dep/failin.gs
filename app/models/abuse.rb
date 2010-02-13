@@ -1,5 +1,5 @@
 class Abuse < ActiveRecord::Base
-  THRESHOLD = 2 # abuses.
+  THRESHOLD = 3 # abuses.
 
   belongs_to :content, polymorphic: true
   belongs_to :user
