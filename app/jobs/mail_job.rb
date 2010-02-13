@@ -7,7 +7,7 @@ class MailJob < Struct.new(:record)
     when Comment
       recipient = record.failing.user
       return if !recipient.subscribe? || recipient.id == record.user_id
-      Notifier.new_comment(record).delive
+      Notifier.new_comment(record).deliver
     when Invitation
       Notifier.new_invitation(record).deliver
     when Share
