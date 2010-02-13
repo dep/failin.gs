@@ -42,7 +42,7 @@ class Failing < ActiveRecord::Base
   end
 
   aasm_event :abuse do
-    transitions to: :abuse, from: %w(needs_review knew no_idea disagree)
+    transitions to: :abused, from: %w(needs_review knew no_idea disagree)
   end
 
   def votes_score
