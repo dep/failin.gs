@@ -31,12 +31,10 @@
     <%= render "public" %>
   <% end %>
 
-  <% if @user.failings.count.zero? %>
-    <% if @user == current_user %>
-      <%= render "empty_profile" %>
-    <% elsif !@user.private? %>
-      <%= render "empty_profile_public" %>
-    <% end %>
+  <% if @user == current_user && @user.failings.count.zero? %>
+    <%= render "empty_profile" %>
+  <% elsif !@user.private? && @user.failings.reviewed.count.zero? %>
+    <%= render "empty_profile_public" %>
   <% else %>
     <% if !@user.private? || @user == current_user %>
       <% %w(needs_review knew no_idea disagree).each do |state| %>
