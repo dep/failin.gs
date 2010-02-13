@@ -1,5 +1,7 @@
 class Failing < ActiveRecord::Base
-  # = Local
+  # The number of failings a submitter can submit before deemed overkill.
+  OVERKILL_LIMIT = 3
+
   belongs_to :user
   belongs_to :submitter, class_name: "User"
   has_many :votes
@@ -10,6 +12,7 @@ class Failing < ActiveRecord::Base
   validates_presence_of :user
   validates_length_of :about, in: 1..145
   validate :verified, on: :create, if: :user
+  validate :overkill, on: :create, unless: :autodidact?
 
   after_save :touch_user
 
@@ -49,11 +52,24 @@ class Failing < ActiveRecord::Base
     score
   end
 
+  def autodidact?
+    user_id == submitter_id
+  end
+
   private
 
   def verified
     unless verify_surname || already_verified
-      errors.add :surname, "doesn't match"
+      errors[:surname] << "doesn't match"
+    end
+  end
+
+  def overkill
+    count = user.failings.where("submitter_ip = ? OR submitter_id = ?",
+      submitter_ip, submitter_id).count
+
+    if count >= OVERKILL_LIMIT
+      errors[:submitter] << "has submitted enough failings for this user"
     end
   end
 
