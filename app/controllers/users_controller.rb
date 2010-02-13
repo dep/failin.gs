@@ -26,7 +26,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_attributes params[:user]
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Updated!"
+    end
     respond_with @user, location: edit_account_path
   end
 
