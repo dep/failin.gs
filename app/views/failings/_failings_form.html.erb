@@ -2,8 +2,8 @@
   <div class="floating_box rounded_box drop_shadow" id="box_validate" style="display:none">
     <%= render "validation_message" %>
 
-    <%= f.text_field :surname %>
-    <%= f.submit "Ok - Send!", :onclick => "nice_clear()" %>
+    <%= f.text_field :surname, autocomplete: "off" %>
+    <%= f.submit "Ok - Send!", onclick: "nice_clear();" %>
 
     <%= link_to "x", "#", onclick: "$('box_validate').fade();", class: "close" %>
   </div>
@@ -11,7 +11,7 @@
     <h2>What is wrong with me?</h2>
     <%= f.error_messages %>
 
-    <%= f.text_area :about, :rows => "2", :cols => "50", :maxlength => "145", :onkeyup => "return ismaxlength(this)" %>
+    <%= f.text_area :about, rows: "2", cols: "50", maxlength: "145", onkeyup: "return ismaxlength(this)" %>
     <button type="button" onclick="$('box_validate').show(); $('failing_surname').focus();">Submit</button>
     <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
   </fieldset>

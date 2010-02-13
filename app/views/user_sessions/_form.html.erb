@@ -5,6 +5,7 @@
       <%= f.label :login %>
       <%= f.text_field :login %>
     </div>
+    <%= javascript_tag %{$("user_session_login").focus();} if session[:return_to] %>
     <div>
       <%= f.label :password %>
       <%= f.password_field :password %>

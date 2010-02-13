@@ -43,13 +43,13 @@ class User < ActiveRecord::Base
 
   def invitation_email=(email)
     unless email.blank?
-      @invitation = Invitation.find_by_email!(@invitation_email = email)
+      self.invitation = Invitation.find_by_email!(@invitation_email = email)
     end
   end
 
   def email=(email)
     super
-    @invitation ||= Invitation.find_by_email(email)
+    self.invitation ||= Invitation.find_by_email(email)
   end
 
   def promo_code
@@ -67,9 +67,9 @@ class User < ActiveRecord::Base
   private
 
   def set_invitation
-    if @invitation
-      @invitation.invited = self
-      @invitation.save
+    if invitation
+      invitation.invited_id = id
+      invitation.save!
     end
   end
 
