@@ -12,7 +12,8 @@ class FailingsController < ApplicationController
     @user = User.find_by_login! params[:login]
 
     if App.optimized?
-      return unless stale? etag: [@user, @user == current_user], last_modified: @user.updated_at, public: !logged_in?
+      return unless stale? etag: [@user, @user == current_user],
+        last_modified: @user.updated_at, public: !logged_in?
     end
 
     @failing = @user.failings.build
@@ -25,7 +26,10 @@ class FailingsController < ApplicationController
     @failing.submitter_ip = request.remote_ip
 
     if @failing.save
-      Delayed::Job.enqueue MailJob.new(@failing)
+      if @user.subscribe? && @user != current_user
+        Delayed::Job.enqueue MailJob.new(@failing)
+      end
+
       redirect_to profile_path(@user), notice: "Thanks for your feedback!"
     else
       render "index"
@@ -36,7 +40,8 @@ class FailingsController < ApplicationController
     @user = User.find_by_login! params[:login]
     @failing = @user.failings.find params[:id]
 
-    return unless stale? etag: [@failing, @user == current_user], last_modified: @failing.updated_at, public: !logged_in?
+    return unless stale? etag: [@failing, @user == current_user],
+      last_modified: @failing.updated_at, public: !logged_in?
 
     redirect_to profile_path(@user) if @user.private? && @user != current_user
   end

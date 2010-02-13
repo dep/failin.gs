@@ -7,7 +7,10 @@ class CommentsController < ApplicationController
     @comment.submitter_ip = request.remote_ip
 
     if @comment.save
-      Delayed::Job.enqueue MailJob.new(@comment)
+      if @user.subscribe? && @user != current_user
+        Delayed::Job.enqueue MailJob.new(@comment)
+      end
+
       respond_to do |format|
         format.html { redirect_to profile_url(@user) }
         format.js {
