@@ -4,6 +4,18 @@ class Email < ActiveRecord::Base
   validates_format_of :address, with: /^.+@.+$/,
     message: "doesn't look like an email"
 
+  class << self
+    def invite!(limit = 100)
+      where("created_at = updated_at").order("created_at ASC").limit(limit).
+        each do |email|
+
+        logger.info "Inviting '#{email.address}'..."
+        email.invite!
+        sleep 1
+      end
+    end
+  end
+
   def save
     super
   rescue ActiveRecord::RecordNotUnique => e
