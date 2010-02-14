@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
   def invitation_email=(email)
     unless email.blank?
-      self.invitation = Invitation.find_by_email!(@invitation_email = email)
+      self.invitation = Invitation.find_by_email(@invitation_email = email)
     end
   end
 
