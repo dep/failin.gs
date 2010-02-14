@@ -6,14 +6,16 @@ class FailingsController < ApplicationController
 
   def index
     if request.format.js?
-      return unless stale? last_modified: App.launched_at
+      return unless stale? etag: form_authenticity_token,
+        last_modified: App.launched_at
     end
 
     load_profile_user
 
     if App.optimized?
-      return unless stale? etag: [@user, @user == current_user],
-        last_modified: @user.updated_at, public: !logged_in?
+      etag = [@user, @user == current_user, form_authenticity_token]
+      return unless stale? etag: etag, last_modified: @user.updated_at,
+        public: !logged_in?
     end
 
     @failing = @user.failings.build
@@ -41,8 +43,9 @@ class FailingsController < ApplicationController
   def show
     load_failing
 
-    return unless stale? etag: [@failing, @user == current_user],
-      last_modified: @failing.updated_at, public: !logged_in?
+    etag = [@failing, @user == current_user, form_authenticity_token]
+    return unless stale? etag: etag, last_modified: @failing.updated_at,
+      public: !logged_in?
 
     if @user.private?
       if logged_in?

@@ -13,7 +13,8 @@ class PagesController < ApplicationController
   private
 
   def validate_cache
-    return unless stale? :last_modified => last_modified
+    return unless stale? etag: form_authenticity_token,
+      last_modified: last_modified
   end
 
   def last_modified

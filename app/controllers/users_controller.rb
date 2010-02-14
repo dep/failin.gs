@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    return unless stale? etag: @user, public: false
+    return unless stale? etag: [@user, form_authenticity_token], public: false
     respond_with @user
   end
 
