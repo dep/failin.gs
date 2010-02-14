@@ -42,4 +42,7 @@ FailinGs::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+
+  require "lib/exception_notifier"
+  config.middleware.use ExceptionNotifier
 end

@@ -48,4 +48,22 @@ class Notifier < ActionMailer::Base
     subject: "[failin.gs] Please critique your friend!",
         bcc: @share.emails
   end
+
+  def new_exception(exception, env)
+    @exception, @env = exception, env
+    @backtrace = Rails.backtrace_cleaner.send(:filter, @exception.backtrace)
+
+    mail to: "stephen@failin.gs, danny@failin.gs",
+       from: "app@failin.gs",
+    subject: "[exception] #{@exception.class.name}" do |format|
+
+      format.text {
+        render text: [
+          "#{@exception.class.name}: #{@exception.message}\n",
+          "#{env.inspect}\n",
+          *@backtrace
+        ].join("\n  ")
+      }
+    end
+  end
 end
