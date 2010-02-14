@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_reader :promo_code
   attr_accessor :updating_password
 
+  APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH
   validates_format_of :login, with: /^[0-9a-z_]+$/i,
@@ -81,6 +82,10 @@ class User < ActiveRecord::Base
 
   def promo_code?
     !promo_code.blank?
+  end
+
+  def app?
+    login == APP_LOGIN
   end
 
   private
