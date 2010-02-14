@@ -11,3 +11,11 @@
     <%= f.submit "Send" %>
   <% end %>
 </fieldset>
+<script type="text/javascript">
+  if (window.location.search === "?request=invite") {
+    $("login_form").hide();
+    $("signup_form").hide();
+    $("request_form").show();
+    $("email_address").focus();
+  }
+</script>
