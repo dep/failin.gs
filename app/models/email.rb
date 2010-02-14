@@ -24,6 +24,8 @@ class Email < ActiveRecord::Base
   end
 
   def invite!
+    return false unless created_at == updated_at
+
     inviter = User.find_by_login! "failings"
     invited = inviter.invitations.new(email: address)
     if invited.save

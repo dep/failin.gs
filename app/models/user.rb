@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   validate :promotion_should_be_valid, on: :create
   validate :login_should_not_contain_surname, on: :create
 
+  validates_length_of :about, maximum: 500, allow_blank: true
+
   INVALID_PASSWORDS = %w(password)
   validates_exclusion_of :password, in: INVALID_PASSWORDS, allow_blank: true,
     message: "should be a little less common than that"
