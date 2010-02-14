@@ -2,7 +2,17 @@
   <% form_for @user, :url => account_path do |f| %>
     <%= f.hidden_field :invitation_email, value: params[:invited] %>
 
-    <%= f.error_messages %>
+    <% if @user.errors.any? %>
+      <% if App.beta? && @user.errors[:promo_code].any? %>
+        <div class="errorExplanation" id="errorExplanation">
+          <h2>Promo code or invitation required</h2>
+          <p>Promo code <%= @user.errors[:promo_code].to_sentence %></p>
+          <p>Request an invitation on our <%= link_to "homepage", root_path(request: "invite") %>.</p>
+        </div>
+      <% else %>
+        <%= f.error_messages %>
+      <% end %>
+    <% end %>
 
     <%= f.label :login, "Username:" %>
     <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
@@ -30,7 +40,7 @@
     <%= f.submit "Sign up!" %>
   <% end %>
   <script type="text/javascript">
-    if ($('user_invitation_email').value)
+    if (!$('user_invitation_email').getValue().blank())
       $('promo_wrapper').hide();
   </script>
 </fieldset>

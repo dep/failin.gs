@@ -2,12 +2,12 @@
   <div class="pic_area">
     <%= gravatar_for @user, default: image_url("default_pic.png"), size: 200 %>
     <p>
-      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup">Gravatar</a>.
+      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a>.
       We prefer it because your Gravatar image will always be there on participating sites, making things
       easier for you. You only need to set it up once and then you're good to go.
     </p>
     <p>
-      Set up your <a href="http://en.gravatar.com/site/signup">Gravatar</a> image now.
+      Set up your <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a> image now.
   </div>
   <% form_for @user, :url => account_path do |f| %>
     <div class="user_details">
@@ -17,8 +17,8 @@
       <p>
         Welcome private-beta user. Thanks for helping us test the site.
         We imagine there might be some bugs in here, so if you see something weird,
-        use the green feedback tab on the left of the screen. In the meantime, parden
-        our dust!
+        use the green feedback tab on the left of the screen. In the meantime, pardon
+        the dust!
       </p>
       <%= f.error_messages %>
 

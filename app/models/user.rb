@@ -15,11 +15,16 @@ class User < ActiveRecord::Base
   attr_reader :promo_code
   attr_accessor :updating_password
 
+  APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
-  validates :login, length: LOGIN_LENGTH, format: /\w+/
+  validates :login, length: LOGIN_LENGTH
+  validates_format_of :login, with: /^[0-9a-z_]+$/i,
+    message: "can only contain letters, numbers, and underscores."
   validates_presence_of :surname
   validate :promotion_should_be_valid, on: :create
   validate :login_should_not_contain_surname, on: :create
+
+  validates_length_of :about, maximum: 500, allow_blank: true
 
   INVALID_PASSWORDS = %w(password)
   validates_exclusion_of :password, in: INVALID_PASSWORDS, allow_blank: true,
@@ -81,6 +86,10 @@ class User < ActiveRecord::Base
     !promo_code.blank?
   end
 
+  def app?
+    login == APP_LOGIN
+  end
+
   private
 
   def set_invitation
@@ -108,7 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def login_should_not_contain_surname
-    if login.downcase.include?(surname.downcase)
+    if login.present? && surname.present? && login.downcase.include?(surname.downcase)
       errors[:login] << "should not contain your last name"
     end
   end

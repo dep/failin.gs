@@ -2,7 +2,8 @@ class InvitationsController < ApplicationController
   before_filter :require_user
 
   def new
-    return unless stale? etag: current_user.invites_left, public: false
+    etag = [current_user.invites_left, form_authenticity_token]
+    return unless stale? etag: etag, public: false
     @share = current_user.shares.new
     @invitation = current_user.invitations.new
   end

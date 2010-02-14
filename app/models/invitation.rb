@@ -8,7 +8,7 @@ class Invitation < ActiveRecord::Base
   validates_format_of :email, with: Authlogic::Regex.email, message: "doesn't look like an email", allow_blank: true
   validates_uniqueness_of :email, message: "has already been invited"
   validate :should_be_invitable, on: :create
-  after_save :decrement_invites_left
+  after_create :decrement_invites_left
 
   # TODO: Move this message (and others) into I18t.
   ALREADY_MEMBER_MESSAGE = "is already a member"

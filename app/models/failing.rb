@@ -69,7 +69,9 @@ class Failing < ActiveRecord::Base
     count = user.failings.where("token_id = ? OR submitter_id = ?",
       token_id, submitter_id).count
 
-    if count >= OVERKILL_LIMIT
+    limit = user.app? ? 100 : OVERKILL_LIMIT
+
+    if count >= limit
       errors[:submitter] << "has submitted enough failings for this user"
     end
   end
