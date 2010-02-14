@@ -31,15 +31,14 @@
     <%= render "public" %>
   <% end %>
 
-  <% if @user.failings.count.zero? %>
-    <% if @user == current_user %>
-      <%= render "empty_profile" %>
-    <% elsif !@user.private? %>
-      <%= render "empty_profile_public" %>
-    <% end %>
+  <% if @user == current_user && @user.failings.where("state != ?", "abused").count.zero? %>
+    <%= render "empty_profile" %>
+  <% elsif @user != current_user && !@user.private? && @user.failings.reviewed.count.zero? %>
+    <%= render "empty_profile_public" %>
   <% else %>
     <% if !@user.private? || @user == current_user %>
       <% %w(needs_review knew no_idea disagree).each do |state| %>
+        <% next if state == "needs_review" && @user != current_user %>
         <div class="flaw_box <%= css_class_for state %>"<%= ' style="display: none;"'.html_safe if state == "needs_review" && @user.failings.send(state).none? %>>
           <h3>
             <%= title_for state %>

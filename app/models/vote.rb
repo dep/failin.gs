@@ -4,15 +4,15 @@ class Vote < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :failing
-  validates_uniqueness_of :user_id, scope: [:failing_id, :voter_ip]
-  validates_uniqueness_of :voter_ip, scope: [:failing_id, :user_id]
+  validates_uniqueness_of :user_id, scope: :failing_id
+  validates_uniqueness_of :token_id, scope: %w(failing_id user_id)
 
-  attr_protected :failing_id, :user_id, :voter_ip
+  attr_accessible :agree
 
   scope :positive, conditions: { agree: true }
   scope :negative, conditions: { agree: false }
 
-  after_save :update_failing
+  after_create :update_failing
 
   private
 

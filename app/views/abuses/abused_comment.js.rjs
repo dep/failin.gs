@@ -1,0 +1,10 @@
+if @abuse.new_record?
+  page.alert @abuse.errors.full_messages.to_s
+  page[@comment].select(".abuse").first.replace "!"
+else
+  if @abuse.user == @comment.failing.user
+    page[@comment].visual_effect(:blind_up, duration: 0.1)
+  else
+    page[@comment].select(".abuse").first.replace "."
+  end
+end

@@ -5,6 +5,7 @@ class VotesController < ApplicationController
     @vote = @failing.votes.new agree: !params[:agree].nil?
     @vote.user = current_user
     @vote.voter_ip = request.remote_ip
+    @vote.token_id = @identity
     @vote.save!
 
     xhr_message "thanks!"
@@ -18,7 +19,8 @@ class VotesController < ApplicationController
     render :update do |page|
       score  = @failing.votes_score
       score += (@vote.agree? ? 1 : -1) unless @vote.new_record?
-      page[@failing].select(".toolbar").first.innerHTML = "<strong>#{score}</strong> votes | #{message}"
+      page[@failing].select(".toolbar").first.
+        innerHTML = "<strong>#{score}</strong> votes | #{message}"
     end
   end
 end

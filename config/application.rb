@@ -42,7 +42,7 @@ module FailinGs
     config.filter_parameters << :password
 
     config.after_initialize do
-      if $0 == "script/console"
+      if defined? Rails::Console
         ActiveRecord::Base.logger = Logger.new STDOUT
       end
     end

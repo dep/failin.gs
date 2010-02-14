@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
 
   def new
     @user = User.new
-    return unless stale? etag: @user
+    return unless stale? etag: [@user, session[:return_to]]
     respond_with(@user_session = UserSession.new)
   end
 
@@ -26,6 +26,6 @@ class UserSessionsController < ApplicationController
       current_user_session.destroy
     end
 
-    redirect_back_or_default root_path
+    redirect_to root_path
   end
 end

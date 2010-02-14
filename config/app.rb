@@ -11,7 +11,7 @@ class App < Configurable
 
   config.launched_at = Time.now.utc
 
-  config.javascript_expansions = {
+  config.javascript_expansions ||= {
     prototype: %w(prototype effects dragdrop controls)
   }
 end

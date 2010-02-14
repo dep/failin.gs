@@ -26,14 +26,16 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_attributes params[:user]
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Updated!"
+    end
     respond_with @user, location: edit_account_path
   end
 
   def destroy
     @user = current_user
     current_user_session.destroy
-    @user.destroy
+    @user.delete!
     redirect_to root_path
   end
 end

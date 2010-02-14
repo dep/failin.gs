@@ -5,7 +5,8 @@
 
 <p><%= @failing.about %></p>
 
-<p>Link: <%= link_to profile_url(@user, anchor: @failing), profile_url(@user, anchor: @failing) %></p>
+<p>Link: <%= link_to profile_url(@user, anchor: dom_id(@failing)),
+  profile_url(@user, anchor: dom_id(@failing)) %></p>
 
 <p>From your friends at failin.gs!</p>
 <%= render "footer" %>

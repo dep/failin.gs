@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  caches_page :root, :terms, :thankyou
+
   before_filter :require_no_user, only: %w(root)
   before_filter :validate_cache
 

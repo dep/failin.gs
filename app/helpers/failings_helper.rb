@@ -26,6 +26,8 @@ module FailingsHelper
       when "disagree" then "no_idea"
     end
 
+    return unless state
+
     link_to image_tag("move_left.png", class: "left", title: "Move to '#{title_for state}'", style: "display: none;"),
       eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put
   end
@@ -38,6 +40,8 @@ module FailingsHelper
       when "no_idea"  then "disagree"
       when "disagree" then "knew"
     end
+
+    return unless state
 
     link_to image_tag("move_right.png", class: "right", title: "Move to '#{title_for state}'", style: "display: none;"),
       eval("#{state}_failing_path(failing.user, failing)"), remote: true, method: :put

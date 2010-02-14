@@ -1,29 +1,23 @@
 class AbusesController < ApplicationController
+  respond_to :js
+
+  before_filter :load_failing
+
   def create
-    @user = User.find_by_login! params[:login]
-    @failing = @user.failings.find params[:failing_id]
-    @abuse = @failing.abuses.new
+    @abuse = Abuse.new
     @abuse.user = current_user
     @abuse.reporter_ip = request.remote_ip
+    @abuse.token_id = @identity
 
-    if @abuse.save
-      respond_to do |format|
-        format.html { redirect_to profile_url(@user) }
-        format.js {
-          render :update do |page|
-            page[@failing].select(".abuse").first.replace "thanks!"
-          end
-        }
-      end
+    if params[:comment_id]
+      @abuse.content = @failing.comments.find params[:comment_id]
+      @abuse.save
+      render "abused_comment"
     else
-      respond_to do |format|
-        format.html { render "failings/index" }
-        format.js {
-          render :update do |page|
-            page[@failing].select(".abuse").first.replace "already reported!"
-          end
-        }
-      end
+      @state_was = @failing.state
+      @abuse.content = @failing
+      @abuse.save
+      render "abused_failing"
     end
   end
 end

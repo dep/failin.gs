@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100212033317) do
+ActiveRecord::Schema.define(:version => 20100213214508) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -18,9 +18,13 @@ ActiveRecord::Schema.define(:version => 20100212033317) do
     t.string   "reporter_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token_id",     :null => false
   end
 
   add_index "abuses", ["content_id", "content_type"], :name => "index_abuses_on_content_id_and_content_type"
+  add_index "abuses", ["content_type", "content_id", "token_id", "user_id"], :name => "by_token", :unique => true
+  add_index "abuses", ["content_type", "content_id", "user_id"], :name => "index_abuses_on_content_type_and_content_id_and_user_id", :unique => true
+  add_index "abuses", ["token_id"], :name => "index_abuses_on_token_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false
@@ -29,9 +33,13 @@ ActiveRecord::Schema.define(:version => 20100212033317) do
     t.string   "submitter_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
+    t.string   "token_id",     :null => false
   end
 
   add_index "comments", ["failing_id"], :name => "index_comments_on_failing_id"
+  add_index "comments", ["state", "failing_id"], :name => "index_comments_on_state_and_failing_id"
+  add_index "comments", ["token_id"], :name => "index_comments_on_token_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -65,11 +73,14 @@ ActiveRecord::Schema.define(:version => 20100212033317) do
     t.text     "about"
     t.integer  "submitter_id"
     t.integer  "score",        :default => 0
+    t.string   "token_id",                    :null => false
   end
 
   add_index "failings", ["state"], :name => "index_failings_on_state"
+  add_index "failings", ["submitter_id", "token_id"], :name => "index_failings_on_submitter_id_and_token_id"
   add_index "failings", ["submitter_id"], :name => "index_failings_on_submitter_id"
   add_index "failings", ["submitter_ip"], :name => "index_failings_on_submitter_ip"
+  add_index "failings", ["token_id"], :name => "index_failings_on_token_id"
   add_index "failings", ["user_id", "state", "score"], :name => "index_failings_on_user_id_and_state_and_score"
   add_index "failings", ["user_id", "state"], :name => "index_failings_on_user_id_and_state"
   add_index "failings", ["user_id"], :name => "index_failings_on_user_id"
@@ -141,10 +152,13 @@ ActiveRecord::Schema.define(:version => 20100212033317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "token_id",   :null => false
   end
 
-  add_index "votes", ["failing_id", "voter_ip"], :name => "index_votes_on_failing_id_and_voter_ip", :unique => true
+  add_index "votes", ["failing_id", "token_id", "user_id"], :name => "index_votes_on_failing_id_and_token_id_and_user_id", :unique => true
+  add_index "votes", ["failing_id", "user_id"], :name => "index_votes_on_failing_id_and_user_id", :unique => true
+  add_index "votes", ["failing_id", "voter_ip"], :name => "index_votes_on_failing_id_and_voter_ip"
   add_index "votes", ["failing_id"], :name => "index_votes_on_failing_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+  add_index "votes", ["token_id"], :name => "index_votes_on_token_id"
 
 end

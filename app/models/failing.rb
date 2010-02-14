@@ -1,19 +1,23 @@
 class Failing < ActiveRecord::Base
-  # = Local
-  belongs_to :user
+  # The number of failings a submitter can submit before deemed overkill.
+  OVERKILL_LIMIT = 3
+
+  belongs_to :user, touch: true
   belongs_to :submitter, class_name: "User"
   has_many :votes
   has_many :comments
   has_many :abuses, as: :content
 
   attr_accessor :surname
+  attr_accessible :about, :surname
+
   validates_presence_of :user
   validates_length_of :about, in: 1..145
   validate :verified, on: :create, if: :user
+  validate :overkill, on: :create, unless: :autodidact?
 
-  after_save :touch_user
-
-  scope :needs_review, where(state: "needs_review").order("created_at DESC") # .order("score DESC")
+  scope :needs_review, where(state: "needs_review").order("created_at DESC")
+  scope :reviewed,     where("state NOT IN (?)", %w(needs_review abused))
   scope :knew,         where(state: "knew").order("score DESC")
   scope :no_idea,      where(state: "no_idea").order("score DESC")
   scope :disagree,     where(state: "disagree").order("score DESC")
@@ -42,18 +46,31 @@ class Failing < ActiveRecord::Base
   end
 
   aasm_event :abuse do
-    transitions to: :abuse, from: %w(needs_review knew no_idea disagree)
+    transitions to: :abused, from: %w(needs_review knew no_idea disagree)
   end
 
   def votes_score
     score
   end
 
+  def autodidact?
+    user_id == submitter_id
+  end
+
   private
 
   def verified
     unless verify_surname || already_verified
-      errors.add :surname, "doesn't match"
+      errors[:surname] << "doesn't match"
+    end
+  end
+
+  def overkill
+    count = user.failings.where("token_id = ? OR submitter_id = ?",
+      token_id, submitter_id).count
+
+    if count >= OVERKILL_LIMIT
+      errors[:submitter] << "has submitted enough failings for this user"
     end
   end
 
@@ -66,9 +83,5 @@ class Failing < ActiveRecord::Base
     # !user.failings.
     #   where("submitter_ip = ? OR submitter_id = ?", submitter_ip, submitter_id).
     #   first.nil?
-  end
-
-  def touch_user
-    user.touch
   end
 end
