@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:notice] = "Updated!"
     end
-    respond_with @user, location: edit_account_path
+    respond_with @user, location: profile_path(@user)
   end
 
   def destroy
