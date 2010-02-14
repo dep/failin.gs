@@ -22,10 +22,15 @@
 
     <%= f.label :password_confirmation, "Twice to be sure:" %>
     <%= f.password_field :password_confirmation %>
-
-    <%= f.label :promo_code, "Promo code?" %>
-    <%= f.text_field :promo_code, value: @user.promo_code || params[:promo_code] %>
+    <div id="promo_wrapper">
+      <%= f.label :promo_code, "Promo code?" %>
+      <%= f.text_field :promo_code, value: @user.promo_code || params[:promo_code] %>
+    </div>
     <p>By creating an account you agree to our very exciting <a href="/pages/terms">terms of use</a> and also agree to play nice.</p>
     <%= f.submit "Sign up!" %>
   <% end %>
+  <script type="text/javascript">
+    if (getVal('invited'))    
+      $('promo_wrapper').hide();
+  </script>
 </fieldset>
