@@ -1,6 +1,8 @@
 class Email < ActiveRecord::Base
   belongs_to :user
 
+  attr_accessible :address
+
   validates_format_of :address, with: /^.+@.+$/,
     message: "doesn't look like an email"
 
