@@ -22,5 +22,4 @@ end
 
 group :production do
   gem "daemons"
-  gem "rack-cache"
 end
