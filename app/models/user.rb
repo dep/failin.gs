@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   attr_reader :promo_code
   attr_accessor :updating_password
 
+  attr_accessible :login, :email, :password, :password_confirmation, :surname,
+    :location, :about, :subscribe, :promo_code, :invitation_email
+
   APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH
