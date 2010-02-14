@@ -16,7 +16,7 @@ class Email < ActiveRecord::Base
     invited = inviter.invitations.new(email: address)
     if invited.save
       touch
-      MailJob.new invited
+      MailJob.new(invited).perform
     end
   end
 end
