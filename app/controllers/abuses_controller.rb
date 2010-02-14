@@ -10,7 +10,8 @@ class AbusesController < ApplicationController
     @abuse.token_id = @identity
 
     if params[:comment_id]
-      @abuse.content = @failing.comments.find params[:comment_id]
+      @comment = @failing.comments.find params[:comment_id]
+      @abuse.content = @comment
       @abuse.save
       render "abused_comment"
     else
