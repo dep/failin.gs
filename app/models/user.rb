@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
   attr_accessor :updating_password
 
   LOGIN_LENGTH = 1..17
-  validates :login, length: LOGIN_LENGTH, format: /\w+/
+  validates :login, length: LOGIN_LENGTH
+  validates_format_of :login, with: /^[0-9a-z_]+$/i,
+    message: "can only contain letters, numbers, and underscores."
   validates_presence_of :surname
   validate :promotion_should_be_valid, on: :create
   validate :login_should_not_contain_surname, on: :create
@@ -108,7 +110,7 @@ class User < ActiveRecord::Base
   end
 
   def login_should_not_contain_surname
-    if login.downcase.include?(surname.downcase)
+    if login.present? && surname.present? && login.downcase.include?(surname.downcase)
       errors[:login] << "should not contain your last name"
     end
   end
