@@ -35,4 +35,6 @@ FailinGs::Application.routes.draw do |map|
   get "stylesheets/:action.:format" => "stylesheets"
 
   root to: "pages#root"
+
+  get ":login" => redirect("/profile/%{login}")
 end
