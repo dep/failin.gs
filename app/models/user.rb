@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   attr_accessor :updating_password
 
   attr_accessible :login, :email, :password, :password_confirmation, :surname,
-    :location, :about, :subscribe, :promo_code, :invitation_email
+    :location, :about, :subscribe, :promo_code, :invitation_email, :private
 
   APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
