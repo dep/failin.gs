@@ -122,7 +122,7 @@
       <a class="close" href="#" onclick="document.getElementById('box_validate_lastname').style.display='none'; return false;">x</a>
     </div>
     <fieldset id="flaw_entry">
-      <h2>What is wrong with me?</h2>
+      <h2>How can I improve?</h2>
 
       <%= f.text_area :about, :rows => "2", :cols => "50", :maxlength => "145", :onkeyup => "return ismaxlength(this)" %>
       <button type="button" onclick="document.getElementById('box_validate_lastname').style.display=''; document.getElementById('failing_surname').focus();">Submit</button>

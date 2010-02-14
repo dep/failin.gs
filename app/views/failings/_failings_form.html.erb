@@ -8,7 +8,7 @@
     <%= link_to "x", "#", onclick: "$('box_validate').fade();", class: "close" %>
   </div>
   <fieldset id="flaw_entry">
-    <h2>What is wrong with me?</h2>
+    <h2>How can I improve?</h2>
     <%= f.error_messages %>
 
     <%= f.text_area :about, rows: "2", cols: "50", maxlength: "145", onkeyup: "return ismaxlength(this)" %>
