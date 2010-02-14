@@ -29,7 +29,7 @@ class Notifier < ActionMailer::Base
     @user = comment.failing.user
 
     mail to: @user.email,
-    subject: "New comment!"
+    subject: "New failin.gs comment posted!"
   end
 
   def new_invitation(invitation)
@@ -37,7 +37,7 @@ class Notifier < ActionMailer::Base
     @inviter = invitation.inviter
 
     mail to: @invitation.email,
-    subject: "You've been invited!"
+    subject: "[failin.gs] Someone requested that you join us."
   end
 
   def new_share(share)
@@ -45,7 +45,7 @@ class Notifier < ActionMailer::Base
     @share = share
 
     mail to: "notifier@failin.gs",
-    subject: "You've been invited!",
+    subject: "[failin.gs] Please critique your friend!",
         bcc: @share.emails
   end
 end

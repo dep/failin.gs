@@ -2,7 +2,7 @@
   <div class="floating_box rounded_box drop_shadow" id="box_validate" style="display:none">
     <%= render "validation_message" %>
 
-    <%= f.text_field :surname %>
+    <%= f.text_field :surname, :autocomplete => "off" %>
     <%= f.submit "Ok - Send!", :onclick => "nice_clear()" %>
 
     <%= link_to "x", "#", onclick: "$('box_validate').fade();", class: "close" %>

@@ -116,7 +116,7 @@
     <div class="floating_box" id="box_validate_lastname" style="display:none">
       <%= render "validation_message" %>
 
-      <%= f.text_field :surname %>
+      <%= f.text_field :surname, :autocomplete => "off" %>
       <%= f.submit "Ok - Send!" %>
 
       <a class="close" href="#" onclick="document.getElementById('box_validate_lastname').style.display='none'; return false;">x</a>
