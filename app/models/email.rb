@@ -10,4 +10,13 @@ class Email < ActiveRecord::Base
     errors.add :address, "has already signed up"
     false
   end
+
+  def invite!
+    inviter = User.find_by_login! "failings"
+    invited = inviter.invitations.new(email: address)
+    if invited.save
+      touch
+      MailJob.new invited
+    end
+  end
 end
