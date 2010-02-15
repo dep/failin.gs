@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  acts_as_authentic # { |config| config.remember_me = true }
+  acts_as_authentic { |config|
+    config.validations_scope = :state
+  }
 
   has_many :failings
 
@@ -22,8 +24,8 @@ class User < ActiveRecord::Base
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH
 
-  RESERVED_LOGINS = %w(admin moderator login logout user_session users account
-    profile pages javascripts stylesheets)
+  RESERVED_LOGINS = %w(admin superuser moderator login logout user_session
+    users account profile pages javascripts stylesheets)
   validates_exclusion_of :login, in: RESERVED_LOGINS
   validates_format_of :login, with: /^[0-9a-z_]+$/i,
     message: "can only contain letters, numbers, and underscores."
