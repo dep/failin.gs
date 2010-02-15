@@ -1,3 +1,5 @@
+<% title "#{@user.login} - #{truncate @failing.about, length: 64}" %>
+
 <h2 class="page_title <%= @failing.state %>">
   <%= @user.login %>
   <% if @failing.state == "knew" %>
