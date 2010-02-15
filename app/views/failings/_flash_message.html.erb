@@ -1,4 +1,6 @@
 <div id="flash_msg_container" class="notify_box flash rounded_box drop_shadow">
   <h3 class="mod_title"><%= flash[:notice] %></h3>
-  <%= link_to "x", "#", onclick: "$('flash_msg_container').fade();", class: "close" %>
 </div>
+<script type="text/javascript">
+  setTimeout("$('flash_msg_container').fade();", 3000);
+</script>

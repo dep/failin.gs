@@ -1,6 +1,6 @@
 <% if !@user.private? || @user == current_user %>
   <div class="failing flaw_box public">
-    <h3 class="no_idea">This profile is public</h3>
+    <h3 class="no_idea">This profile is public (<a href="#">hide this</a>)</h3>
     <div class="feedback rounded_box drop_shadow">
       <p>To make your account private, <a href="/account/edit">visit your profile settings</a>.
     </div>
