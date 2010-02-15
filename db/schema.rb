@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100213214508) do
+ActiveRecord::Schema.define(:version => 20100215012310) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(:version => 20100213214508) do
 
   add_index "abuses", ["content_id", "content_type"], :name => "index_abuses_on_content_id_and_content_type"
   add_index "abuses", ["content_type", "content_id", "token_id", "user_id"], :name => "by_token", :unique => true
-  add_index "abuses", ["content_type", "content_id", "user_id"], :name => "index_abuses_on_content_type_and_content_id_and_user_id", :unique => true
+  add_index "abuses", ["content_type", "content_id", "token_id"], :name => "index_abuses_on_content_type_and_content_id_and_token_id"
+  add_index "abuses", ["content_type", "content_id", "user_id"], :name => "index_abuses_on_content_type_and_content_id_and_user_id"
   add_index "abuses", ["token_id"], :name => "index_abuses_on_token_id"
 
   create_table "comments", :force => true do |t|
@@ -156,7 +157,8 @@ ActiveRecord::Schema.define(:version => 20100213214508) do
   end
 
   add_index "votes", ["failing_id", "token_id", "user_id"], :name => "index_votes_on_failing_id_and_token_id_and_user_id", :unique => true
-  add_index "votes", ["failing_id", "user_id"], :name => "index_votes_on_failing_id_and_user_id", :unique => true
+  add_index "votes", ["failing_id", "token_id"], :name => "index_votes_on_failing_id_and_token_id"
+  add_index "votes", ["failing_id", "user_id"], :name => "index_votes_on_failing_id_and_user_id"
   add_index "votes", ["failing_id", "voter_ip"], :name => "index_votes_on_failing_id_and_voter_ip"
   add_index "votes", ["failing_id"], :name => "index_votes_on_failing_id"
   add_index "votes", ["token_id"], :name => "index_votes_on_token_id"

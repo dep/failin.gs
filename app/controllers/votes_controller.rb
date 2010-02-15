@@ -9,7 +9,8 @@ class VotesController < ApplicationController
     @vote.save!
 
     xhr_message "thanks!"
-  rescue ActiveRecord::RecordInvalid
+  rescue ActiveRecord::RecordInvalid => e
+    logger.info "Already voted: #{e.message}\n\n#{e.backtrace.join("\n  ")}"
     xhr_message "already voted"
   end
 

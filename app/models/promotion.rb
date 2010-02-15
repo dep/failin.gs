@@ -1,7 +1,7 @@
 class Promotion < ActiveRecord::Base
   has_many :users
 
-  attr_accessible :code
+  attr_accessible :code, :limit
 
   def save
     super

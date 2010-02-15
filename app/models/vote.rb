@@ -3,11 +3,11 @@ class Vote < ActiveRecord::Base
   belongs_to :failing
   belongs_to :user
 
-  validates_presence_of :failing
-  validates_uniqueness_of :user_id, scope: :failing_id
-  validates_uniqueness_of :token_id, scope: %w(failing_id user_id)
-
   attr_accessible :agree
+
+  validates_presence_of :failing
+  validates_uniqueness_of :user_id, scope: :failing_id, allow_blank: true
+  validates_uniqueness_of :token_id, scope: %w(failing_id user_id)
 
   scope :positive, conditions: { agree: true }
   scope :negative, conditions: { agree: false }
