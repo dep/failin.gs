@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  scope :active, where(state: "active")
+  default_scope active
+
   acts_as_authentic { |config|
     config.validations_scope = :state
   }

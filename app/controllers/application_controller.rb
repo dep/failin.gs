@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # == Loaders
 
   def load_profile_user
-    @user = User.active.find_by_login! params[:login]
+    @user = User.find_by_login! params[:login]
   end
 
   def load_failing

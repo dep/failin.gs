@@ -62,7 +62,7 @@ class FailingsController < ApplicationController
     @state_was = @failing.state
     @failing.knew!
     render "state_transition"
-  rescue ActiveModel::StateMachine::InvalidTransition
+  rescue AASM::InvalidTransition
     head :unprocessable_entity
   end
 
@@ -71,7 +71,7 @@ class FailingsController < ApplicationController
     @state_was = @failing.state
     @failing.no_idea!
     render "state_transition"
-  rescue ActiveModel::StateMachine::InvalidTransition
+  rescue AASM::InvalidTransition
     head :unprocessable_entity
   end
 
@@ -80,7 +80,7 @@ class FailingsController < ApplicationController
     @state_was = @failing.state
     @failing.disagree!
     render "state_transition"
-  rescue ActiveModel::StateMachine::InvalidTransition
+  rescue AASM::InvalidTransition
     head :unprocessable_entity
   end
 end
