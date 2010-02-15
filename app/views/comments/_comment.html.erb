@@ -5,6 +5,6 @@
   <% end %>
   <span>
     <%= comment.created_at.to_s :timestamp %>
-    <%= link_to "!", failing_comment_abuse_path(comment.failing.user, comment.failing, comment), remote: true, method: :post, class: "abuse", title: "Report abuse", confirm: ("Really report abuse?" if current_user == comment.failing.user) %>
+    <%= link_to ":( ?", failing_comment_abuse_path(comment.failing.user, comment.failing, comment), remote: true, method: :post, class: "abuse", title: "Report abuse", confirm: ("Really report abuse?" if current_user == comment.failing.user) %>
   </span>
 <% end %>
