@@ -28,6 +28,13 @@
       <div id="top_links">
         <ul>
           <% if logged_in? %>
+            <li class="search">
+              <fieldset>
+                <form>
+                  <input type="textbox" value="search by email" onclick="this.value=''" />
+                </form>
+              </fieldset>
+            </li>
             <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
             <li><%= link_to_unless_current "settings", edit_account_path %></li>
             <li><%= link_to_unless_current "invite friends", new_invitation_path %>
