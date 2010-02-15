@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100215012310) do
+ActiveRecord::Schema.define(:version => 20100215183018) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -139,7 +139,8 @@ ActiveRecord::Schema.define(:version => 20100215012310) do
     t.integer  "invites_left",        :default => 5
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email", "state"], :name => "index_users_on_email_and_state", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
