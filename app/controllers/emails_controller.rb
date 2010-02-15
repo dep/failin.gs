@@ -15,7 +15,7 @@ class EmailsController < ApplicationController
         format.html {
           @user         = User.new
           @user_session = UserSession.new
-          render "pages#root"
+          render "pages/root"
         }
         format.js {
           render :update do |page|
