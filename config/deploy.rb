@@ -28,7 +28,7 @@ namespace :deploy do
 
   desc "Deploy and run pending migrations."
   task :migrations do
-    after "deploy:bundle", "deploy:migrate"
+    before "deploy:cleanup", "deploy:migrate"
     deploy.default
   end
 
