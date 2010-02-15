@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
   validates :login, length: LOGIN_LENGTH
+
+  RESERVED_LOGINS = %w(admin moderator login logout user_session users account
+    profile pages javascripts stylesheets)
+  validates_exclusion_of :login, in: RESERVED_LOGINS
   validates_format_of :login, with: /^[0-9a-z_]+$/i,
     message: "can only contain letters, numbers, and underscores."
   validates_presence_of :surname
