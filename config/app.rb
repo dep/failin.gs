@@ -7,7 +7,7 @@ class App < Configurable
   config.beta = true
 
   # Uncomment this line to avoid expensive SQL queries on public profiles.
-  config.optimized = true
+  # config.optimized = true
 
   config.launched_at = Time.now.utc
 
