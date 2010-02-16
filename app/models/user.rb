@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  scope :active, where(state: "active")
-  default_scope active
+  # == Authlogic
 
   acts_as_authentic { |config|
     config.validations_scope = :state
   }
+
+
+  # == Associations
 
   has_many :failings
 
@@ -17,11 +19,17 @@ class User < ActiveRecord::Base
 
   has_many :shares
 
+
+  # == Attributes
+
   attr_reader :promo_code
   attr_accessor :updating_password
 
   attr_accessible :login, :email, :password, :password_confirmation, :surname,
     :location, :about, :subscribe, :promo_code, :invitation_email, :private
+
+
+  # == Validations and Lifecycle
 
   APP_LOGIN = "failings"
   LOGIN_LENGTH = 1..17
@@ -44,7 +52,14 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, if: :updating_password
 
+  if App.beta?
+    validates_presence_of :invitation, unless: :promo_code?, on: :create
+  end
+
   after_create :set_invitation
+
+
+  # == AASM
 
   include AASM
 
@@ -63,9 +78,19 @@ class User < ActiveRecord::Base
     transitions to: :abused, from: %w(active)
   end
 
-  if App.beta?
-    validates_presence_of :invitation, unless: :promo_code?, on: :create
+  aasm_event :activate do
+    transitions to: :active, from: %w(deleted abused)
   end
+
+  scope :active,  where(state: "active")
+  default_scope active
+
+  scope :deleted, with_exclusive_scope { where state: "deleted" }
+  scope :abused,  with_exclusive_scope { where state: "abused" }
+  scope :any,     with_exclusive_scope {}
+
+
+  # == Public methods
 
   def to_param
     login
