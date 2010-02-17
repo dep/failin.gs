@@ -16,7 +16,7 @@
       <%= render "failings/flash_message" if flash[:notice] %>
 
       <h2>Your user details</h2>
-      <p>
+      <p class="small">
         Welcome private-beta user. Thanks for helping us test the site.
         We imagine there might be some bugs in here, so if you see something weird,
         use the green feedback tab on the left of the screen. In the meantime, pardon
@@ -36,7 +36,7 @@
 
       <%= f.label :location, "Location:" %>
       <%= f.text_field :location %>
-      <p>
+      <p class="small">
         Next, provide some details about yourself. Be descriptive, otherwise someone
         might not know who you are.
       </p>
