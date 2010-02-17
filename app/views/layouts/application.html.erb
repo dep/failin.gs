@@ -32,8 +32,11 @@
             <li class="search">
               <% form_tag search_path, method: :get do %>
                 <fieldset title="Search by email">
-                  <%= text_field_tag "email_query", params[:email_query], type: "search", placeholder: "search by email", autosave: "gs.failin", results: 10 %>
+                  <%= text_field_tag "email_query", params[:email_query], value: "search by email", type: "search", placeholder: "search by email", autosave: "gs.failin", results: 10 %>
                 </fieldset>
+                <script>
+                  $('email_query').onfocus = function() { $('email_query').select(); }
+                </script>
               <% end %>
             </li>
             <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
