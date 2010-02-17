@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   serialize :preferences, Hash
 
+  # TODO: Unset 'hide_public_notice' when user goes private.
   def preferences
     self[:preferences] ||= {}
   end
