@@ -1,26 +1,26 @@
 <style type="text/css">
   #failings_flaw_area {
-    background:#fff!important;
+    background:#f7f7f7!important;
     font-size:62.5%!important;
     text-align:left!important;
     font-family:Helvetica, Arial!important;
-    border:1px solid #eee;
+    border:1px solid #bbb;
     -moz-border-radius: 10px 10px 10px 10px!important;
     -webkit-border-top-left-radius:10px!important;
     -webkit-border-bottom-left-radius:10px!important;
     -webkit-border-top-right-radius:10px!important;
     -webkit-border-bottom-right-radius:10px!important;
-    min-width:325px!important;
+    min-width:225px!important;
   }
   #failings_flaw_area fieldset#flaw_entry h2 {
     margin:0 0 10px 0!important;
-    font-size:20px!important;
+    font-size:16px!important;
     color:#888!important;
     padding:15px 0 0px 45px!important;
     background:url(<%= image_url "icon_knew.png" %>) top left no-repeat!important;
   }
   #failings_flaw_area #flaw_entry .errorExplanation h2 {
-    font-size:20px!important;
+    font-size:16px!important;
   }
   #failings_flaw_area fieldset#flaw_entry textarea {
     width:70%!important;
@@ -28,16 +28,16 @@
     font-size:15px!important;
     font-family:Helvetica, Arial!important;
     float:left!important;
-    height:59px!important;
+    height:40px!important;
   }
   #failings_flaw_area .char_limit {
     display:block!important;
     clear:both!important;
   }
   #failings_flaw_area fieldset button {
-    font-size:18px!important;
+    font-size:11px!important;
     float:left!important;
-    height:59px!important;
+    height:40px!important;
     margin-left:10px!important;
     cursor:pointer!important;
   }
@@ -100,7 +100,9 @@
   #failings_flaw_area .powered_by {
     font-size:11px!important;
     display:block!important;
-    text-align:center!important;
+    text-align:left!important;
+    margin-top:0;
+    padding-left:10px;
   }
 </style>
 <script type="text/javascript">
@@ -129,5 +131,8 @@
       <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
     </fieldset>
   <% end %>
-  <p class="powered_by">Powered by <a href="http://failin.gs">failin.gs</a>. Find out your flaws today.</p>
+  <p class="powered_by">
+    Visit <a href="<%= profile_url(@user) %>">my profile</a>.<br/>
+    Powered by <a href="http://failin.gs">failin.gs</a>. Find out your flaws today.
+  </p>
 </div>

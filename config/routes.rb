@@ -5,6 +5,8 @@ FailinGs::Application.routes.draw do |map|
   resource :account, controller: "users", only: %w(create edit update destroy)
   get "account" => redirect("/account/edit")
 
+  resources :preferences
+
   resource :password, only: %w(new create edit update destroy),
     as: :password_reset
 

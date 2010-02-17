@@ -4,7 +4,7 @@
   <title>failin.gs: <%= yield(:title) || "don't worry. nobody's perfect." %></title>
   <%= csrf_meta_tag %>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <meta name="description" content="failin.gs seeks to answer a that perhaps all of us have asked ourselves at some point: 'What is wrong with me?'">
+  <meta name="description" content="failin.gs is a completely anonymous feedback system for people to engage their family and friends for personal critiques!">
   <meta name="keywords" content="failings, flaws, anonymous, social web, social networking, self-improvement, fun">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <%= stylesheet_link_tag "application" %>
@@ -25,6 +25,7 @@
       randomize_logo();
     </script>
     <div id="container" class="rounded_box drop_shadow">
+      <%= render "common/buzz" %>
       <div id="top_links">
         <ul>
           <% if logged_in? %>
@@ -48,7 +49,7 @@
           <% end %>
         </ul>
       </div>
-      <p class="social_links">follow us on twitter <a href="http://twitter.com/failings">@failings</a></p>
+      <p class="social_links">follow us on <a href="http://twitter.com/failings">twitter</a>, <a href="http://bit.ly/fb-failings">facebook</a></p>
       <div class="body">
         <div id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
           <%= yield %>
@@ -56,7 +57,7 @@
       </div>
     </div>
     <div id="footer">
-      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
+      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a> - <a href="mailto:app@failings?subject=Success story">Success story?</a>
     </div>
   </div>
   <div class="floating_box rounded_box drop_shadow" id="box_important" style="display: none;">

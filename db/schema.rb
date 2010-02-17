@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100215183018) do
+ActiveRecord::Schema.define(:version => 20100217035915) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20100215183018) do
     t.boolean  "private"
     t.integer  "promotion_id"
     t.integer  "invites_left",        :default => 5
+    t.text     "preferences"
   end
 
   add_index "users", ["email", "state"], :name => "index_users_on_email_and_state", :unique => true
