@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
   has_many :failings
 
   belongs_to :promotion
-  has_one  :invitation,  foreign_key: :invited_id
-  has_one  :inviter,     through: :invitation
+  has_one :invitation, foreign_key: :invited_id
+  has_one :inviter, through: :invitation
 
   has_many :invitations, foreign_key: :inviter_id
-  has_many :invited,     through: :invitations
+  has_many :invited, through: :invitations
 
   has_many :shares
 
@@ -27,6 +27,12 @@ class User < ActiveRecord::Base
 
   attr_accessible :login, :email, :password, :password_confirmation, :surname,
     :location, :about, :subscribe, :promo_code, :invitation_email, :private
+
+  serialize :preferences, Hash
+
+  def preferences
+    self[:preferences] ||= {}
+  end
 
 
   # == Validations and Lifecycle
