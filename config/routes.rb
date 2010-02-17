@@ -23,6 +23,8 @@ FailinGs::Application.routes.draw do |map|
   end
 
   resource :invitation, only: %w(new create)
+  get "invitation/search", to: "invitations#search", as: :search
+
   resource :share, only: %w(new create)
   resource :email, only: %w(create)
 

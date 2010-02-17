@@ -1,6 +1,3 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
 function show_login() {
   $('login_form').show();
   $('signup_form').hide();
@@ -66,3 +63,27 @@ function getVal(name) {
   else
     return results[1];
 }
+
+document.observe("dom:loaded", function (event) {
+  if (Prototype.Browser.WebKit)
+    return;
+
+  var emailSearch = $("email_query");
+  if (emailSearch) {
+    var defaultValue = emailSearch.placeholder;
+
+    var setDefault = function () {
+      if (emailSearch.getValue().blank())
+        emailSearch.setValue(defaultValue);
+    };
+
+    setDefault();
+
+    emailSearch.observe("focus", function (event) {
+      if (emailSearch.getValue() == defaultValue)
+        emailSearch.setValue("");
+    });
+
+    emailSearch.observe("blur", setDefault);
+  }
+});

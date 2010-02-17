@@ -11,9 +11,9 @@
     <p>
       Set up your <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a> image now.
   </div>
-  <% form_for @user, :url => account_path do |f| %>
+  <% form_for @user, url: account_path do |f| %>
     <div class="user_details">
-      <%= render "failings/flash_message" if flash[:notice] %>
+      <%= render "common/flash_message" %>
 
       <h2>Your user details</h2>
       <p>
@@ -24,10 +24,10 @@
       </p>
       <%= f.error_messages %>
 
-      <%#= f.label :login, "Username:" #%>
-      <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max #%>
+      <%#= f.label :login, "Username:" %>
+      <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
 
-      <%= f.label :surname, "Your <strong>real</strong> last name:" %>
+      <%= f.label :surname, raw("Your <strong>real</strong> last name:") %>
       (<%= link_to "Why we ask", "#", onclick: "$('box_important').appear(); return false;" %>):
       <%= f.text_field :surname %>
 
