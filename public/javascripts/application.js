@@ -41,11 +41,11 @@ function ismaxlength(obj){
   if (obj.id == "failing_about") {
     $('char_limit').innerHTML = mlength - obj.value.length;
     if (obj.value.length > 3)
-      $('nice_01').appear();
+      $('nice_01').show();
     if (obj.value.length > 20)
-      $('nice_02').appear();
+      $('nice_02').show();
     if (obj.value.length > 40)
-      $('nice_03').appear();
+      $('nice_03').show();
   }
 }
 function nice_clear() {
