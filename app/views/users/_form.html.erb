@@ -26,7 +26,7 @@
     <%= f.text_field :surname %>
 
     <%= f.label :email, "Email address:" %>
-    <%= f.text_field :email, value: @user.email || params[:invited] %>
+    <%= f.text_field :email, type: "email", value: @user.email || params[:invited] %>
 
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password %>
