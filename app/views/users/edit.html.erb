@@ -41,7 +41,7 @@
         might not know who you are.
       </p>
       <%= f.label :about, "About me:" %>
-      <%= f.text_area :about, rows: 5, cols: 80 %>
+      <%= f.text_area :about, rows: 5, cols: 80, maxlength: 500, onkeyup: "return ismaxlength(this)" %>
 
       <%= f.submit "Save all this" %>
     </div>
