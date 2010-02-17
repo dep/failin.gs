@@ -3,7 +3,7 @@
     <%= f.error_messages %>
     <%# f.error_message_on :email %>
     <%= f.label :email, "Who do you want to invite?" %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, type: "email" %>
     <%= f.submit "Invite" %>
   </fieldset>
 <% end %>
