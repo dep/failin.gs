@@ -29,7 +29,7 @@
 
   <% if @user.private? %>
     <%= render "private" %>
-  <% elsif @user == current_user %>
+  <% elsif @user == current_user && !@user.preferences["hide_public_notice"] %>
     <%= render "public" %>
   <% end %>
 
