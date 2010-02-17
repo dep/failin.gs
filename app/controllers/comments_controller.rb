@@ -26,5 +26,8 @@ class CommentsController < ApplicationController
         page.alert @comment.errors.full_messages.join(". ")
       end
     end
+  rescue ActiveRecord::RecordNotUnique
+    logger.info "Ignoring duplicate comment #{@comment.inspect}"
+    head :unprocessable_entity
   end
 end

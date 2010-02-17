@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217035915) do
+ActiveRecord::Schema.define(:version => 20100217141304) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20100217035915) do
     t.string   "token_id",     :null => false
   end
 
+  add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
   add_index "comments", ["failing_id"], :name => "index_comments_on_failing_id"
   add_index "comments", ["state", "failing_id"], :name => "index_comments_on_state_and_failing_id"
   add_index "comments", ["token_id"], :name => "index_comments_on_token_id"
