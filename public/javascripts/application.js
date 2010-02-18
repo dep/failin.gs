@@ -68,3 +68,18 @@ function getVal(name) {
   else
     return results[1];
 }
+
+document.observe("dom:loaded", function (event) {
+  $("preview_email").observe("click", function () {
+    var message = $("share_message").getValue();
+
+    if (message.blank()) {
+      $("custom_email_preview").hide();
+    } else {
+      $("custom_email_preview").show();
+      $("custom_email_preview_message").innerHTML = message.escapeHTML();
+    }
+
+    $("email_preview").appear();
+  });
+});
