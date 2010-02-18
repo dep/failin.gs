@@ -97,9 +97,10 @@ namespace :deploy do
     run [
       "cd #{current_path}",
       "mkdir -p tmp/pids",
-      "touch tmp/restart.txt",
-      "script/job_runner restart"
+      "touch tmp/restart.txt"
     ].join(" && ")
+
+    sudo "bluepill restart"
   end
 
   task(:cold) { deploy.default }
