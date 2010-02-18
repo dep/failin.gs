@@ -9,8 +9,8 @@
   <span>Username:</span>
   <span class="answer"><%= @user.login %></span>
 
-  <span>User since:</span>
-  <span class="answer"></span>
+  <span>Joined:</span>
+  <span class="answer"><%= @user.created_at.to_s :joined_on %></span>
 
   <% if @user == current_user %>
     <span>Email address (Invisible):</span>
