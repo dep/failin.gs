@@ -69,7 +69,7 @@ function getVal(name) {
 document.observe("dom:loaded", function (event) {
   var emailSearch = $("email_query");
   if (emailSearch && !Prototype.Browser.WebKit) {
-    var defaultValue = emailSearch.placeholder;
+    var defaultValue = emailSearch.getAttribute("placeholder");
 
     var setDefault = function () {
       if (emailSearch.getValue().blank())
