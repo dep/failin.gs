@@ -51,6 +51,9 @@ class User < ActiveRecord::Base
   validates_presence_of :question, :answer
   validate :promotion_should_be_valid, on: :create
 
+  validates_length_of :question, maximum: 200
+  validates_length_of :answer, maximum: 100
+  validates_length_of :name, maximum: 200, allow_blank: true
   validates_length_of :about, maximum: 500, allow_blank: true
 
   INVALID_PASSWORDS = %w(password)
