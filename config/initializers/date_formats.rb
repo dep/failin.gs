@@ -3,6 +3,6 @@ Date::DATE_FORMATS.merge!({
 })
 
 Time::DATE_FORMATS.merge!({
-  joined_on: "%B %Y",
+  joined_on: "%B %e, %Y",
   timestamp: "%m/%d/%Y, %I:%M%P"
 })
