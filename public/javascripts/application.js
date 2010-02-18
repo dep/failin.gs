@@ -35,13 +35,15 @@ function ismaxlength(obj){
   var mlength=obj.getAttribute? parseInt(obj.getAttribute("maxlength")) : ""
   if (obj.getAttribute && obj.value.length>mlength)
   obj.value=obj.value.substring(0,mlength)
-  $('char_limit').innerHTML = mlength - obj.value.length;
-  if (obj.value.length > 3)
-    $('nice_01').appear();
-  if (obj.value.length > 20)
-    $('nice_02').appear();
-  if (obj.value.length > 40)
-    $('nice_03').appear();
+  if (obj.id == "failing_about") {
+    $('char_limit').innerHTML = mlength - obj.value.length;
+    if (obj.value.length > 3)
+      $('nice_01').show();
+    if (obj.value.length > 20)
+      $('nice_02').show();
+    if (obj.value.length > 40)
+      $('nice_03').show();
+  }
 }
 function nice_clear() {
   $('nice_01').fade();
@@ -65,11 +67,8 @@ function getVal(name) {
 }
 
 document.observe("dom:loaded", function (event) {
-  if (Prototype.Browser.WebKit)
-    return;
-
   var emailSearch = $("email_query");
-  if (emailSearch) {
+  if (emailSearch && !Prototype.Browser.WebKit) {
     var defaultValue = emailSearch.placeholder;
 
     var setDefault = function () {
@@ -86,4 +85,17 @@ document.observe("dom:loaded", function (event) {
 
     emailSearch.observe("blur", setDefault);
   }
+
+  $("preview_email").observe("click", function () {
+    var message = $("share_message").getValue();
+
+    if (message.blank()) {
+      $("custom_email_preview").hide();
+    } else {
+      $("custom_email_preview").show();
+      $("custom_email_preview_message").innerHTML = message.escapeHTML();
+    }
+
+    $("email_preview").appear();
+  });
 });

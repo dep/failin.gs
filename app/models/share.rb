@@ -1,6 +1,8 @@
 class Share < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :emails
+
+  attr_accessible :emails, :message
+
   validates_presence_of :user, :emails
   validate :emails_should_all_be_valid
 

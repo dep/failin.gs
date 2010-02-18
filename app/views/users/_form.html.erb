@@ -3,10 +3,11 @@
     <%= f.hidden_field :invitation_email, value: params[:invited] %>
 
     <% if @user.errors.any? %>
-      <% if App.beta? && @user.errors[:promo_code].any? %>
+      <% errors = Array(@user.errors[:promo_code]) + Array(@user.errors[:promotion]) %>
+      <% if App.beta? && errors.any? %>
         <div class="errorExplanation" id="errorExplanation">
           <h2>Promo code or invitation required</h2>
-          <p>Promo code <%= @user.errors[:promo_code].to_sentence %></p>
+          <p>Promotion <%= errors.to_sentence %></p>
           <p>Request an invitation on our <%= link_to "homepage", root_path(request: "invite") %>.</p>
         </div>
       <% else %>
@@ -18,14 +19,14 @@
     <%= f.text_field :login, maxlength: User::LOGIN_LENGTH.max %>
     <%= javascript_tag %{$("user_login").focus();} if params[:invited] || params[:promo_code] %>
 
-    <% f.label :surname do %>
+    <% f.label :answer do %>
       Your <strong>real</strong> last name:
       (<%= link_to "Why we ask", "#", onclick: "$('box_important').appear(); return false;" %>):
     <% end %>
-    <%= f.text_field :surname %>
+    <%= f.text_field :answer %>
 
     <%= f.label :email, "Email address:" %>
-    <%= f.text_field :email, value: @user.email || params[:invited] %>
+    <%= f.text_field :email, type: "email", value: @user.email || params[:invited] %>
 
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password %>

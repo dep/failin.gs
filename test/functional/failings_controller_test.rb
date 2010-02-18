@@ -29,7 +29,7 @@ class FailingsControllerTest < ActionController::TestCase
     user = Factory :user
     assert_difference "Failing.count" do
       post :create, login: user.login,
-        failing: { about: "You smell.", surname: user.surname }
+        failing: { about: "You smell.", answer: user.answer }
     end
     assert_response :redirect
     assert_redirected_to profile_path(user)

@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
 
   after_save :touch_user
 
-  scope :not_abusive, where("state != ?", "abused")
+  scope :not_abusive, where("state != ?", "abused").order("created_at ASC")
 
   include AASM
 

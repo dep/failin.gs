@@ -25,11 +25,13 @@ class User < ActiveRecord::Base
   attr_reader :promo_code
   attr_accessor :updating_password
 
-  attr_accessible :login, :email, :password, :password_confirmation, :surname,
-    :location, :about, :subscribe, :promo_code, :invitation_email, :private
+  attr_accessible :login, :email, :password, :password_confirmation, :name,
+    :location, :about, :question, :answer, :subscribe, :promo_code,
+    :invitation_email, :private
 
   serialize :preferences, Hash
 
+  # TODO: Unset 'hide_public_notice' when user goes private.
   def preferences
     self[:preferences] ||= {}
   end
@@ -46,10 +48,12 @@ class User < ActiveRecord::Base
   validates_exclusion_of :login, in: RESERVED_LOGINS
   validates_format_of :login, with: /^[0-9a-z_]+$/i,
     message: "can only contain letters, numbers, and underscores."
-  validates_presence_of :surname
+  validates_presence_of :question, :answer
   validate :promotion_should_be_valid, on: :create
-  validate :login_should_not_contain_surname, on: :create
 
+  validates_length_of :question, maximum: 200
+  validates_length_of :answer, maximum: 100
+  validates_length_of :name, maximum: 200, allow_blank: true
   validates_length_of :about, maximum: 500, allow_blank: true
 
   INVALID_PASSWORDS = %w(password)
@@ -156,12 +160,6 @@ class User < ActiveRecord::Base
       end
     elsif App.beta? && email? && invitation.nil?
       errors[:promo_code] << "required for uninvited '#{email}'"
-    end
-  end
-
-  def login_should_not_contain_surname
-    if login.present? && surname.present? && login.downcase.include?(surname.downcase)
-      errors[:login] << "should not contain your last name"
     end
   end
 end

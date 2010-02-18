@@ -42,7 +42,7 @@ class Notifier < ActionMailer::Base
 
   def new_share(share)
     @inviter = share.user
-    @share = share
+    @message = share.message
 
     mail to: "notifier@failin.gs",
     subject: "[failin.gs] Please critique your friend!",

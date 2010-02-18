@@ -3,6 +3,8 @@
     <%= f.error_messages %>
     <%= f.text_area "emails", rows: 5 %>
     <span>Please separate emails with a comma</span>
+    <p class="small">Add an additional personal message, if you want.</p>
+    <%= f.text_area "message", rows: 2 %>
     <%= f.submit "Send emails now!" %>
   </fieldset>
 <% end %>
