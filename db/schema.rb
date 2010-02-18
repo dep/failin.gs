@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20100218055955) do
     t.string   "token_id",     :null => false
   end
 
-  add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
+  # add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
   add_index "comments", ["failing_id"], :name => "index_comments_on_failing_id"
   add_index "comments", ["state", "failing_id"], :name => "index_comments_on_state_and_failing_id"
   add_index "comments", ["token_id"], :name => "index_comments_on_token_id"
