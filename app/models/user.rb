@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
   attr_reader :promo_code
   attr_accessor :updating_password
 
-  attr_accessible :login, :email, :password, :password_confirmation, :location,
-    :about, :question, :answer, :subscribe, :promo_code, :invitation_email,
-    :private
+  attr_accessible :login, :email, :password, :password_confirmation, :name,
+    :location, :about, :question, :answer, :subscribe, :promo_code,
+    :invitation_email, :private
 
   serialize :preferences, Hash
 
