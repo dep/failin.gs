@@ -22,13 +22,14 @@ namespace :deploy do
     fetch
     update_code
     bundle if ENV["BUNDLE"]
-    cleanup
     restart
+    cleanup
   end
 
   desc "Deploy and run pending migrations."
   task :migrations do
-    before "deploy:cleanup", "deploy:migrate"
+    before "deploy:restart", "deploy:migrate"
+    before "deploy:migrate", "deploy:disable"
     deploy.default
   end
 
@@ -51,6 +52,16 @@ namespace :deploy do
   desc "Bundle gems."
   task :bundle, except: { no_release: true } do
     run "cd #{current_path} && bundle install"
+  end
+
+  desc "Set up maintenance page."
+  task :disable, roles: :web do
+    run "cp #{current_path}/public/_maintenance.html #{current_path}/public/maintenance.html"
+  end
+
+  desc "Take down maintenance page."
+  task :enable, roles: :web do
+    run "rm -f #{current_path}/public/maintenance.html"
   end
 
   desc "Run the migrate rake task."
