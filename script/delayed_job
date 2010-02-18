@@ -10,7 +10,7 @@ daemon_options = {
   backtrace: true
 }
 
-Daemons.run_proc "job_runner", daemon_options do
+Daemons.run_proc "delayed_job", daemon_options do
   if ARGV.include?("--")
     ARGV.slice! 0..ARGV.index("--")
   else
