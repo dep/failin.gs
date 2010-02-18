@@ -15,7 +15,7 @@
     <div class="user_details">
       <%= render "failings/flash_message" if flash[:notice] %>
 
-      <h2>Your user details</h2>
+      <h3 class="mod_title">Your failin.gs settings</h3>
       <p class="small">
         Welcome private-beta user. Thanks for helping us test the site.
         We imagine there might be some bugs in here, so if you see something weird,
@@ -23,23 +23,32 @@
         the dust!
       </p>
       <%= f.error_messages %>
-
+      <h3>Security Question</h3>
       <%#= f.label :login, "Username:" #%>
       <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max #%>
 
-      <%= f.label :surname, "Your <strong>real</strong> last name:" %>
-      (<%= link_to "Why we ask", "#", onclick: "$('box_important').appear(); return false;" %>):
-      <%= f.text_field :surname %>
+      <%= f.label :question, "Security question: (#{link_to 'Why we ask', '#', onclick: '$("box_important").appear(); return false;'})".html_safe %>
+      <%= f.text_field :question %>
 
-      <%= f.label :email, "Email address:" %>
+      <%= f.label :answer, "Security question response:" %>
+      <%= f.text_field :answer %>
+      <h3>Personal Information</h3>
+      <p class="small">
+        Optionally, you can enter your full name, which we use
+        to identify you when you send your profile through our email tool.
+      </p>
+      <%= f.label :name, "Your full name (not shown on your profile):" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email, "Email address (also hidden):" %>
       <%= f.text_field :email %>
 
-      <%= f.label :location, "Location:" %>
-      <%= f.text_field :location %>
       <p class="small">
-        Next, provide some details about yourself. Be descriptive, otherwise someone
+        Next, provide some additional details about yourself. Be descriptive, otherwise someone
         might not know who you are.
       </p>
+      <%= f.label :location, "Location:" %>
+      <%= f.text_field :location %>
       <%= f.label :about, "About me:" %>
       <%= f.text_area :about, rows: 5, cols: 80, maxlength: 500, onkeyup: "return ismaxlength(this)" %>
 
@@ -47,8 +56,12 @@
     </div>
 
     <div class="announce rounded_box">
-      <h2>Want a new password?</h2>
-
+      <h2>Additional Settings</h2>
+      <p class="small">
+        Here are some additional settings
+        for you. You can save your changes
+        at the bottom of the page.
+      </p>
       <%= f.label :password, "New password:" %>
       <%= f.password_field :password %>
 

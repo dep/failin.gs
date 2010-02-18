@@ -8,7 +8,7 @@
 user = User.new login: "failings",
                 email: "app@failin.gs",
              password: "password",
-              surname: "Gs"
+               answer: "Gs"
 
 user.invites_left = 5000
 user.state = "active"

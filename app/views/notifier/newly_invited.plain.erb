@@ -1,7 +1,7 @@
 <%= render "header" %>
 Hey <%= @inviter.login %>,
 
-As you wished, Mr./Ms. <%= @invited.surname %> at <%= @invited.email %>, has joined failin.gs!
+As you wished, <%= @invited.name.presence || @invited.email %> has joined failin.gs!
 
 Why not let them know what they could work on?
 
