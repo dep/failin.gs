@@ -26,7 +26,7 @@ Factory.define :failing do |f|
   f.about <<TEXT
 You breath blows.
 TEXT
-  f.surname { |failing| failing.user.surname }
+  f.answer { |failing| failing.user.answer }
   f.token_id "#{uuid[0..-2]}%d"
 end
 
@@ -48,7 +48,7 @@ Factory.define :user do |f|
   f.login "jd%d"
   f.email "%{login}@example.com"
   f.password f.password_confirmation("password12")
-  f.surname "Doe"
+  f.answer "Doe"
   f.location "Chicago"
   f.about <<TEXT
 I'm a man with a plan!

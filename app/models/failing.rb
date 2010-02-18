@@ -8,8 +8,8 @@ class Failing < ActiveRecord::Base
   has_many :comments
   has_many :abuses, as: :content
 
-  attr_accessor :surname
-  attr_accessible :about, :surname
+  attr_accessor :answer
+  attr_accessible :about, :answer
 
   validates_presence_of :user
   validates_length_of :about, in: 1..145
@@ -60,8 +60,8 @@ class Failing < ActiveRecord::Base
   private
 
   def verified
-    unless verify_surname || already_verified
-      errors[:surname] << "doesn't match"
+    unless verify_answer || already_verified
+      errors[:answer] << "doesn't match"
     end
   end
 
@@ -76,8 +76,8 @@ class Failing < ActiveRecord::Base
     end
   end
 
-  def verify_surname
-    surname.to_s.downcase == user.surname.downcase
+  def verify_answer
+    answer.to_s.downcase == user.answer.downcase
   end
 
   def already_verified

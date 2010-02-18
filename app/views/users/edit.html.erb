@@ -27,9 +27,12 @@
       <%#= f.label :login, "Username:" #%>
       <%#= f.text_field :login, maxlength: User::LOGIN_LENGTH.max #%>
 
-      <%= f.label :surname, "Your <strong>real</strong> last name:" %>
-      (<%= link_to "Why we ask", "#", onclick: "$('box_important').appear(); return false;" %>):
-      <%= f.text_field :surname %>
+      <%= f.label :question, "Security question:" %>
+      <p>Your friends must answer this to leave feedback.</p>
+      <%= f.text_field :question %>
+
+      <%= f.label :answer, "Answer:" %>
+      <%= f.text_field :answer %>
 
       <%= f.label :email, "Email address:" %>
       <%= f.text_field :email %>
