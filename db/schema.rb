@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100218055955) do
+ActiveRecord::Schema.define(:version => 20100219044624) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20100218055955) do
     t.string   "token_id",     :null => false
   end
 
-  # add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
+  add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
   add_index "comments", ["failing_id"], :name => "index_comments_on_failing_id"
   add_index "comments", ["state", "failing_id"], :name => "index_comments_on_state_and_failing_id"
   add_index "comments", ["token_id"], :name => "index_comments_on_token_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20100218055955) do
   add_index "failings", ["submitter_id"], :name => "index_failings_on_submitter_id"
   add_index "failings", ["submitter_ip"], :name => "index_failings_on_submitter_ip"
   add_index "failings", ["token_id"], :name => "index_failings_on_token_id"
+  add_index "failings", ["user_id", "about"], :name => "index_comments_on_user_id_and_about", :unique => true
   add_index "failings", ["user_id", "state", "score"], :name => "index_failings_on_user_id_and_state_and_score"
   add_index "failings", ["user_id", "state"], :name => "index_failings_on_user_id_and_state"
   add_index "failings", ["user_id"], :name => "index_failings_on_user_id"
@@ -146,7 +147,8 @@ ActiveRecord::Schema.define(:version => 20100218055955) do
 
   add_index "users", ["email", "state"], :name => "index_users_on_email_and_state", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["login", "state"], :name => "index_users_on_login_and_state"
+  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
   add_index "users", ["promotion_id"], :name => "index_users_on_promotion_id"
