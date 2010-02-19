@@ -8,6 +8,14 @@ module ApplicationHelper
     user.email ||= "" and super.html_safe
   end
 
+  def twitter_link(user)
+    "http://twitter.com/home?status=Got+a+profile+at+@failings,+the+site+that+lets+friends+give+me+completely+anonymous+feedback!+#{user}"
+  end
+
+  def facebook_link(user)
+    "http://www.facebook.com/sharer.php?u=#{user}&src=sp"
+  end
+
   def image_url(*args)
     return super if ActionController::Base.asset_host
     request.protocol + request.host_with_port + image_path(*args)

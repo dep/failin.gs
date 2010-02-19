@@ -8,8 +8,8 @@
 <p>Your profile URL is <a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></p>
 
 <ul>
-  <li><a href="http://twitter.com/?status=Signed%20up%20at%20@failings%20so%20my%20friends%20anonymously%20tell%20me%20what%20they%20don%27t%20like%20about%20me!%20<%= profile_url(@user) %>%20eep!">Tweet it</a></li>
-  <li><a href="http://www.facebook.com/sharer.php?u=<%= profile_url(@user) %>&src=sp">Post it to Facebook</a></li>
+  <li><a href="<%= twitter_link(profile_url(@user)) %>">Tweet it</a></li>
+  <li><a href="<%= facebook_link(CGI.escape profile_url(@user)) %>">Post it to Facebook</a></li>
   <li><a href="http://failin.gs/share/new">Email it to your friends</a></li>
 </ul>
 
