@@ -22,6 +22,7 @@ class Failing < ActiveRecord::Base
   scope :knew,         where(state: "knew").order("score DESC")
   scope :no_idea,      where(state: "no_idea").order("score DESC")
   scope :disagree,     where(state: "disagree").order("score DESC")
+  scope :archived,     where(state: "archived").order("created_at DESC")
 
   include AASM
 
@@ -33,6 +34,7 @@ class Failing < ActiveRecord::Base
   aasm_state :no_idea
   aasm_state :disagree
   aasm_state :abused
+  aasm_state :archived
 
   aasm_event :knew do
     transitions to: :knew, from: %w(needs_review no_idea disagree)
@@ -48,6 +50,10 @@ class Failing < ActiveRecord::Base
 
   aasm_event :abuse do
     transitions to: :abused, from: %w(needs_review knew no_idea disagree)
+  end
+
+  aasm_event :archive do
+    transitions to: :archived, from: %w(knew no_idea disagree)
   end
 
   def votes_score

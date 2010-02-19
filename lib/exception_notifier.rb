@@ -8,8 +8,10 @@ class ExceptionNotifier
   rescue Exception => exception
     MailJob.new(exception, env).perform unless [
       AbstractController::ActionNotFound,
+      # ActionController::InvalidAuthenticityToken,
       ActionController::RoutingError,
-      ActiveRecord::RecordNotFound
+      ActiveRecord::RecordNotFound,
+      URI::InvalidURIError
     ].include?(exception.class)
 
     raise exception
