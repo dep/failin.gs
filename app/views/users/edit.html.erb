@@ -11,9 +11,9 @@
     <p>
       Set up your <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a> image now.
   </div>
-  <% form_for @user, :url => account_path do |f| %>
+  <% form_for @user, url: account_path do |f| %>
     <div class="user_details">
-      <%= render "failings/flash_message" if flash[:notice] %>
+      <%= render "common/flash_message" %>
 
       <h3 class="mod_title">Your failin.gs settings</h3>
       <p class="small">

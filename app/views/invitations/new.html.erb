@@ -1,6 +1,8 @@
 <% title "Invite a Friend. Extend the fun!" %>
 
 <div>
+  <%= render "common/flash_message" %>
+
   <h2 class="page_title knew">Invite a Friend <span>Extend the fun!</span></h2>
   <% if App.beta? && current_user.invites_left > 0 %>
     <p>Do you know someone who could benefit from having an account at <strong>failin.gs</strong>? Perhaps someone who could use some anonymous feedback, if you know what we mean?

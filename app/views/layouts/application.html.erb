@@ -29,6 +29,13 @@
       <div id="top_links">
         <ul>
           <% if logged_in? %>
+            <li class="search">
+              <% form_tag search_path, method: :get do %>
+                <fieldset title="Search by email">
+                  <%= text_field_tag "email_query", params[:email_query], type: "search", placeholder: "search by email", autosave: "gs.failin", results: 10 %>
+                </fieldset>
+              <% end %>
+            </li>
             <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
             <li><%= link_to_unless_current "settings", edit_account_path %></li>
             <li><%= link_to_unless_current "invite friends", new_invitation_path %>
