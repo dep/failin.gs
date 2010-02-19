@@ -6,6 +6,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :text
 
   validates_length_of :text, in: 1..200
+  validates_uniqueness_of :text, scope: :failing_id
 
   after_save :touch_user
 

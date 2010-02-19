@@ -13,6 +13,7 @@ class Failing < ActiveRecord::Base
 
   validates_presence_of :user
   validates_length_of :about, in: 1..145
+  validates_uniqueness_of :about, scope: :user_id
   validate :verified, on: :create, if: :user
   validate :overkill, on: :create, unless: :autodidact?
 
