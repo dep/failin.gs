@@ -46,7 +46,7 @@ class Notifier < ActionMailer::Base
 
     mail to: "notifier@failin.gs",
     subject: "[failin.gs] Please critique your friend!",
-        bcc: @share.emails
+        bcc: share.emails
   end
 
   def new_exception(exception, env)

@@ -84,7 +84,7 @@ class Failing < ActiveRecord::Base
   end
 
   def verify_answer
-    answer.to_s.downcase == user.answer.downcase
+    answer.to_s.downcase.strip == user.answer.downcase.strip
   end
 
   def already_verified
