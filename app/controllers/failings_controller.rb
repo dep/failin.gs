@@ -6,8 +6,9 @@ class FailingsController < ApplicationController
 
   def index
     if request.format.js?
+      logger.info request.env.inspect
       return unless stale? etag: form_authenticity_token,
-        last_modified: App.launched_at
+        last_modified: App.launched_at, public: true
     end
 
     load_profile_user

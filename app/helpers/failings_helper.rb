@@ -1,4 +1,13 @@
 module FailingsHelper
+  def failings_for(user, state)
+    if state == "needs_review" && user != current_user
+      return [] if App.optimized?
+      @user.failings.submitted_by(current_user, @identity)
+    else
+      @user.failings.send(state)
+    end
+  end
+
   def css_class_for(state)
     case state
       when "needs_review" then "unrated"

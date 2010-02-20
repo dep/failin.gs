@@ -24,6 +24,11 @@ class Failing < ActiveRecord::Base
   scope :disagree,     where(state: "disagree").order("score DESC")
   scope :archived,     where(state: "archived").order("created_at DESC")
 
+  scope :submitted_by, lambda { |user, token_id|
+    user_id = user.id if user
+    where(submitter_id: user_id, token_id: token_id, state: %w(needs_review abused))
+  }
+
   include AASM
 
   aasm_column :state
