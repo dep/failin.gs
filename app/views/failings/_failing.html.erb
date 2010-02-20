@@ -27,7 +27,7 @@
   </div>
   <div class="feedback_text">
     <%= simple_format failing.about %>
-    <span class="create_date"><%= link_to failing.created_at.to_s(:timestamp), failing_url(failing.user, failing), title: "Permalink" %></span>
+    <span class="create_date"><%= link_to failing.created_at.to_s(:timestamp), failing_url(failing.user, failing), title: "Permalink", class: "utc" %></span>
   </div>
   <div id="<%= dom_id failing, :comments %>">
     <%= render failing.comments.not_abusive %>

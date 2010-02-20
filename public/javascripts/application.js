@@ -66,7 +66,42 @@ function getVal(name) {
     return results[1];
 }
 
+Object.extend(Date.prototype, {
+  strftime: function(format) {
+    var day = this.getDay(), month = this.getMonth();
+    var hours = this.getHours(), minutes = this.getMinutes();
+    function pad(num) { return num.toPaddedString(2); };
+
+    return format.gsub(/\%([aAbBcdDHiImMpSwyY])/, function(part) {
+      switch(part[1]) {
+        case 'a': return $w("Sun Mon Tue Wed Thu Fri Sat")[day]; break;
+        case 'A': return $w("Sunday Monday Tuesday Wednesday Thursday Friday Saturday")[day]; break;
+        case 'b': return $w("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec")[month]; break;
+        case 'B': return $w("January February March April May June July August September October November December")[month]; break;
+        case 'c': return this.toString(); break;
+        case 'd': return this.getUTCDate(); break;
+        case 'D': return pad(this.getUTCDate()); break;
+        case 'H': return pad(hours); break;
+        case 'i': return (hours === 12 || hours === 0) ? 12 : (hours + 12) % 12; break;
+        case 'I': return pad((hours === 12 || hours === 0) ? 12 : (hours + 12) % 12); break;
+        case 'm': return pad(month + 1); break;
+        case 'M': return pad(minutes); break;
+        case 'p': return hours > 11 ? 'PM' : 'AM'; break;
+        case 'S': return pad(this.getUTCSeconds()); break;
+        case 'w': return day; break;
+        case 'y': return pad(this.getUTCFullYear() % 100); break;
+        case 'Y': return this.getUTCFullYear().toString(); break;
+      }
+    }.bind(this));
+  }
+});
+
 document.observe("dom:loaded", function (event) {
+  $$(".utc").each(function (el) {
+    var date = new Date(Date.parse(el.innerHTML + " UTC"));
+    el.update(date.strftime("%Y/%m/%d, %i:%H%p").toLowerCase());
+  });
+
   var emailSearch = $("email_query");
   if (emailSearch && !Prototype.Browser.WebKit) {
     var defaultValue = emailSearch.getAttribute("placeholder");
@@ -86,16 +121,19 @@ document.observe("dom:loaded", function (event) {
     emailSearch.observe("blur", setDefault);
   }
 
-  $("preview_email").observe("click", function () {
-    var message = $("share_message").getValue();
+  var previewEmail = $("preview_email");
+  if (previewEmail) {
+    $("preview_email").observe("click", function () {
+      var message = $("share_message").getValue();
 
-    if (message.blank()) {
-      $("custom_email_preview").hide();
-    } else {
-      $("custom_email_preview").show();
-      $("custom_email_preview_message").innerHTML = message.escapeHTML();
-    }
+      if (message.blank()) {
+        $("custom_email_preview").hide();
+      } else {
+        $("custom_email_preview").show();
+        $("custom_email_preview_message").update(message.escapeHTML());
+      }
 
-    $("email_preview").appear();
-  });
+      $("email_preview").appear();
+    });
+  }
 });
