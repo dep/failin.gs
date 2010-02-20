@@ -32,6 +32,15 @@ class Notifier < ActionMailer::Base
     subject: "New failin.gs comment posted!"
   end
 
+  def new_reply(comment, user)
+    @comment = comment
+    @user = user
+    @someone = @comment.user_id == @comment.failing.user_id ? @comment.user.login : "Someone"
+
+    mail to: @user.email,
+    subject: "New failin.gs reply posted!"
+  end
+
   def new_invitation(invitation)
     @invitation = invitation
     @inviter = invitation.inviter
@@ -40,13 +49,12 @@ class Notifier < ActionMailer::Base
     subject: "[failin.gs] Someone requested that you join us."
   end
 
-  def new_share(share)
+  def new_share(share, email)
     @inviter = share.user
     @message = share.message
 
-    mail to: "notifier@failin.gs",
-    subject: "[failin.gs] Please critique your friend!",
-        bcc: share.emails
+    mail to: email,
+    subject: "[failin.gs] Please critique your friend!"
   end
 
   def new_exception(exception, env)

@@ -1,7 +1,7 @@
 <%= render "header" %>
 Hey <%= @user.login %>,
 
-Someone had something to say about this failing:
+<%= @someone %> replied to this failing you participated in:
 
 <%= @comment.failing.about %>
 
@@ -9,7 +9,7 @@ They said:
 
 <%= @comment.text %>
 
-Link: <%= failing_url @user, @comment.failing, anchor: dom_id(@comment) %>
+Link: <%= failing_url @comment.failing.user, @comment.failing, anchor: dom_id(@comment) %>
 
 From your friends at failin.gs!
 <%= render "footer" %>

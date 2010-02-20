@@ -1,0 +1,16 @@
+<%= render "header" %>
+<p>Hey <%= @user.login %>,</p>
+
+<p><%= @someone %> replied to this failing you participated in:</p>
+
+<p><%= @comment.failing.about %></p>
+
+<p>They said:</p>
+
+<p><%= @comment.text %></p>
+
+<p>Link: <%= link_to failing_url(@comment.failing.user, @comment.failing, anchor: dom_id(@comment)),
+  failing_url(@comment.failing.user, @comment.failing, anchor: dom_id(@comment)) %></p>
+
+<p>From your friends at failin.gs!</p>
+<%= render "footer" %>

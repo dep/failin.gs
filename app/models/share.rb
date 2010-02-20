@@ -6,10 +6,14 @@ class Share < ActiveRecord::Base
   validates_presence_of :user, :emails
   validate :emails_should_all_be_valid
 
+  def addresses
+    emails.split /,\s*/
+  end
+
   private
 
   def emails_should_all_be_valid
-    invalid = emails.split(/,\s*/).inject([]) do |array, email|
+    invalid = addresses.inject([]) do |array, email|
       array << %{"#{email}"} unless email =~ Authlogic::Regex.email
       array
     end

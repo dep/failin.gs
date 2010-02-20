@@ -10,9 +10,7 @@ class CommentsController < ApplicationController
     @comment.token_id = @identity
 
     if @comment.save
-      if @user.subscribe? && @user != current_user
-        Delayed::Job.enqueue MailJob.new(@comment)
-      end
+      Delayed::Job.enqueue MailJob.new(@comment)
 
       render :update do |page|
         page.insert_html :bottom, dom_id(@failing, :comments),

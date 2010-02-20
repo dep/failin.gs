@@ -24,6 +24,26 @@ class Comment < ActiveRecord::Base
     transitions to: :abused, from: %w(normal)
   end
 
+  def subscribers
+    # Collect subscribing commentators.
+    recipients = failing.comments.map { |comment|
+      comment.user if comment.user && comment.user.subscribe?
+    }
+
+    # Add subscribing submitters.
+    if failing.submitter && failing.submitter.subscribe?
+      recipients << failing.submitter
+    end
+
+    # Get rid of nil values, the comment's own user, and the failing user.
+    # (The failing user receives a different email.)
+    recipients.delete_if { |recipient|
+      recipient.nil? || recipient == user || recipient == failing.user
+    }
+
+    recipients.uniq
+  end
+
   private
 
   def touch_user
