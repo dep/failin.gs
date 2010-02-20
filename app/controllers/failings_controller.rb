@@ -6,7 +6,12 @@ class FailingsController < ApplicationController
 
   def index
     if request.format.js?
-      logger.info request.env.inspect
+      if request.env["HTTP_REFERER"].blank?
+        logger.info "Could not detect where embedded location"
+      else
+        logger.info "Embedded in #{request.env["HTTP_REFERER"]}"
+      end
+
       return unless stale? etag: form_authenticity_token,
         last_modified: App.launched_at, public: true
     end
