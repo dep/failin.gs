@@ -44,8 +44,8 @@
             <% end %>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to_unless_current "register", new_user_session_path %></li>
-            <li><%= link_to_unless_current "log in", new_user_session_path %></li>
+            <li><%= link_to_unless_current "register", login_path %></li>
+            <li><%= link_to_unless_current "log in", login_path %></li>
           <% end %>
         </ul>
       </div>

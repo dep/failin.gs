@@ -100,6 +100,17 @@ class User < ActiveRecord::Base
   scope :any,     with_exclusive_scope {}
 
 
+  class << self
+    def find_by_login_or_email(login_or_email)
+      if login_or_email.include?("@")
+        find_by_email(login_or_email)
+      else
+        find_by_login(login_or_email)
+      end
+    end
+  end
+
+
   # == Public methods
 
   def to_param

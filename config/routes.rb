@@ -1,5 +1,6 @@
 FailinGs::Application.routes.draw do |map|
   resource :user_session
+  get "login", to: "user_sessions#new", as: :login
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
   resource :account, controller: "users", only: %w(create edit update destroy)

@@ -47,7 +47,7 @@ class FailingsControllerTest < ActionController::TestCase
     failing = Factory :failing, user: Factory(:user, private: true)
     get :show, login: failing.user.login, id: failing.id
     assert_response :redirect
-    assert_redirected_to new_user_session_path
+    assert_redirected_to login_path
     # If logged_in? and failing.user != current_user profile_path(failing.user)
   end
 

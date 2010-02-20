@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless logged_in?
-      redirect_to new_user_session_path
+      redirect_to login_path
       return false
     end
   end
