@@ -3,9 +3,10 @@ class PasswordReset
   include ActiveModel::Validations
 
   def to_model()    self end
+  def to_key()           end
   def new_record?() true end
   def destroyed?()  true end
-  def id()          nil  end
+  def id()               end
 
   validates_presence_of :user, message: "not found with that email address"
 
