@@ -10,8 +10,10 @@ class UsersController < ApplicationController
     @user_session = UserSession.new
     if @user.save
       if @user.invitation
+        session[:invitation_email] = nil
         Delayed::Job.enqueue MailJob.new(@user)
       end
+
       path = twitter ? oauth_complete_path : edit_account_path
       respond_with @user, location: path
     else

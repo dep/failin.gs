@@ -14,6 +14,8 @@ class UserSessionsController < ApplicationController
     @user = User.new
     @user_session = UserSession.new params[:user_session]
     if @user_session.save
+      session[:invitation_email] = nil
+
       if twitter
         redirect_to oauth_complete_path
       else
@@ -28,6 +30,8 @@ class UserSessionsController < ApplicationController
   def oauth
     if twitter
       if logged_in?
+        session[:invitation_email] = nil
+
         current_user.twitter_screen_name = twitter[:screen_name]
         current_user.twitter_id          = twitter[:id]
         current_user.oauth_token         = twitter[:oauth_token]
@@ -43,6 +47,8 @@ class UserSessionsController < ApplicationController
           render "users/edit"
         end
       elsif user = User.find_by_oauth_token(twitter[:oauth_token])
+        session[:invitation_email] = nil
+
         UserSession.create user
         redirect_to profile_path(user), notice: "Login successful!"
       else
