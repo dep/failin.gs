@@ -1,6 +1,6 @@
 <ol>
-  <li><a href="<%= twitter_link(profile_url(@user)) %>">Tweet your profile</a> to all of your followers</li>
-  <li><a href="<%= facebook_link(CGI.escape profile_url(@user)) %>">Share</a> the link with your Facebook friends</li>
+  <li><a href="<%= twitter_link(profile_url(current_user)) %>">Tweet your profile</a> to all of your followers</li>
+  <li><a href="<%= facebook_link(CGI.escape profile_url(current_user)) %>">Share</a> the link with your Facebook friends</li>
   <li><%= link_to "Email your link", new_share_path %> to everyone you can think of</li>
   <li><a href="#" onclick="$('embed_instructions').appear(); return false;">Embed a mini profile</a> in to your personal webpage or blog</li>
 </ol>
