@@ -3,30 +3,43 @@
 <div id="user_profile" class="edit">
   <div class="pic_area">
     <%= avatar_for @user, default: image_url("default_pic.png"), size: 200 %>
-    <!-- Need to move these instructions elsewhere %>
-    <p>
-      User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a>.
-      We prefer it because your Gravatar image will always be there on participating sites, making things
-      easier for you. You only need to set it up once and then you're good to go.
+    <h2>Manage your avatar</h2>
+    <p class="small">
+      You can pull your image from other websites. Pick a service below to link your account and use that site's avatar.
     </p>
-    <p>
-      Set up your <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a> image now.
-    </p>
-    -->
-    <ul>
-      <li>
-        <%= gravatar_for @user, size: 32 %>
-        <%= link_to "Use Gravatar", preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
-      </li>
-      <li>
-        <% if @user.twitter_screen_name.blank? %>
-          <%= link_to "Use Twitter...", twitter_login_path %>
-        <% else %>
+    <h4>Your networks</h4>
+    <dl class="avatar_services">
+      <% if @user.twitter_screen_name.blank? %>
+        <dt>
+          <%= link_to content_tag(:img, "", src: image_path("twitter_setup.png")), twitter_login_path %>
+        </dt>
+        <dd>
+          <%= link_to "Link your Twitter Account", twitter_login_path %>
+          <p>
+            Authenticate your account with Twitter to use your Twitter profile pic on failin.gs.
+          </p>
+        </dd>
+      <% else %>
+        <dt>
           <%= tweetimage_for @user, size: 32 %>
-          <%= link_to "Use Twitter", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
-        <% end %>
-      </li>
-    </ul>
+        </dt>
+        <dd>
+          <%= link_to "Apply your Twitter icon", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
+          <p>
+            Click the link above to apply your Twitter profile picture (<a href="#">unlink</a>).
+          </p>
+        </dd>
+      <% end %>
+      <dt>
+        <%= gravatar_for @user, size: 32 %>
+      </dt>
+      <dd>
+        <%= link_to "Apply your Gravatar icon", preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
+        <p>
+          <a href="http://en.gravatar.com/site/signup" target="_blank">Set up</a> your Gravatar image now by linking your failin.gs email address.
+        </p>
+      </dd>
+    </dl>
   </div>
   <% form_for @user, url: account_path do |f| %>
     <div class="user_details">

@@ -11,14 +11,22 @@
   <%= render "common/flash_message" %>
 
   <div class="col col_1">
-    <%= button_to "Log in or sign up with Twitter", twitter_login_path %>
-
     <h3 class="mod_title">Register</h3>
     <%= render "users/form" %>
   </div>
-  <div class="col col_2 rounded_box drop_shadow">
-    <h3 class="mod_title">Log in</h3>
-    <%= render "user_sessions/form" %>
+  <div class="col col_2">
+    <div class="login_box rounded_box drop_shadow">
+      <h3 class="mod_title">Log in</h3>
+      <%= render "user_sessions/form" %>
+    </div>
+    <div class="twitter_box rounded_box drop_shadow">
+      <h3 class="mod_title">Link up with Twitter</h3>
+      <p class="small">
+        You can also sign in or register with your Twitter account.  Simply click
+        the button below to link your failin.gs account with your twitter account.
+      </p>  
+      <%= twitter_login %>
+    </div>
   </div>
 </div>
 

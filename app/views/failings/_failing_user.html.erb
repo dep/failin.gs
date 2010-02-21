@@ -1,8 +1,5 @@
 <div class="pic_area">
-  <%= avatar_for @user, default: image_url("default_pic.png"), size: 200 %>
-  <% if @user == current_user %>
-    <%= link_to "change this picture", edit_account_path %>
-  <% end %>
+  <%= link_to (avatar_for @user, default: image_url("default_pic.png"), size: 200), edit_account_path %>
 </div>
 
 <div class="user_details">

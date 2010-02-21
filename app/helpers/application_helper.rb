@@ -55,4 +55,8 @@ module ApplicationHelper
   def facebook_link(user)
     "http://www.facebook.com/sharer.php?u=#{user}&src=sp"
   end
+
+  def twitter_login
+    button_to "Log in or sign up with Twitter", twitter_login_path, class: "twitter_auth"
+  end
 end

@@ -69,6 +69,10 @@ h3 span {
   color:#eee;
   font-weight:normal;
 }
+h4 {
+  color:#999;
+  border-bottom:1px solid #eee;
+}
 .dark {
   color:#888 !important;
   font-size:12px;
@@ -237,6 +241,13 @@ input[type="submit"], input[type="button"] {
 }
 input[type="submit"]:active, input[type="button"]:active {
   background:#af79b7;
+}
+/* Twitter auth button */
+.twitter_auth {
+  background:url(<%= image_path('twitter.png') %>) top left no-repeat !important;
+  border:0;
+  text-indent:-999em;
+  width:160px !important;
 }
 input[type="checkbox"] {
   width:auto;
@@ -716,13 +727,16 @@ fieldset.invite input[type="submit"] {
 
 /* Login / Register */
 #login_register .col {
-  width:45%;
+  width:47%;
 }
-#login_register .col_2 {
-  background:#eee;
+
+#login_register .col_2 .rounded_box {
   padding:20px;
-  margin-right:20px;
+  margin:20px 20px 0 0;
   border:1px solid #bbb;
+}
+#login_register .login_box {
+  background:#eee;
 }
 
 /* Failing show for individual failing. */
@@ -827,7 +841,32 @@ a#feedback_tab {
 a#feedback_tab:hover {
   margin-left:0;
 }
-
 span.utc {
   display:inline !important;
 }
+
+/* Avatar management */
+.avatar_services {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.avatar_services dt,
+.avatar_services dd {
+  margin-top:10px;
+  float:left;
+}
+.avatar_services dt {
+  clear:both;
+  width:45px;
+}
+.avatar_services dd {
+  width:135px;
+  margin-left:0;
+  font-size:12px;
+}
+.avatar_services dd p {
+  font-size:11px;
+  margin:0;
+}
+
