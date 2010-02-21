@@ -5,16 +5,21 @@ class UserSessionsController < ApplicationController
 
   def new
     @user = User.new
-    @user.login = twitter[:screen_name] if twitter
-    respond_with(@user_session = UserSession.new)
+    @user_session = UserSession.new
+    @user.login = @user_session.login = twitter[:screen_name] if twitter
+    respond_with @user_session
   end
 
   def create
     @user = User.new
     @user_session = UserSession.new params[:user_session]
     if @user_session.save
-      redirect_back_or_default profile_path(@user_session.user),
-        notice: "Login successful!"
+      if twitter
+        oauth
+      else
+        redirect_back_or_default profile_path(@user_session.user),
+          notice: "Login successful!"
+      end
     else
       render "new"
     end
@@ -27,8 +32,9 @@ class UserSessionsController < ApplicationController
         current_user.twitter_id          = twitter[:id]
         current_user.oauth_token         = twitter[:oauth_token]
         current_user.oauth_secret        = twitter[:oauth_token_secret]
+        current_user.preferences["avatar_service"] ||= "twitter"
 
-        current_user.save if current_user.changed?
+        current_user.save validate: false if current_user.changed?
 
         redirect_to edit_account_path,
           notice: "Connected with Twitter!"
@@ -36,7 +42,7 @@ class UserSessionsController < ApplicationController
         UserSession.create user
         redirect_to profile_path(user), notice: "Login successful!"
       else
-        redirect_to login_path, notice: "Complete your registration."
+        redirect_to login_path
       end
     else
       redirect_to root_path

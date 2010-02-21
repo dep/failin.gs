@@ -19,7 +19,8 @@ class PreferencesController < ApplicationController
       when "hide_public_notice"
         page[:public_notice].visual_effect :fade
       when "avatar_service"
-        page.select(".pic_area img").first.replace avatar_for(current_user, size: 200)
+        @user = current_user
+        page[:pic_area].replace partial: "users/pic_area"
       end
     end
   end

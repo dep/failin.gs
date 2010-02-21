@@ -1,21 +1,29 @@
 <% title "Sign up or log in" %>
 
 <div id="login_register">
-  <h2 class="page_title knew">Welcome to failin.gs <span>Sign up or log in here</span></h2>
+  <h2 class="page_title knew">
+    Welcome to failin.gs <span>Sign up or log in here</span>
+  </h2>
   <p>
-    <strong>Hello</strong> or <strong>welcome back</strong> to you.
-    You've made it to failin.gs, the ultimate, anonymous personal feedback tool.
-    Sign up for a free account and have your friends anonymously critique you!  It's fun, if you're brave enough!
+    <strong>Hello</strong> or <strong>welcome back</strong> to you. You've
+    made it to failin.gs, the ultimate, anonymous personal feedback tool. Sign
+    up for a free account and have your friends anonymously critique you! It's
+    fun, if you're brave enough!
   </p>
 
   <%= render "common/flash_message" %>
-  <div class="rounded_box notify_box twitter">
-    <h3 class="mod_title">Almost finished!</h3>
-    <p>
-      If you're already a failin.gs member, just sign in below. If you have not yet registered for a
-      failin.gs account, please register your details on the left.
-    </p>
-  </div>
+
+  <% if twitter %>
+    <div class="rounded_box notify_box twitter">
+      <h3 class="mod_title">Almost finished!</h3>
+      <p>
+        If you're already a failin.gs member, just sign in below. If you have
+        not yet registered for a failin.gs account, please register your
+        details on the left.
+      </p>
+    </div>
+  <% end %>
+
   <div class="col col_1">
     <h3 class="mod_title">Register</h3>
     <%= render "users/form" %>
@@ -25,15 +33,16 @@
       <h3 class="mod_title">Log in</h3>
       <%= render "user_sessions/form" %>
     </div>
-    <div class="twitter_box rounded_box drop_shadow">
-      <h3 class="mod_title">Link up with Twitter</h3>
-      <p class="small">
-        You can also sign in or register with your Twitter account.  Simply click
-        the button below to link your failin.gs account with your twitter account.
-      </p>  
-      <%= twitter_login %>
-    </div>
+    <% unless twitter %>
+      <div class="twitter_box rounded_box drop_shadow">
+        <h3 class="mod_title">Link up with Twitter</h3>
+        <p class="small">
+          You can also sign in or register with your Twitter account. Simply
+          click the button below to link your failin.gs account with your
+          Twitter account.
+        </p>
+        <%= twitter_login %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<%= javascript_tag %{$("user_answer").focus();} if session["rack.oauth"] %>

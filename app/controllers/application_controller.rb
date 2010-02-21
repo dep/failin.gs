@@ -72,4 +72,5 @@ class ApplicationController < ActionController::Base
     return unless session["rack.oauth"]
     @twitter ||= session["rack.oauth"]["default"][:access_token_params]
   end
+  helper_method :twitter
 end

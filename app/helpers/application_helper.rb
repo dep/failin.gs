@@ -5,8 +5,7 @@ module ApplicationHelper
   end
 
   def avatar_for(user, *args)
-    case user.preferences["avatar_service"]
-    when "twitter"
+    if user.avatar_service.twitter?
       tweetimage_for user, *args
     else
       gravatar_for user, *args

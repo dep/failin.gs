@@ -144,6 +144,23 @@ class User < ActiveRecord::Base
     !promo_code.blank?
   end
 
+  def twitter?
+    twitter_screen_name.present?
+  end
+
+  def avatar_service
+    @avatar_service ||= begin
+      service = case preferences["avatar_service"]
+      when "twitter"
+        twitter? ? "twitter" : "gravatar"
+      else
+        "gravatar"
+      end
+
+      ActiveSupport::StringInquirer.new service
+    end
+  end
+
   def app?
     login == APP_LOGIN
   end

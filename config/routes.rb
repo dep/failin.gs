@@ -5,6 +5,7 @@ FailinGs::Application.routes.draw do |map|
 
   oauth_complete_path = App.twitter[:redirect] || "/oauth_complete"
   get oauth_complete_path, to: "user_sessions#oauth", as: :oauth_complete
+  delete "/oauth_delete", to: "users#unlink_oauth", as: :oauth_delete
 
   resource :account, controller: "users", only: %w(create edit update destroy)
   get "account" => redirect("/account/edit")

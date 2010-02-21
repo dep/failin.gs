@@ -52,4 +52,16 @@ class UsersController < ApplicationController
       render Rails.public_path.join("404.html"), status: :not_found
     end
   end
+
+  def unlink_oauth
+    current_user.twitter_screen_name = nil
+    current_user.twitter_id          = nil
+    current_user.oauth_token         = nil
+    current_user.oauth_secret        = nil
+
+    current_user.save validate: false if current_user.changed?
+
+    session["rack.oauth"] = nil
+    redirect_to edit_account_path, notice: "Twitter unlinked."
+  end
 end
