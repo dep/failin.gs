@@ -12,7 +12,8 @@ class UsersController < ApplicationController
       if @user.invitation
         Delayed::Job.enqueue MailJob.new(@user)
       end
-      respond_with @user, location: edit_account_path
+      path = twitter ? oauth_complete_path : edit_account_path
+      respond_with @user, location: path
     else
       render "user_sessions/new"
     end
