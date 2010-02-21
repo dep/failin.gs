@@ -7,6 +7,7 @@ class PasswordReset
   def new_record?() true end
   def destroyed?()  true end
   def id()               end
+  def persisted?() false end
 
   validates_presence_of :user, message: "not found with that email address"
 
