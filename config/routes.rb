@@ -29,6 +29,13 @@ FailinGs::Application.routes.draw do |map|
     resource :abuse, only: %w(create)
   end
 
+  resources :friend, only: %w(index) do
+    collection do
+      get :email
+      get :twitter
+    end
+  end
+
   resource :invitation, only: %w(new create)
   get "invitation/search", to: "invitations#search", as: :search
 
