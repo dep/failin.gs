@@ -41,6 +41,9 @@ module FailinGs
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
 
+    require "rack/oauth"
+    config.middleware.use Rack::OAuth, App.twitter
+
     config.after_initialize do
       if defined? Rails::Console
         ActiveRecord::Base.logger = Logger.new STDOUT

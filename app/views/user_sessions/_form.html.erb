@@ -1,5 +1,5 @@
-<fieldset id="login_form">
-  <% form_for @user_session, :url => user_session_path do |f| %>
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <fieldset id="login_form">
     <%= f.error_messages %>
     <div>
       <%= f.label :login, "Username (or email address):" %>
@@ -10,9 +10,9 @@
       <%= f.label :password, "Password:" %>
       <%= f.password_field :password %>
     </div>
-    <a href="/password_reset/new">Forgot your password?</a>
+    <%= link_to "Forgot your password?", new_password_path %>
     <div>
       <%= f.submit "Log in" %>
     </div>
-  <% end %>
-</fieldset>
+  </fieldset>
+<% end %>

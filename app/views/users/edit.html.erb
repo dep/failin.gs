@@ -2,7 +2,8 @@
 
 <div id="user_profile" class="edit">
   <div class="pic_area">
-    <%= gravatar_for @user, default: image_url("default_pic.png"), size: 200 %>
+    <%= avatar_for @user, default: image_url("default_pic.png"), size: 200 %>
+    <!-- Need to move these instructions elsewhere %>
     <p>
       User avatars are hosted at a service called <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a>.
       We prefer it because your Gravatar image will always be there on participating sites, making things
@@ -10,6 +11,22 @@
     </p>
     <p>
       Set up your <a href="http://en.gravatar.com/site/signup" target="_blank">Gravatar</a> image now.
+    </p>
+    -->
+    <ul>
+      <li>
+        <%= gravatar_for @user, size: 32 %>
+        <%= link_to "Use Gravatar", preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
+      </li>
+      <li>
+        <% if @user.twitter_screen_name.blank? %>
+          <%= link_to "Use Twitter...", twitter_login_path %>
+        <% else %>
+          <%= tweetimage_for @user, size: 32 %>
+          <%= link_to "Use Twitter", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
+        <% end %>
+      </li>
+    </ul>
   </div>
   <% form_for @user, url: account_path do |f| %>
     <div class="user_details">
@@ -62,6 +79,7 @@
         for you. You can save your changes
         at the bottom of the page.
       </p>
+
       <%= f.label :password, "New password:" %>
       <%= f.password_field :password %>
 

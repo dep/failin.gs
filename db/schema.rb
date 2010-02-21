@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100219044624) do
+ActiveRecord::Schema.define(:version => 20100220224657) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -143,6 +143,10 @@ ActiveRecord::Schema.define(:version => 20100219044624) do
     t.text     "preferences"
     t.string   "question",            :default => "What's my last name?"
     t.string   "name"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.integer  "twitter_id"
+    t.string   "twitter_screen_name"
   end
 
   add_index "users", ["email", "state"], :name => "index_users_on_email_and_state", :unique => true
@@ -153,6 +157,8 @@ ActiveRecord::Schema.define(:version => 20100219044624) do
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
   add_index "users", ["promotion_id"], :name => "index_users_on_promotion_id"
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token", :unique => true
+  add_index "users", ["state", "oauth_token"], :name => "index_users_on_state_and_oauth_token"
+  add_index "users", ["state", "twitter_screen_name"], :name => "index_users_on_state_and_twitter_screen_name"
 
   create_table "votes", :force => true do |t|
     t.integer  "failing_id", :null => false

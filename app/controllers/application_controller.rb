@@ -67,4 +67,9 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default, *args)
     session[:return_to] = nil
   end
+
+  def twitter
+    return unless session["rack.oauth"]
+    @twitter ||= session["rack.oauth"]["default"][:access_token_params]
+  end
 end
