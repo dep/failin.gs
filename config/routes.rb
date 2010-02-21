@@ -1,5 +1,5 @@
 FailinGs::Application.routes.draw do |map|
-  resource :user_session
+  resource :user_session, except: :update
   get "login", to: "user_sessions#new", as: :login
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
