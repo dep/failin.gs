@@ -49,6 +49,7 @@ class UserSessionsController < ApplicationController
       current_user_session.destroy
     end
 
+    session["rack.oauth"] = nil
     redirect_to root_path
   end
 end
