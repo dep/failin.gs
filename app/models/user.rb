@@ -195,7 +195,7 @@ class User < ActiveRecord::Base
   end
 
   def oauth_token_should_be_unique
-    unless User.where("id <> ?", id.to_i).count.zero?
+    unless User.where("id <> ? AND oauth_token = ?", id.to_i, oauth_token).count.zero?
       errors[:base] << "Twitter account is already linked to another failin.gs profile."
     end
   end
