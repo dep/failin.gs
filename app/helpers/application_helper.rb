@@ -29,7 +29,7 @@ module ApplicationHelper
     end
 
     size = options[:size]
-    image_tag @tweetimages[user.twitter_screen_name], width: size, height: size
+    image_tag @tweetimages[user.twitter_screen_name], width: size
   end
 
   def gravatar_for(user, *args)
