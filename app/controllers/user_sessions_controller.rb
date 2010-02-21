@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new params[:user_session]
     if @user_session.save
       if twitter
-        oauth
+        redirect_to oauth_complete_path
       else
         redirect_back_or_default profile_path(@user_session.user),
           notice: "Login successful!"
