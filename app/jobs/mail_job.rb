@@ -23,5 +23,8 @@ class MailJob < Struct.new(:record, :env)
     when Exception
       Notifier.new_exception(record, env).deliver
     end
+  rescue => e
+    Notifier.new_exception(e).deliver
+    raise
   end
 end

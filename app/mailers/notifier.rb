@@ -57,7 +57,7 @@ class Notifier < ActionMailer::Base
     subject: "[failin.gs] Please critique your friend!"
   end
 
-  def new_exception(exception, env)
+  def new_exception(exception, env = nil)
     @exception, @env = exception, env
     @backtrace = Rails.backtrace_cleaner.send(:filter, @exception.backtrace)
 
@@ -68,7 +68,7 @@ class Notifier < ActionMailer::Base
       format.text {
         render text: [
           "#{@exception.class.name}: #{@exception.message}\n",
-          "#{env.inspect}\n",
+          "#{@env ? @env.inspect : "From a Delayed::Job!"}\n",
           *@backtrace
         ].join("\n  ")
       }
