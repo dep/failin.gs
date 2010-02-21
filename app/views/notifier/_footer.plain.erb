@@ -1,5 +1,16 @@
 
 ----
-You've received this email because you have an account at http://failin.gs/
-If you would like to stop receiving emails, visit the site today and update your
-email preferences.
+<%- if @user -%>
+You've received this email because you have an account at
+http://failin.gs
+
+If you would like to stop receiving emails, visit the following link:
+
+  <%= unsubscribe_url(single_access_token: @user.single_access_token) %>
+<%- else -%>
+You've received this email because someone with an account at
+http://failin.gs thought it may interest you.
+
+You have not been subscribed to a mailing list and do not have to take
+any action to unsubscribe.
+<%- end -%>

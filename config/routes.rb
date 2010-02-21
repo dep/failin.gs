@@ -3,8 +3,11 @@ FailinGs::Application.routes.draw do |map|
   get "login", to: "user_sessions#new", as: :login
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
-  resource :account, controller: "users", only: %w(create edit update destroy)
-  get "account" => redirect("/account/edit")
+  resource :account, controller: "users", only: %w(create edit update destroy) do
+    get  "unsubscribe" => "users#unsubscribe",  as: :unsubscribe
+    post "unsubscribe" => "users#unsubscribed", as: :unsubscribed
+  end
+  get  "account" => redirect("/account/edit")
 
   resources :preferences
 

@@ -1,0 +1,16 @@
+<% if @user.subscribe? %>
+  <h2>Really unsubscribe?</h2>
+
+  <p>
+    You will stop receiving email notifications for your failings and those you've participated in.
+
+    <%= button_to "Yes, really unsubscribe", unsubscribed_path(single_access_token: params[:single_access_token]) %>
+  </p>
+<% else %>
+  <p>
+    You're not currently subscribed to notifications at this time.
+  </p>
+  <p>
+    To re-subscribe at any time, visit <%= link_to "your account settings", edit_account_path %>.
+  </p>
+<% end %>

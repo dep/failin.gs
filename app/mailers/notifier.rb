@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
   end
 
   def newly_invited(user)
-    @inviter = user.invitation.inviter
+    @user = @inviter = user.invitation.inviter
     @invited = user
 
     mail to: @inviter.email,
