@@ -39,4 +39,17 @@ class UsersController < ApplicationController
     @user.delete!
     redirect_to root_path
   end
+
+  def unsubscribe
+    @user = User.find_by_single_access_token(params[:single_access_token])
+    render Rails.public_path.join("404.html"), status: :not_found unless @user
+  end
+
+  def unsubscribed
+    if @user = User.find_by_single_access_token(params[:single_access_token])
+      @user.update_attribute :subscribe, false
+    else
+      render Rails.public_path.join("404.html"), status: :not_found
+    end
+  end
 end
