@@ -44,7 +44,8 @@ class User < ActiveRecord::Base
   validates :login, length: LOGIN_LENGTH
 
   RESERVED_LOGINS = %w(admin superuser moderator login logout user_session
-    users account profile pages javascripts stylesheets)
+    users account profile pages javascripts stylesheets oauth_login
+    oauth_complete oauth_delete)
   validates_exclusion_of :login, in: RESERVED_LOGINS
   validates_format_of :login, with: /^[0-9a-z_]+$/i,
     message: "can only contain letters, numbers, and underscores."
@@ -61,6 +62,8 @@ class User < ActiveRecord::Base
     message: "should be a little less common than that"
 
   validates :password, presence: true, if: :updating_password
+
+  validate :oauth_token_should_be_unique
 
   if App.beta?
     validates_presence_of :invitation, unless: :promo_code?, on: :create
@@ -188,6 +191,12 @@ class User < ActiveRecord::Base
       end
     elsif App.beta? && email? && invitation.nil?
       errors[:promo_code] << "required for uninvited '#{email}'"
+    end
+  end
+
+  def oauth_token_should_be_unique
+    unless User.where("id <> ?", id.to_i).count.zero?
+      errors[:base] << "Twitter account is already linked to another failin.gs profile."
     end
   end
 end

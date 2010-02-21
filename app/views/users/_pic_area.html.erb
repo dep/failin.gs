@@ -8,16 +8,16 @@
   <dl class="avatar_services">
     <% unless @user.twitter? %>
       <dt>
-        <%= link_to content_tag(:img, "", src: image_path("twitter_setup.png")), twitter_login_path %>
+        <%= link_to image_tag("twitter_setup.png"), twitter_login_path %>
       </dt>
       <dd>
         <p>
-          Authenticate your account with Twitter to use your Twitter profile pic on failin.gs.
+          <%= link_to "Authenticate your account with Twitter", twitter_login_path %> to use your Twitter profile pic on failin.gs.
         </p>
       </dd>
     <% else %>
       <dt>
-        <%= tweetimage_for @user, size: 32 %>
+        <%= link_to_unless @user.avatar_service.twitter?, tweetimage_for(@user, size: 32), preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
       </dt>
       <dd>
         <% if @user.avatar_service.twitter? %>
@@ -32,7 +32,7 @@
       </dd>
     <% end %>
     <dt>
-      <%= gravatar_for @user, size: 32 %>
+      <%= link_to_unless @user.avatar_service.gravatar?, gravatar_for(@user, size: 32), preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
     </dt>
     <dd>
       <% if @user.avatar_service.gravatar? %>

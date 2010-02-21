@@ -34,10 +34,14 @@ class UserSessionsController < ApplicationController
         current_user.oauth_secret        = twitter[:oauth_token_secret]
         current_user.preferences["avatar_service"] ||= "twitter"
 
-        current_user.save validate: false if current_user.changed?
-
-        redirect_to edit_account_path,
-          notice: "Connected with Twitter!"
+        if current_user.changed? && current_user.save
+          redirect_to edit_account_path,
+            notice: "Connected with Twitter!"
+        else
+          @user = current_user
+          @user.twitter_screen_name = nil
+          render "users/edit"
+        end
       elsif user = User.find_by_oauth_token(twitter[:oauth_token])
         UserSession.create user
         redirect_to profile_path(user), notice: "Login successful!"
