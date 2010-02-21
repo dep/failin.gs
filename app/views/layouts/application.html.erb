@@ -38,7 +38,7 @@
             </li>
             <li><%= link_to_unless_current "my profile", profile_path(current_user) %></li>
             <li><%= link_to_unless_current "settings", edit_account_path %></li>
-            <li><%= link_to_unless_current "invite friends", new_invitation_path %>
+            <li><%= link_to_unless_current "share", new_invitation_path %>
             <% if App.beta? && current_user.invites_left > 0 %>
               (<span id="invites_left"><%= current_user.invites_left %></span>)</li>
             <% end %>

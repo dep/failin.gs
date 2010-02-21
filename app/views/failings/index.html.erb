@@ -6,15 +6,10 @@
     <div class="announce rounded_box">
       <h2>Announce your profile!</h2>
 
-      <p>Now that you have a profile, <a href="/share/new">send it to everyone you know</a> so they can
-      provide you with your anonymous constructive criticism!</p>
+      <p>Now that you have a profile, <strong>send it to everyone you know</strong> so they can
+      provide you with your anonymous feedback!</p>
 
-      <p><%= link_to "Use our emailer", new_share_path %>, <a href="#" onclick="$('embed_instructions').appear(); scroll(0,0); return false;">embed</a> it in your website, or blast it using one of the following networks:</p>
-
-      <div class="share_links">
-        <a href="<%= twitter_link(profile_url(@user)) %>"><%= image_tag "tweet_this.jpg", alt: "Tweet this!" %></a>
-        <a href="<%= facebook_link(CGI.escape profile_url(@user)) %>"><%= image_tag "facebook_this.jpg", alt: "Facebook this!" %></a>
-      </div>
+      <%= render "failings/blast_methods" %>
     </div>
   <% end %>
 </div>
