@@ -193,7 +193,7 @@ blockquote {
 }
 .announce ul,
 .announce ol {
-  font-size:13px;
+  font-size:15px;
   color:#000;
   padding-left:20px;
 }
@@ -202,6 +202,9 @@ blockquote {
 }
 .announce .mod_title {
   font-size:18px;
+}
+.announce.dark li {
+  color:#fff;
 }
 
 /* Form elements */
@@ -304,7 +307,7 @@ input[type="checkbox"] {
 #top_links ul li.search input {
   margin-top:-10px;
   font-size:11px;
-  width:200px;
+  width:140px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   #top_links ul li.search input {
@@ -896,7 +899,7 @@ span.utc {
   padding:20px;
 }
 .sub_nav ul {
-  background:#0072ae;
+  background:#00a055;
   margin:0;
   padding:15px;
   overflow:hidden;
@@ -904,15 +907,17 @@ span.utc {
 }
 .sub_nav ul li {
   float:left;
-  width:150px;
+  padding:6px 15px;
+  margin-right:10px;
+}
+.sub_nav li {
+  font-size:14px;
 }
 .sub_nav li a {
-  padding:6px 15px;
-  font-size:14px;
   text-decoration:none;
   color:#fff;
 }
-.sub_nav li a:hover {
+.sub_nav li:hover {
   background:#bbb;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-top-left-radius:6px;
@@ -920,7 +925,7 @@ span.utc {
   -webkit-border-top-right-radius:6px;
   -webkit-border-bottom-right-radius:6px;
 }
-.sub_nav li.active a {
+.sub_nav li.active {
   background:#fff;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-top-left-radius:6px;
@@ -928,4 +933,21 @@ span.utc {
   -webkit-border-top-right-radius:6px;
   -webkit-border-bottom-right-radius:6px;
   color:#000
-} 
+}
+
+/* Friends */
+.sub_nav .user {
+  margin-bottom:5px;
+  border:1px solid #aaa;
+  width:300px;
+  padding:5px 5px 1px;
+  background:#eee;
+}
+.sub_nav .user a.profile_link {
+  vertical-align:top;
+  font-size:32px;
+  margin-left:5px;
+}
+.sub_nav h3.mod_title {
+  margin-top:20px;
+}

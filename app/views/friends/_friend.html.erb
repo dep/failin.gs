@@ -1,4 +1,4 @@
 <% div_for friend do %>
   <%= link_to avatar_for(friend, size: 32), profile_path(friend) %>
-  <%= link_to friend.login, profile_path(friend) %>
+  <%= link_to friend.login, profile_path(friend), :class => "profile_link" %>
 <% end %>

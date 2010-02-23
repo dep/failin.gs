@@ -1,5 +1,5 @@
 <ul>
+  <%= content_tag :li, link_to_unless_current("Twitter", twitter_friends_path), class: ("active" if current_page?(twitter_friends_path)) %>
   <%= content_tag :li, link_to_unless_current("Email Contacts", email_friends_path),      class: ("active" if current_page?(email_friends_path)) %>
-  <%= content_tag :li, link_to_unless_current("Twitter Followers", twitter_friends_path), class: ("active" if current_page?(twitter_friends_path)) %>
   <%# content_tag :li, link_to_unless_current("Facebook Friends", facebook_friends_path), class: ("active" if current_page?(facebook_friends_path)) %>
 </ul>
