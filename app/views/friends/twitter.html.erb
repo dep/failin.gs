@@ -4,18 +4,22 @@
   <%= render "sub_nav_nav" %>
   <div class="sub_nav_body">
     <% if current_user.twitter? %>
-      <h3 class="mod_title">People you follow</h3>
-      <% if @friends.any? %>
-        <%= render partial: "friend", collection: @friends %>
+      <% if @friends.any? && @followers.any? %>
+        <%= render partial: "none_found" %>
       <% else %>
-        <p>None of your friends are on failin.gs!</p>
-      <% end %>
+        <h3 class="mod_title">People you follow</h3>
+        <% if @friends.any? %>
+          <%= render partial: "friend", collection: @friends %>
+        <% else %>
+          <p>No one you're following is on failin.gs!</p>
+        <% end %>
 
-      <h3 class="mod_title">Your Followers</h3>
-      <% if @followers.any? %>
-        <%= render partial: "friend", collection: @followers %>
-      <% else %>
-        <p>None of your followers are on failin.gs!</p>
+        <h3 class="mod_title">Your Followers</h3>
+        <% if @followers.any? %>
+          <%= render partial: "friend", collection: @followers %>
+        <% else %>
+          <p>None of your followers are on failin.gs!</p>
+        <% end %>
       <% end %>
     <% else %>
       <p>
