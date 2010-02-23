@@ -13,6 +13,7 @@ gem "aasm",      git: "git://github.com/rubyist/aasm.git"
 gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 gem "rack-oauth"
 gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
+gem "twitter"
 gem "uuid"
 
 group :development do

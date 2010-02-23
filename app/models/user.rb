@@ -151,6 +151,13 @@ class User < ActiveRecord::Base
     twitter_screen_name.present?
   end
 
+  def twitter
+    return @twitter if defined? @twitter
+    oauth = Twitter::OAuth.new *App.twitter.values_at(:key, :secret)
+    oauth.authorize_from_access oauth_token, oauth_secret
+    @twitter = Twitter::Base.new oauth
+  end
+
   def avatar_service
     @avatar_service ||= begin
       service = case preferences["avatar_service"]
