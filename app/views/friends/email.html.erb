@@ -3,8 +3,19 @@
 <div class="sub_nav">
   <%= render "sub_nav_nav" %>
   <div class="sub_nav_body">
+    <h3 class="mod_title">Scan your address book</h3>
     <p>
-      The ability to scan your address book is coming soon. 
+      Curious about who in your email address book is on failin.gs? Our look-up tool makes
+      it easy to find them and leave them anonymous feedback! We don't store this information.
+      We just parse the data the API returns to us and display it to you.
+    </p>
+    <p class="small">Supported email networks are <strong>Gmail</strong>, <strong>Yahoo!</strong>, and <strong>Microsoft Live</strong>.</p>
+    <form>
+      <fieldset>
+        <label for="email_address">Email address:</label>
+        <input type="text"/>
+        <input type="submit" value="Go!"/>
+      </fieldset>
     </p>
   </div>
 </div>
