@@ -9,6 +9,7 @@ gem "rails", git: "git://github.com/rails/rails.git"
 
 # Configuration
 gem "mysql"
+
 gem "aasm",      git: "git://github.com/rubyist/aasm.git"
 gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 gem "rack-oauth"

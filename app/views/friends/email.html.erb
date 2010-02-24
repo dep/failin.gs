@@ -10,12 +10,12 @@
       We just parse the data the API returns to us and display it to you.
     </p>
     <p class="small">Supported email networks are <strong>Gmail</strong>, <strong>Yahoo!</strong>, and <strong>Microsoft Live</strong>.</p>
-    <form>
+    <% form_tag method: :get do %>
       <fieldset>
-        <label for="email_address">Email address:</label>
-        <input type="text"/>
-        <input type="submit" value="Go!"/>
+        <%= label_tag "email", "Email address:" %>
+        <%= text_field_tag "email", current_user.email, type: "email" %>
+        <%= submit_tag "Go!" %>
       </fieldset>
-    </p>
+    <% end %>
   </div>
 </div>
