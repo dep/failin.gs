@@ -8,7 +8,6 @@ Bundler.require :default, Rails.env
 module FailinGs
   class Application < Rails::Application
     require "config/app"
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -40,6 +39,9 @@ module FailinGs
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
+
+    require "rack/facebook"
+    config.middleware.use Rack::Facebook, App.facebook
 
     require "rack/oauth"
     config.middleware.use Rack::OAuth, App.twitter

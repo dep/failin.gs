@@ -32,7 +32,7 @@ FailinGs::Application.routes.draw do |map|
   resources :friends, only: %w(index) do
     collection do
       get :twitter
-      # get :facebook
+      get :facebook
       # get :email
     end
   end

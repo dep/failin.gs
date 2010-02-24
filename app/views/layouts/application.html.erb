@@ -15,6 +15,8 @@
   <![endif]-->
 </head>
 <body>
+  <%= javascript_include_tag :facebook %>
+  <%= javascript_tag %{FB.init("#{App.facebook[:api_key]}");} %>
   <%= render "common/feedback" %>
   <div id="wrapper">
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
