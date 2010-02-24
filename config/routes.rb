@@ -29,10 +29,11 @@ FailinGs::Application.routes.draw do |map|
     resource :abuse, only: %w(create)
   end
 
-  resources :friend, only: %w(index) do
+  resources :friends, only: %w(index) do
     collection do
-      get :email
       get :twitter
+      # get :facebook
+      # get :email
     end
   end
 
