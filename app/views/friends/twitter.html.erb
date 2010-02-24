@@ -5,7 +5,7 @@
   <div class="sub_nav_body twitter">
     <% if current_user.twitter? %>
       <% if @friends.none? && @followers.none? %>
-        <%= render partial: "none_found" %>
+        <%= render "none_found" %>
       <% else %>
         <p>We found the following matches.</p>
         <h3 class="mod_title">People you follow</h3>
