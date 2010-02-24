@@ -2,7 +2,7 @@
 
 <div id="user_profile">
   <%= render "failing_user" %>
-  <% if @user == current_user %>
+  <% if @user == current_user && !@user.profile_empty? %>
     <div class="announce rounded_box">
       <h2>Announce your profile!</h2>
 
@@ -28,7 +28,7 @@
     <%= render "public" %>
   <% end %>
 
-  <% if @user == current_user && @user.failings.where("state != ?", "abused").count.zero? %>
+  <% if @user == current_user && @user.profile_empty? %>
     <%= render "empty_profile" %>
   <% elsif @user != current_user && !@user.private? && @user.failings.reviewed.count.zero? %>
     <%= render "empty_profile_public" %>
