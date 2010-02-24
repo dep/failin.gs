@@ -63,6 +63,7 @@ h3.mod_title {
   font-size:30px;
   color:#bbb;
   margin:10px 0 5px;
+  text-shadow: 1px 1px 2px #555;
 }
 h3 span {
   padding-left:20px;
@@ -798,10 +799,12 @@ fieldset.invite input[type="submit"] {
 .notify_box.flash {
   background:#ffffe7;
 }
-.notify_box.twitter {
+.notify_box.twitter,
+.sub_nav_body.twitter {
   background:#a2dff8 url(<%= image_url "twitter_logo.png" %>) 98% 5% no-repeat;
 }
-.notify_box.twitter h3 {
+.notify_box.twitter h3,
+.sub_nav_body.twitter h3 {
   color:#fff;
 }
 #empty_account h3 {
@@ -894,13 +897,13 @@ span.utc {
 
 /* Sub-navigation */
 .sub_nav {
-  border:1px solid #ddd;
+  border:1px solid #bbb;
 }
 .sub_nav_body {
   padding:20px;
 }
 .sub_nav ul {
-  background:#00a055;
+  background:#1380b7;
   margin:0;
   padding:15px;
   overflow:hidden;
@@ -926,6 +929,9 @@ span.utc {
   -webkit-border-top-right-radius:6px;
   -webkit-border-bottom-right-radius:6px;
 }
+.sub_nav li:hover a {
+  color:#fff;
+}
 .sub_nav li.active {
   background:#fff;
   -moz-border-radius: 6px 6px 6px 6px;
@@ -948,6 +954,9 @@ span.utc {
   vertical-align:top;
   font-size:32px;
   margin-left:5px;
+}
+.sub_nav .user span {
+  vertical-align:super;
 }
 .sub_nav h3.mod_title {
   margin-top:20px;
