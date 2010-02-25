@@ -33,6 +33,9 @@ body {
   padding:0px 20px;
   overflow:hidden;
 }
+.clear {
+  clear:both;
+}
 .thankyou {
   background:#fff url(<%= image_url "excited.jpg" %>) 90% 0 no-repeat;
   min-height:450px;
@@ -77,6 +80,9 @@ h4 {
 .dark {
   color:#888 !important;
   font-size:12px;
+}
+.dark h3.mod_title {
+  color:#fff;
 }
 .terms_of_service h3 {
   font-size:14px;
@@ -178,22 +184,22 @@ blockquote {
   margin:10px 0;
   color:#eee;
 }
-.announce.dark {
+.dark {
   background:#222;
 }
-.announce.dark h2 {
+.dark h2 {
   color:#ec542b;
 }
-.announce.dark p {
+.dark p {
   color:#aaa;
 }
-.announce.dark label {
+.dark label {
   color:#ddd;
 }
 .announce p {
   margin-bottom:0;
 }
-.announce.dark strong {
+.dark strong {
   color:#fff;
 }
 .announce ul,
@@ -209,7 +215,7 @@ blockquote {
   font-size:21px;
   text-shadow:none;
 }
-.announce.dark li {
+.dark li {
   color:#fff;
 }
 
@@ -974,3 +980,10 @@ span.utc {
   width:468px;
 }
 
+/* Welcome new user */
+.cols_2.welcome .rounded_box {
+  margin-top:0;
+}
+.cols_2.welcome .col {
+  width:48%;
+}
