@@ -14,22 +14,15 @@ module ApplicationHelper
 
   def tweetimage_for(user, *args)
     options = args.extract_options!
-
-    @tweetimages ||= {}
-    @tweetimages[user.twitter_screen_name] ||= begin
-      tweetimage_url = "http://tweetimag.es/i/#{user.twitter_screen_name}_o"
-      uri = URI.parse tweetimage_url
-      request = Net::HTTP.new uri.host
-
-      unless request.request_head(uri.path).is_a?(Net::HTTPOK)
-        tweetimage_url = options[:default]
-      end
-
-      tweetimage_url
+    tweetimage_url = "http://tweetimag.es/i/#{user.twitter_screen_name}_"
+    tweetimage_url << case options[:size]
+      when 0..24  then "m"
+      when 25..48 then "n"
+      when 48..73 then "b"
+      else             "o"
     end
 
-    size = options[:size]
-    image_tag @tweetimages[user.twitter_screen_name], width: size
+    image_tag tweetimage_url, width: options[:size]
   end
 
   def gravatar_for(user, *args)

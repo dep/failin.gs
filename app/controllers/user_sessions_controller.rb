@@ -33,7 +33,7 @@ class UserSessionsController < ApplicationController
         session[:invitation_email] = nil
 
         current_user.twitter_screen_name = twitter[:screen_name]
-        current_user.twitter_id          = twitter[:id]
+        current_user.twitter_id          = twitter[:user_id]
         current_user.oauth_token         = twitter[:oauth_token]
         current_user.oauth_secret        = twitter[:oauth_token_secret]
         current_user.preferences["avatar_service"] ||= "twitter"

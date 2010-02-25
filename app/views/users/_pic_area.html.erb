@@ -1,10 +1,10 @@
 <div id="pic_area" class="pic_area">
   <%= avatar_for @user, default: image_url("default_pic.png"), size: 200 %>
-  <h2>Manage your avatar</h2>
+  <h2>Manage your picture</h2>
   <p class="small">
-    You can pull your image from other websites. Pick a service below to link your account and use that site's avatar.
+    You can pull your user picture from other websites. Pick a service below to link your account and use that site's picture for you.
   </p>
-  <h4>Your networks</h4>
+  <h4>Your available networks</h4>
   <dl class="avatar_services">
     <% unless @user.twitter? %>
       <dt>
@@ -41,7 +41,7 @@
         <%= link_to "Apply your Gravatar icon", preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
       <% end %>
       <p>
-        <a href="http://en.gravatar.com/site/signup" target="_blank">Set up</a> your Gravatar image now by linking your failin.gs email address.
+        <a href="http://en.gravatar.com/site/signup" rel="external">Set up</a> your Gravatar image now by linking your failin.gs email address.
       </p>
     </dd>
   </dl>

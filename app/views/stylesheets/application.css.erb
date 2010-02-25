@@ -33,6 +33,9 @@ body {
   padding:0px 20px;
   overflow:hidden;
 }
+.clear {
+  clear:both;
+}
 .thankyou {
   background:#fff url(<%= image_url "excited.jpg" %>) 90% 0 no-repeat;
   min-height:450px;
@@ -63,6 +66,7 @@ h3.mod_title {
   font-size:30px;
   color:#bbb;
   margin:10px 0 5px;
+  text-shadow: 1px 1px 2px #555;
 }
 h3 span {
   padding-left:20px;
@@ -76,6 +80,9 @@ h4 {
 .dark {
   color:#888 !important;
   font-size:12px;
+}
+.dark h3.mod_title {
+  color:#fff;
 }
 .terms_of_service h3 {
   font-size:14px;
@@ -116,6 +123,10 @@ h4 {
 a, a:visited {
   color:#7479b7;
   text-decoration:underline;
+}
+a[rel="external"] {
+  padding-right:11px;
+  background:url(<%= image_url "pop_up.gif" %>) 99% 0 no-repeat;
 }
 .dark a,
 .dark a:visited {
@@ -173,22 +184,38 @@ blockquote {
   margin:10px 0;
   color:#eee;
 }
-.announce.dark {
+.dark {
   background:#222;
 }
-.announce.dark h2 {
+.dark h2 {
   color:#ec542b;
 }
-.announce.dark p {
+.dark p {
   color:#aaa;
 }
-.announce.dark label {
+.dark label {
   color:#ddd;
 }
 .announce p {
   margin-bottom:0;
 }
-.announce strong {
+.dark strong {
+  color:#fff;
+}
+.announce ul,
+.announce ol {
+  font-size:15px;
+  color:#000;
+  padding-left:20px;
+}
+.announce li {
+  padding:2px 0;
+}
+.announce .mod_title {
+  font-size:21px;
+  text-shadow:none;
+}
+.dark li {
   color:#fff;
 }
 
@@ -292,7 +319,7 @@ input[type="checkbox"] {
 #top_links ul li.search input {
   margin-top:-10px;
   font-size:11px;
-  width:200px;
+  width:140px;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   #top_links ul li.search input {
@@ -350,7 +377,7 @@ input[type="checkbox"] {
   width:250px;
 }
 .announce {
-  background:#ccc;
+  background:#eee;
   border-style:solid;
   margin-top:0px;
 }
@@ -719,7 +746,7 @@ fieldset.invite label {
 }
 fieldset.invite input[type="email"] {
   padding:10px;
-  width:300px;
+  width:200px;
 }
 fieldset.invite input[type="submit"] {
   margin:5px 0 0 10px;
@@ -783,10 +810,12 @@ fieldset.invite input[type="submit"] {
 .notify_box.flash {
   background:#ffffe7;
 }
-.notify_box.twitter {
+.notify_box.twitter,
+.sub_nav_body.twitter {
   background:#a2dff8 url(<%= image_url "twitter_logo.png" %>) 98% 5% no-repeat;
 }
-.notify_box.twitter h3 {
+.notify_box.twitter h3,
+.sub_nav_body.twitter h3 {
   color:#fff;
 }
 #empty_account h3 {
@@ -808,10 +837,11 @@ fieldset.invite input[type="submit"] {
   opacity:0.9;
   background:#fff;
   font-size:11px;
+  z-index:999;
 }
 .be_nice.reminder1 {
-  top:60px;
-  left:-80px;
+  top:65px;
+  left:-90px;
   background:#5cc931;
   color:#fff;
 }
@@ -824,7 +854,7 @@ fieldset.invite input[type="submit"] {
 .be_nice.reminder3 {
   top:135px;
   right:10px;
-  background:#d71919;
+  background:#000;
   color:#fff;
   font-weight:bold;
 }
@@ -876,3 +906,84 @@ span.utc {
   margin:0;
 }
 
+/* Sub-navigation */
+.sub_nav {
+  border:1px solid #bbb;
+}
+.sub_nav_body {
+  padding:20px;
+}
+.sub_nav ul {
+  background:#1380b7;
+  margin:0;
+  padding:15px;
+  overflow:hidden;
+  list-style:none;
+}
+.sub_nav ul li {
+  float:left;
+  padding:6px 15px;
+  margin-right:10px;
+}
+.sub_nav li {
+  font-size:14px;
+}
+.sub_nav li a {
+  text-decoration:none;
+  color:#fff;
+}
+.sub_nav li:hover {
+  background:#bbb;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-top-left-radius:6px;
+  -webkit-border-bottom-left-radius:6px;
+  -webkit-border-top-right-radius:6px;
+  -webkit-border-bottom-right-radius:6px;
+}
+.sub_nav li:hover a {
+  color:#fff;
+}
+.sub_nav li.active {
+  background:#fff;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-top-left-radius:6px;
+  -webkit-border-bottom-left-radius:6px;
+  -webkit-border-top-right-radius:6px;
+  -webkit-border-bottom-right-radius:6px;
+  color:#000
+}
+
+/* Friends */
+.sub_nav .user {
+  margin-bottom:5px;
+  border:1px solid #aaa;
+  width:450px;
+  padding:5px 5px 1px;
+  background:#eee;
+}
+.sub_nav .user a.profile_link {
+  vertical-align:top;
+  font-size:32px;
+  margin-left:5px;
+}
+.sub_nav .user span {
+  vertical-align:super;
+  margin-left:10px;
+}
+.sub_nav h3.mod_title {
+  margin-top:20px;
+}
+
+/* AdSense */
+#google_ads {
+  margin:0 0 5px 5px;
+  width:468px;
+}
+
+/* Welcome new user */
+.cols_2.welcome .rounded_box {
+  margin-top:0;
+}
+.cols_2.welcome .col {
+  width:48%;
+}

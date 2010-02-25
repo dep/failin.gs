@@ -147,8 +147,22 @@ class User < ActiveRecord::Base
     !promo_code.blank?
   end
 
+  def profile_empty?
+    failings.where("state != ?", "abused").count.zero?
+  end
+
   def twitter?
     twitter_screen_name.present?
+  end
+
+  def twitter
+    return @twitter if defined? @twitter
+
+    @twitter = if twitter?
+      oauth = Twitter::OAuth.new *App.twitter.values_at(:key, :secret)
+      oauth.authorize_from_access oauth_token, oauth_secret
+      Twitter::Base.new oauth
+    end
   end
 
   def avatar_service

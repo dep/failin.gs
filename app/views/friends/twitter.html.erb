@@ -1,0 +1,33 @@
+<% title "Find your friends on Failin.gs" %>
+<h2 class="knew page_title">Who's on Failin.gs? <span>Find them here!</span></h2>
+<div class="sub_nav">
+  <%= render "sub_nav_nav" %>
+  <div class="sub_nav_body twitter">
+    <% if current_user.twitter? %>
+      <% if @friends.none? && @followers.none? %>
+        <%= render "none_found" %>
+      <% else %>
+        <p>We found the following matches.</p>
+        <h3 class="mod_title">People you follow</h3>
+        <% if @friends.any? %>
+          <%= render partial: "friend", collection: @friends %>
+        <% else %>
+          <p>No one you're following is on failin.gs!</p>
+        <% end %>
+
+        <h3 class="mod_title">Your Followers</h3>
+        <% if @followers.any? %>
+          <%= render partial: "friend", collection: @followers %>
+        <% else %>
+          <p>None of your followers are on failin.gs!</p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>
+        You don't have a Twitter account linked with your failin.gs account.
+        Log in below to find which of your followers and followees are on failin.gs!
+      </p>
+      <%= twitter_login %>
+    <% end %>
+  </div>
+</div>
