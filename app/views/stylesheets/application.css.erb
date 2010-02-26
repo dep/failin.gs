@@ -41,7 +41,7 @@ body {
   min-height:450px;
 }
 h2.page_title {
-  font-size:32px;
+  font-size:44px;
   color:#444;
   padding:5px 0 0 50px;
   margin:0 0 30px 0;
@@ -66,7 +66,7 @@ h3.mod_title {
   font-size:30px;
   color:#bbb;
   margin:10px 0 5px;
-  text-shadow: 1px 1px 2px #555;
+  text-shadow: 1px 2px 2px #666;
 }
 h3 span {
   padding-left:20px;
@@ -184,18 +184,6 @@ blockquote {
   margin:10px 0;
   color:#eee;
 }
-.dark {
-  background:#222;
-}
-.dark h2 {
-  color:#ec542b;
-}
-.dark p {
-  color:#aaa;
-}
-.dark label {
-  color:#ddd;
-}
 .announce p {
   margin-bottom:0;
 }
@@ -211,7 +199,8 @@ blockquote {
 .announce li {
   padding:2px 0;
 }
-.announce .mod_title {
+.announce .mod_title,
+.notify_box.flash .mod_title {
   font-size:21px;
   text-shadow:none;
 }
@@ -986,4 +975,18 @@ span.utc {
 }
 .cols_2.welcome .col {
   width:48%;
+}
+
+/* Dark Boxes */
+.dark {
+  background:#222;
+}
+.dark h2 {
+  color:#ec542b;
+}
+.dark p {
+  color:#aaa;
+}
+.dark label {
+  color:#ddd;
 }
