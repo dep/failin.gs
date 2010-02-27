@@ -1,1 +1,5 @@
-<a href="" class="bookmark rounded_box off">bookmark <%= @user.login %></a>
+<% if current_user.bookmarked.include? @user %>
+  <%= link_to "bookmark #{@user.login}", friend_path(@user, user_id: @user.login), method: :delete, remote: true, id: dom_id(@user, :bookmark), class: "bookmark rounded_box on" %>
+<% else %>
+  <%= link_to "bookmark #{@user.login}", friends_path(user_id: @user.login), method: :post, remote: true, id: dom_id(@user, :bookmark), class: "bookmark rounded_box off" %>
+<% end %>

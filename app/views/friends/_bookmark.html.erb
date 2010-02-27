@@ -1,0 +1,4 @@
+<li>
+  <%= link_to bookmark.login, profile_path(bookmark), class: "bookmark on" %>
+  <%= link_to "delete?", friend_path(bookmark, user_id: bookmark.login), method: :delete, remote: true, class: "delete", style: "display: none;" %>
+</li>

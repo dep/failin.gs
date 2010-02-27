@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   has_many :failings
 
+  has_many :bookmarks, foreign_key: :bookmarker_id
+  has_many :bookmarked, through: :bookmarks
+
   belongs_to :promotion
   has_one :invitation, foreign_key: :invited_id
   has_one :inviter, through: :invitation
