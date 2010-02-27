@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100220224657) do
+ActiveRecord::Schema.define(:version => 20100227175716) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(:version => 20100220224657) do
   add_index "abuses", ["content_type", "content_id", "token_id"], :name => "index_abuses_on_content_type_and_content_id_and_token_id"
   add_index "abuses", ["content_type", "content_id", "user_id"], :name => "index_abuses_on_content_type_and_content_id_and_user_id"
   add_index "abuses", ["token_id"], :name => "index_abuses_on_token_id"
+
+  create_table "bookmarks", :id => false, :force => true do |t|
+    t.integer  "bookmarker_id"
+    t.integer  "bookmarked_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookmarks", ["bookmarked_id"], :name => "index_bookmarks_on_bookmarked_id"
+  add_index "bookmarks", ["bookmarker_id"], :name => "index_bookmarks_on_bookmarker_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "failing_id",   :null => false

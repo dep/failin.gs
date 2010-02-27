@@ -96,11 +96,32 @@ Object.extend(Date.prototype, {
   }
 });
 
+function bindBookmarkEvents() {
+  $$("a.bookmark.on").invoke("observe", "click", function (event) {
+    Event.element(event).addClassName("off").removeClassName("on");
+  });
+  $$("a.bookmark.off").invoke("observe", "click", function (event) {
+    Event.element(event).addClassName("on").removeClassName("off");
+  });
+  $$(".bookmarks .delete").invoke("observe", "click", function (event) {
+    var element = Event.element(event);
+    var username = element.siblings().first().innerHTML;
+    var confirmation = confirm("Really remove " + username + " from your bookmarks?");
+    if (confirmation) {
+      Event.element(event).up("li").remove();
+      new Ajax.Request(element.href, { method: element.getAttribute("data-method") });
+    }
+    event.stop();
+  });
+}
+
 document.observe("dom:loaded", function (event) {
   $$(".utc").each(function (el) {
     var date = new Date(Date.parse(el.innerHTML + " UTC"));
     el.update(date.strftime("%Y/%m/%d, %i:%H%p").toLowerCase());
   });
+
+  bindBookmarkEvents();
 
   var emailSearch = $("email_query");
   if (emailSearch && !Prototype.Browser.WebKit) {

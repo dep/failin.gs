@@ -32,10 +32,10 @@ FailinGs::Application.routes.draw do |map|
     resource :abuse, only: %w(create)
   end
 
-  resources :friends, only: %w(index) do
+  resources :friends, only: %w(index create destroy) do
     collection do
-      get :twitter
       get :bookmarks
+      get :twitter
       # get :facebook
       # get :email
     end

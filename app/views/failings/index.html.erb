@@ -16,7 +16,7 @@
 
 <div id="flaw_area">
   <%= render "common/flash_message" %>
-  <%= render "bookmark_this" %>
+  <%= render "bookmark_this" if logged_in? && current_user != @user %>
 
   <%= render "failings_form" %>
   <%= render "be_nice" %>
