@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
       if @user = User.find_by_login(params[:user_id])
         current_user.bookmarked << @user
 
-        page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark_this"
+        page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark", object: @user
         page << "bindBookmarkEvents();"
       end
     end
@@ -18,7 +18,7 @@ class FriendsController < ApplicationController
       if current_user.bookmarked.include?(@user)
         current_user.bookmarked.delete(@user)
 
-        page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark_this"
+        page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark", object: @user
         page << "bindBookmarkEvents();"
       end
     end
