@@ -1,0 +1,15 @@
+<% title "Find your friends on Failin.gs" %>
+<%= render "friends_headline" %>
+<div class="sub_nav">
+  <%= render "sub_nav_nav" %>
+  <div class="sub_nav_body">
+    <% if current_user.bookmarked.any? %>
+      <h3 class="mod_title">Your current bookmarks</h3>
+      <ul class="bookmarks">
+        <%= render partial: "bookmark", collection: current_user.bookmarked %>
+      </ul>
+    <% else %>
+      <%= render "no_bookmarks" %>
+    <% end %>
+  </div>
+</div>
