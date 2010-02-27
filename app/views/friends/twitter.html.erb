@@ -10,14 +10,14 @@
         <p>We found the following matches.</p>
         <h3 class="mod_title">People you follow</h3>
         <% if @friends.any? %>
-          <%= render partial: "friend", collection: @friends %>
+          <%= render partial: "twitter_friend", collection: @friends %>
         <% else %>
           <p>No one you're following is on failin.gs!</p>
         <% end %>
 
         <h3 class="mod_title">Your Followers</h3>
         <% if @followers.any? %>
-          <%= render partial: "friend", collection: @followers %>
+          <%= render partial: "twitter_friend", collection: @followers %>
         <% else %>
           <p>None of your followers are on failin.gs!</p>
         <% end %>
