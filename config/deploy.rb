@@ -111,7 +111,7 @@ namespace :deploy do
       "touch tmp/restart.txt"
     ].join(" && ")
 
-    # sudo "bluepill restart"
+    sudo "bluepill restart"
   end
 
   task(:cold) { deploy.default }
