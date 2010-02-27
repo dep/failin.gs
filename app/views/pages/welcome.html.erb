@@ -5,35 +5,35 @@
 </p>
 <div class="cols_2 welcome">
   <div class="col col_1">
-	<div class="rounded_box drop_shadow twitter notify_box">
-	  <h3 class="mod_title">Link up Twitter</h3>
-	  <p>
-		By linking up twitter, you can automatically pull in
-		your twitter photo, which saves you some time and helps
-		you customize your profile. You also get access to see
-		which of your twitter friends are using failin.gs! It's
-		a win/win!
-	  </p>
-	  <p>
-	    <strong>You</strong> decide when to tweet your account. We
-		will <strong>not</strong> use your credentials to do it
-		without telling you. We hate it when services do that.
-	  </p>
+    <div class="rounded_box drop_shadow twitter notify_box">
+      <h3 class="mod_title">Link up Twitter</h3>
+      <p>
+      By linking up twitter, you can automatically pull in
+      your twitter photo, which saves you some time and helps
+      you customize your profile. You also get access to see
+      which of your twitter friends are using failin.gs! It's
+      a win/win!
+      </p>
+      <p>
+      <strong>You</strong> decide when to tweet your account. We
+      will <strong>not</strong> use your credentials to do it
+      without telling you. We hate it when services do that.
+      </p>
       <%= twitter_login %>
     </div>
   </div>
   <div class="col col_2">
-	<div class="rounded_box drop_shadow notify_box">
-	  <h3 class="mod_title">Security Questions</h3>
-	  <p>
-		By default, your security question is your last name.
-		This is what people are prompted with when they try to
-		leave you feedback. You can change this to whatever you
-		want <a href="/user_sessions/edit">in your user settings</a>.
-	  </p>
-    </div> 
-	<h3 class="mod_title">Thanks for joining us!</h3>
-	<p>We're really happy to have you here. We hope you enjoy the site.</p>
+    <div class="rounded_box drop_shadow notify_box">
+      <h3 class="mod_title">Security Questions</h3>
+      <p>
+      By default, your security question is your last name.
+      This is what people are prompted with when they try to
+      leave you feedback. You can change this to whatever you
+      want <%= link_to "in your user settings", edit_account_path %>.
+      </p>
+    </div>
+    <h3 class="mod_title">Thanks for joining us!</h3>
+    <p>We're really happy to have you here. We hope you enjoy the site.</p>
   </div>
-  <p class="clear">Skip all this and <a href="/user_session/edit">visit my account settings</a></p>
+  <p class="clear">Skip all this and <%= link_to "visit my account settings", edit_account_path %>.</p>
 </div>

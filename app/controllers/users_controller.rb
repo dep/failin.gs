@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         Delayed::Job.enqueue MailJob.new(@user)
       end
 
-      path = twitter ? oauth_complete_path : edit_account_path
+      path = twitter ? oauth_complete_path : pages_path("welcome")
       respond_with @user, location: path
     else
       render "user_sessions/new"
