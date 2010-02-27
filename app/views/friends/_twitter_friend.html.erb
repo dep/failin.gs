@@ -1,5 +1,8 @@
 <% div_for twitter_friend do %>
   <%= link_to avatar_for(twitter_friend, size: 32), profile_path(twitter_friend) %>
   <%= link_to twitter_friend.login, profile_path(twitter_friend), :class => "profile_link" %>
-  <span>(<a href="http://twitter.com/<%= twitter_friend.twitter_screen_name %>" rel="external">@<%= twitter_friend.twitter_screen_name %></a>) <a class="bookmark off" href="#">bookmark</a></span>
+  <span>
+    (<a href="http://twitter.com/<%= twitter_friend.twitter_screen_name %>" rel="external">@<%= twitter_friend.twitter_screen_name %></a>)
+    <%= render partial: "failings/bookmark", object: twitter_friend %>
+  </span>
 <% end %>
