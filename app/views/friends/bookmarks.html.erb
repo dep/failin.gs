@@ -9,7 +9,13 @@
         <%= render partial: "bookmark", collection: current_user.bookmarked %>
       </ul>
     <% else %>
-      Instructions go here.
+      <h3 class="mod_title">No bookmarks</h3>
+      <p>
+        You currenly do not have any profiles bookmarked.  You can bookmark profiles by visiting someone's
+        profile and clicking on the <img src="<%= image_path('icon_star_off.gif') %>" alt="star" /> star icon
+        in the top, right hand corner of their profile page.   <strong>Tip</strong>: you can unbookmark by
+        clicking the star again.
+      </p>
     <% end %>
   </div>
 </div>
