@@ -1,5 +1,0 @@
-<% div_for friend do %>
-  <%= link_to avatar_for(friend, size: 32), profile_path(friend) %>
-  <%= link_to friend.login, profile_path(friend), :class => "profile_link" %>
-  <span>(<a href="http://twitter.com/<%= friend.twitter_screen_name %>" rel="external">@<%= friend.twitter_screen_name %></a>)</span>
-<% end %>
