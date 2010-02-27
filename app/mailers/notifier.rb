@@ -11,6 +11,7 @@ class Notifier < ActionMailer::Base
   def newly_invited(user)
     @user = @inviter = user.invitation.inviter
     @invited = user
+    @url = profile_url @invited, via: "email"
 
     mail to: @inviter.email,
     subject: "#{@invited.email} has joined failin.gs!"
@@ -19,6 +20,7 @@ class Notifier < ActionMailer::Base
   def new_failing(failing)
     @failing = failing
     @user = failing.user
+    @url = profile_url @user, via: "email", anchor: dom_id(@failing)
 
     mail to: @user.email,
     subject: "New failing!"
@@ -27,6 +29,7 @@ class Notifier < ActionMailer::Base
   def new_comment(comment)
     @comment = comment
     @user = comment.failing.user
+    @url = failing_url @user, @comment.failing, via: "email", anchor: dom_id(@comment)
 
     mail to: @user.email,
     subject: "New failin.gs comment posted!"
@@ -36,6 +39,7 @@ class Notifier < ActionMailer::Base
     @comment = comment
     @user = user
     @someone = @comment.user_id == @comment.failing.user_id ? @comment.user.login : "Someone"
+    @url = failing_url @comment.failing.user, @comment.failing, via: "email", anchor: dom_id(@comment)
 
     mail to: @user.email,
     subject: "New failin.gs reply posted!"
@@ -73,5 +77,11 @@ class Notifier < ActionMailer::Base
         ].join("\n  ")
       }
     end
+  end
+
+  private
+
+  def dom_id(*args, &block)
+    ActionController::RecordIdentifier.dom_id(*args, &block)
   end
 end

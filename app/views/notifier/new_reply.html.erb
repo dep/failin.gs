@@ -9,8 +9,7 @@
 
 <p><%= @comment.text %></p>
 
-<p>Link: <%= link_to failing_url(@comment.failing.user, @comment.failing, anchor: dom_id(@comment)),
-  failing_url(@comment.failing.user, @comment.failing, anchor: dom_id(@comment)) %></p>
+<p>Link: <%= link_to @url, @url %></p>
 
 <p>From your friends at failin.gs!</p>
 <%= render "footer" %>
