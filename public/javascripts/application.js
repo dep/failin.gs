@@ -98,17 +98,21 @@ Object.extend(Date.prototype, {
 
 function bindBookmarkEvents() {
   $$("a.bookmark.on").invoke("observe", "click", function (event) {
-    Event.element(event).addClassName("off").removeClassName("on");
+    var element = event.element();
+    if (element.up("ul")) return;
+    element.addClassName("off").removeClassName("on");
   });
   $$("a.bookmark.off").invoke("observe", "click", function (event) {
-    Event.element(event).addClassName("on").removeClassName("off");
+    var element = event.element();
+    if (element.up("ul")) return;
+    element.addClassName("on").removeClassName("off");
   });
   $$(".bookmarks .delete").invoke("observe", "click", function (event) {
-    var element = Event.element(event);
+    var element = event.element();
     var username = element.siblings().first().innerHTML;
     var confirmation = confirm("Really remove " + username + " from your bookmarks?");
     if (confirmation) {
-      Event.element(event).up("li").remove();
+      element.up("li").remove();
       new Ajax.Request(element.href, { method: element.getAttribute("data-method") });
     }
     event.stop();
