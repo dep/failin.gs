@@ -26,8 +26,8 @@ class FriendsController < ApplicationController
 
         page << "bindBookmarkEvents();"
 
-        page << "if ($$('.bookmarks').first() && $$('.bookmarks li').length === 0) {"
-        page.select(".sub_nav_body").first.replace partial: "no_bookmarks"
+        page << "if ($('sub_nav_body') && $$('ul.bookmarks li').length === 0) {"
+        page[:sub_nav_body].replace_html partial: "no_bookmarks"
         page << "}"
       end
     end

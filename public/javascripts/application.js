@@ -99,13 +99,13 @@ Object.extend(Date.prototype, {
 function bindBookmarkEvents() {
   $$("a.bookmark.on").invoke("observe", "click", function (event) {
     var element = event.element();
-    if (element.up("ul")) return;
-    element.addClassName("off").removeClassName("on");
+    if (!element.up("ul"))
+      element.addClassName("off").removeClassName("on");
   });
   $$("a.bookmark.off").invoke("observe", "click", function (event) {
     var element = event.element();
-    if (element.up("ul")) return;
-    element.addClassName("on").removeClassName("off");
+    if (!element.up("ul"))
+      element.addClassName("on").removeClassName("off");
   });
   $$(".bookmarks .delete").invoke("observe", "click", function (event) {
     var element = event.element();
