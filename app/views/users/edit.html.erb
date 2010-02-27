@@ -56,10 +56,10 @@
       </p>
 
       <%= f.label :password, "New password:" %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, autocomplete: "off" %>
 
       <%= f.label :password_confirmation, "Twice to be sure:" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
       <h2>Private Profile</h2>
 
