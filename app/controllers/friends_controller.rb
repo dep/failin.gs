@@ -4,9 +4,11 @@ class FriendsController < ApplicationController
   def create
     render :update do |page|
       if @user = User.find_by_login(params[:user_id])
-        current_user.bookmarked << @user
+        current_user.bookmarked << @user unless current_user.bookmarked.include? @user
 
+        page << "if ($('#{dom_id @user, :bookmark}')) {"
         page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark", object: @user
+        page << "}"
         page << "bindBookmarkEvents();"
       end
     end
@@ -18,8 +20,15 @@ class FriendsController < ApplicationController
       if current_user.bookmarked.include?(@user)
         current_user.bookmarked.delete(@user)
 
+        page << "if ($('#{dom_id @user, :bookmark}')) {"
         page[dom_id(@user, :bookmark)].replace partial: "failings/bookmark", object: @user
+        page << "}"
+
         page << "bindBookmarkEvents();"
+
+        page << "if ($$('.bookmarks').first() && $$('.bookmarks li').length === 0) {"
+        page.select(".sub_nav_body").first.replace partial: "no_bookmarks"
+        page << "}"
       end
     end
   end

@@ -8,6 +8,7 @@ class CreateBookmarks < ActiveRecord::Migration
 
     add_index :bookmarks, :bookmarker_id
     add_index :bookmarks, :bookmarked_id
+    add_index :bookmarks, [:bookmarker_id, :bookmarked_id], unique: true
   end
 
   def self.down
