@@ -1,0 +1,5 @@
+<% if current_user.bookmarked.include? bookmark %>
+  <%= link_to "bookmark", friend_path(bookmark, user_id: bookmark.login), method: :delete, remote: true, id: dom_id(bookmark, :bookmark), class: "bookmark rounded_box on" %>
+<% else %>
+  <%= link_to "bookmark", friends_path(user_id: bookmark.login), method: :post, remote: true, id: dom_id(bookmark, :bookmark), class: "bookmark rounded_box off" %>
+<% end %>

@@ -3,6 +3,7 @@ require "uuid"
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :load_identity
+  before_filter :load_from_email, unless: :logged_in?
 
   private
 
@@ -20,6 +21,13 @@ class ApplicationController < ActionController::Base
   def load_identity
     @identity = cookies.signed[:identity] ||
       cookies.permanent.signed[:identity] = UUID.new.generate
+  end
+
+  def load_from_email
+    if params[:via] == "email"
+      store_location
+      redirect_to login_path
+    end
   end
 
   # == Authentication

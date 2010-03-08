@@ -902,26 +902,26 @@ span.utc {
 .sub_nav_body {
   padding:20px;
 }
-.sub_nav ul {
+.sub_nav ul.navigation {
   background:#1380b7;
   margin:0;
   padding:15px;
   overflow:hidden;
   list-style:none;
 }
-.sub_nav ul li {
+.sub_nav ul.navigation li {
   float:left;
   padding:6px 15px;
   margin-right:10px;
 }
-.sub_nav li {
+.sub_nav ul.navigation li {
   font-size:14px;
 }
-.sub_nav li a {
+.sub_nav ul.navigation li a {
   text-decoration:none;
   color:#fff;
 }
-.sub_nav li:hover {
+.sub_nav ul.navigation li:hover {
   background:#bbb;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-top-left-radius:6px;
@@ -929,10 +929,10 @@ span.utc {
   -webkit-border-top-right-radius:6px;
   -webkit-border-bottom-right-radius:6px;
 }
-.sub_nav li:hover a {
+.sub_nav ul.navigation li:hover a {
   color:#fff;
 }
-.sub_nav li.active {
+.sub_nav ul.navigation li.active {
   background:#fff;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-top-left-radius:6px;
@@ -949,6 +949,7 @@ span.utc {
   width:450px;
   padding:5px 5px 1px;
   background:#eee;
+  position:relative;
 }
 .sub_nav .user a.profile_link {
   vertical-align:top;
@@ -956,7 +957,11 @@ span.utc {
   margin-left:5px;
 }
 .sub_nav .user span {
-  vertical-align:super;
+  position:absolute;
+  top:10px;
+  right:4px;
+}
+.sub_nav .user span a:last-child {
   margin-left:10px;
 }
 .sub_nav h3.mod_title {
@@ -967,6 +972,57 @@ span.utc {
 #google_ads {
   margin:0 0 5px 5px;
   width:468px;
+}
+
+/* Bookmarking */
+.bookmark {
+  padding:5px 5px 5px 20px;
+  opacity:0.8;
+  border:1px solid #aaa;
+  text-decoration:none !important;
+}
+#flaw_area .bookmark {
+  position:absolute;
+  top:2px;
+  right:2px;
+}
+.bookmark.on {
+  background:#eee url(<%= image_url("icon_star_on.gif") %>) 1px 3px no-repeat;
+}
+.bookmark.off{
+  background:#eee url(<%= image_url("icon_star_off.gif") %>) 1px 3px no-repeat;
+}
+.bookmark:hover {
+  opacity:1;
+  background-color:#fff;
+}
+ul.bookmarks {
+  margin-left:0;
+  margin-bottom:20px;
+  padding-left:0;
+  list-style:none;
+  overflow:hidden;
+}
+ul.bookmarks li {
+  margin:3px;
+  width:auto;
+  float:left;
+  padding:5px;
+}
+ul.bookmarks li:hover a.delete {
+  display:inline!important;
+  background:#fff;
+  padding:2px 1px 2px 5px;
+  margin-left:-3px;
+  z-index:2;
+  border:1px solid #aaa;
+  border-left-width:0;
+}
+ul.bookmarks li:hover a.delete:hover {
+  text-decoration:none;
+}
+ul.bookmarks span {
+  padding-left:20px;
 }
 
 /* Welcome new user */
