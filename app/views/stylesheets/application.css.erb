@@ -101,13 +101,48 @@ h4 {
   padding-right:20px;
   width:68%;
 }
-.col_1.homepage p {
-  font-size:18px;
-  line-height:28px;
-}
 .col_2 {
   float:right;
   width:29%;
+}
+
+/* Home page */
+.homepage .col_1 {
+  width:66%;
+}
+.homepage .col_2 {
+  border-left:1px solid #ddd;
+  padding-left:20px;
+}
+.homepage h2 {
+  font-size:34px;
+  color:#aaa;
+  margin:0 0 20px 0;
+  text-shadow:0px 2px 2px #444;
+}
+.homepage h3 {
+  font-size:28px;
+  color:#ddd;
+  margin-bottom:20px;
+  text-shadow:0px 2px 2px #999;
+}
+.spacer {
+  margin-top:100px;
+}
+.homepage .col_1 p {
+  color:#555;
+  font-size:14px;
+  margin:5px
+}
+.homepage .col_1 ul,
+.homepage .col_1 ol {
+  margin:0 0 0 10px;
+  padding-left:16px;
+}
+.homepage .col_1 li {
+  font-size:15px;
+  padding:3px 0;
+  color:#777;
 }
 
 /* Footer */
@@ -687,41 +722,6 @@ span.create_date a {
 .errorExplanation ul li {
   font-size:12px;
   padding:3px 0;
-}
-/* Homepage functionality */
-.functionality_teasers {
-  clear:both;
-  display:block;
-  height:600px;
-  background:url(<%= image_url "feature_image.jpg" %>) top right no-repeat;
-  border-top:1px dashed #eee;
-  padding-top:10px;
-}
-.functionality_teasers h2 {
-  font-size:52px;
-  font-weight:normal;
-  color:#ccc;
-  margin:0;
-}
-.functionality_teasers h3 {
-  font-size:22px;
-  margin:0;
-  padding-left:60px;
-}
-.functionality_teasers ol {
-  margin:10px 25px;
-  padding:0;
-}
-.functionality_teasers ol li {
-  font-size:16px;
-  padding:7px 0;
-  width:505px;
-}
-.functionality_teasers p {
-  width:260px;
-  line-height:24px;
-  color:#999;
-  font-size:14px;
 }
 /* Invite a friend */
 fieldset.invite label,
