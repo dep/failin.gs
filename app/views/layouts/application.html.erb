@@ -46,6 +46,7 @@
           <% else %>
             <li><%= link_to_unless_current "register", login_path %></li>
             <li><%= link_to_unless_current "log in", login_path %></li>
+            <li><a href="/pages/forum">forums</a></li>
           <% end %>
         </ul>
       </div>
@@ -68,7 +69,7 @@
     feedback actually do know who you are.</p>
 
     <p>When someone leaves feedback on you, they will be asked for your security
-    question. The default is your last name. You can change this in your settings.</p>
+    question. The default is your last name. You can change this later in your settings.</p>
 
     <p>You'll have a chance to respond to everyone's feedback. You can even flag
     things that you think are fake.</p>
