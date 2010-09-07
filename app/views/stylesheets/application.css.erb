@@ -109,8 +109,6 @@ h4 {
 /* Home page */
 .homepage .col_1 {
   width:66%;
-  background:url(<%= image_url "home_splash.png" %>) right 35px no-repeat;
-  min-height:350px;
 }
 .homepage .col_2 {
   border-left:1px solid #ddd;
@@ -131,16 +129,17 @@ h4 {
 .spacer {
   margin-top:100px;
 }
-.homepage p {
+.homepage .col_1 p {
   color:#555;
   font-size:14px;
   margin:5px
 }
-.homepage ul {
-  margin:0;
+.homepage .col_1 ul,
+.homepage .col_1 ol {
+  margin:0 0 0 10px;
   padding-left:16px;
 }
-.homepage ul li {
+.homepage .col_1 li {
   font-size:15px;
   padding:3px 0;
   color:#777;

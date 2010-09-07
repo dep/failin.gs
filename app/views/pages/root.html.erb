@@ -1,62 +1,39 @@
-<% title "don't worry. nobody's perfect." %>
+<% title "a platform for completely anonymous feedback" %>
 
-<div class="col col_1 homepage">
-  <p>
-    <strong>failin.gs</strong> seeks to answer that age old question that perhaps
-    all of us have asked ourselves at some point in our lives.
-  </p>
-  <blockquote class="drop_shadow">
-    "What is wrong with me?"
-  </blockquote>
-  <p>
-    Of course, nobody is perfect. We all have our own idiosyncrasies and
-    personality flaws. Think of the people you know. We are sure you can think of theirs.
-    I bet they can identify yours as well.
-  </p>
-  <p>
-    Create a profile and invite people to leave anonymous constructive criticism
-    about your character. We all want to improve, don't we?
-  </p>
-</div>
-<div class="col col_2">
-  <div id="signup" class="announce dark rounded_box">
-    <div>
-      <% if @user_session %>
-        <% if @user %>
-          <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
-        <% end %>
-        <%= render "user_sessions/form" %>
-      <% end %>
-      <!--a href="#"><img src="images/twitter.png" alt="Twitter Connect"/></a-->
-
+<div class="cols_2 homepage">
+  <div class="col col_1">
+    <h2>What is failin.gs?</h2>
+    <p>
+      As humans, we naturally want to know what others think of us, either to boost our egos or to help us know what skills we need to work on. Failin.gs puts the concept of brutal honesty to the test by letting you posit opinions from those who know you, without revealing who says what.
+    </p>
+    <blockquote>
+      failin.gs wants to help you answer that age-old question: "What do people think of me, really?"
+    </blockquote>
+    <h2>How does it work?</h2>
+    <p>Easy.</p>
+    <ol>
+      <li>First, you <strong>sign up</strong> to create your profile</li>
+      <li><strong>Blast</strong> your profile URL to your social circle. Failin.gs is integrated with Facebook and Twitter and makes it easier than ever to put your profile in front of your friends</li>
+      <li>Sit back and <strong>watch</strong> the anonymous honesty pour in</li>
+    </ol>
+    <p>While you wait, you can also <strong>search your social networks</strong> to see <strong>which of your friends</strong> also have failin.gs accounts and can leave
+    them anonymous feedback as well!</p>
+  </div>
+  <div class="col col_2">
+    <% if @user_session %>
       <% if @user %>
-        <% if @user_session %>
-          <p>New user? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
-        <% end %>
-        <%= render "users/form" %>
+        <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
       <% end %>
-      <p><strong>Need an invite?</strong> Request it <a href="#" onclick="show_request()">here</a>.</p>
-      <%= render "users/request" %>
-    </div>
+      <%= render "user_sessions/form" %>
+    <% end %>
+    <% if @user %>
+      <% if @user_session %>
+        <p>New user? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
+      <% end %>
+      <%= render "users/form" %>
+    <% end %>
+    <%= render "users/request" %>
     <%= twitter_login %>
   </div>
 </div>
-<div class="functionality_teasers">
-  <h2>How does it all work?</h2>
-  <h3>It's ridiculously easy. Totally anonymous.</h3>
-  <ol>
-    <li><strong>Sign up</strong> for a free account</li>
-    <li><strong>Fill out</strong> your profile</li>
-    <li>Announce your URL! Tweet it, post it on Facebook. <strong>Get it out there!</strong></li>
-    <li>Sit back and <strong>brace yourself</strong> for honesty you've never gotten before.</li>
-  </ol>
-  <p>
-    Once you start receiving the anonymous feedback, you'll be able to categorize it, and you and your friends
-    will be able to agree or disagree, leave comments, and work together to improve your
-    personal character! Once they create their account, don't forget to return the favor!
-  </p>
-  <p>
-    When you sign up, you'll be asked for a piece of information that only your friends know.
-    This way, you can be sure that only people who know you can write on your profile.
-  </p>
-</div>
+
