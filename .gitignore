@@ -3,6 +3,13 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 
+bin/*
+config/bundler_build_options.yml
+vendor/bundler/*
+vendor/gems/*
+
+
+
 config/database.yml
 
 .DS_Store
