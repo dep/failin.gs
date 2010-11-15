@@ -56,7 +56,7 @@
   <div class="reply_wrapper" style="display: none;">
     <% form_for failing.comments.build, url: failing_comments_path(failing.user, failing), remote: true do |f| %>
       <div>
-        <%= f.text_area :text, rows: 13, maxlength: "200", onkeyup: "return ismaxlength(this)" %>
+        <%= f.text_area :text, rows: 11, maxlength: "200", onkeyup: "return ismaxlength(this)" %>
         <%= f.submit %>
       </div>
     <% end %>

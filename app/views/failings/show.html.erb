@@ -10,4 +10,9 @@
     disagrees completely
   <% end %>
   <span><a href="<%= profile_url(@user) %>"><%= profile_url(@user) %></a></span></h2>
-<%= render @failing %>
+<div class="permalink">
+  <div class="user_photo">
+    <%= render "failings/failing_user", :user => @user %>
+  </div>
+  <%= render @failing %>
+</div>
