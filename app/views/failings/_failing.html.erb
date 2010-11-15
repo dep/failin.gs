@@ -44,8 +44,11 @@
       </div>
     <% end %>
     <div class="right">
+      <% if current_user == failing.user then %>
+        <%= link_to image_tag(image_url "trashcan.gif"), failing_abuse_path(failing.user, failing), remote: true, method: :post, class: "delete" %> -
+      <% end %>
       <% unless reported? failing %>
-        <%= link_to "report abuse", failing_abuse_path(failing.user, failing), remote: true, method: :post, class: "abuse", confirm: ("Really report abuse?" if current_user == failing.user) %> -
+        <%= link_to "abusive", failing_abuse_path(failing.user, failing), remote: true, method: :post, class: "abuse", confirm: ("Really report abuse?" if current_user == failing.user) %> -
       <% end %>
       <span onclick="this.up('.feedback').select('.reply_wrapper')[0].show().select('textarea')[0].focus()">reply</span>
     </div>

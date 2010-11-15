@@ -41,9 +41,9 @@
             <%= title_for state %>
             <% if state == "needs_review" %>
               <% if current_user == @user %>
-                <span>These are private till you categorize them.</span>
+                <span>These are private until you categorize them.</span>
               <% else %>
-                <span>You submitted these. They'll be private till <%= @user.login %> categorizes them.</span>
+                <span>You submitted these. They'll be private until <%= @user.login %> categorizes them.</span>
               <% end %>
             <% end %>
           </h3>
