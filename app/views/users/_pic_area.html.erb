@@ -6,38 +6,13 @@
   </p>
   <h4>Your available networks</h4>
   <dl class="avatar_services">
-    <% unless @user.twitter? %>
-      <dt>
-        <%= link_to image_tag("twitter_setup.png"), twitter_login_path %>
-      </dt>
-      <dd>
-        <p>
-          <%= link_to "Authenticate your account with Twitter", twitter_login_path %> to use your Twitter profile pic on failin.gs.
-        </p>
-      </dd>
-    <% else %>
-      <dt>
-        <%= link_to_unless @user.avatar_service.twitter?, tweetimage_for(@user, size: 32), preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
-      </dt>
-      <dd>
-        <% if @user.avatar_service.twitter? %>
-          <strong>Twitter icon (applied)</strong>
-        <% else %>
-          <%= link_to "Apply your Twitter icon", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
-        <% end %>
-        <p>
-          Your Twitter account is connected to failin.gs
-          (<%= link_to "unlink", auth_delete_path(provider: 'twitter'), method: :delete, confirm: "Unlink your failin.gs profile from your Twitter account, '#{@user.twitter_screen_name}'?" %>).
-        </p>
-      </dd>
-    <% end %>
-
     <% unless @user.facebook? %>
       <dt>
         <%= link_to image_tag("facebook_setup.png"), facebook_login_path %>
       </dt>
       <dd>
-        <%= link_to "Authenticate your account with Facebook", facebook_login_path %> to use your Facebook profile pic on failin.gs.
+        <%= link_to "Authenticate your account with Facebook", facebook_login_path %>
+        <p>Use your Facebook profile pic on failin.gs.</p>
       </dd>
     <% else %>
       <dt>
@@ -52,6 +27,31 @@
         <p>
           Your Facebook account is connected to failin.gs
           (<%= link_to "unlink", auth_delete_path(provider: 'facebook'), method: :delete, confirm: "Unlink your failin.gs profile from your Facebook account?" %>).
+        </p>
+      </dd>
+    <% end %>
+
+    <% unless @user.twitter? %>
+      <dt>
+        <%= link_to image_tag("twitter_setup.png"), twitter_login_path %>
+      </dt>
+      <dd>
+        <%= link_to "Authenticate your account with Twitter", twitter_login_path %>
+        <p>Use your Twitter profile pic on failin.gs.</p>
+      </dd>
+    <% else %>
+      <dt>
+        <%= link_to_unless @user.avatar_service.twitter?, tweetimage_for(@user, size: 32), preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
+      </dt>
+      <dd>
+        <% if @user.avatar_service.twitter? %>
+          <strong>Twitter icon (applied)</strong>
+        <% else %>
+          <%= link_to "Apply your Twitter icon", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
+        <% end %>
+        <p>
+          Your Twitter account is connected to failin.gs
+          (<%= link_to "unlink", auth_delete_path(provider: 'twitter'), method: :delete, confirm: "Unlink your failin.gs profile from your Twitter account, '#{@user.twitter_screen_name}'?" %>).
         </p>
       </dd>
     <% end %>

@@ -2,7 +2,7 @@ class App < Configurable
   # Settings in config/app/* take precedence over those specified here.
   config.name = 'FailinGs'
 
-  config.beta = true
+  config.beta = false
 
   # Make true to avoid expensive SQL queries on public profiles.
   config.optimized = false

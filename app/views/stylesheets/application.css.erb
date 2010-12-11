@@ -306,12 +306,27 @@ input[type="submit"], input[type="button"] {
 input[type="submit"]:active, input[type="button"]:active {
   background:#af79b7;
 }
-/* Twitter auth button */
+/* Twitter/Facebook auth buttons */
+.oauth_box {
+  overflow:hidden;
+  zoom:1;
+}
+.login_buttons input {
+  float:left;
+  margin-right:10px;
+}
+.facebook_auth,
 .twitter_auth {
-  background:url(<%= image_path('twitter.png') %>) top left no-repeat !important;
   border:0;
   text-indent:-999em;
+}
+.twitter_auth {
+  background:url(<%= image_path('twitter.png') %>) top left no-repeat !important;
   width:160px !important;
+}
+.facebook_auth {
+  background:url(<%= image_path('facebook.png') %>) top left no-repeat !important;
+  width:102px !important;
 }
 input[type="checkbox"] {
   width:auto;

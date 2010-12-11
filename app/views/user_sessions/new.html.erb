@@ -34,14 +34,17 @@
       <%= render "user_sessions/form" %>
     </div>
     <% unless twitter %>
-      <div class="twitter_box rounded_box drop_shadow">
-        <h3 class="mod_title">Link up with Twitter</h3>
+      <div class="oauth_box rounded_box drop_shadow">
+        <h3 class="mod_title">Twitter/Facebook Login</h3>
         <p class="small">
-          You can also sign in or register with your Twitter account. Simply
-          click the button below to link your failin.gs account with your
-          Twitter account.
+          You can also sign in or register with your Twitter and Facebook accounts. Simply
+          click a button below to link your failin.gs account with your
+          Twitter or Facebook account. Once you log in, you can link the other account up too.
         </p>
-        <%= twitter_login %>
+        <div class="login_buttons">
+          <%= facebook_login %>
+          <%= twitter_login %>
+        </div>
       </div>
     <% end %>
   </div>

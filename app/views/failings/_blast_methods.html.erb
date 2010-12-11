@@ -1,14 +1,19 @@
+<% trimmed ||= "" %>
 <ol>
   <li><a href="<%= twitter_link(profile_url(current_user)) %>">Tweet your profile</a> to all of your followers</li>
   <li><a href="<%= facebook_link(CGI.escape profile_url(current_user)) %>">Share</a> the link with your Facebook friends</li>
   <li><%= link_to "Email your link", new_share_path %> to everyone you can think of</li>
-  <li><a href="#" onclick="$('embed_instructions').appear(); return false;">Embed a mini profile</a> in to your personal webpage or blog</li>
+  <% unless trimmed = true %>
+    <li><a href="#" onclick="$('embed_instructions').appear(); return false;">Embed a mini profile</a> in to your personal webpage or blog</li>
+  <% end %>
 </ol>
 <h3 class="mod_title">Looking for other things to do?</h3>
 <ul>
   <li><%= link_to "Find friends", friends_path %> that are already using failin.gs</li>
   <li><%= link_to "Edit", edit_account_path %> your profile</li>
-  <% if !App.beta? || current_user.invites_left > 0 %>
-    <li>Anonymously <%= link_to "invite others", new_invitation_path %> to sign up for failin.gs</li>
+  <% unless trimmed = true %>
+    <% if !App.beta? || current_user.invites_left > 0 %>
+      <li>Anonymously <%= link_to "invite others", new_invitation_path %> to sign up for failin.gs</li>
+    <% end %>
   <% end %>
 </ul>

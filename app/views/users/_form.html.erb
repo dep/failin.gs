@@ -3,16 +3,7 @@
     <%= f.hidden_field :invitation_email, value: @user.invitation_email || session[:invitation_email] ||= params[:invited] %>
 
     <% if @user.errors.any? %>
-      <% errors = Array(@user.errors[:promo_code]) + Array(@user.errors[:promotion]) %>
-      <% if App.beta? && errors.any? %>
-        <div class="errorExplanation" id="errorExplanation">
-          <h2>Promo code or invitation required</h2>
-          <p>Promotion <%= errors.to_sentence %></p>
-          <p>Request an invitation on our <%= link_to "homepage", root_path(request: "invite") %>.</p>
-        </div>
-      <% else %>
-        <%= f.error_messages %>
-      <% end %>
+      <%= f.error_messages %>
     <% end %>
 
     <%= f.label :login, "Username:" %>
@@ -32,16 +23,10 @@
 
     <%= f.label :password_confirmation, "Twice to be sure:" %>
     <%= f.password_field :password_confirmation %>
-    <div id="promo_wrapper">
-      <%= f.label :promo_code, "Promo code?" %>
-      <%= f.text_field :promo_code, value: @user.promo_code || params[:promo_code] %>
-    </div>
     <p>By creating an account you agree to our very exciting <a href="/pages/terms">terms of use</a> and also agree to play nice.</p>
     <%= f.submit "Sign up!" %>
   <% end %>
   <script type="text/javascript">
-    if (!$('user_invitation_email').getValue().blank())
-      $('promo_wrapper').hide();
     <% if session[:invitation_email] && @user.email.blank? %>
       $("user_<%= twitter ? "answer" : "login" %>").focus();
     <% end %>
