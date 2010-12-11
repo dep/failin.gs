@@ -6,7 +6,9 @@ class UserSessionsController < ApplicationController
   def new
     @user = User.new
     @user_session = UserSession.new
-    @user.login = @user_session.login = twitter[:screen_name] if twitter
+    if auth && auth["provider"] == "twitter"
+      @user.login = @user_session.login = auth["user_info"]["nickname"]
+    end
     respond_with @user_session
   end
 

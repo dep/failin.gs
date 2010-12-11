@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new params[:user]
     @user.promo_code = params[:promo_code] if params[:promo_code]
+    @user.apply_auth auth
     @user_session = UserSession.new
     if @user.save
       if @user.invitation
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
         Delayed::Job.enqueue MailJob.new(@user)
       end
 
-      path = twitter ? oauth_complete_path : "/pages/welcome"
+      path = auth ? edit_account_path : page_path("welcome")
       respond_with @user, location: path
     else
       render "user_sessions/new"

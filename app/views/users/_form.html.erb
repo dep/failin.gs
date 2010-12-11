@@ -43,7 +43,7 @@
     if (!$('user_invitation_email').getValue().blank())
       $('promo_wrapper').hide();
     <% if session[:invitation_email] && @user.email.blank? %>
-      $("user_<%= twitter ? "answer" : "login" %>").focus();
+      $("user_<%= auth ? "answer" : "login" %>").focus();
     <% end %>
   </script>
 </fieldset>

@@ -13,7 +13,7 @@
 
   <%= render "common/flash_message" %>
 
-  <% if twitter %>
+  <% if auth %>
     <div class="rounded_box notify_box twitter">
       <h3 class="mod_title">Almost finished!</h3>
       <p>
@@ -33,7 +33,7 @@
       <h3 class="mod_title">Log in</h3>
       <%= render "user_sessions/form" %>
     </div>
-    <% unless twitter %>
+    <% unless auth %>
       <div class="twitter_box rounded_box drop_shadow">
         <h3 class="mod_title">Link up with Twitter</h3>
         <p class="small">
