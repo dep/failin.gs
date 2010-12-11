@@ -64,4 +64,8 @@ module ApplicationHelper
   def twitter_login
     button_to "Log in or sign up with Twitter", twitter_login_path, class: "twitter_auth"
   end
+
+  def facebook_login 
+    button_to "Log in or sign up with Facebook", facebook_login_path, class: "facebook_auth"
+  end
 end

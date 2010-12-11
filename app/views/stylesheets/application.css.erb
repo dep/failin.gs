@@ -306,12 +306,27 @@ input[type="submit"], input[type="button"] {
 input[type="submit"]:active, input[type="button"]:active {
   background:#af79b7;
 }
-/* Twitter auth button */
+/* Twitter/Facebook auth buttons */
+.oauth_box {
+  overflow:hidden;
+  zoom:1;
+}
+.login_buttons input {
+  float:left;
+  margin-right:10px;
+}
+.facebook_auth,
 .twitter_auth {
-  background:url(<%= image_path('twitter.png') %>) top left no-repeat !important;
   border:0;
   text-indent:-999em;
+}
+.twitter_auth {
+  background:url(<%= image_path('twitter.png') %>) top left no-repeat !important;
   width:160px !important;
+}
+.facebook_auth {
+  background:url(<%= image_path('facebook.png') %>) top left no-repeat !important;
+  width:102px !important;
 }
 input[type="checkbox"] {
   width:auto;
@@ -821,6 +836,13 @@ fieldset.invite input[type="submit"] {
 .sub_nav_body.twitter {
   background:#a2dff8 url(<%= image_url "twitter_logo.png" %>) 98% 5px no-repeat;
 }
+.notify_box.facebook,
+.sub_nav_body.facebook {
+  background:#f7f7f7 url(<%= image_url "facebook_logo.png" %>) 99% 7px no-repeat;
+}
+.facebook p {
+  width:590px;
+}
 .notify_box.twitter h3,
 .sub_nav_body.twitter h3 {
   color:#fff;
@@ -1100,7 +1122,7 @@ ul.bookmarks span {
 
 #facebook_connect {
   margin:0 0 10px;
-  background:#f2f2f2 url(<%= image_url "facebook_connect.png" %>) 99% 7px no-repeat;
+  background:#f2f2f2 url(<%= image_url "facebook_logo.png" %>) 99% 7px no-repeat;
   border:1px solid #b3b3b3;
   padding:10px;
 }
