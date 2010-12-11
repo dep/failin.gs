@@ -2,19 +2,18 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Auto-require default libraries and those for the current Rails environment.
-Bundler.require :default, Rails.env
+# If you have a Gemfile, require the gems listed there, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module FailinGs
   class Application < Rails::Application
-    require "config/app"
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    config.load_paths += %W(#{config.root}/app/jobs)
+    config.autoload_paths += %W(#{config.root}/app/jobs)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -40,9 +39,6 @@ module FailinGs
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
-
-    require "rack/oauth"
-    config.middleware.use Rack::OAuth, App.twitter
 
     config.after_initialize do
       if defined? Rails::Console

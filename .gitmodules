@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/gravatar-plugin"]
-        path = vendor/plugins/gravatar-plugin
-        url = git://github.com/woods/gravatar-plugin.git

@@ -1,4 +1,4 @@
-FailinGs::Application.routes.draw do |map|
+FailinGs::Application.routes.draw do
   resource :user_session, except: :update
   get "login", to: "user_sessions#new", as: :login
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
@@ -15,21 +15,22 @@ FailinGs::Application.routes.draw do |map|
 
   resources :preferences
 
-  resource :password, only: %w(new create edit update destroy),
-    as: :password_reset
+  resource :password, only: %w(new create edit update destroy)
 
-  resources :failings, as: "profile/:login/failings", only: %w(create show) do
-    member do
-      put :knew
-      put :no_idea
-      put :disagree
-    end
+  scope "profile/:login" do
+    resources :failings, only: %w(create show) do
+      member do
+        put :knew
+        put :no_idea
+        put :disagree
+      end
 
-    resources :comments, only: %w(create) do
+      resources :comments, only: %w(create) do
+        resource :abuse, only: %w(create)
+      end
+      resource :vote, only: %w(create)
       resource :abuse, only: %w(create)
     end
-    resource :vote, only: %w(create)
-    resource :abuse, only: %w(create)
   end
 
   resources :friends, only: %w(index create destroy) do

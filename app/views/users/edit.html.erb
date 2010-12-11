@@ -3,7 +3,7 @@
 <div id="user_profile" class="edit">
   <%= render "users/pic_area" %>
 
-  <% form_for @user, url: account_path do |f| %>
+  <%= form_for @user, url: account_path do |f| %>
     <div class="user_details">
       <%= render "common/flash_message" %>
 
@@ -63,17 +63,17 @@
 
       <h2>Private Profile</h2>
 
-      <%= f.check_box :private %>
-      <% f.label :private, class: "checkbox" do %>
+      <label class="checkbox">
+        <%= f.check_box :private %>
         I'm shy. Only let me see my feedback.
-      <% end %>
+      </label>
 
       <h2>Email notifications</h2>
 
-      <%= f.check_box :subscribe %>
-      <% f.label :subscribe, class: "checkbox" do %>
+      <label class="checkbox">
+        <%= f.check_box :subscribe %>
         Let me know when someone posts something to my account.
-      <% end %>
+      </label>
 
       <h2>Want to remove your account?</h2>
       <p>We'd be sad to see you go, but we understand that the truth hurts.</p>

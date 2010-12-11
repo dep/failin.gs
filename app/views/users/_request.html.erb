@@ -2,7 +2,7 @@
   We are still in private beta, so we haven't opened the doors to everyone yet,
   but if you want an invite, give us your email and we'll send you an invite
   as soon as we can.
-  <% form_for @email, url: email_path, remote: true do |f| %>
+  <%= form_for @email, url: email_path, remote: true do |f| %>
     <%= f.error_messages %>
 
     <%= f.label :address, "Email address:" %>

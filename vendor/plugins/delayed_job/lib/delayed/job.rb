@@ -254,7 +254,9 @@ module Delayed
 
   protected
 
-    def before_save
+    before_save :set_run_at
+
+    def set_run_at
       self.run_at ||= self.class.db_time_now
     end
 
