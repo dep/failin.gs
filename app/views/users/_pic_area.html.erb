@@ -26,11 +26,37 @@
           <%= link_to "Apply your Twitter icon", preferences_path(key: "avatar_service", value: "twitter"), method: :post, remote: true %>
         <% end %>
         <p>
-          Click the link above to apply your Twitter profile picture
+          Your Twitter account is connected to failin.gs
           (<%= link_to "unlink", oauth_delete_path, method: :delete, confirm: "Unlink your failin.gs profile from your Twitter account, '#{@user.twitter_screen_name}'?" %>).
         </p>
       </dd>
     <% end %>
+    <dt>
+      <%= image_tag "facebook_setup.png" %>
+    </dt>
+    <dd>
+      <%= link_to "Authenticate your account with Facebook" %> to use your Facebook profile pic on failin.gs.
+    </dd>
+    <dt>
+      <%= image_tag "facebook_setup.png" %>
+    </dt>
+    <dd>
+      <%= link_to "Apply your Facebook photo" %>
+      <p>
+        Your Facebook account is connected to failin.gs
+        (<%= link_to "unlink" %>)
+      </p>
+    </dd>
+    <dt>
+      <%= image_tag "facebook_setup.png" %>
+    </dt>
+    <dd>
+      <strong>Facebook (applied)</strong>
+      <p>
+        Your Facebook account is connected to failin.gs
+        (<%= link_to "unlink" %>)
+      </p>
+    </dd>
     <dt>
       <%= link_to_unless @user.avatar_service.gravatar?, gravatar_for(@user, size: 32), preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
     </dt>
@@ -41,7 +67,7 @@
         <%= link_to "Apply your Gravatar icon", preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
       <% end %>
       <p>
-        <a href="http://en.gravatar.com/site/signup" rel="external">Set up</a> your Gravatar image now by linking your failin.gs email address.
+        No image? <a href="http://en.gravatar.com/site/signup" rel="external">Register</a> your failin.gs email address at Gravatar.
       </p>
     </dd>
   </dl>

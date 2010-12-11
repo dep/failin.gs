@@ -68,6 +68,13 @@ h3.mod_title {
   margin:10px 0 5px;
   text-shadow: 1px 1px 2px #aaa;
 }
+.homepage h3.mod_title {
+  color:#aaa;
+  text-shadow: 1px 1px 2px #eee;
+}
+h3.mod_title strong {
+  color:#888;
+}
 h3 span {
   padding-left:20px;
   color:#eee;
@@ -469,6 +476,9 @@ input[type="checkbox"] {
   padding-left:10px;
   margin-left:5px;
   position:relative;
+}
+#flaw_area #flaw_entry {
+  clear:both;
 }
 #flaw_area fieldset#flaw_entry h2 {
   margin:0 0 10px 0;
@@ -990,9 +1000,8 @@ span.utc {
   text-decoration:none !important;
 }
 #flaw_area .bookmark {
-  position:absolute;
-  top:2px;
-  right:2px;
+  float:left;
+  margin-left:10px;
 }
 .bookmark.on {
   background:#eee url(<%= image_url("icon_star_on.gif") %>) 1px 3px no-repeat;
@@ -1087,4 +1096,25 @@ ul.bookmarks span {
   float:left;
   width:630px;
   margin-left:10px;
+}
+
+#facebook_connect {
+  margin:0 0 10px;
+  background:#f2f2f2 url(<%= image_url "facebook_connect.png" %>) 99% 7px no-repeat;
+  border:1px solid #b3b3b3;
+  padding:10px;
+}
+#facebook_connect p {
+  width:590px;
+}
+
+.share_area {
+  overflow:hidden;
+  zoom:1;
+  margin:0 0 5px;
+  background:#f6f6f6;  
+  padding:5px 0;
+}
+.share_this_widget {
+  float:right;
 }
