@@ -39,7 +39,7 @@ FailinGs::Application.routes.draw do
     collection do
       get :bookmarks
       get :twitter
-      # get :facebook
+      get :facebook
       # get :email
     end
   end

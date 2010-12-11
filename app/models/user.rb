@@ -158,17 +158,61 @@ class User < ActiveRecord::Base
     twitter_screen_name?
   end
 
-  def facebook?
-    facebook_id?
-  end
-
   def twitter
     return @twitter if defined? @twitter
 
     @twitter = if twitter?
-      oauth = Twitter::OAuth.new *App.twitter.values_at(:key, :secret)
-      oauth.authorize_from_access oauth_token, oauth_secret
-      Twitter::Base.new oauth
+      consumer = OAuth::Consumer.new App.twitter[:key],
+        App.twitter[:secret], site: 'https://api.twitter.com',
+        authorize_path: '/oauth/authenticate'
+      OAuth::AccessToken.new consumer, oauth_token, oauth_secret
+    end
+  end
+
+  def twitter_friend_ids
+    return @twitter_friend_ids if defined? @twitter_friend_ids
+
+    @twitter_friend_ids = if twitter?
+      res = twitter.get "/1/friends/ids.json?user_id=#{twitter_id}"
+      JSON.parse res.body
+    else
+      []
+    end
+  end
+
+  def twitter_follower_ids
+    return @twitter_follower_ids if defined? @twitter_follower_ids
+
+    @twitter_follower_ids = if twitter?
+      res = twitter.get "/1/followers/ids.json?user_id=#{twitter_id}"
+      JSON.parse res.body
+    else
+      []
+    end
+  end
+
+  def facebook?
+    facebook_id?
+  end
+
+  def facebook
+    return @facebook if defined? @facebook
+
+    @facebook = if facebook?
+      client = OAuth2::Client.new App.facebook[:key],
+        App.facebook[:secret], site: 'https://graph.facebook.com'
+      OAuth2::AccessToken.new client, facebook_token
+    end
+  end
+
+  def facebook_friend_ids
+    return @facebook_friend_ids if defined? @facebook_friend_ids
+
+    @facebook_friend_ids = if facebook?
+      res = facebook.get '/me/friends'
+      JSON.parse(res)["data"].map { |friend| friend["id"] }
+    else
+      []
     end
   end
 
