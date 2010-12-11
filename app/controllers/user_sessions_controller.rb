@@ -6,7 +6,9 @@ class UserSessionsController < ApplicationController
   def new
     @user = User.new
     @user_session = UserSession.new
-    @user.login = @user_session.login = twitter[:screen_name] if twitter
+    if auth && auth["provider"] == "twitter"
+      @user.login = @user_session.login = auth["user_info"]["nickname"]
+    end
     respond_with @user_session
   end
 
@@ -16,12 +18,13 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       session[:invitation_email] = nil
 
-      if twitter
-        redirect_to oauth_complete_path
-      else
-        redirect_back_or_default profile_path(@user_session.user),
-          notice: "Login successful!"
+      if auth
+        @user.apply_auth auth
+        @user.save
       end
+
+      redirect_back_or_default profile_path(@user_session.user),
+        notice: "Login successful!"
     else
       render "new"
     end

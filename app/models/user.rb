@@ -187,6 +187,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  def apply_auth(auth)
+    return unless auth
+
+    case auth["provider"]
+    when 'facebook'
+      self.facebook_id         = auth["uid"]
+      self.facebook_token      = auth["credentials"]["token"]
+    when 'twitter'
+      self.twitter_screen_name = auth["user_info"]["nickname"]
+      self.twitter_id          = auth["uid"]
+      self.oauth_token         = auth["credentials"]["token"]
+      self.oauth_secret        = auth["credentials"]["secret"]
+    end
+
+    self.preferences["avatar_service"] ||= auth["provider"]
+  end
+
   def app?
     login == APP_LOGIN
   end

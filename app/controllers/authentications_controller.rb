@@ -6,19 +6,7 @@ class AuthenticationsController < ApplicationController
     if logged_in?
       session[:invitation_email] = nil
 
-      case auth["provider"]
-      when 'facebook'
-        current_user.facebook_id         = auth["uid"]
-        current_user.facebook_token      = auth["credentials"]["token"]
-      when 'twitter'
-        current_user.twitter_screen_name = auth["user_info"]["nickname"]
-        current_user.twitter_id          = auth["uid"]
-        current_user.oauth_token         = auth["credentials"]["token"]
-        current_user.oauth_secret        = auth["credentials"]["secret"]
-      end
-
-      current_user.preferences["avatar_service"] ||= auth["provider"]
-
+      current_user.apply_auth(auth)
       if current_user.changed? && current_user.save
         flash[:notice] = "Connected with #{auth["provider"].capitalize}!"
       end
