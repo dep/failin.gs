@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100227175716) do
+ActiveRecord::Schema.define(:version => 20101211194501) do
 
   create_table "abuses", :force => true do |t|
     t.integer  "content_id"
@@ -159,10 +159,14 @@ ActiveRecord::Schema.define(:version => 20100227175716) do
     t.string   "oauth_secret"
     t.integer  "twitter_id"
     t.string   "twitter_screen_name"
+    t.string   "facebook_id"
+    t.string   "facebook_token"
   end
 
   add_index "users", ["email", "state"], :name => "index_users_on_email_and_state", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
+  add_index "users", ["facebook_token"], :name => "index_users_on_facebook_token"
   add_index "users", ["login", "state"], :name => "index_users_on_login_and_state"
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true

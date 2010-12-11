@@ -12,7 +12,7 @@ gem "aasm",      git: "git://github.com/rubyist/aasm.git"
 gem "app"
 # gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 gem "authlogic", git: "git://github.com/stephencelis/authlogic.git"
-gem "rack-oauth"
+gem "omniauth"
 gem "twitter"
 gem "uuid"
 

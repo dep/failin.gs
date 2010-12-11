@@ -1,5 +1,9 @@
 module UserSessionsHelper
+  def facebook_login_path
+    "/auth/facebook"
+  end
+
   def twitter_login_path
-    App.twitter[:login] || "/oauth_login"
+    "/auth/twitter"
   end
 end

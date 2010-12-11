@@ -7,6 +7,10 @@ FailinGs::Application.routes.draw do
   get oauth_complete_path, to: "user_sessions#oauth", as: :oauth_complete
   delete "/oauth_delete", to: "users#unlink_oauth", as: :oauth_delete
 
+  match 'auth/failure',            to: 'authentications#failure'
+  match 'auth/:provider/callback', to: 'authentications#callback'
+  match 'auth/:provider/unlink',   to: 'authentications#unlink'
+
   resource :account, controller: "users", only: %w(create edit update destroy) do
     get  "unsubscribe" => "users#unsubscribe",  as: :unsubscribe
     post "unsubscribe" => "users#unsubscribed", as: :unsubscribed

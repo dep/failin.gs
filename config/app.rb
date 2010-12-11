@@ -13,10 +13,13 @@ class App < Configurable
     prototype: %w(prototype effects dragdrop controls)
   }
 
-  # Twitter API.
   config.twitter = {
     key:    "fu7W2TpOgprzROGoumRF4Q",
     secret: "ALhgi9iVPxjbvbygcIX1WcbnnR2NtsRZ1CF2xxxmWDI",
-    site:   "http://twitter.com"
+  }
+
+  config.facebook = {
+    key:    "434cc2cf73449662eadb3fb817cc50ac",
+    secret: "5ec28c1f4d3377c4bd640e901c7ecb1b"
   }
 end
