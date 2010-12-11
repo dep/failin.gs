@@ -27,36 +27,35 @@
         <% end %>
         <p>
           Your Twitter account is connected to failin.gs
-          (<%= link_to "unlink", oauth_delete_path, method: :delete, confirm: "Unlink your failin.gs profile from your Twitter account, '#{@user.twitter_screen_name}'?" %>).
+          (<%= link_to "unlink", auth_delete_path(provider: 'twitter'), method: :delete, confirm: "Unlink your failin.gs profile from your Twitter account, '#{@user.twitter_screen_name}'?" %>).
         </p>
       </dd>
     <% end %>
-    <dt>
-      <%= image_tag "facebook_setup.png" %>
-    </dt>
-    <dd>
-      <%= link_to "Authenticate your account with Facebook" %> to use your Facebook profile pic on failin.gs.
-    </dd>
-    <dt>
-      <%= image_tag "facebook_setup.png" %>
-    </dt>
-    <dd>
-      <%= link_to "Apply your Facebook photo" %>
-      <p>
-        Your Facebook account is connected to failin.gs
-        (<%= link_to "unlink" %>)
-      </p>
-    </dd>
-    <dt>
-      <%= image_tag "facebook_setup.png" %>
-    </dt>
-    <dd>
-      <strong>Facebook (applied)</strong>
-      <p>
-        Your Facebook account is connected to failin.gs
-        (<%= link_to "unlink" %>)
-      </p>
-    </dd>
+
+    <% unless @user.facebook? %>
+      <dt>
+        <%= link_to image_tag("facebook_setup.png"), facebook_login_path %>
+      </dt>
+      <dd>
+        <%= link_to "Authenticate your account with Facebook", facebook_login_path %> to use your Facebook profile pic on failin.gs.
+      </dd>
+    <% else %>
+      <dt>
+        <%= link_to_unless @user.avatar_service.facebook?, facebook_image_for(@user, size: 32), preferences_path(key: "avatar_service", value: "facebook"), method: :post, remote: true %>
+      </dt>
+      <dd>
+        <% if @user.avatar_service.facebook? %>
+          <strong>Facebook icon (applied)</strong>
+        <% else %>
+          <%= link_to "Apply your Facebook icon", preferences_path(key: "avatar_service", value: "facebook"), method: :post, remote: true %>
+        <% end %>
+        <p>
+          Your Facebook account is connected to failin.gs
+          (<%= link_to "unlink", auth_delete_path(provider: 'facebook'), method: :delete, confirm: "Unlink your failin.gs profile from your Facebook account?" %>).
+        </p>
+      </dd>
+    <% end %>
+
     <dt>
       <%= link_to_unless @user.avatar_service.gravatar?, gravatar_for(@user, size: 32), preferences_path(key: "avatar_service", value: "gravatar"), method: :post, remote: true %>
     </dt>

@@ -52,7 +52,7 @@ class AuthenticationsController < ApplicationController
     render text: request.env, content_type: 'text/plain'
   end
 
-  def unlink
+  def destroy
     case params[:provider]
     when 'facebook'
       current_user.facebook_id         = nil
@@ -65,6 +65,7 @@ class AuthenticationsController < ApplicationController
     end
 
     current_user.save validate: false if current_user.changed?
-    redirect_to edit_account_path, notice: "Twitter unlinked."
+    redirect_to edit_account_path,
+      notice: "#{params[:provider].capitalize} unlinked."
   end
 end

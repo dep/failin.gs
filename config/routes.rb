@@ -3,13 +3,11 @@ FailinGs::Application.routes.draw do
   get "login", to: "user_sessions#new", as: :login
   match "logout", to: "user_sessions#destroy", method: :delete, as: :logout
 
-  oauth_complete_path = App.twitter[:redirect] || "/oauth_complete"
-  get oauth_complete_path, to: "user_sessions#oauth", as: :oauth_complete
-  delete "/oauth_delete", to: "users#unlink_oauth", as: :oauth_delete
-
   match 'auth/failure',            to: 'authentications#failure'
   match 'auth/:provider/callback', to: 'authentications#callback'
   match 'auth/:provider/unlink',   to: 'authentications#unlink'
+  delete 'auth/:provider/destroy', to: 'authentications#destroy',
+    as: :auth_delete
 
   resource :account, controller: "users", only: %w(create edit update destroy) do
     get  "unsubscribe" => "users#unsubscribe",  as: :unsubscribe

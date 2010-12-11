@@ -5,11 +5,24 @@ module ApplicationHelper
   end
 
   def avatar_for(user, *args)
-    if user.avatar_service.twitter?
+    if user.avatar_service.facebook?
+      facebook_image_for user, *args
+    elsif user.avatar_service.twitter?
       tweetimage_for user, *args
     else
       gravatar_for user, *args
     end
+  end
+
+  def facebook_image_for(user, *args)
+    options = args.extract_options!
+    image_url = "http://graph.facebook.com/#{user.facebook_id}/picture&type="
+    image_url << case options[:size]
+      when 0..50 then 'square'
+      else 'large'
+    end
+
+    image_tag image_url, width: options[:size]
   end
 
   def tweetimage_for(user, *args)

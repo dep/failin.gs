@@ -155,7 +155,11 @@ class User < ActiveRecord::Base
   end
 
   def twitter?
-    twitter_screen_name.present?
+    twitter_screen_name?
+  end
+
+  def facebook?
+    facebook_id?
   end
 
   def twitter
@@ -171,6 +175,8 @@ class User < ActiveRecord::Base
   def avatar_service
     @avatar_service ||= begin
       service = case preferences["avatar_service"]
+      when "facebook"
+        facebook? ? "facebook" : "gravatar"
       when "twitter"
         twitter? ? "twitter" : "gravatar"
       else

@@ -1,11 +1,15 @@
 <% title "Edit your account" %>
 <h2 class="page_title knew">Account Settings<span>Tweak to your heart's content</span></h2>
-<div id="facebook_connect">
-  <h3 class="mod_title">Connect with Facebook!</h3>
-  <p>By connecting with Facebook you can import your photo and find your friends. We won't send any of your flaws to Facebook, so don't worry.</p>
-  <p>[connect button here]</p>
-  <a href="#" onclick="new Effect.BlindUp('facebook_connect');">Maybe later</a>
-</div>
+
+<% unless @user.facebook? %>
+  <div id="facebook_connect">
+    <h3 class="mod_title">Connect with Facebook!</h3>
+    <p>By connecting with Facebook you can import your photo and find your friends. We won't send any of your flaws to Facebook, so don't worry.</p>
+    <p>[connect button here]</p>
+    <a href="#" onclick="new Effect.BlindUp('facebook_connect');">Maybe later</a>
+  </div>
+<% end %>
+
 <div id="user_profile" class="edit">
   <%= render "users/pic_area" %>
 
