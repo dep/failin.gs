@@ -1,9 +1,9 @@
 set :application, 'failings'
-set :repository,  'git@github.com:dep:failin.gs.git'
+set :repository,  'git@github.com:dep/failin.gs.git'
 set :branch,      'origin/master'
 set :user,        application
 set :deploy_type, 'deploy'
-set :deploy_to,   "/home/#{user}"
+set :deploy_to,   "/home/#{user}/future"
 set :rails_env,   "production"
 
 set :main_ip, "69.164.196.172"
