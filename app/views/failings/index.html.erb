@@ -16,7 +16,10 @@
 
 <div id="flaw_area">
   <%= render "common/flash_message" %>
-  <%= render partial: "bookmark", object: @user if logged_in? && current_user != @user %>
+  <div class="share_area">
+    <%= render partial: "bookmark", object: @user if logged_in? && current_user != @user %>
+    <%= render "common/share_this" %>
+  </div>
 
   <%= render "failings_form" %>
   <%= render "be_nice" %>
