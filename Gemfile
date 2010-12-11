@@ -13,8 +13,9 @@ gem "app"
 # gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 gem "authlogic", git: "git://github.com/stephencelis/authlogic.git"
 gem "omniauth"
-gem "twitter"
 gem "uuid"
+gem "resque"
+gem "resque-retry"
 
 group :development do
   gem "ghi"

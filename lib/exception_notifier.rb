@@ -6,7 +6,7 @@ class ExceptionNotifier
   def call(env)
     @app.call(env)
   rescue Exception => exception
-    MailJob.new(exception, env).perform unless [
+    MailJob.perform_exception(exception, env) unless [
       AbstractController::ActionNotFound,
       # ActionController::InvalidAuthenticityToken,
       ActionController::RoutingError,

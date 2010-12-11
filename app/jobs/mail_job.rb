@@ -1,5 +1,9 @@
-class MailJob < Struct.new(:record, :env)
-  def perform
+class MailJob
+  @queue = :mail
+
+  def self.perform(record_type, record_id)
+    record = record_type.constantize.find record_id
+
     case record
     when Failing
       Notifier.new_failing(record).deliver
@@ -20,11 +24,13 @@ class MailJob < Struct.new(:record, :env)
       end
     when User
       Notifier.newly_invited(record).deliver
-    when Exception
-      Notifier.new_exception(record, env).deliver
     end
   rescue => e
     Notifier.new_exception(e).deliver
     raise
+  end
+
+  def self.perform_exception(exception, env = nil)
+    Notifier.new_exception(record, env).deliver
   end
 end

@@ -32,7 +32,7 @@ class Email < ActiveRecord::Base
     invited = inviter.invitations.new(email: address)
     if invited.save
       touch
-      MailJob.new(invited).perform
+      MailJob.perform invited.class.name, invited.id
     end
   end
 end

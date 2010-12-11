@@ -8,7 +8,7 @@ class SharesController < ApplicationController
   def create
     @share = current_user.shares.new(params[:share])
     if @share.save
-      Delayed::Job.enqueue MailJob.new(@share)
+      Resque.enqueue MailJob, @share.class.name, @share.id
 
       respond_to do |format|
         format.html { redirect_to new_share_path }

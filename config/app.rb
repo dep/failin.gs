@@ -2,6 +2,9 @@ class App < Configurable
   # Settings in config/app/* take precedence over those specified here.
   config.name = 'FailinGs'
 
+  config.redis = Redis::Namespace.new "failings:#{Rails.env}",
+    redis: Redis.new
+
   config.beta = false
 
   # Make true to avoid expensive SQL queries on public profiles.

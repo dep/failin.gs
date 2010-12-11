@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     @invitation = current_user.invitations.new(params[:invitation])
     @share = current_user.shares.new
     if @invitation.save
-      Delayed::Job.enqueue MailJob.new(@invitation)
+      Resque.enqueue MailJob, @invitation.class.name, @invitation.id
       respond_to do |format|
         format.html { redirect_to new_invitation_path }
         format.js {

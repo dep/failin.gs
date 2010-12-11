@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       if @user.invitation
         session[:invitation_email] = nil
-        Delayed::Job.enqueue MailJob.new(@user)
+        Resque.enqueue MailJob, @user.class.name, @user.id
       end
 
       path = auth ? edit_account_path : page_path("welcome")

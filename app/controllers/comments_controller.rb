@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment.token_id = @identity
 
     if @comment.save
-      Delayed::Job.enqueue MailJob.new(@comment)
+      Resque.enqueue MailJob, @comment.class.name, @comment.id
 
       render :update do |page|
         page.insert_html :bottom, dom_id(@failing, :comments),

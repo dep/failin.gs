@@ -37,7 +37,7 @@ class FailingsController < ApplicationController
 
     if @failing.save
       if @user.subscribe? && @user != current_user
-        Delayed::Job.enqueue MailJob.new(@failing)
+        Resque.enqueue MailJob, @failing.class.name, @failing.id
       end
 
       redirect_to profile_path(@user), notice: "Thanks for your feedback!"

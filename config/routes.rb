@@ -58,6 +58,8 @@ FailinGs::Application.routes.draw do
   # get "javascripts/:action.:format" => "javascripts"
   get "stylesheets/:action.:format" => "stylesheets"
 
+  mount Resque::Server.new, at: 'resque'
+
   root to: "pages#root"
 
   get ":login" => redirect("/profile/%{login}")
