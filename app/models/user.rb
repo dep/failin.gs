@@ -245,6 +245,7 @@ class User < ActiveRecord::Base
       self.oauth_secret        = auth["credentials"]["secret"]
     end
 
+    self.name                          ||= auth["name"]
     self.preferences["avatar_service"] ||= auth["provider"]
   end
 

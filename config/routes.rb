@@ -6,7 +6,7 @@ FailinGs::Application.routes.draw do
   match 'auth/failure',            to: 'authentications#failure'
   match 'auth/:provider/callback', to: 'authentications#callback'
   match 'auth/:provider/unlink',   to: 'authentications#unlink'
-  delete 'auth/:provider/destroy', to: 'authentications#destroy',
+  match 'auth/:provider/destroy',  to: 'authentications#destroy',
     as: :auth_delete
 
   resource :account, controller: "users", only: %w(create edit update destroy) do
