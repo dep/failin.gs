@@ -18,12 +18,13 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       session[:invitation_email] = nil
 
-      if twitter
-        redirect_to oauth_complete_path
-      else
-        redirect_back_or_default profile_path(@user_session.user),
-          notice: "Login successful!"
+      if auth
+        @user.apply_auth auth
+        @user.save
       end
+
+      redirect_back_or_default profile_path(@user_session.user),
+        notice: "Login successful!"
     else
       render "new"
     end
