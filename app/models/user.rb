@@ -229,7 +229,7 @@ class User < ActiveRecord::Base
     ids = facebook_friend_hashes.map { |f| f["id"] }
     @facebook_friends = User.find_all_by_facebook_id ids
     @facebook_friends.each { |f|
-      f["facebook_name"] = facebook_friend_hashes.select { |h|
+      f["facebook_name"] = facebook_friend_hashes.detect { |h|
         h["id"] == f.facebook_id
       }["name"]
     }
