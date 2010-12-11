@@ -180,6 +180,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def twitter_friends
+    @twitter_friends ||= User.find_all_by_twitter_id twitter_friend_ids
+  end
+
   def twitter_follower_ids
     return @twitter_follower_ids if defined? @twitter_follower_ids
 
@@ -189,6 +193,10 @@ class User < ActiveRecord::Base
     else
       []
     end
+  end
+
+  def twitter_followers
+    @twitter_followers ||= User.find_all_by_twitter_id twitter_follower_ids
   end
 
   def facebook?
@@ -205,15 +213,27 @@ class User < ActiveRecord::Base
     end
   end
 
-  def facebook_friend_ids
-    return @facebook_friend_ids if defined? @facebook_friend_ids
+  def facebook_friend_hashes
+    return @facebook_friend_hashes if defined? @facebook_friend_hashes
 
-    @facebook_friend_ids = if facebook?
+    @facebook_friend_hashes = if facebook?
       res = facebook.get '/me/friends'
-      JSON.parse(res)["data"].map { |friend| friend["id"] }
+      JSON.parse(res)["data"]
     else
       []
     end
+  end
+
+  def facebook_friends
+    return @facebook_friends if defined? @facebook_friends
+    ids = facebook_friend_hashes.map { |f| f["id"] }
+    @facebook_friends = User.find_all_by_facebook_id ids
+    @facebook_friends.each { |f|
+      f["facebook_name"] = facebook_friend_hashes.select { |h|
+        h["id"] == f.facebook_id
+      }["name"]
+    }
+    @facebook_friends
   end
 
   def avatar_service

@@ -29,7 +29,7 @@ class UserSessionsController < ApplicationController
 
       if auth
         @user.apply_auth auth
-        @user.save
+        @user.save if @user.changed?
       end
 
       redirect_back_or_default profile_path(@user_session.user),

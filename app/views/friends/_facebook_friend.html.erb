@@ -1,4 +1,5 @@
 <li>
+  <%= facebook_friend["facebook_name"] %>
   <%= link_to avatar_for(facebook_friend, size: 50), profile_path(facebook_friend) %>
   <%= link_to facebook_friend.login, profile_path(facebook_friend) %>
   <%= render partial: "failings/bookmark", object: facebook_friend %>

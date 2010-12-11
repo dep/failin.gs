@@ -35,14 +35,14 @@ class FriendsController < ApplicationController
 
   def twitter
     if current_user.twitter?
-      @friends   = User.find_all_by_twitter_id current_user.twitter_friend_ids
-      @followers = User.find_all_by_twitter_id current_user.twitter_follower_ids
+      @friends   = current_user.twitter_friends
+      @followers = current_user.twitter_followers
     end
   end
 
   def facebook
     if current_user.facebook?
-      @friends = User.find_all_by_facebook_id current_user.facebook_friend_ids
+      @friends = current_user.facebook_friends
     end
   end
 end
