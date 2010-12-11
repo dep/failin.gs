@@ -1,16 +1,18 @@
-source 'http://gemcutter.org'
+source :rubygems
 
 # Rails
-gem "rails", git: "git://github.com/rails/rails.git"
+gem "rails", "3.0.3"
 
 # Configuration
-gem "mysql"
+gem "mysql2"
+
+gem "passenger"
 
 gem "aasm",      git: "git://github.com/rubyist/aasm.git"
+gem "app"
 # gem "authlogic", git: "git://github.com/binarylogic/authlogic.git"
 gem "authlogic", git: "git://github.com/stephencelis/authlogic.git"
 gem "rack-oauth"
-gem "rerails",   git: "git://github.com/stephencelis/rerails.git"
 gem "twitter"
 gem "uuid"
 

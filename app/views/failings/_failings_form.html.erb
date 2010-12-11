@@ -1,4 +1,4 @@
-<% form_for @failing, url: failings_url(@user) do |f| %>
+<%= form_for @failing, url: failings_url(@user) do |f| %>
   <div class="floating_box rounded_box drop_shadow" id="box_validate" style="display: none;">
     <%= render "validation_message" %>
     <p>

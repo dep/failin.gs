@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20100227175716) do
   end
 
   add_index "bookmarks", ["bookmarked_id"], :name => "index_bookmarks_on_bookmarked_id"
+  add_index "bookmarks", ["bookmarker_id", "bookmarked_id"], :name => "index_bookmarks_on_bookmarker_id_and_bookmarked_id", :unique => true
   add_index "bookmarks", ["bookmarker_id"], :name => "index_bookmarks_on_bookmarker_id"
 
   create_table "comments", :force => true do |t|
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20100227175716) do
     t.string   "token_id",     :null => false
   end
 
-  add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true
+  add_index "comments", ["failing_id", "text"], :name => "index_comments_on_failing_id_and_text", :unique => true, :length => {"failing_id"=>nil, "text"=>200}
   add_index "comments", ["failing_id"], :name => "index_comments_on_failing_id"
   add_index "comments", ["state", "failing_id"], :name => "index_comments_on_state_and_failing_id"
   add_index "comments", ["token_id"], :name => "index_comments_on_token_id"
@@ -93,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20100227175716) do
   add_index "failings", ["submitter_id"], :name => "index_failings_on_submitter_id"
   add_index "failings", ["submitter_ip"], :name => "index_failings_on_submitter_ip"
   add_index "failings", ["token_id"], :name => "index_failings_on_token_id"
-  add_index "failings", ["user_id", "about"], :name => "index_comments_on_user_id_and_about", :unique => true
+  add_index "failings", ["user_id", "about"], :name => "index_comments_on_user_id_and_about", :unique => true, :length => {"user_id"=>nil, "about"=>145}
   add_index "failings", ["user_id", "state", "score"], :name => "index_failings_on_user_id_and_state_and_score"
   add_index "failings", ["user_id", "state"], :name => "index_failings_on_user_id_and_state"
   add_index "failings", ["user_id"], :name => "index_failings_on_user_id"
