@@ -4,7 +4,7 @@
   <p>
     You will stop receiving email notifications for your failings and those you've participated in.
 
-    <%= button_to "Yes, really unsubscribe", unsubscribed_path(single_access_token: params[:single_access_token]) %>
+    <%= button_to "Yes, really unsubscribe", unsubscribed_account_path(single_access_token: params[:single_access_token]) %>
   </p>
 <% else %>
   <p>

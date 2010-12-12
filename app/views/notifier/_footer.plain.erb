@@ -6,7 +6,7 @@ http://failin.gs
 
 If you would like to stop receiving emails, visit the following link:
 
-  <%= unsubscribe_url(single_access_token: @user.single_access_token) %>
+  <%= unsubscribe_account_url(single_access_token: @user.single_access_token) %>
 <%- else -%>
 You've received this email because someone with an account at
 http://failin.gs thought it may interest you.

@@ -5,7 +5,7 @@
         You've received this email because you have an account at
         <%= link_to "failin.gs", root_url %>.<br/>
         If you would like to stop receiving emails, just
-        <%= link_to "click here", unsubscribe_url(single_access_token: @user.single_access_token) %>.
+        <%= link_to "click here", unsubscribe_account_url(single_access_token: @user.single_access_token) %>.
       <% else %>
         You've received this email because someone with an account at
         <%= link_to "failin.gs", root_url %> thought it may interest you.<br/>
