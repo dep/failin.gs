@@ -1,4 +1,4 @@
-<fieldset id="signup_form" style="<%= 'display: none;' if @user.nil? || controller.is_a?(PagesController) %>">
+<fieldset id="signup_form">
   <%= form_for @user, :url => account_path do |f| %>
     <%= f.hidden_field :invitation_email, value: @user.invitation_email || session[:invitation_email] ||= params[:invited] %>
 
