@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   before_filter :require_no_user, only: %w(root)
   before_filter :require_user, only: %w(welcome)
-  before_filter :validate_cache
 
   def root
     @email        = Email.new
@@ -10,11 +9,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def validate_cache
-    return unless stale? etag: form_authenticity_token,
-      last_modified: last_modified
-  end
 
   def last_modified
     file = "#{Rails.root}/app/views/pages/#{params[:permalink]}.html.erb"
