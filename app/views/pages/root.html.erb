@@ -16,21 +16,21 @@
     <%= image_tag "fake_profile.png", :alt => "Example Profile" %>
   </div>
   <div class="col col_2">
+    <%= facebook_login %>
+    <%= twitter_login %>
     <% if @user_session %>
       <% if @user %>
-        <p>Returning user? <a href="#" onclick="show_login()">Log in here</a>.</p>
+        <p>Returning user? Log in here.</p>
       <% end %>
       <%= render "user_sessions/form" %>
     <% end %>
     <% if @user %>
       <% if @user_session %>
-        <p>New user? Sign up <a href="#" onclick="show_signup()">here</a>.</p>
+        <p>New user? Sign up now!</p>
       <% end %>
       <%= render "users/form" %>
     <% end %>
     <%= render "users/request" %>
-    <%= facebook_login %>
-    <%= twitter_login %>
   </div>
 </div>
 

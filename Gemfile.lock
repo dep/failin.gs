@@ -215,6 +215,3 @@ DEPENDENCIES
   resque
   resque-retry
   uuid
-
-METADATA
-  version: 1.0.6
