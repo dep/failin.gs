@@ -18,13 +18,13 @@ class FailingsController < ApplicationController
 
     load_profile_user
 
-    if App.optimized?
+    # if App.optimized?
       etag = [
         @user, @user == current_user, knows?(@user), form_authenticity_token
       ]
       return unless stale? etag: etag, last_modified: @user.updated_at,
-        public: !logged_in?
-    end
+        public: !logged_in? && known.empty?
+    # end
 
     @failing = @user.failings.build
     @knows_user = knows_user?
