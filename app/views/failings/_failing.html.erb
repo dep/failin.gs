@@ -60,8 +60,11 @@
       <div>
         <%= f.text_area :text, rows: 11, maxlength: "200", onkeyup: "return ismaxlength(this)" %>
 
-        <button type="button" onclick="$('box_validate').show(); $('box_validate').scrollTo(); $('failing_answer').focus();">Create Comment</button>
-        <%#= f.submit %>
+        <% if @user == current_user %>
+          <%= f.submit %>
+        <% else %>
+          <button type="button" onclick="$('box_validate').show(); $('box_validate').scrollTo(); $('failing_answer').focus();">Create Comment</button>
+        <% end %>
       </div>
     <% end %>
   </div>
