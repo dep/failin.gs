@@ -16,11 +16,15 @@ class CommentsController < ApplicationController
       Resque.enqueue MailJob, @comment.class.name, @comment.id
 
       render :update do |page|
-        page.insert_html :bottom, dom_id(@failing, :comments),
-          partial: @comment
-        page[@comment].visual_effect :highlight
-        page[@failing].select('.reply_wrapper').first.hide.select("form").
-          first.reset
+        if @just_knew == @user
+          page.redirect_to profile_path(@user)
+        else
+          page.insert_html :bottom, dom_id(@failing, :comments),
+            partial: @comment
+          page[@comment].visual_effect :highlight
+          page[@failing].select('.reply_wrapper').first.hide.select("form").
+            first.reset
+        end
       end
     else
       render :update do |page|

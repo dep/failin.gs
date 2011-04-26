@@ -87,7 +87,9 @@ class ApplicationController < ActionController::Base
   helper_method :knows?
 
   def knows! user
+    return if knows? user
     session[:known] = (known << user.id).uniq
+    @just_knew = user
   end
 
   def known

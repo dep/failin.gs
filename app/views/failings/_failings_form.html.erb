@@ -20,7 +20,11 @@
       </p>
     <% end %>
     <%= f.text_area :about, rows: "2", cols: "50", maxlength: "145", onkeyup: "return ismaxlength(this)" %>
-    <button type="button" onclick="$('box_validate').show(); $('failing_answer').focus();">Submit</button>
+    <% if knows? @user %>
+      <%= f.submit %>
+    <% else %>
+      <button type="button" onclick="$('box_validate').show(); $('failing_answer').focus();">Submit</button>
+    <% end %>
     <span class="char_limit"><span id="char_limit">145</span> characters remaining</span>
   </fieldset>
   <div id="google_ads" style="display:none">
