@@ -488,6 +488,10 @@ input[type="checkbox"] {
   top:0;
   left:60px;
 }
+.validate_comment {
+  top:10px;
+  left:-200px;
+}
 #flaw_area {
   float:left;
   width:605px;
@@ -512,6 +516,11 @@ input[type="checkbox"] {
   font-size:15px;
   font-family:Helvetica, Arial;
   float:left;
+  border:1px solid #ccc;
+  -webkit-border-radius:10px;
+  -webkit-box-shadow:1px 2px 3px #eee;
+  -moz-border-radius:10px;
+  -moz-box-shadow:1px 2px 3px #eee;
 }
 .flaw_box .unrated #new_comment textarea {
   height:50px !important;
@@ -521,11 +530,18 @@ input[type="checkbox"] {
   clear:both;
 }
 #flaw_area fieldset button {
-  font-size:24px;
   float:left;
-  height:59px;
   margin-left:10px;
   cursor:pointer;
+  border:1px solid #aaa;
+  -webkit-border-radius:10px;
+  -webkit-box-shadow:1px 2px 3px #eee;
+  -moz-border-radius:10px;
+  -moz-box-shadow:1px 2px 3px #eee;
+  background:#c1d2ee;
+  color:#fff;
+  font-size:18px;
+  padding:10px;
 }
 .flaw_box {
   position:relative;
@@ -535,8 +551,12 @@ input[type="checkbox"] {
   margin:0 5px 20px;
   border-style:solid;
   border-width:1px;
-  border-color:#777;
-  padding:5px
+  border-color:#aaa;
+  padding:5px;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:1px 2px 3px #eee;
+  -moz-border-radius:5px;
+  -moz-box-shadow:1px 2px 3px #eee;
 }
 .flaw_box.disagree {
   margin-right:0;
