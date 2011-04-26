@@ -57,13 +57,25 @@
   </div>
   <div class="reply_wrapper" style="display: none;">
     <% form_for failing.comments.build, url: failing_comments_path(failing.user, failing), remote: true do |f| %>
+      <div class="floating_box validate_comment rounded_box drop_shadow" id="box_validate_<%= failing.id %>" style="display: none;">
+        <%= render "validation_message" %>
+        <p>
+          <strong><%= @user.question %></strong>
+        </p>
+
+        <%#= f.text_field :answer, autocomplete: "off" %>
+        <input type="text" name="failing_answer_<%= failing.id %>" id="answer" autocomplete="off" />
+        <%= f.submit "Ok - Send!" %>
+
+        <%= link_to "x", "#", onclick: "$('box_validate_#{failing.id}').fade(); return false;", class: "close" %>
+      </div>
       <div>
         <%= f.text_area :text, rows: 11, maxlength: "200", onkeyup: "return ismaxlength(this)" %>
 
         <% if @user == current_user %>
           <%= f.submit %>
         <% else %>
-          <button type="button" onclick="$('box_validate').show(); $('box_validate').scrollTo(); $('failing_answer').focus();">Create Comment</button>
+          <button type="button" onclick="$('box_validate_<%= failing.id %>').show(); $('box_validate_<%= failing.id %>').scrollTo(); $('failing_answer_<%= failing.id %>').focus();">Create Comment</button>
         <% end %>
       </div>
     <% end %>
