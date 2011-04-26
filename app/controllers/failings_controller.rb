@@ -37,11 +37,13 @@ class FailingsController < ApplicationController
     @failing.submitter = current_user
     @failing.submitter_ip = request.remote_ip
     @failing.token_id = @identity
-    @failing.answer = @user.answer if knows?(@user)
+
+    if knows? @user
+      knows! @user
+      @failing.answer = @user.answer
+    end
 
     if @failing.save
-      knows!(@user)
-
       if @user.subscribe? && @user != current_user
         Resque.enqueue MailJob, @failing.class.name, @failing.id
       end

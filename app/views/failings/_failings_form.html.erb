@@ -19,7 +19,7 @@
         your own flaws, if you want to, but we encourage you to leave it to your friends.
       </p>
     <% end %>
-    <%= f.text_area :about, rows: "2", cols: "50", maxlength: "145", onkeyup: "return ismaxlength(this)", onblur: "nice_clear()" %>
+    <%= f.text_area :message, rows: "2", cols: "50", maxlength: "145", onkeyup: "return ismaxlength(this)", onblur: "nice_clear()" %>
     <% if knows? @user %>
       <%= f.submit %>
     <% else %>

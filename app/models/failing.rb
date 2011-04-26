@@ -8,11 +8,13 @@ class Failing < ActiveRecord::Base
   has_many :comments
   has_many :abuses, as: :content
 
+  alias_attribute :message, :about
   attr_accessor :answer
-  attr_accessible :about, :answer
+  attr_accessible :message, :about, :answer
 
   validates_presence_of :user
-  validates_length_of :about, in: 1..145
+  validates_length_of :message, in: 1..145,
+    message: 'must be between 1 and 145 characters'
   validates_uniqueness_of :about, scope: :user_id
   validate :verified, on: :create, if: :user
   validate :overkill, on: :create, unless: :autodidact?
@@ -72,7 +74,9 @@ class Failing < ActiveRecord::Base
   private
 
   def verified
-    errors[:answer] << "doesn't match" unless verify_answer
+    unless verify_answer
+      errors[:base] << "You answered their security question incorrectly"
+    end
   end
 
   def overkill
