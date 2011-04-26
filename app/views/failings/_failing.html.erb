@@ -74,7 +74,7 @@
         <% if knows? @user %>
           <%= f.submit %>
         <% else %>
-          <button type="button" onclick="$('box_validate_<%= failing.id %>').show(); $('box_validate_<%= failing.id %>').scrollTo(); $('failing_answer_<%= failing.id %>').focus();">Create Comment</button>
+          <button type="button" onclick="$('box_validate_<%= failing.id %>').show(); $('box_validate_<%= failing.id %>').scrollTo();">Create Comment</button>
         <% end %>
       </div>
     <% end %>
