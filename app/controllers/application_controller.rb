@@ -93,6 +93,19 @@ class ApplicationController < ActionController::Base
   end
 
   def known
-    session[:known] ||= []
+    session[:known] ||= begin
+      known = []
+
+      if logged_in?
+        begin
+          known += current_user.twitter_followers.map { |f| f.id }
+          known += current_user.facebook_friends.map { |f| f.id }
+        rescue => e
+          logger.info e.to_s
+        end
+      end
+
+      known
+    end
   end
 end
