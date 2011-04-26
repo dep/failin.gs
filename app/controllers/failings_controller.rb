@@ -19,12 +19,15 @@ class FailingsController < ApplicationController
     load_profile_user
 
     if App.optimized?
-      etag = [@user, @user == current_user, form_authenticity_token]
+      etag = [
+        @user, @user == current_user, knows?(@user), form_authenticity_token
+      ]
       return unless stale? etag: etag, last_modified: @user.updated_at,
         public: !logged_in?
     end
 
     @failing = @user.failings.build
+    @knows_user = knows_user?
   end
 
   def create
@@ -34,8 +37,11 @@ class FailingsController < ApplicationController
     @failing.submitter = current_user
     @failing.submitter_ip = request.remote_ip
     @failing.token_id = @identity
+    @failing.answer = @user.answer if knows?(@user)
 
     if @failing.save
+      knows!(@user)
+
       if @user.subscribe? && @user != current_user
         Resque.enqueue MailJob, @failing.class.name, @failing.id
       end
@@ -49,7 +55,9 @@ class FailingsController < ApplicationController
   def show
     load_failing
 
-    etag = [@failing, @user == current_user, form_authenticity_token]
+    etag = [
+      @failing, @user == current_user, knows?(@user), form_authenticity_token
+    ]
     return unless stale? etag: etag, last_modified: @failing.updated_at,
       public: !logged_in?
 
@@ -88,5 +96,14 @@ class FailingsController < ApplicationController
     render "state_transition"
   rescue AASM::InvalidTransition
     head :unprocessable_entity
+  end
+
+  private
+
+  def knows_user?
+    return false unless @user
+
+    @user == current_user ||
+      (session[:knows] && session[:knows].include?(@user.id))
   end
 end

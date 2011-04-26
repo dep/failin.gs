@@ -80,4 +80,17 @@ class ApplicationController < ActionController::Base
     session[:auth]
   end
   helper_method :auth
+
+  def knows? user
+    current_user == user || known.include?(user.id)
+  end
+  helper_method :knows?
+
+  def knows! user
+    session[:known] = (known << user.id).uniq
+  end
+
+  def known
+    session[:known] ||= []
+  end
 end

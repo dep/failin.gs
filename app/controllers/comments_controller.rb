@@ -8,8 +8,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.submitter_ip = request.remote_ip
     @comment.token_id = @identity
+    @comment.answer = @user.answer if knows? @user
 
     if @comment.save
+      knows! @user
+
       Resque.enqueue MailJob, @comment.class.name, @comment.id
 
       render :update do |page|

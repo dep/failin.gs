@@ -72,9 +72,7 @@ class Failing < ActiveRecord::Base
   private
 
   def verified
-    unless verify_answer || already_verified
-      errors[:answer] << "doesn't match"
-    end
+    errors[:answer] << "doesn't match" unless verify_answer
   end
 
   def overkill
@@ -90,12 +88,5 @@ class Failing < ActiveRecord::Base
 
   def verify_answer
     answer.to_s.downcase.strip == user.answer.downcase.strip
-  end
-
-  def already_verified
-    false
-    # !user.failings.
-    #   where("submitter_ip = ? OR submitter_id = ?", submitter_ip, submitter_id).
-    #   first.nil?
   end
 end

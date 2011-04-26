@@ -3,10 +3,12 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :abuses, as: :content
 
-  attr_accessible :text
+  attr_accessor :answer
+  attr_accessible :text, :answer
 
   validates_length_of :text, in: 1..200
   validates_uniqueness_of :text, scope: :failing_id
+  validate :verified, on: :create, if: :failing
 
   after_save :touch_user
 
@@ -45,6 +47,14 @@ class Comment < ActiveRecord::Base
   end
 
   private
+
+  def verified
+    errors[:answer] << "doesn't match" unless verify_answer
+  end
+
+  def verify_answer
+    answer.to_s.downcase.strip == failing.user.answer.downcase.strip
+  end
 
   def touch_user
     failing.user.touch

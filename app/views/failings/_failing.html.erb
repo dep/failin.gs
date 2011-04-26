@@ -63,8 +63,7 @@
           <strong><%= @user.question %></strong>
         </p>
 
-        <%#= f.text_field :answer, autocomplete: "off" %>
-        <input type="text" name="failing_answer_<%= failing.id %>" id="answer" autocomplete="off" />
+        <%= f.text_field :answer, autocomplete: "off" %>
         <%= f.submit "Ok - Send!" %>
 
         <%= link_to "x", "#", onclick: "$('box_validate_#{failing.id}').fade(); return false;", class: "close" %>
@@ -72,7 +71,7 @@
       <div>
         <%= f.text_area :text, rows: 11, maxlength: "200", onkeyup: "return ismaxlength(this)" %>
 
-        <% if @user == current_user %>
+        <% if knows? @user %>
           <%= f.submit %>
         <% else %>
           <button type="button" onclick="$('box_validate_<%= failing.id %>').show(); $('box_validate_<%= failing.id %>').scrollTo(); $('failing_answer_<%= failing.id %>').focus();">Create Comment</button>
