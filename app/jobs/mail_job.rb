@@ -31,6 +31,6 @@ class MailJob
   end
 
   def self.perform_exception(exception, env = nil)
-    Notifier.new_exception(record, env).deliver
+    Notifier.new_exception(exception, env).deliver
   end
 end
