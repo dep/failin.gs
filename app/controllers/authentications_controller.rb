@@ -35,9 +35,10 @@ class AuthenticationsController < ApplicationController
     redirect_to login_path
   end
 
-  # params[:message] == 'invalid_credentials'
   def failure
-    render text: request.env, content_type: 'text/plain'
+    raise unless params[:message] == 'invalid_credentials'
+    flash[:notice] = "You can always authenticate later!"
+    redirect_to logged_in? ? edit_account_path : login_path
   end
 
   def destroy
