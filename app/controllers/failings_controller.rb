@@ -74,6 +74,7 @@ class FailingsController < ApplicationController
   end
 
   def knew
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.knew!
@@ -83,6 +84,7 @@ class FailingsController < ApplicationController
   end
 
   def no_idea
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.no_idea!
@@ -92,6 +94,7 @@ class FailingsController < ApplicationController
   end
 
   def disagree
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.disagree!
