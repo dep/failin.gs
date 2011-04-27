@@ -18,13 +18,13 @@ class FailingsController < ApplicationController
 
     load_profile_user
 
-    if App.optimized?
+    # if App.optimized?
       etag = [
         @user, @user == current_user, knows?(@user), form_authenticity_token
       ]
       return unless stale? etag: etag, last_modified: @user.updated_at,
-        public: !logged_in?
-    end
+        public: !logged_in? && known.empty?
+    # end
 
     @failing = @user.failings.build
     @knows_user = knows_user?
@@ -37,11 +37,13 @@ class FailingsController < ApplicationController
     @failing.submitter = current_user
     @failing.submitter_ip = request.remote_ip
     @failing.token_id = @identity
-    @failing.answer = @user.answer if knows?(@user)
+
+    if knows? @user
+      knows! @user
+      @failing.answer = @user.answer
+    end
 
     if @failing.save
-      knows!(@user)
-
       if @user.subscribe? && @user != current_user
         Resque.enqueue MailJob, @failing.class.name, @failing.id
       end
@@ -72,6 +74,7 @@ class FailingsController < ApplicationController
   end
 
   def knew
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.knew!
@@ -81,6 +84,7 @@ class FailingsController < ApplicationController
   end
 
   def no_idea
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.no_idea!
@@ -90,6 +94,7 @@ class FailingsController < ApplicationController
   end
 
   def disagree
+    @user = current_user
     @failing = current_user.failings.find(params[:id])
     @state_was = @failing.state
     @failing.disagree!

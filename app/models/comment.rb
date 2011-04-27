@@ -49,7 +49,9 @@ class Comment < ActiveRecord::Base
   private
 
   def verified
-    errors[:answer] << "doesn't match" unless verify_answer
+    unless verify_answer
+      errors[:base] << "You answered their security question incorrectly"
+    end
   end
 
   def verify_answer
