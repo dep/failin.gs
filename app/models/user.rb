@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  DEFAULT_INVITES_LEFT = 50
+
   # == Authlogic
 
   acts_as_authentic { |config|
@@ -72,6 +74,7 @@ class User < ActiveRecord::Base
     validates_presence_of :invitation, unless: :promo_code?, on: :create
   end
 
+  before_create :set_invites_left
   after_create :set_invitation
 
 
@@ -274,6 +277,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def set_invites_left
+    self.invites_left = DEFAULT_INVITES_LEFT
+  end
 
   def set_invitation
     if invitation
