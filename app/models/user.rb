@@ -285,12 +285,12 @@ class User < ActiveRecord::Base
   def set_invitation
     if invitation
       invitation.invited_id = id
-      invitation.save!
+      invitation.save
     end
 
     if address = Email.find_by_address(email)
       address.user_id = id
-      address.save!
+      address.save
     end
   end
 
