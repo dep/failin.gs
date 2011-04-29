@@ -4,7 +4,7 @@ class Invitation < ActiveRecord::Base
 
   attr_accessible :email
 
-  validates_presence_of :inviter, :email
+  validates_presence_of :inviter_id, :email
   validates_format_of :email, with: Authlogic::Regex.email,
     message: "doesn't look like an email", allow_blank: true
   validates_uniqueness_of :email, message: "has already been invited"
