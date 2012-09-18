@@ -16,6 +16,20 @@
   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'ee6031c9-0523-4b0a-a452-362903ee36d0'});</script>
 </head>
 <body class="<%= controller.action_name %>">
+  <style>
+    #shutting_down {
+      background:#7F1D35;
+      font-size:18px;
+      color:#fff;
+      padding:20px 0;
+      margin-bottom:40px;
+      border-bottom:3px solid yellow;
+    }
+    #shutting_down a {
+      color:yellow;
+    }
+  </style>
+  <div id="shutting_down">failin.gs is <em>shutting down</em> on <strong>September 24, 2012</strong>. <a href="/pages/what">huh?</a></div>
   <div id="wrapper">
     <h1 id="logo" onclick="window.location.href='/'">failin.gs</h1>
     <script type="text/javascript">
@@ -44,9 +58,7 @@
             <li><%= link_to_unless_current "friends", bookmarks_friends_path %></li>
             <li><%= link_to "log out", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to_unless_current "register", login_path %></li>
             <li><%= link_to_unless_current "log in", login_path %></li>
-            <li><a href="/pages/forum">forums</a></li>
           <% end %>
         </ul>
       </div>
@@ -58,7 +70,7 @@
       </div>
     </div>
     <div id="footer">
-      <strong>a joint venture from <a href="http://twoawesomedudes.com">two awesome dudes</a>.</strong> &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
+      &copy; <%= Date.today.year %> - <a href="/pages/terms">Terms of Use &amp; Privacy</a>
     </div>
   </div>
   <div class="floating_box rounded_box drop_shadow" id="box_important" style="display: none;">
